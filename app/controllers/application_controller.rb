@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
     before_filter :mailer_set_url_options
     before_filter { |c| Authorization.current_user = c.current_profile }
  
+	rescue_from CanCan::AccessDenied do |exception|
+		redirect_to :back, :alert => "You are not allowed to access that page"
+	end
+    
     def mailer_set_url_options
     	ActionMailer::Base.default_url_options[:host] = 'localhost:3000'
 	end

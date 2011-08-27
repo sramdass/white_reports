@@ -60,7 +60,9 @@ WhiteReports::Application.routes.draw do
 	
 	resources :teachers do
 		get 'emailnew', :on => :member
-		post 'email', :on => :member		
+		post 'email', :on => :member	
+		get 'smsnew', :on => :member
+		post 'sms', :on => :member				
 	end
 	
 	resources :subjects
@@ -69,6 +71,6 @@ WhiteReports::Application.routes.draw do
 	resources :sessions
 	resources :password_resets
 		
-	root :to => "sessions#new"	
+	root :to => "profiles#index"	
 	
 end

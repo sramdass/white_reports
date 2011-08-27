@@ -139,7 +139,7 @@
             <key>gemfile</key>
             <string>Gemfile</string>
             <key>index</key>
-            <string>app\views\schools\index.html.erb</string>
+            <string>app\views\profiles\index.html.erb</string>
             <key>index.h</key>
             <string>app\views\branches\index.html.erb</string>
             <key>index.ht</key>
@@ -299,13 +299,13 @@
             <key>setup_ma</key>
             <string>config\initializers\setup_mail.rb</string>
             <key>show</key>
-            <string>app\views\profiles\show.html.erb</string>
+            <string>app\views\clazzs\show.html.erb</string>
             <key>show.ht</key>
             <string>app\views\subjects\show.html.erb</string>
             <key>show.htm</key>
             <string>app\views\sections\show.html.erb</string>
             <key>show.html</key>
-            <string>app\views\sections\show.html.erb</string>
+            <string>app\views\students\show.html.erb</string>
             <key>show.html.</key>
             <string>app\views\schools\show.html.erb</string>
             <key>show.html.e</key>
@@ -363,6 +363,8 @@
             <key>teachers_C</key>
             <string>app\controllers\teachers_controller.rb</string>
             <key>teachers_c</key>
+            <string>app\controllers\teachers_controller.rb</string>
+            <key>teachers_co</key>
             <string>app\controllers\teachers_controller.rb</string>
             <key>teachers_con</key>
             <string>app\controllers\teachers_controller.rb</string>

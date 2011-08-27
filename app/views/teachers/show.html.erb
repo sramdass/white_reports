@@ -19,7 +19,9 @@
 		
 		<p>
 			<b> Email: </b>
-			<%= @teacher.teacher_contact.primary_email  %> , <i> <%= @teacher.teacher_contact.email %> </i>
+			<% if @teacher.teacher_contact %>
+				<%= @teacher.teacher_contact.primary_email  %> , <i> <%= @teacher.teacher_contact.email %> </i>
+			<% end %>
 		</p>		
 		<p>
 			<b> Address: </b> <br>
@@ -29,9 +31,16 @@
 		</p>
 		
 		<br><br>
-		<%= link_to 'Edit this teacher', edit_teacher_path(@teacher) %>  | 
-		<%= link_to 'Email', emailnew_teacher_path(@email)%> | 
-		<%= link_to 'Teachers Index', teachers_path %> 
+		<% if can? :update, @teacher%>
+			<%= link_to 'Edit this teacher', edit_teacher_path(@teacher) %>  | 
+		<% end %>
+		<% if can? :communicate, @teacher%>
+			<%= link_to 'Email', emailnew_teacher_path(@teacher)%> | 
+			<%= link_to 'Email', smsnew_teacher_path(@teacher)%> | 
+		<% end %>
+		<% if can? :index, Teacher%>
+			<%= link_to 'Teachers Index', teachers_path %> 
+		<% end %>
 		
 	</div>
 </div>

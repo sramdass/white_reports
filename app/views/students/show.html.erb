@@ -34,10 +34,18 @@
 		</p>
 		
 		<br><br>
-		<%= link_to 'Edit this student', edit_student_path(@student) %>  | 
-		<%= link_to 'Email', emailnew_student_path(@student) %> |
-		<%= link_to 'SMS', smsnew_student_path(@student) %> |
-		<%= link_to 'Students Index', students_path %> 
+		<% if can? :update, @student%>
+			<%= link_to 'Edit this student', edit_student_path(@student) %>  | 
+		<% end %>
+		
+		<% if can? :communicate, @student%>
+			<%= link_to 'Email', emailnew_student_path(@student) %> |
+			<%= link_to 'SMS', smsnew_student_path(@student) %> |
+		<% end %>
+		
+		<% if can? :index, Student%>
+			<%= link_to 'Students Index', students_path %> 
+		<% end %>
 		
 	</div>
 </div>

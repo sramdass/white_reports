@@ -1,7 +1,7 @@
 class Ability
   	include CanCan::Ability
 
-	=begin
+=begin
 	1. super_user - can perform any action on the entire application. He can create and update instititutions
 	
 	2. admin - can perform any action on a institution to which he belongs to. He can create and update branches in a particular institution
@@ -15,7 +15,7 @@ class Ability
 	6. guest
 	
 	7. user	
-	=end
+=end
 	
 	# Note that the 'create' action has not been used anywhere as of now. See whether we need the action in future
 	
@@ -25,9 +25,10 @@ class Ability
 		alias_action :new, :to => :create
 		alias_action :edit, :to => :update
 		alias_action :smsnew, :sms, :emailnew, :email, :to => :communicate
-		alias_action :subnew, :subcreate, :clznew, :clzcreate, :testnew, :testcreate, :tchrnew, :tchrcreate, :to => :update_branch_elements
-		alias_action :secnew, :seccreate, :to => :update_clazz_elements
 		alias_action :stunew, :stucreate, :to => :update_section_elements
+		alias_action :secnew, :seccreate, :to => :update_clazz_elements
+		alias_action :subnew, :subcreate, :clznew, :clzcreate, :testnew, :testcreate, :tchrnew, :tchrcreate, :to => :update_branch_elements
+		alias_action :branchnew, :branchcreate, :to => :update_institution_elements
 		@profile = profile
 		@profile.roles.each { |role| send(role.name) }
 	end
@@ -43,17 +44,21 @@ class Ability
 			@profile.user_profile.branch.institution == student.section.clazz.branch.institution
 		end
 		can :manage, Teacher do |teacher|
-			@profile.branch.institution == teacher.branch.institution
+			@profile.user_profile.branch.institution == teacher.branch.institution
 		end
 		can :manage, Section do |section|
-			@profile.branch.institution == section.clazzbranch.institution
+			@profile.user_profile.branch.institution == section.clazzbranch.institution
 		end
 		can :manage, Clazz do |clazz|
-			@profile.branch.institution == clazz.branch.institution
+			@profile.user_profile.branch.institution == clazz.branch.institution
 		end
 		can :manage, Branch do |branch|
-			@profile.branch.institution == branch.institution
-		end			
+			@profile.user_profile.branch.institution == branch.institution
+		end
+		can [:update_institution_elements, :update, :read], Institution do |institution|
+			@profile.user_profile.branch.institution == institution
+		end
+		can :index, Institution
 	end
   		
 	#Role - moderator
@@ -63,17 +68,18 @@ class Ability
 			student.section.clazz.branch == @profile.user_profile.branch
 		end
 		can :manage, Teacher do |teacher|
-			@profile.branch == teacher.branch
+			@profile.user_profile.branch == teacher.branch
 		end
 		can :manage, Section do |section|
-			@profile.branch == section.clazzbranch
+			@profile.user_profile.branch == section.clazz.branch
 		end
 		can :manage, Clazz do |clazz|
-			@profile.branch == clazz.branch
+			@profile.user_profile.branch == clazz.branch
 		end
-		can [:update_branch_elements, :update, :read], Branch do |branch|
-			@profile.branch == branch
+		can [:update_branch_elements, :update], Branch do |branch|
+			@profile.user_profile.branch == branch
 		end
+		can :index, Branch
 		
 	end		
 				
@@ -89,6 +95,7 @@ class Ability
 		can [:update, :update_section_elements], Section do |section|
 			section.class_teacher_id == @profile.id
 		end
+		can :index, Section
 	end
 
 	# Role - student
@@ -103,13 +110,13 @@ class Ability
 	def guest
 		if @profile.profile_type == Profile::PROFILE_TYPE_STUDENT
 			can :read, Student do |student|
-				@profile.section.clazz == student.section.clazz
+				@profile.user_profile.section.clazz == student.section.clazz
 			end
 		end
 		
 		if @profile.profile_type == Profile::PROFILE_TYPE_TEACHER
 			can :read, Student do |student|
-				@profile.branch.clazzs.include?student.section.clazz
+				@profile.user_profile.branch.clazzs.include?student.section.clazz
 			end
 			can :read, Teacher do |teacher|
 				@profile.user_profile.branch == teacher.branch	

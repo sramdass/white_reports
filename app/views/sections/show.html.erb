@@ -47,11 +47,18 @@
 		</p>
 		
 		<br><br>
-		<%= link_to 'Edit this Section', edit_section_path(@teacher) %>  | 
-		<%= link_to 'Sections Index', sections_path %> <br> <br>
+		<% if can? :update, @section%>
+			<%= link_to 'Edit this Section', edit_section_path(@teacher) %>  | 
+		<% end %>
 		
-		<b> Add | Edit &nbsp  </b> 
-		<%= link_to 'Students', stunew_section_path(@section)%> 
+		<% if can? :index, Section%>
+			<%= link_to 'Sections Index', sections_path %>
+		<% end %>
+		 <br> <br>
+		 <% if can? :update_section_elements %>
+			<b> Add | Edit &nbsp  </b> 
+			<%= link_to 'Students', stunew_section_path(@section)%> 
+		<% end %>
 				
 	</div>	
 </div>

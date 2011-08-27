@@ -32,11 +32,22 @@
 			</p>	
 			
 			<br><br>
-			<%= link_to 'Edit this class', edit_clazz_path(@clazz) %>  | 
-			<%= link_to 'Back to ' + @clazz.branch.name, branch_path(@clazz.branch) %> |
-			<%= link_to 'Classes Index', clazzs_path %> <br> <br>
+			<% if can? :update, @clazz%>
+				<%= link_to 'Edit this class', edit_clazz_path(@clazz) %>  | 
+			<% end %>
 			
-			<b> Add | Edit &nbsp  </b> 
-			<%= link_to 'Sections', secnew_clazz_path(@clazz)%>
+			<% if can? :read, @clazz.branch%>
+				<%= link_to 'Back to ' + @clazz.branch.name, branch_path(@clazz.branch) %> |
+			<% end %>
+			
+			<% if can? :index, Clazz %>
+				<%= link_to 'Classes Index', clazzs_path %>
+			<% end %>
+			
+			<% if can? :update_clazz_elements, @clazz %>
+				 <br> <br>
+				<b> Add | Edit &nbsp  </b> 
+				<%= link_to 'Sections', secnew_clazz_path(@clazz)%>
+			<% end %>
 	</div>
 </div>

@@ -1,4 +1,4 @@
-#flash_notice, #flash_error {
+#flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
 }
@@ -10,6 +10,11 @@
 
 #flash_error {
   background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+#flash_alert {
+  background-color: #DCC;
   border: solid 1px #C66;
 }
 
