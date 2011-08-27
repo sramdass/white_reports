@@ -9,10 +9,10 @@
 		 	  <%= render "student_fields", :f => builder %>	 	  
 			<% end %>
 			
-	     	<p> <%= link_to_add_fields "Add Student", f, :students %> </p>
-		 	
-	     	<p > <%= f.submit  "Update Students" %> </p>
-			</div>		  
+	     	<p> <%= link_to_add_fields "Add Student", f, :students %> </p>	 	
+			<div class="actions">
+				 <%= f.submit  "Update Students" %> 
+			</div>		  	  
 		<% end %>
 	</div>
 </div>

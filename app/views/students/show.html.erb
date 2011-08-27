@@ -20,19 +20,24 @@
 			<%= @student.section.name %> in  <i> <%= @student.section.clazz.branch.name %> </i>
 		</p>
 		
-		<h3> Contact information </h3>
-		
-		<p>
-			<b> Email: </b>
-			<%= @student.student_contact.primary_email %> , <i> <%= @student.student_contact.email %> </i>
-		</p>		
-		<p>
-			<b> Address: </b> <br>
-			<%= @student.student_contact.address %> <br> <br>
-			
-			<b> Phone: </b><%= @student.student_contact.mobile%> | <%= @student.student_contact.telephone%>				
-		</p>
-		
+		<% if @student.student_contact %>
+			<h3> Contact information </h3>			
+			<p>
+				<b> Email: </b>
+				<%= @student.student_contact.primary_email  %> , <i> <%= @student.student_contact.email %> </i>				
+			</p>		
+			<p>
+				<b> Address: </b> <br>
+				<%= @student.student_contact.address %> <br> <br>				
+				<b> Phone: </b><%= @student.student_contact.mobile%> | <%= @student.student_contact.telephone%>				
+			</p>
+		<% else %>
+			<% if can? :update, @student%>
+				<h3> Contact information not available yet </h3>
+				Click <%= link_to 'here', edit_student_path(@student) %> to update.
+			<% end %>
+		<% end %>
+				
 		<br><br>
 		<% if can? :update, @student%>
 			<%= link_to 'Edit this student', edit_student_path(@student) %>  | 

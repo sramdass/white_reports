@@ -8,8 +8,9 @@
 			<%= f.fields_for :teacher_contact do |builder| %>
 				<%= render 'teacher_contact_fields', :f => builder %>
 			<% end %>
-			
-	     	<p > <%= f.submit  "Update Teacher" %> </p>			
+			<div class="actions">
+				<%= f.submit  "Update Teacher" %>
+			</div>			
 		<% end %>
 	</div>
 </div>

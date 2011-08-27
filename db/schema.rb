@@ -10,13 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110907130143) do
+ActiveRecord::Schema.define(:version => 20110907130147) do
 
   create_table "branches", :force => true do |t|
     t.integer  "institution_id"
     t.string   "name"
     t.string   "id_no"
-    t.string   "type"
     t.string   "principal"
     t.string   "address"
     t.string   "city"
@@ -24,12 +23,12 @@ ActiveRecord::Schema.define(:version => 20110907130143) do
     t.string   "pin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tipe"
   end
 
   create_table "clazzs", :force => true do |t|
     t.integer  "branch_id"
     t.string   "name"
-    t.integer  "class_teacher_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

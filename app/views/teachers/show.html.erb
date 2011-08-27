@@ -15,20 +15,25 @@
 		  <%= @teacher.branch.name %>
 		</p>
 		
-		<h3> Contact information </h3>
-		
-		<p>
-			<b> Email: </b>
-			<% if @teacher.teacher_contact %>
-				<%= @teacher.teacher_contact.primary_email  %> , <i> <%= @teacher.teacher_contact.email %> </i>
-			<% end %>
-		</p>		
-		<p>
-			<b> Address: </b> <br>
-			<%= @teacher.teacher_contact.address %> <br> <br>
+		<% if @teacher.teacher_contact %>
+			<h3> Contact information </h3>
 			
-			<b> Phone: </b><%= @teacher.teacher_contact.mobile%> | <%= @teacher.teacher_contact.telephone%>				
-		</p>
+			<p>
+				<b> Email: </b>
+				<%= @teacher.teacher_contact.primary_email  %> , <i> <%= @teacher.teacher_contact.email %> </i>				
+			</p>		
+			<p>
+				<b> Address: </b> <br>
+				<%= @teacher.teacher_contact.address %> <br> <br>
+				
+				<b> Phone: </b><%= @teacher.teacher_contact.mobile%> | <%= @teacher.teacher_contact.telephone%>				
+			</p>
+		<% else %>
+			<% if can? :update, @teacher%>
+				<h3> Contact information not available yet </h3>
+				Click <%= link_to 'here', edit_teacher_path(@teacher) %> to update.
+			<% end %>
+		<% end %>
 		
 		<br><br>
 		<% if can? :update, @teacher%>

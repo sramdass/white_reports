@@ -1,4 +1,6 @@
 class ClazzsController < ApplicationController
+# for cancan authorizatoin
+load_and_authorize_resource
 
 #-----------------------------------------------------------#	
 # Helper methods that will also be used in the view (index.html) 

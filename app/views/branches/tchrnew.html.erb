@@ -1,16 +1,19 @@
 <div id="content">
-	<h1><%= @branch.name %> </h1>
-	<h2> Add Teachers  </h2>
-	<%= form_for (@branch, :url => tchrcreate_branch_path(@branch)) do |f| %>
-		
-	    <%= render 'shared/error_messages', :target => @branch %>
-		<%= f.fields_for :teachers do |builder| %>	
-	 	  <%= render "teacher_fields", :f => builder %>	 	  
+	<div class="padding">		
+		<h1><%= @branch.name %> </h1>
+		<h2> Add Teachers  </h2>
+		<%= form_for (@branch, :url => tchrcreate_branch_path(@branch)) do |f| %>
+			
+		    <%= render 'shared/error_messages', :target => @branch %>
+			<%= f.fields_for :teachers do |builder| %>	
+		 	  <%= render "teacher_fields", :f => builder %>	 	  
+			<% end %>
+			
+	     	<p> <%= link_to_add_fields "Add Teacher", f, :teachers %> </p>
+		 	
+			<div class="actions">
+				 <%= f.submit  "Update Teachers" %> 
+			</div>		  
 		<% end %>
-		
-     	<p> <%= link_to_add_fields "Add Teacher", f, :teachers %> </p>
-	 	
-     	<p > <%= f.submit  "Update Teachers" %> </p>
-		</div>		  
-	<% end %>
+	</div>
 </div>

@@ -13,17 +13,25 @@
 #
 
 class Student < ActiveRecord::Base
-	
+
+#-------ASSOCIATIONS------------#		
 	belongs_to :section
+	#Whenever it is saved, make sure the object has a valid parent available
+	validates_presence_of :section		
 	
 	has_one :student_contact, :dependent => :destroy
 	accepts_nested_attributes_for :student_contact
 	
-	validates	:name,  :presence => true, 
-                   		:length => {:minimum => 1, :maximum => 50}
-                   		
-	validates	:id_no,  :presence => true, 
-                   		:length => {:minimum => 1, :maximum => 15}
+#-------VALIDATIONS------------#
+	
+	 validates 	:name, 	:presence => true, 
+                       					:length => {:maximum => 50}
+	 validates 	:id_no,	:presence => true, 
+                       					:length => {:maximum => 20},
+                       					:uniqueness => true
+	 validates 	:female, :inclusion => { :in => [true, false] }
+	 
+#-------- INSTANCE MODULES --------#		
 	
 	def self.search(search)
 	  if search

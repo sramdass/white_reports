@@ -5,7 +5,7 @@
 	<tr>
 		<th> <%=sortable "name" %></th>
 		<th><%= sortable "id_no", "ID" %></th>
-		<th><%= sortable "type", "Type" %></th>
+		<th><%= sortable "tipe", "Type" %></th>
 		<th><%= sortable "principal" %></th>
 		<th> Address </th>
 		<th>Actions</th>
@@ -15,7 +15,7 @@
 		<tr>
 			<td><%= link_to branch.name, branch %></td>
 			<td><%= branch.id_no %></td>
-			<td><%= branch.type %></td>
+			<td><%= branch.tipe %></td>
 			<td><%= branch.principal %></td>
 			<td><%= branch.address %>, <br> <%= branch.city %>, <%= branch.state %>, <br> <%= branch.pin %></td>
 			

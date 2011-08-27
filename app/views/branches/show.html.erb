@@ -43,7 +43,7 @@
 			<p>
 				<ul>
 				<% @branch.subjects.each do |s| %>
-					<li> <%= s.name %> (<%= s.max_marks %>) </li>
+					<li> <%= s.name %> (<%= "%.0f" % s.max_marks %>) </li>
 				<% end %>
 				</ul>		
 			</p>	

@@ -12,16 +12,23 @@
 #
 
 class Teacher < ActiveRecord::Base
+	
+#-------ASSOCIATIONS------------#	
 	belongs_to :branch
+	#Whenever it is saved, make sure the object has a valid parent available
+	validates_presence_of :branch	
 	
 	has_one :teacher_contact, :dependent => :destroy
-	accepts_nested_attributes_for :teacher_contact
+	accepts_nested_attributes_for :teacher_contact, :reject_if => :has_only_destroy?,  :allow_destroy => true
 	
-	validates	:name,  :presence => true, 
-                   		:length => {:minimum => 1, :maximum => 50}
-                   		
-	validates	:id_no,  :presence => true, 
-                   		:length => {:minimum => 1, :maximum => 15}
+#-------VALIDATIONS------------#
+	
+	 validates 	:name, 	:presence => true, 
+                       					:length => {:maximum => 50}
+	 validates 	:id_no,	:presence => true, 
+                       					:length => {:maximum => 20},
+                       					:uniqueness => true
+	 validates 	:female, :inclusion => { :in => [true, false] }
 	
 	def self.search(search)
 	  if search
@@ -36,6 +43,16 @@ class Teacher < ActiveRecord::Base
 		profile.roles.map do |role|
 			role.name.underscore.to_sym
 		end
-	end	
+	end
+	
+	#Returns true if there is only "_destroy" attribute available for nested models.
+	def has_only_destroy?(attrs)
+	    attrs.each do |k,v|
+	    	if k !="_destroy" && !v.blank?
+	    		return false
+	    	end
+		end
+		return true	
+  	end		
 
 end

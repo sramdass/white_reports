@@ -121,7 +121,7 @@ helper_method :sort_column, :sort_direction
         format.html { redirect_to(@branch, :notice => ' Teachers were successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "tnew" }
+        format.html { render :action => "tchrnew" }
         format.xml  { render :xml => @branch.errors, :status => :unprocessable_entity }
       end
     end

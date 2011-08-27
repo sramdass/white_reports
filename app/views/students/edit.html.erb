@@ -1,18 +1,15 @@
 <div id="content">
-	<div class="padding">		
-		
+	<div class="padding">				
 		<h2> Edit Student  </h2>
-		<%= form_for @student do |f| %>
-		
+		<%= form_for @student do |f| %>		
 			<%= render 'shared/error_messages', :target => @student %> <br>
 			<%= render 'student_fields', :f => f%>
-
 			<%= f.fields_for :student_contact do |builder| %>
 				<%= render 'student_contact_fields', :f => builder %>
 			<% end %>
-			
-	     	<p > <%= f.submit  "Update Student" %> </p>
-			
+			<div class="actions">
+				<%= f.submit  "Update Student" %> </p>	
+			</div>
 		<% end %>
 	</div>
 </div>

@@ -6,10 +6,10 @@
 		<%= render 'shared/error_messages', :target => @branch %>
 		<%= f.fields_for :clazzs do |builder| %>	
 	 		<%= render "clazz_fields", :f => builder %>	 	  
-		<% end %>
-		
-     	<p> <%= link_to_add_fields "Add Class", f, :clazzs %> </p>	 	
-     	<p > <%= f.submit  "Update Classes" %> </p>
-     	
+		<% end %>		
+     	<p> <%= link_to_add_fields "Add Class", f, :clazzs %> </p>     			  
+		<div class="actions">
+	     	<%= f.submit  "Update Classes" %>
+	     </div>     	
 	<% end %>
 </div>

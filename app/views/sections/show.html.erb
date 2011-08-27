@@ -55,7 +55,7 @@
 			<%= link_to 'Sections Index', sections_path %>
 		<% end %>
 		 <br> <br>
-		 <% if can? :update_section_elements %>
+		 <% if can? :update_section_elements, @section %>
 			<b> Add | Edit &nbsp  </b> 
 			<%= link_to 'Students', stunew_section_path(@section)%> 
 		<% end %>
