@@ -1,0 +1,18 @@
+<div id="content">
+	<div class="padding">		
+		<h2> <%= @section.name %> (<%= @section.clazz.name  %>, <%= @section.clazz.branch.name %> ) </h2>
+		<h2> Add Students  </h2>
+		<%= form_for (@section, :url => stucreate_section_path(@section)) do |f| %>
+			
+			<%= render 'shared/error_messages', :target => @section %>
+			<%= f.fields_for :students do |builder| %>	
+		 	  <%= render "student_fields", :f => builder %>	 	  
+			<% end %>
+			
+	     	<p> <%= link_to_add_fields "Add Student", f, :students %> </p>
+		 	
+	     	<p > <%= f.submit  "Update Students" %> </p>
+			</div>		  
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,16 @@
+<div id="content">
+	<h1><%= @school.name %> </h1>
+	<h2> Add Teachers  </h2>
+	<%= form_for (@school, :url => tcreate_school_path(@school)) do |f| %>
+		
+	    <%= render 'shared/error_messages', :target => @school %>
+		<%= f.fields_for :teachers do |builder| %>	
+	 	  <%= render "teacher_fields", :f => builder %>	 	  
+		<% end %>
+		
+     	<p> <%= link_to_add_fields "Add Teacher", f, :teachers %> </p>
+	 	
+     	<p > <%= f.submit  "Update Teachers" %> </p>
+		</div>		  
+	<% end %>
+</div>

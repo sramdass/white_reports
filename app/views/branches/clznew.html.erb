@@ -1,0 +1,15 @@
+<div id="content">
+	<h1><%= @branch.name %> </h1>
+	<h2> Add Classes  </h2>
+	<%= form_for (@branch, :url => clzcreate_branch_path(@branch)) do |f| %>
+		
+		<%= render 'shared/error_messages', :target => @branch %>
+		<%= f.fields_for :clazzs do |builder| %>	
+	 		<%= render "clazz_fields", :f => builder %>	 	  
+		<% end %>
+		
+     	<p> <%= link_to_add_fields "Add Class", f, :clazzs %> </p>	 	
+     	<p > <%= f.submit  "Update Classes" %> </p>
+     	
+	<% end %>
+</div>

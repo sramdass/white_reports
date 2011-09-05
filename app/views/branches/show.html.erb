@@ -1,0 +1,71 @@
+<div id="content">
+	<div class="padding">
+			<p>
+			  <b>Name:</b>
+			  <%= @branch.name %>
+			</p>
+			
+			<p>
+			  <b>Principal:</b>
+			  <%= @branch.principal %>
+			</p>
+			
+			<p>
+			 	 <b>ID:</b>
+			 	 <%= @branch.id_no %>
+			</p>
+
+			<p>
+			  	<b>Address:</b>
+				<%= @branch.address %>, <br> <%= @branch.city %>, <%= @branch.state %>, <br> <%= @branch.pin %>
+			</p>						
+			
+			<p>
+				<h2> Teacher list </h2>						
+				<ul>
+				<% @branch.teachers.each do |t| %>
+					<li> <%= t.name %> </li>
+				<% end %>
+				</ul>		
+			</p>
+			
+			<p>	
+				<h2> Class list </h2>
+				<ul>
+				<% @branch.clazzs.each do |s| %>
+					<li> <%= link_to s.name, clazz_path(s) %> </li>
+				<% end %>
+				</ul>		
+			</p>
+			
+			<h2> Subject list </h2>
+			
+			<p>
+				<ul>
+				<% @branch.subjects.each do |s| %>
+					<li> <%= s.name %> (<%= s.max_marks %>) </li>
+				<% end %>
+				</ul>		
+			</p>	
+			
+			<h2> Test list </h2>
+			
+			<p>
+				<ul>
+				<% @branch.tests.each do |t| %>
+					<li> <%= t.name %> </li>
+				<% end %>
+				</ul>		
+			</p>	
+		
+			<br><br>
+			<%= link_to 'Edit this branch', edit_branch_path(@branch) %>  | 
+			<%= link_to 'Branches Index', branches_path %> <br> <br>
+			
+			<b> Add | Edit &nbsp  </b> 
+			<%= link_to 'Teachers', tchrnew_branch_path(@branch)%>  |
+			<%= link_to 'Classes', clznew_branch_path(@branch)%>  | 
+			<%= link_to 'Subjects', subnew_branch_path(@branch)%>  | 
+			<%= link_to 'Tests', testnew_branch_path(@branch)%>  
+	</div>
+</div>

@@ -1,0 +1,20 @@
+<div id="content">
+	<div class="padding">		
+		<h2>SMS</h2>	
+		<%= form_tag (sms_student_path(@student), {:method => 'post'}) do |f| %>		
+			<p>	  
+				To (last 10 digits) <br>
+				<%= text_field_tag :to, @student.student_contact.mobile, :size => 50 %>
+			</p>
+			
+			<p>	  
+				Message <br>
+				<%= text_area_tag :message, nil, {:rows => 5, :cols => 40} %> <br>
+			</p>
+			
+			<p>
+				<%= submit_tag "Send Message" %>
+			</p>
+		<% end %>
+	</div>
+</div>

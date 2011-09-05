@@ -1,0 +1,20 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table>
+	<tr>
+		<th> <%=sortable "name" %></th>
+		<th><%= sortable "school_id", "School" %></th>
+		<th>Actions</th>
+	</tr>
+
+	<% @tests.each do |test| %>
+		<tr>
+			<td><%= link_to test.name, test %></td>
+			<td><%= test.school.name %></td>
+			<td> <%= link_to 'Edit', edit_test_path(test) %> | 
+				    <%= link_to 'Destroy', test, :confirm => 'Are you sure?', :method => :delete %> </td>
+		</tr>
+	<% end %>
+</table>	
+<%= will_paginate @tests %>

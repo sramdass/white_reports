@@ -1,0 +1,22 @@
+<div id="content">
+	<div class="padding">		
+		
+		<p>
+		 	<h2>  <%= @subject.name %> </h2>
+		</p>
+					
+		<p>
+			<h2> Sections list </h2>
+			<ul>
+			<% @subject.sections.each do |s| %>
+				<li>  <%= link_to s.name, section_path(s) %>  - <%= link_to s.school.name, school_path(s.school) %> </li>
+			<% end %>
+			</ul>		
+		</p>	
+		
+		<br><br>
+		<%= link_to 'Edit this Subject', edit_subject_path(@subject) %>  | 
+		<%= link_to 'Subjects Index', subjects_path %> 	
+		
+	</div>	
+</div>

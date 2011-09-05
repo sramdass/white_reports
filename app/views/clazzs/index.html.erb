@@ -1,0 +1,30 @@
+	
+	<div id="sidebar-r">
+		<div class="padding">
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam gravida enim ut risus. 
+			Praesent sapien purus, ultrices a, varius ac, suscipit ut, enim. Maecenas in lectus. 
+			Donec in sapien in nibh rutrum gravida. Sed ut mauris. Fusce malesuada enim vitae lacus 
+			euismod vulputate. Nullam rhoncus mauris ac metus. Maecenas vulputate aliquam odio. 
+			Duis scelerisque justo a pede. Nam augue lorem, semper at, porta eget, placerat eget, 
+			purus. Suspendisse mattis nunc vestibulum ligula. In hac habitasse platea dictumst.
+		</div>
+	</div>
+	
+	<div id="content">
+		<div class="padding">
+			<h1> <%=	title "Classes Index" %> </h1>
+			
+			<%= form_tag clazzs_path, :method => 'get', :id => "clazzs_search" do %>
+				 <p>
+			    	<%= text_field_tag :search, params[:search] %>
+			    	<%= submit_tag "Search", :name => nil %>
+			  	</p>
+			  	<div id="clazzs">
+					<%= render 'clazzs' %>
+				</div>
+			<% end %>
+				
+			<%= link_to 'New Clazz', new_clazz_path %>
+		</div>
+	</div>
+

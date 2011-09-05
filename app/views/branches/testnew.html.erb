@@ -1,0 +1,15 @@
+<div id="content">
+	<h1><%= @branch.name %> </h1>
+	<h2> Add Tests  </h2>
+	<%= form_for (@branch, :url => testcreate_branch_path(@branch)) do |f| %>
+		
+		<%= render 'shared/error_messages', :target => @branch %>
+		<%= f.fields_for :tests do |builder| %>	
+	 	  <%= render "test_fields", :f => builder %>	 	  
+		<% end %>
+		
+     	<p> <%= link_to_add_fields "Add Test", f, :tests %> </p>	 	
+     	<p > <%= f.submit  "Update Tests" %> </p>
+     	
+	<% end %>
+</div>

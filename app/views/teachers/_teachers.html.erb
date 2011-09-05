@@ -1,0 +1,28 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table>
+	<tr>
+		<th> <%=sortable "name" %></th>
+		<th><%= sortable "id_no" %></th>
+		<th><%= sortable "female", "Gender" %></th>
+		<th><%= sortable "school_id", "School"%> </th>
+		<th>Actions</th>
+	</tr>
+
+	<% @teachers.each do |teacher| %>
+		<tr>
+			<td><%= link_to teacher.name, teacher %></td>
+			<td><%= teacher.id_no %></td>
+			<% if teacher.female? %>
+				<td> Female </td>
+			<% else %>
+				<td> Male </td>
+			<% end %>
+			<td><%= teacher.school.name %></td>
+			<td> <%= link_to 'Edit', edit_teacher_path(teacher) %> | 
+				    <%= link_to 'Destroy', teacher, :confirm => 'Are you sure?', :method => :delete %> </td>
+		</tr>
+	<% end %>
+</table>		
+<%= will_paginate @teachers %>

@@ -1,0 +1,28 @@
+<p>	  
+	To <br>
+	<%= text_field_tag :to, @student.student_contact.primary_email, :size => 50 %>
+</p>
+
+<p>	  
+	CC <br>
+	<%= text_field_tag :cc, nil, :size => 50 %>
+</p>
+
+<p>	  
+	BCC <br>
+	<%= text_field_tag :bcc, nil, :size => 50 %>
+</p>						
+
+<p>	  
+	Subject <br>
+	<%= text_field_tag :subject, nil,  {:size => 50}%>
+</p>
+
+<p>	  
+	Message <br>
+	<%= text_area_tag :message, nil, {:rows => 15, :cols => 40} %> <br>
+</p>
+
+<p>
+    <%= submit_tag "Send Email" %>
+</p>

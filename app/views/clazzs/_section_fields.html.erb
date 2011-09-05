@@ -1,0 +1,13 @@
+
+<div class = "tfields">
+	<%= f.label :name %>
+	<%= f.text_field :name, :size => 15 %>
+	
+	<%= f.select :class_teacher_id, options_for_select(@teachers.collect {|t| [ t.name, t.id ] } , f.object.class_teacher_id) , {:prompt => "Select class teacher"}  %>
+ 
+	<%= link_to_remove_fields "remove", f %><br />
+    
+</div>
+ 
+ 
+	

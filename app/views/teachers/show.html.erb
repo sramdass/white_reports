@@ -1,0 +1,38 @@
+<div id="content">
+	<div class="padding">
+
+		<p>
+		 <h2>  <%= @teacher.name %> (<%= @teacher.female? ? "Female" : "Male" %>) </h2>
+		</p>
+		
+		<p>
+		  <b>ID no:</b>
+		  <%= @teacher.id_no %>
+		</p>
+		
+		<p>
+		  <b>School:</b>
+		  <%= @teacher.school.name %>
+		</p>
+		
+		<h3> Contact information </h3>
+		
+		<p>
+			<b> Email: </b>
+			<%= @teacher.teacher_contact.primary_email %> , <i> <%= @teacher.teacher_contact.email %> </i>
+		</p>		
+		<p>
+			<b> Address: </b> <br>
+			<%= @teacher.teacher_contact.address %> <br> <br>
+			
+			<b> Phone: </b><%= @teacher.teacher_contact.mobile%> | <%= @teacher.teacher_contact.telephone%>				
+		</p>
+		
+		<br><br>
+		<%= link_to 'Edit this teacher', edit_teacher_path(@teacher) %>  | 
+		<%= link_to 'Email', emailnew_teacher_path(@email)%> | 
+		<%= link_to 'Teachers Index', teachers_path %> 
+		
+	</div>
+</div>
+

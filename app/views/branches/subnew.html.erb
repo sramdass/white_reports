@@ -1,0 +1,18 @@
+<div id="content">
+	<h1><%= @branch.name %> </h1>
+	<h2> Add Subjects  </h2>
+	<%= form_for (@branch, :url => subcreate_branch_path(@branch)) do |f| %>
+		
+		<%= render 'shared/error_messages', :target => @branch %>
+		<table>
+			<tr> <th> Name </th> <th> Max Marks </th> <th> Action </th> </tr>		
+			<%= f.fields_for :subjects do |builder| %>	
+	 			<%= render "subject_fields", :f => builder %>	 	  
+			<% end %>
+			<tr> <td> <%= link_to_add_fields "Add Subject", f, :subjects %> </td> </tr>
+		</table>	
+
+     	<p > <%= f.submit  "Update Subjects" %> </p>
+     	
+	<% end %>
+</div>

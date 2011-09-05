@@ -1,0 +1,24 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table>
+	<tr>
+		<th> <%=sortable "name" %></th>
+		<th><%= sortable "class_teacher_id", "Class Teacher" %></th>
+		<th><%= sortable "clazz_id", "Class" %></th>
+		<th> Branch </th>
+		<th>Actions</th>
+	</tr>
+
+	<% @sections.each do |section| %>
+		<tr>
+			<td><%= link_to section.name, section %></td>
+			<td><%= Teacher.find( section.class_teacher_id).name if  section.class_teacher_id %></td>
+			<td><%= section.clazz.name %></td>
+			<td><%= section.clazz.branch.name %> ( <%= section.clazz.branch.institution.name%> )</td>
+			<td> <%= link_to 'Edit', edit_section_path(section) %> | 
+				    <%= link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete %> </td>
+		</tr>
+	<% end %>
+</table>	
+<%= will_paginate @sections %>

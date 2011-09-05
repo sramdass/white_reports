@@ -1,0 +1,27 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table>
+	<tr>
+		<th> <%=sortable "name" %></th>
+		<th><%= sortable "id_no", "ID" %></th>
+		<th><%= sortable "type", "Type" %></th>
+		<th><%= sortable "principal" %></th>
+		<th> Address </th>
+		<th>Actions</th>
+	</tr>
+
+	<% @branches.each do |branch| %>
+		<tr>
+			<td><%= link_to branch.name, branch %></td>
+			<td><%= branch.id_no %></td>
+			<td><%= branch.type %></td>
+			<td><%= branch.principal %></td>
+			<td><%= branch.address %>, <br> <%= branch.city %>, <%= branch.state %>, <br> <%= branch.pin %></td>
+			
+			<td> <%= link_to 'Edit', edit_branch_path(branch) %> | 
+				    <%= link_to 'Destroy', branch, :confirm => 'Are you sure?', :method => :delete %> </td>
+		</tr>
+	<% end %>
+</table>		
+<%= will_paginate @branches %>

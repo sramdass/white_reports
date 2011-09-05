@@ -1,0 +1,18 @@
+<div>
+	<p>	
+		<%= f.label :name %> <br>
+		<%= f.text_field :name, :size => 15 %>
+	</p>
+	<p>	
+		<%= f.label :id_no, "ID number"%> <br>
+		<%= f.text_field :id_no, :size => 10 %>
+	</p>
+ 	<p>	
+	 	<%= f.label :female, "Gender" %> <br>
+		<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ], f.object.female? ) , {:prompt => "Gender"}  %>
+	</p>
+ 	
+</div>
+ 
+ 
+	

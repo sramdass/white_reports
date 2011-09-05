@@ -1,0 +1,16 @@
+
+<div class = "tfields">
+	<%= f.label :name %>
+	<%= f.text_field :name, :size => 15 %>
+	
+	<%= f.label :id_no, "ID number"%>
+	<%= f.text_field :id_no, :size => 10 %>
+ 	
+	<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ], f.object.female? ) , {:prompt => "Gender"}  %>
+ 
+	<%= link_to_remove_fields "remove", f %><br />
+    
+</div>
+ 
+ 
+	

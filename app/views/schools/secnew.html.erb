@@ -1,0 +1,16 @@
+<div id="content">
+	<h1><%= @school.name %> </h1>
+	<h2> Add Sections  </h2>
+	<%= form_for (@school, :url => seccreate_school_path(@school)) do |f| %>
+	
+		<%= render 'shared/error_messages', :target => @school %>
+		<%= f.fields_for :sections do |builder| %>	
+	 	  <%= render "section_fields", :f => builder %>	 	  
+		<% end %>
+		
+     	<p> <%= link_to_add_fields "Add Section", f, :sections %> </p>
+	 	
+     	<p > <%= f.submit  "Update Sections" %> </p>
+		</div>		  
+	<% end %>
+</div>

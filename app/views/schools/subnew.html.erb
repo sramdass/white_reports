@@ -1,0 +1,17 @@
+<div id="content">
+	<h1><%= @school.name %> </h1>
+	<h2> Add Subjects  </h2>
+	<%= form_for (@school, :url => subcreate_school_path(@school)) do |f| %>
+		<%= render 'shared/error_messages', :target => @school %>
+		<table>
+			<tr> <th> Name </th>  <th> Action </th> </tr>
+			<%= f.fields_for :subjects do |builder| %>	
+		 	 <%= render "subject_fields", :f => builder %>
+	 	  </table>
+		<% end %>
+		
+     	<p> <%= link_to_add_fields "Add Subject", f, :subjects %> </p>	 	
+     	<p > <%= f.submit  "Update Subjects" %> </p>
+     	
+	<% end %>
+</div>

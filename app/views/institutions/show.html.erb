@@ -1,0 +1,40 @@
+<div id="content">
+	<div class="padding">
+			<p>
+			 	 <b>Name:</b>
+			  	<%= @institution.name %>
+			</p>
+			
+			<p>
+			 	 <b>ID:</b>
+			 	 <%= @institution.id_no %>
+			</p>
+			
+			<p>
+			 	<b>CEO:</b>
+				<%= @institution.ceo %>
+			</p>
+			
+			<p>
+			  	<b>Registered Address:</b> <br \>
+				<%= @institution.registered_address %>, <br> <%= @institution.city %>, <%= @institution.state %>, <br> <%= @institution.pin %>
+			</p>			
+			
+			<p>
+				<h2> Branch list </h2>						
+				<ul>
+					<% @institution.branches.each do |b| %>
+						<li> <%= link_to b.name, branch_path(b) %> </li>
+					<% end %>
+				</ul>		
+			</p>
+			
+
+			<br><br>
+			<%= link_to 'Edit this institution', edit_institution_path(@institution) %>  | 
+			<%= link_to 'Institutions Index', institutions_path %> <br> <br>
+			
+			<b> Add | Edit &nbsp  </b> 
+			<%= link_to 'Branches', branchnew_institution_path(@institution)%>
+	</div>
+</div>
