@@ -33,6 +33,7 @@ GEM
     bcrypt-ruby (3.0.0-x86-mingw32)
     builder (2.1.2)
     columnize (0.3.4)
+    declarative_authorization (0.5.3)
     diff-lcs (1.1.2)
     dynamic_attributes (1.2.0)
     erubis (2.6.6)
@@ -125,6 +126,7 @@ PLATFORMS
 DEPENDENCIES
   annotate (= 2.4.0)
   bcrypt-ruby
+  declarative_authorization (~> 0.5.3)
   dynamic_attributes (~> 1.2.0)
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)

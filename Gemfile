@@ -7,6 +7,7 @@ gem 'will_paginate', '3.0.pre2'
 gem "dynamic_attributes", "~> 1.2.0"
 gem "jquery-rails"
 gem "bcrypt-ruby", :require => "bcrypt"
+gem "declarative_authorization", "~> 0.5.3"
 
 group :development do
   gem 'rspec-rails', '2.6.1'

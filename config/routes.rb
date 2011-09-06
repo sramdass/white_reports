@@ -23,19 +23,19 @@ WhiteReports::Application.routes.draw do
 		put 'testcreate', :on => :member	 
 	end
 	
-	resources :schools do
-		get 'tnew', :on => :member
-		put 'tcreate', :on => :member
+	#resources :schools do
+		#get 'tnew', :on => :member
+		#put 'tcreate', :on => :member
 		
-		get 'secnew', :on => :member
-		put 'seccreate', :on => :member	  
+		#get 'secnew', :on => :member
+		#put 'seccreate', :on => :member	  
 		
-		get 'subnew', :on => :member
-		put 'subcreate', :on => :member	  	  
+		#get 'subnew', :on => :member
+		#put 'subcreate', :on => :member	  	  
 		
-		get 'testnew', :on => :member
-		put 'testcreate', :on => :member	 
-	end
+		#get 'testnew', :on => :member
+		#put 'testcreate', :on => :member	 
+	#end
 	
 	resources :sections do
 		get 'stunew', :on => :member

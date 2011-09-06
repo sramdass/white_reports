@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110902130519) do
+ActiveRecord::Schema.define(:version => 20110906110945) do
 
   create_table "branches", :force => true do |t|
     t.integer  "institution_id"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(:version => 20110902130519) do
     t.datetime "updated_at"
   end
 
+  create_table "memberships", :force => true do |t|
+    t.integer  "profile_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", :force => true do |t|
     t.string   "email"
     t.string   "password_hash"
@@ -66,12 +73,36 @@ ActiveRecord::Schema.define(:version => 20110902130519) do
     t.string   "password_digest"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "schools", :force => true do |t|
     t.string   "name"
     t.string   "location"
     t.string   "principal"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "sec_33_2010-11_marks", :force => true do |t|
+    t.float    "Maths"
+    t.float    "Science"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sec_33_2010_marks", :force => true do |t|
+    t.integer  "student_id"
+    t.string   "remarks"
+    t.integer  "arrears"
+    t.integer  "rank"
+    t.integer  "test_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "Maths"
   end
 
   create_table "sec_sub_maps", :force => true do |t|

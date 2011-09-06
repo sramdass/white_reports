@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery
 	helper_method :current_profile
     before_filter :mailer_set_url_options
+    before_filter { |c| Authorization.current_user = c.current_profile }
  
     def mailer_set_url_options
     	ActionMailer::Base.default_url_options[:host] = 'localhost:3000'
@@ -109,13 +110,18 @@ class ApplicationController < ActionController::Base
 	#        END OF MODULES TO CREATE, EDIT AND DELETE TABLES DYNAMICALLY               #
 	#---------------------------------------------------------------------------#	
 	
-	private
+	# TODO need to make the required modules as private
 	
 	def current_profile
 		#Destroying  a cookie using code just empties the cookie. So just checking for nil is not sufficient.
 		if cookies[:auth_token] && !(cookies[:auth_token].empty?)
 			@current_profile ||= Profile.find_by_auth_token!(cookies[:auth_token])
 		end
+	end
+	
+	#declarative authorization requires a current_user  method
+	def current_user
+		return current_profile
 	end
 	
 	def current_year

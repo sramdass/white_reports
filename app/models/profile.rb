@@ -17,6 +17,9 @@
 class Profile < ActiveRecord::Base
 	attr_accessible :email, :password, :password_confirmation
 	
+	has_many :memberships, :dependent => true, :dependent => :destroy
+	has_many :roles, :through => :memberships	
+	
 	attr_accessor :password
 	before_save :encrypt_password
 	before_create { generate_token(:auth_token) }
@@ -57,4 +60,9 @@ class Profile < ActiveRecord::Base
 		end while Profile.exists?(column => self[column])
 	end
 
+	def role_symbols
+		roles.map do |role|
+			role.name.underscore.to_sym
+		end
+	end
 end

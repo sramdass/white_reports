@@ -13,7 +13,7 @@ helper_method :sort_column, :sort_direction
   # GET /schools
   # GET /schools.xml
   def index
-  	debugger
+  	
  	@schools = School.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
 
     respond_to do |format|

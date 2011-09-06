@@ -8,6 +8,8 @@
             <string>db\migrate\20110817055045_add_school_id_to_subjects.rb</string>
             <key>20110818090434_</key>
             <string>db\migrate\20110818090434_student.rb</string>
+            <key>20110906110945</key>
+            <string>db\migrate\20110906110945_create_memberships.rb</string>
             <key>STUDENTS_C</key>
             <string>app\controllers\students_controller.rb</string>
             <key>Show.html</key>
@@ -62,6 +64,8 @@
             <string>app\controllers\application_controller.rb</string>
             <key>application_co</key>
             <string>app\controllers\application_controller.rb</string>
+            <key>application_con</key>
+            <string>app\controllers\application_controller.rb</string>
             <key>application_h</key>
             <string>app\helpers\application_helper.rb</string>
             <key>application_he</key>
@@ -104,8 +108,12 @@
             <string>app\views\shared\_email_fields.erb</string>
             <key>email_st</key>
             <string>app\views\school_mailer\email_student.html.erb</string>
+            <key>environ</key>
+            <string>config\environment.rb</string>
             <key>from_sec</key>
             <string>db\migrate\20110902042737_remove_branch_id_from_sections.rb</string>
+            <key>gem</key>
+            <string>Gemfile</string>
             <key>gemfil</key>
             <string>Gemfile</string>
             <key>gemfile</key>
@@ -136,12 +144,16 @@
             <string>app\controllers\institutions_controller.rb</string>
             <key>institutions_c</key>
             <string>app\controllers\institutions_controller.rb</string>
+            <key>institutions_co</key>
+            <string>app\controllers\institutions_controller.rb</string>
             <key>institutions_con</key>
             <string>app\controllers\institutions_controller.rb</string>
             <key>mark_Re</key>
             <string>db\migrate\20110902130519_create_mark_rec_defns.rb</string>
             <key>mark_rec</key>
             <string>app\models\mark_rec_defn.rb</string>
+            <key>membership.rb</key>
+            <string>app\models\membership.rb</string>
             <key>new</key>
             <string>app\views\password_resets\new.html.erb</string>
             <key>new.ht</key>
@@ -158,10 +170,16 @@
             <string>app\controllers\password_resets_controller.rb</string>
             <key>profile.r</key>
             <string>app\models\profile.rb</string>
+            <key>profile.rb</key>
+            <string>app\models\profile.rb</string>
             <key>profiles_con</key>
             <string>app\controllers\profiles_controller.rb</string>
             <key>remove_sch</key>
             <string>db\migrate\20110902035043_remove_school_ids.rb</string>
+            <key>role</key>
+            <string>app\models\role.rb</string>
+            <key>role.r</key>
+            <string>app\models\role.rb</string>
             <key>route</key>
             <string>config\routes.rb</string>
             <key>routes</key>
@@ -242,6 +260,10 @@
             <string>annotate\ruby\1.8\gems\activesupport-3.0.9\lib\active_support\secure_random.rb</string>
             <key>sessions</key>
             <string>app\controllers\sessions_controller.rb</string>
+            <key>sessions_c</key>
+            <string>app\controllers\sessions_controller.rb</string>
+            <key>sessions_con</key>
+            <string>app\controllers\sessions_controller.rb</string>
             <key>setup_ma</key>
             <string>config\initializers\setup_mail.rb</string>
             <key>show</key>
@@ -277,6 +299,8 @@
             <key>subject</key>
             <string>app\models\subject.rb</string>
             <key>subject.r</key>
+            <string>app\models\subject.rb</string>
+            <key>subject.rb</key>
             <string>app\models\subject.rb</string>
             <key>subject_fi</key>
             <string>app\views\branches\_subject_fields.html.erb</string>
