@@ -26,18 +26,24 @@ class ApplicationController < ActionController::Base
 	# in the app/models directory. 
 	# Note that 'table_name' should be in plural
 	def create_table(table_name, columns)
-	begin
-		ActiveRecord::Schema.define do
-			create_table "#{table_name}" do |t|
-				columns.each { |key, value| 				
-					t.column key, value				
-				}
-				t.timestamps
-			end
+		if columns.empty?
+			logger.debug "Unable to create table. Columns are empty."
+			return false
 		end
-		#create_model_file(table_name)
-		return true
+		begin
+			ActiveRecord::Schema.define do
+				create_table "#{table_name}" do |t|
+					columns.each { |key, value| 				
+						t.column key, value				
+					}
+					t.timestamps
+				end
+			end
+			#create_model_file(table_name)
+			return true
 		rescue Exception => err
+			logger.debug "Exception happened when creating table"
+			logger.debug_variables(binding)
 			return false
 		end # end of begin / rescue block
 	end # end of def create_table
@@ -45,6 +51,10 @@ class ApplicationController < ActionController::Base
 	#---------------------------------------------------------------------------#
 	
 	def add_columns_to_table(table_name, columns)
+		if columns.empty?
+			logger.debug "Columns are empty. Issuing a No Op"
+			return true
+		end
 		begin						
 			ActiveRecord::Schema.define do							
 				columns.each { |name, value| 				
@@ -52,14 +62,20 @@ class ApplicationController < ActionController::Base
 				}
 			end
 			return true
-			rescue Exception => err
-				return err.message				
+		rescue Exception => err
+			logger.debug "Exception happened when adding columns to table"
+			logger.debug_variables(binding)
+			return false
 		end # end of begin / rescue block		
 	end
 	
 	#---------------------------------------------------------------------------#
 	
 	def delete_columns_from_table(table_name, columns)
+		if columns.empty?
+			logger.debug "Columns are empty. Issuing a No Op"
+			return true
+		end		
 		begin						
 			ActiveRecord::Schema.define do
 				columns.each { |name| 				
@@ -67,8 +83,10 @@ class ApplicationController < ActionController::Base
 				}
 			end
 			return true
-			rescue Exception => err
-				return err.message				
+		rescue Exception => err
+			logger.debug "Exception happened when deleting columns from table"
+			logger.debug_variables(binding)
+			return false
 		end # end of begin / rescue block	
 	end
 	
@@ -80,8 +98,10 @@ class ApplicationController < ActionController::Base
 				drop_table(table_name)
 			end
 			return true
-			rescue Exception => err
-				return err.message				
+		rescue Exception => err
+			logger.debug "Exception happened when dropping table"
+			logger.debug_variables(binding)
+			return false		
 		end # end of begin / rescue block	
 	end
 	
@@ -102,10 +122,10 @@ class ApplicationController < ActionController::Base
 		"2010"
 	end
 	
-	def default_mark_fields
-		fields = Hash.new
-		fields = { 'test_id' => :integer, 'student_id' => :integer, 'arrears' => :integer, 'rank' => :integer, 'remarks' => :string}
-		return fields
+	def default_mark_columns
+		columns = Hash.new
+		columns = { 'test_id' => :integer, 'student_id' => :integer, 'arrears' => :integer, 'rank' => :integer, 'remarks' => :string}
+		return columns
 	end
 	
 	def hash_to_keys_array(hsh)

@@ -97,7 +97,7 @@
             <key>edit</key>
             <string>app\views\students\edit.html.erb</string>
             <key>edit.htm</key>
-            <string>app\views\schools\edit.html.erb</string>
+            <string>app\views\sections\edit.html.erb</string>
             <key>edit.html</key>
             <string>app\views\clazzs\edit.html.erb</string>
             <key>email_f</key>

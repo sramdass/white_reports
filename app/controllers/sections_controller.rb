@@ -29,14 +29,15 @@ helper_method :sort_column, :sort_direction
   
   def edit
     @section = Section.find(params[:id])
-    @subjects = @section.clazz.branch.subjects
-    @teachers = @section.clazz.branch.teachers
-    @tests = @section.clazz.branch.tests
+    @subjects = @section.clazz.branch.subjects ||= []
+    @teachers = @section.clazz.branch.teachers ||= []
+    @tests = @section.clazz.branch.tests ||= []
     @title = "Edit Section"
   end
 
 
 	def update
+		
 		params[:section][:subject_ids] ||= []
 		params[:section][:test_ids] ||= []
 		@section = Section.find(params[:id])
@@ -53,17 +54,21 @@ helper_method :sort_column, :sort_direction
 		
 		if ret
 			flash[:notice] = "Marks table created"
+			logger.debug "This is the log message!!!"
+			#	logger.debug_variables(binding)
 		else
 			flash[:error] = "Marks table error"
+			logger.debug "This is the log error message!!!"
+			# logger.debug_variables(binding)
 		end
 		
-		if @section.valid? && @section.sec_sub_maps.all?(&:valid?)
+		if @section.valid? && @section.sec_sub_maps.all?(&:valid?) &&  ret
 			@section.save!
 			@section.sec_sub_maps.each(&:save!)
 			redirect_to @section
 		else
 			@title = "Edit Section"
-			render 'edit'
+			render 'edit', :id => @section.id
 		end
 	end
 
@@ -93,11 +98,14 @@ helper_method :sort_column, :sort_direction
    def sort_column
     Section.column_names.include?(params[:sort]) ? params[:sort] : "name"
   end
+
+#-----------------------------------------------------------#
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
   
+#-----------------------------------------------------------#
 	def new_table?(table_name)
 		if MarkRecDefn.find_by_name(table_name)
 			return false
@@ -105,47 +113,66 @@ helper_method :sort_column, :sort_direction
 			return true
 		end
 	end
-  
+#-----------------------------------------------------------#  
   	def mark_table(table_name, params)
-  		
-  		fields = default_mark_fields
-		if new_table?(table_name)
+
+  		# return as soon as an error is enconuntered. Othewise there is a chance that this true is returned
+  		ret = true
+  		columns = default_mark_columns
+		if new_table?(table_name) # Table for this 'section + year' is not there yet
 		  	params[:subject_ids].each do |sid|
-				field_name = Subject.find(sid).name
-				fields[field_name]=:float
+				column_name = Subject.find(sid).name
+				columns[column_name]=:float
 			end
-			ret = create_table(table_name, fields)
-			
-			#add a row for this new table in the 'mark_rec_defns' table
-			recdefn = MarkRecDefn.new(:name => table_name)
-			recdefn.save!			
+			ret = create_table(table_name, columns)
+			if ret
+				#add a row for this new table in the 'mark_rec_defns' table
+				recdefn = MarkRecDefn.new(:name => table_name)
+				recdefn.save!
+			end
 			return ret
-		else
-			add_fields = Hash.new
-			delete_fields = Array.new
+			
+		else #Table is already there, just alter it
+			add_columns = Hash.new
+			delete_columns = Array.new
 			Mark.set_table_name(table_name)
 			marks = Mark.new
 
+			#add the new columns(only marks) here
   			params[:subject_ids].each do |sid|
-				field_name = Subject.find(sid).name
-				if !Mark.column_names.include?(field_name)
-					add_fields[field_name]=:float
+				column_name = Subject.find(sid).name
+				add_columns[column_name]=:float unless Mark.column_names.include?(column_name)
+			end
+
+			if !add_columns.empty?
+				if add_columns_to_table(table_name, add_columns) 
+					Mark.reset_column_information()
+					#Mark.set_table_name(table_name)
+				else
+					return false
 				end				
 			end
-			add_columns_to_table(table_name, add_fields) unless add_fields.empty?
+					
+			#remove the unwanted columns (only marks) here
+			source_columns =  Mark.column_names
 			
-			source_fields =  Mark.column_names
-			source_fields.delete_if { |col| col == 'id' || col == 'created_at' || col == 'updated_at'}
-			if  source_fields.count > params[:subject_ids].count + default_mark_fields.count
-				target_fields = hash_to_keys_array(default_mark_fields)
+			#following columns should not be deleted from the table
+			source_columns.delete_if { |col| col == 'id' || col == 'created_at' || col == 'updated_at'}
+			
+			#default marks columns
+			if  source_columns.count > params[:subject_ids].count + default_mark_columns.count
+				target_columns = hash_to_keys_array(default_mark_columns)
 				params[:subject_ids].each do |sid|
-					target_fields << Subject.find(sid).name
+					target_columns << Subject.find(sid).name
 				end
-				source_fields.each do |col_name|
-					delete_fields << col_name unless target_fields.include?(col_name)
+				source_columns.each do |col_name|
+					delete_columns << col_name unless target_columns.include?(col_name)
 				end
-				delete_columns_from_table(table_name, delete_fields) unless delete_fields.empty?
+				ret = delete_columns_from_table(table_name, delete_columns) unless delete_columns.empty?
+				return ret
 			end
+			
+			return ret			
 			
 		end # end of if newtable
 	end #end of mark_table
