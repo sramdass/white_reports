@@ -32,6 +32,7 @@ GEM
     arel (2.0.10)
     bcrypt-ruby (3.0.0-x86-mingw32)
     builder (2.1.2)
+    cancan (1.6.5)
     columnize (0.3.4)
     declarative_authorization (0.5.3)
     diff-lcs (1.1.2)
@@ -44,6 +45,7 @@ GEM
       rails (>= 3.0.0.beta4)
     faker (0.3.1)
     gravatar_image_tag (1.0.0.pre2)
+    hirb (0.5.0)
     i18n (0.5.0)
     jquery-rails (1.0.12)
       railties (~> 3.0)
@@ -126,11 +128,13 @@ PLATFORMS
 DEPENDENCIES
   annotate (= 2.4.0)
   bcrypt-ruby
+  cancan
   declarative_authorization (~> 0.5.3)
   dynamic_attributes (~> 1.2.0)
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)
   gravatar_image_tag (= 1.0.0.pre2)
+  hirb (~> 0.5.0)
   jquery-rails
   rails (= 3.0.9)
   rspec-rails (= 2.6.1)

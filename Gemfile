@@ -8,6 +8,8 @@ gem "dynamic_attributes", "~> 1.2.0"
 gem "jquery-rails"
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "declarative_authorization", "~> 0.5.3"
+gem "cancan"
+gem "hirb", "~> 0.5.0"
 
 group :development do
   gem 'rspec-rails', '2.6.1'

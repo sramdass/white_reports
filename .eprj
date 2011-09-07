@@ -10,6 +10,10 @@
             <string>db\migrate\20110818090434_student.rb</string>
             <key>20110906110945</key>
             <string>db\migrate\20110906110945_create_memberships.rb</string>
+            <key>2011090712574</key>
+            <string>db\migrate\20110907125748_add_profile_type_to_profiles.rb</string>
+            <key>ABILI</key>
+            <string>app\models\ability.rb</string>
             <key>STUDENTS_C</key>
             <string>app\controllers\students_controller.rb</string>
             <key>Show.html</key>
@@ -38,8 +42,12 @@
             <string>app\views\teachers\_teachers.html.erb</string>
             <key>_teacher</key>
             <string>app\views\schools\_teacher_fields.html.erb</string>
+            <key>_teachers.htm</key>
+            <string>app\views\teachers\_teachers.html.erb</string>
             <key>_to_sectio</key>
             <string>db\migrate\20110902042840_add_clazz_id_to_sections.rb</string>
+            <key>abi</key>
+            <string>app\models\ability.rb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -72,6 +80,10 @@
             <string>app\helpers\application_helper.rb</string>
             <key>application_hel</key>
             <string>app\helpers\application_helper.rb</string>
+            <key>authenti</key>
+            <string>C:\Users\sramdass.PSFT\Desktop\ruby\source\stffn-decl_auth_demo_app-b1c29dc\stffn-decl_auth_demo_app-b1c29dc\lib\authenticated_system.rb</string>
+            <key>autho</key>
+            <string>config\authorization_rules.rb</string>
             <key>branc</key>
             <string>app\models\branch.rb</string>
             <key>branch.rb</key>
@@ -88,6 +100,8 @@
             <string>app\controllers\clazzs_controller.rb</string>
             <key>clazzs_c</key>
             <string>app\controllers\clazzs_controller.rb</string>
+            <key>confere</key>
+            <string>C:\Users\sramdass.PSFT\Desktop\ruby\source\stffn-decl_auth_demo_app-b1c29dc\stffn-decl_auth_demo_app-b1c29dc\app\models\conference.rb</string>
             <key>create_su</key>
             <string>db\migrate\20110815163153_create_subjects.rb</string>
             <key>dev</key>
@@ -99,11 +113,11 @@
             <key>development.r</key>
             <string>config\environments\development.rb</string>
             <key>edit</key>
-            <string>app\views\students\edit.html.erb</string>
+            <string>app\views\profiles\edit.html.erb</string>
             <key>edit.htm</key>
             <string>app\views\sections\edit.html.erb</string>
             <key>edit.html</key>
-            <string>app\views\clazzs\edit.html.erb</string>
+            <string>app\views\sections\edit.html.erb</string>
             <key>email_f</key>
             <string>app\views\shared\_email_fields.erb</string>
             <key>email_st</key>
@@ -140,6 +154,8 @@
             <string>app\controllers\institutions_controller.rb</string>
             <key>institution.r</key>
             <string>app\models\institution.rb</string>
+            <key>institution.rb</key>
+            <string>app\models\institution.rb</string>
             <key>institutions</key>
             <string>app\controllers\institutions_controller.rb</string>
             <key>institutions_c</key>
@@ -152,6 +168,8 @@
             <string>db\migrate\20110902130519_create_mark_rec_defns.rb</string>
             <key>mark_rec</key>
             <string>app\models\mark_rec_defn.rb</string>
+            <key>member</key>
+            <string>app\models\membership.rb</string>
             <key>membership.rb</key>
             <string>app\models\membership.rb</string>
             <key>new</key>
@@ -172,6 +190,10 @@
             <string>app\models\profile.rb</string>
             <key>profile.rb</key>
             <string>app\models\profile.rb</string>
+            <key>profiles_c</key>
+            <string>app\controllers\profiles_controller.rb</string>
+            <key>profiles_co</key>
+            <string>app\controllers\profiles_controller.rb</string>
             <key>profiles_con</key>
             <string>app\controllers\profiles_controller.rb</string>
             <key>remove_sch</key>
@@ -179,6 +201,8 @@
             <key>role</key>
             <string>app\models\role.rb</string>
             <key>role.r</key>
+            <string>app\models\role.rb</string>
+            <key>role.rb</key>
             <string>app\models\role.rb</string>
             <key>route</key>
             <string>config\routes.rb</string>
@@ -267,7 +291,7 @@
             <key>setup_ma</key>
             <string>config\initializers\setup_mail.rb</string>
             <key>show</key>
-            <string>app\views\institutions\show.html.erb</string>
+            <string>app\views\branches\show.html.erb</string>
             <key>show.ht</key>
             <string>app\views\subjects\show.html.erb</string>
             <key>show.htm</key>
@@ -278,6 +302,8 @@
             <string>app\views\schools\show.html.erb</string>
             <key>show.html.e</key>
             <string>app\views\sections\show.html.erb</string>
+            <key>show.html.er</key>
+            <string>app\views\students\show.html.erb</string>
             <key>show.html.erb</key>
             <string>app\views\clazzs\show.html.erb</string>
             <key>student</key>
@@ -342,6 +368,8 @@
             <string>app\views\schools\tnew.html.erb</string>
             <key>user.r</key>
             <string>..\dynamic_models\app\models\user.rb</string>
+            <key>user.rb</key>
+            <string>C:\Users\sramdass.PSFT\Desktop\ruby\source\stffn-decl_auth_demo_app-b1c29dc\stffn-decl_auth_demo_app-b1c29dc\app\models\user.rb</string>
             <key>users_cont</key>
             <string>..\dynamic_models\app\controllers\users_controller.rb</string>
         </dict>

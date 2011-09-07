@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110906110945) do
+ActiveRecord::Schema.define(:version => 20110907130143) do
 
   create_table "branches", :force => true do |t|
     t.integer  "institution_id"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20110906110945) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "password_digest"
+    t.integer  "profile_type"
+    t.integer  "profile_ptr"
   end
 
   create_table "roles", :force => true do |t|
@@ -102,7 +104,8 @@ ActiveRecord::Schema.define(:version => 20110906110945) do
     t.integer  "test_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "Maths"
+    t.float    "Tamil"
+    t.float    "Science"
   end
 
   create_table "sec_sub_maps", :force => true do |t|
