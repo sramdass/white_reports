@@ -1,0 +1,23 @@
+<div id="content">
+	<div class="padding">	
+		<h2> Profiles Index </h2>
+		<table>
+			<tr>
+				<th> Email </th> <th> Type </th>  <th> Name </th>  <th> Roles </th>
+			</tr>
+			<% for profile in @profiles %>
+				<tr>
+				<td> <%= link_to profile.email, profile_path(profile) %>  </td>
+				<td>  <%= profile.profile_type  %>
+				<td><%= profile.user_profile_name %>
+				<td>
+				<% for role in profile.roles %>
+					<%= role.name.humanize %> ,
+				<% end %>
+				</td>
+				</tr>
+			<% end%>
+		</table>
+	</div>
+</div>
+

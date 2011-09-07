@@ -1,4 +1,6 @@
 class BranchesController < ApplicationController
+# for cancan authorizatoin
+load_and_authorize_resource
 #-----------------------------------------------------------#	
 # Helper methods that will also be used in the view (index.html) 
 # These methods can also be moved into the model, and in that 
@@ -26,7 +28,7 @@ helper_method :sort_column, :sort_direction
   # GET /branches/1
   # GET /branches/1.xml
   def show
-    @branch = Branch.find(params[:id])
+    #@branch = Branch.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -39,7 +41,7 @@ helper_method :sort_column, :sort_direction
   # GET /branches/new
   # GET /branches/new.xml
   def new
-    @branch = Branch.new
+    #@branch = Branch.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,7 +53,7 @@ helper_method :sort_column, :sort_direction
 
   # GET /branches/1/edit
   def edit
-    @branch = Branch.find(params[:id])
+    #@branch = Branch.find(params[:id])
   end
 
 #-----------------------------------------------------------#
@@ -59,7 +61,7 @@ helper_method :sort_column, :sort_direction
   # POST /branches
   # POST /branches.xml
   def create
-    @branch = Branch.new(params[:branch])
+    #@branch = Branch.new(params[:branch])
 
     respond_to do |format|
       if @branch.save
@@ -77,7 +79,7 @@ helper_method :sort_column, :sort_direction
   # PUT /branches/1
   # PUT /branches/1.xml
   def update
-    @branch = Branch.find(params[:id])
+    #@branch = Branch.find(params[:id])
 
     respond_to do |format|
       if @branch.update_attributes(params[:branch])
@@ -95,7 +97,7 @@ helper_method :sort_column, :sort_direction
   # DELETE /branches/1
   # DELETE /branches/1.xml
   def destroy
-    @branch = Branch.find(params[:id])
+    #@branch = Branch.find(params[:id])
     @branch.destroy
 
     respond_to do |format|

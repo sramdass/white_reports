@@ -15,7 +15,16 @@
 #
 
 class Profile < ActiveRecord::Base
-	attr_accessible :email, :password, :password_confirmation
+	
+	#CONSTANTS
+	# Numbers less than 10 need to have more priveleges than admin.
+	#Numbers between 10 and 20 need have less priveleges than admin and more priveleges than teacher etc..
+	PROFILE_TYPE_ADMIN = 10
+	PROFILE_TYPE_TEACHER = 20
+	PROFILE_TYPE_STUDENT = 30
+	
+	attr_accessible :email, :password, :password_confirmation, :role_ids
+
 	
 	has_many :memberships, :dependent => true, :dependent => :destroy
 	has_many :roles, :through => :memberships	
@@ -30,6 +39,21 @@ class Profile < ActiveRecord::Base
 	validates_uniqueness_of :email
 	
 
+	def user_profile
+		if self.profile_type == PROFILE_TYPE_ADMIN
+			Admin.find(self.profile_ptr)
+		elsif self.profile_type == PROFILE_TYPE_TEACHER
+			Teacher.find(self.profile_ptr)
+		elsif self.profile_type == PROFILE_TYPE_STUDENT
+			Student.find(self.profile_ptr)
+		else		
+			#raise an exception here
+		end
+	end
+	
+	def user_profile_name
+		user_profile.name
+	end
 
 	def authenticate(password)	
 		if self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)

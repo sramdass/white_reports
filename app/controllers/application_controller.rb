@@ -120,9 +120,10 @@ class ApplicationController < ActionController::Base
 	end
 	
 	#declarative authorization requires a current_user  method
-	def current_user
-		return current_profile
-	end
+	#def current_user
+		#StudentContact.find_by_primary_email(@current_profile.email).student || 
+		#TeacherContact.find_by_primary_email(@current_profile.email).teacher
+	#end
 	
 	def current_year
 		"2010"
@@ -149,5 +150,9 @@ class ApplicationController < ActionController::Base
 		end
 		return values
 	end
+	
+	def current_ability
+		@current_ability ||= Ability.new(current_profile)
+	end	
 
 end  # end of ApplicationController

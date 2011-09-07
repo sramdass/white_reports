@@ -6,7 +6,7 @@
 		<th> <%=sortable "name" %></th>
 		<th><%= sortable "id_no" %></th>
 		<th><%= sortable "female", "Gender" %></th>
-		<th><%= sortable "school_id", "School"%> </th>
+		<th><%= sortable "school_id", "Branch"%> </th>
 		<th>Actions</th>
 	</tr>
 
@@ -19,7 +19,7 @@
 			<% else %>
 				<td> Male </td>
 			<% end %>
-			<td><%= teacher.school.name %></td>
+			<td><%= teacher.branch.name %></td>
 			<td> <%= link_to 'Edit', edit_teacher_path(teacher) %> | 
 				    <%= link_to 'Destroy', teacher, :confirm => 'Are you sure?', :method => :delete %> </td>
 		</tr>

@@ -29,6 +29,13 @@ class Teacher < ActiveRecord::Base
 	  else
 	    scoped
 	  end
-	end     
+	end
+	
+	def role_symbols
+		profile = Profile.find_by_email(self.teacher_contact.primary_email)
+		profile.roles.map do |role|
+			role.name.underscore.to_sym
+		end
+	end	
 
 end

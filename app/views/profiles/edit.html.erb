@@ -1,0 +1,38 @@
+<div id="content">
+	<div class="padding">
+
+		<h1>Edit Profile</h1>
+		
+		<p>
+		 	<h2>  <%= @profile.email %> </h2>
+		</p>
+		
+		<p>
+			 <b>Type:  </b>
+			 <%= @profile.profile_type  %>
+		</p>
+		
+		<p>
+			<b>Name :  </b>
+			<%= @profile.user_profile_name %>
+		</p>
+
+		<%= form_for @profile do |f| %> 	
+    		<%= f.label :roles %><br />
+			<% for role in Role.all %>
+			  	<div>
+				    <%= check_box_tag "profile[role_ids][]", role.id, @profile.roles.include?(role) %>
+				    <%= role.name.humanize  %>    		
+			 	 </div>
+			<% end %>
+					
+			 <div class="actions">
+			    <%= f.submit "Update profile" %>
+			 </div>
+	  	<% end %>
+	  	
+	  	<br><br>	
+    	<%= link_to 'Show', @profile %> 
+	</div>
+</div>
+

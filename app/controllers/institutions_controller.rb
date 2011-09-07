@@ -1,7 +1,5 @@
 class InstitutionsController < ApplicationController
 
-#This is for the declarative_authorization (access control)
-filter_resource_access
 #-----------------------------------------------------------#	
 # Helper methods that will also be used in the view (index.html) 
 # These methods can also be moved into the model, and in that 
@@ -30,7 +28,7 @@ helper_method :sort_column, :sort_direction
   # GET /institutions/1
   # GET /institutions/1.xml
   def show
-    # @institution = Institution.find(params[:id])
+	 @institution = Institution.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,7 +41,7 @@ helper_method :sort_column, :sort_direction
   # GET /institutions/new
   # GET /institutions/new.xml
   def new
-    # @institution = Institution.new
+     @institution = Institution.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,7 +53,7 @@ helper_method :sort_column, :sort_direction
 
   # GET /institutions/1/edit
   def edit
-    # @institution = Institution.find(params[:id])
+     @institution = Institution.find(params[:id])
   end
 
 #-----------------------------------------------------------#
@@ -63,7 +61,7 @@ helper_method :sort_column, :sort_direction
   # POST /institutions
   # POST /institutions.xml
   def create
-    # @institution = Institution.new(params[:institution])
+     @institution = Institution.new(params[:institution])
 
     respond_to do |format|
       if @institution.save
@@ -81,7 +79,7 @@ helper_method :sort_column, :sort_direction
   # PUT /institutions/1
   # PUT /institutions/1.xml
   def update
-    #@institution = Institution.find(params[:id])
+    @institution = Institution.find(params[:id])
 
     respond_to do |format|
       if @institution.update_attributes(params[:institution])
@@ -99,7 +97,7 @@ helper_method :sort_column, :sort_direction
   # DELETE /institutions/1
   # DELETE /institutions/1.xml
   def destroy
-    #@institution = Institution.find(params[:id])
+    @institution = Institution.find(params[:id])
     @institution.destroy
 
     respond_to do |format|
