@@ -12,12 +12,13 @@
 				<td><%= profile.user_profile_name %>
 				<td>
 				<% for role in profile.roles %>
-					<%= role.name.humanize %> ,
+					<%= "#{role.name.humanize} " %> 
 				<% end %>
 				</td>
 				</tr>
 			<% end%>
 		</table>
+		TODO: Change the list of roles to a comma separated list
 	</div>
 </div>
 

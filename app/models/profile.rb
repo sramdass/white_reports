@@ -39,22 +39,6 @@ class Profile < ActiveRecord::Base
 	validates_uniqueness_of :email
 	
 
-	def user_profile
-		if self.profile_type == PROFILE_TYPE_ADMIN
-			Admin.find(self.profile_ptr)
-		elsif self.profile_type == PROFILE_TYPE_TEACHER
-			Teacher.find(self.profile_ptr)
-		elsif self.profile_type == PROFILE_TYPE_STUDENT
-			Student.find(self.profile_ptr)
-		else		
-			#raise an exception here
-		end
-	end
-	
-	def user_profile_name
-		user_profile.name
-	end
-
 	def authenticate(password)	
 		if self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)
 		  	self
@@ -89,4 +73,38 @@ class Profile < ActiveRecord::Base
 			role.name.underscore.to_sym
 		end
 	end
+	
+#--- Modules related to converting profile to the user type such as, student, teacher and admin --- #
+
+	def self.user_type_and_ptr(profile)	
+		h = Hash.new	
+		if obj = StudentContact.find_by_primary_email(profile.email)
+			h[:type] = Profile::PROFILE_TYPE_STUDENT
+			h[:ptr] = obj.student.id
+		elsif TeacherContact.find_by_primary_email(profile.email)
+			h[:type] = Profile::PROFILE_TYPE_TEACHER
+			h[:ptr] = obj.teacher.id
+		else
+			h = nil
+		end
+		return h
+	end
+
+	def user_profile
+		if self.profile_type == PROFILE_TYPE_ADMIN
+			Admin.find(self.profile_ptr)
+		elsif self.profile_type == PROFILE_TYPE_TEACHER
+			Teacher.find(self.profile_ptr)
+		elsif self.profile_type == PROFILE_TYPE_STUDENT
+			Student.find(self.profile_ptr)
+		else		
+			#raise an exception here
+		end
+	end
+	
+	def user_profile_name
+		user_profile.name
+	end	
+
+#--- -------------------------------END----------------------------------------- --- #	
 end

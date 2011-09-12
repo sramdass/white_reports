@@ -41,7 +41,7 @@
 			<h2> Student list </h2>
 			<ul>
 			<% @section.students.each do |s| %>
-				<li> <%= link_to s.name, '#' %> </li>
+				<li> <%= link_to s.name, student_path(s) %> </li>
 			<% end %>
 			</ul>		
 		</p>

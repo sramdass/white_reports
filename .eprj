@@ -90,6 +90,8 @@
             <string>app\models\branch.rb</string>
             <key>branch_cont</key>
             <string>app\controllers\branches_controller.rb</string>
+            <key>branches</key>
+            <string>app\controllers\branches_controller.rb</string>
             <key>branches_c</key>
             <string>app\controllers\branches_controller.rb</string>
             <key>branches_co</key>
@@ -139,7 +141,7 @@
             <key>index.ht</key>
             <string>app\views\teachers\index.html.erb</string>
             <key>index.htm</key>
-            <string>app\views\subjects\index.html.erb</string>
+            <string>app\views\profiles\index.html.erb</string>
             <key>index.html</key>
             <string>app\views\institutions\index.html.erb</string>
             <key>index.html.e</key>
@@ -291,13 +293,13 @@
             <key>setup_ma</key>
             <string>config\initializers\setup_mail.rb</string>
             <key>show</key>
-            <string>app\views\branches\show.html.erb</string>
+            <string>app\views\profiles\show.html.erb</string>
             <key>show.ht</key>
             <string>app\views\subjects\show.html.erb</string>
             <key>show.htm</key>
             <string>app\views\sections\show.html.erb</string>
             <key>show.html</key>
-            <string>app\views\teachers\show.html.erb</string>
+            <string>app\views\sections\show.html.erb</string>
             <key>show.html.</key>
             <string>app\views\schools\show.html.erb</string>
             <key>show.html.e</key>
