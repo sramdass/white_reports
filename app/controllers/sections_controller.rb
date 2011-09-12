@@ -1,4 +1,7 @@
 class SectionsController < ApplicationController
+
+# for cancan authorizatoin
+load_and_authorize_resource
 	
 # Helper methods that will also be used in the view (index.html) 
 # These methods can also be moved into the model, and in that 
@@ -18,7 +21,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def show
-    @section = Section.find(params[:id])
+    #@section = Section.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +31,7 @@ helper_method :sort_column, :sort_direction
   
   
   def edit
-    @section = Section.find(params[:id])
+    #@section = Section.find(params[:id])
     @subjects = @section.clazz.branch.subjects ||= []
     @teachers = @section.clazz.branch.teachers ||= []
     @tests = @section.clazz.branch.tests ||= []
@@ -37,10 +40,9 @@ helper_method :sort_column, :sort_direction
 
 
 	def update
-		
+		#@section = Section.find(params[:id])
 		params[:section][:subject_ids] ||= []
 		params[:section][:test_ids] ||= []
-		@section = Section.find(params[:id])
 		@section.attributes = params[:section]
 		
 		# This section is for updating the teacher for a particular section + subject.
@@ -75,13 +77,13 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
   
   def stunew
-  	@section = Section.find(params[:id])
+  	#@section = Section.find(params[:id])
   end
   
 #-----------------------------------------------------------#
 
   def stucreate
-  	 @section = Section.find(params[:id])
+  	 #@section = Section.find(params[:id])
   	 respond_to do |format|
 	    if @section.update_attributes(params[:section])
 	    	format.html { redirect_to(@section, :notice => ' Students were successfully updated.') }

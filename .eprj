@@ -50,6 +50,8 @@
             <string>db\migrate\20110902042840_add_clazz_id_to_sections.rb</string>
             <key>abi</key>
             <string>app\models\ability.rb</string>
+            <key>ability</key>
+            <string>app\models\ability.rb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>

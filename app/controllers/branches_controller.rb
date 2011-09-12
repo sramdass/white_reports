@@ -109,13 +109,13 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
   
   def tchrnew
-  	@branch = Branch.find(params[:id])
+  	#@branch = Branch.find(params[:id])
   end
   
 #-----------------------------------------------------------#
 
   def tchrcreate
-  	 @branch = Branch.find(params[:id])
+  	 #@branch = Branch.find(params[:id])
   	 respond_to do |format|
       if @branch.update_attributes(params[:branch])
         format.html { redirect_to(@branch, :notice => ' Teachers were successfully updated.') }
@@ -130,14 +130,14 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
   
   def clznew
-  	@branch = Branch.find(params[:id])
+  	#@branch = Branch.find(params[:id])
   	#@branch.sections.build
   end
 
 #-----------------------------------------------------------#
   
   def clzcreate
-  	 @branch = Branch.find(params[:id])
+  	 #@branch = Branch.find(params[:id])
   	 respond_to do |format|
       if @branch.update_attributes(params[:branch])
         format.html { redirect_to(@branch, :notice => ' Classes were successfully updated.') }
@@ -152,13 +152,13 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
   
 	def subnew
-  		@branch = Branch.find(params[:id])
+  		#@branch = Branch.find(params[:id])
   	end
   	
 #-----------------------------------------------------------#
   	
   	 def subcreate
-	  	 @branch = Branch.find(params[:id])
+	  	 #@branch = Branch.find(params[:id])
 	  	 respond_to do |format|
 	      if @branch.update_attributes(params[:branch])
 	        format.html { redirect_to(@branch, :notice => ' Subjects were successfully updated.') }
@@ -173,13 +173,13 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
 
 	def testnew
-  		@branch = Branch.find(params[:id])
+  		#@branch = Branch.find(params[:id])
   	end
   	
 #-----------------------------------------------------------#
   	
   	 def testcreate
-	  	 @branch = Branch.find(params[:id])
+	  	 #@branch = Branch.find(params[:id])
 	  	 respond_to do |format|
 	      if @branch.update_attributes(params[:branch])
 	        format.html { redirect_to(@branch, :notice => ' Tests were successfully updated.') }

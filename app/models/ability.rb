@@ -1,134 +1,122 @@
 class Ability
-  include CanCan::Ability
+  	include CanCan::Ability
 
-  def initialize(profile)
-
-	#Provide the aliases for the actions here	
-	alias_action :index, :show, :to => :read
-	alias_action :new, :to => :create
-	alias_action :edit, :to => :update
-	alias_action :smsnew, :sms, :emailnew, :email, :to => :communicate
+	=begin
+	1. super_user - can perform any action on the entire application. He can create and update instititutions
 	
-	#for the super user
-	if profile.has_role?('super_user')
+	2. admin - can perform any action on a institution to which he belongs to. He can create and update branches in a particular institution
+	
+	3. moderator - can perform any action on the components of a branch (teacher, student, section, clazz) etc.
+	
+	4. teacher
+	
+	5. student
+	
+	6. guest
+	
+	7. user	
+	=end
+	
+	# Note that the 'create' action has not been used anywhere as of now. See whether we need the action in future
+	
+	def initialize(profile)
+	#Provide the aliases for the actions here	
+		alias_action :index, :show, :to => :read
+		alias_action :new, :to => :create
+		alias_action :edit, :to => :update
+		alias_action :smsnew, :sms, :emailnew, :email, :to => :communicate
+		alias_action :subnew, :subcreate, :clznew, :clzcreate, :testnew, :testcreate, :tchrnew, :tchrcreate, :to => :update_branch_elements
+		alias_action :secnew, :seccreate, :to => :update_clazz_elements
+		alias_action :stunew, :stucreate, :to => :update_section_elements
+		@profile = profile
+		@profile.roles.each { |role| send(role.name) }
+	end
+		
+	def super_user
   		can :manage, :all
   	end
   	
-  	#Authorization rules for the Student
-  	
-  	if profile.profile_type == Profile::PROFILE_TYPE_STUDENT
-  		
-  		# USER OR MODERATOR OR ADMIN
-  		# 1. can :read the student infomation in his own class (not just section)
-  		# 2. can :update his own information
-  		
-  		if profile.has_any_role? ( %w{user moderator admin} ) # This will be converted to string array
-  		  	can :read, Student do student
-  		  		profile.section.clazz = student.section.clazz
-  		  	end
-  			can :update, Student do |student|
-  				profile.user_profile == student
-  			end 
-  		end
-  		
-  		#GUEST
-  		# 1. can just :read the students in his own clazz
-  		if profile.has_role?('guest')
-  			can :read, Student do student
-  		  		profile.section.clazz = student.section.clazz
-  		  	end
-  		end			
-  	end
-  		
-	if profile.profile_type == Profile::PROFILE_TYPE_TEACHER
-		
-		# ADMIN
-		# 1. can :manage the students who are in the same branch as he is
-		# 2. can :manage the teachers and students who are in the same branch as he/she is.
-		if profile.has_role?('admin')
-  			can :manage, Student do |student|
-  				profile.user_profile.branch == student.section.clazz.branch	
-  			end
-			can :manage, Teacher do |teacher|
-  				profile.user_profile.branch == teacher.branch	
-  			end
-  			can :manage, Clazz do |clazz|
-  				profile.user_profile.branch.clazzs.include?(clazz)
-  			end
-  				
+
+	# Role - admin
+	def admin
+		can :manage, Student do |student|
+			@profile.user_profile.branch.institution == student.section.clazz.branch.institution
 		end
+		can :manage, Teacher do |teacher|
+			@profile.branch.institution == teacher.branch.institution
+		end
+		can :manage, Section do |section|
+			@profile.branch.institution == section.clazzbranch.institution
+		end
+		can :manage, Clazz do |clazz|
+			@profile.branch.institution == clazz.branch.institution
+		end
+		can :manage, Branch do |branch|
+			@profile.branch.institution == branch.institution
+		end			
+	end
   		
-		#MODERATOR
-		# 1. can :manage the students to whom he is a class teacher
-		# 2. can :manage (except :destroy) the teachers who are in the same branch as he is
-		if profile.has_role?('moderator')
-			can :manage, Student do |student|
-				student.class_teacher?(profile.user_profile)
-			end
-			can :manage, Teacher do |teacher|
-				profile.branch == teacher.branch
-			end
-			cannot :destroy, Teacher			
-		end		
+	#Role - moderator
+	def moderator
+		teacher
+		can :manage, Student do |student|
+			student.section.clazz.branch == @profile.user_profile.branch
+		end
+		can :manage, Teacher do |teacher|
+			@profile.branch == teacher.branch
+		end
+		can :manage, Section do |section|
+			@profile.branch == section.clazzbranch
+		end
+		can :manage, Clazz do |clazz|
+			@profile.branch == clazz.branch
+		end
+		can [:update_branch_elements, :update, :read], Branch do |branch|
+			@profile.branch == branch
+		end
+		
+	end		
 				
-		# USER
-		# 1. can :manage (except :destroy) the students who are in the same branch as  he is
-		# 2. can :read all the teachers who are in the same branch
-		# 3. can :update his own profile
-		if profile.has_role?('user')
-			can :update, Student do |student|
-				student.class_teacher?(profile.user_profile)
-			end
+	# Role - teacher
+	def teacher
+		guest
+		can :manage, Student do |student|
+			student.class_teacher?(@profile.user_profile)
+		end
+		can :update, Teacher do |teacher|
+			@profile.user_profile == teacher
+		end
+		can [:update, :update_section_elements], Section do |section|
+			section.class_teacher_id == @profile.id
+		end
+	end
+
+	# Role - student
+	def student
+		guest
+		can :update, Student do |student|
+			@profile.user_profile == student
+		end 
+	end
+  				
+	#Role - guest
+	def guest
+		if @profile.profile_type == Profile::PROFILE_TYPE_STUDENT
 			can :read, Student do |student|
-				profile.user_profile.branch == student.section.clazz.branch
+				@profile.section.clazz == student.section.clazz
 			end
-			cannot :destroy, Student
-  		  	can :read, Teacher do |teacher|
-				profile.user_profile.branch == teacher.branch	
-			end  		  		
-  			can :update, Teacher do |teacher|
-  				profile.user_profile == teacher
-  			end			
 		end
 		
-		#'GUEST
-		# can just :read the students to whom he is the class teacher
-		# can :read the teachers who are in the same branch
-		if profile.has_role?('guest')
+		if @profile.profile_type == Profile::PROFILE_TYPE_TEACHER
 			can :read, Student do |student|
-				student.class_teacher?(profile.user_profile)
+				@profile.branch.clazzs.include?student.section.clazz
 			end
 			can :read, Teacher do |teacher|
-				profile.user_profile.branch == teacher.branch	
+				@profile.user_profile.branch == teacher.branch	
 			end
-		end			
-		
-  	end # end of profile.profile_type == Profile::PROFILE_TYPE_TEACHER
-  	
-  	if profile.profile_type == Profile::PROFILE_TYPE_ADMIN
-  	end
-  	
-  	
-  	
-  	
-	#Authorization rules for the Branch
-  	if profile.has_role?('admin')
-  		can :manage, Branch
-  		cannot :destroy, Branch
-  	end
-  	if profile.has_role?('moderator')
-  		can :read, Branch
-  	end
-  	if profile.has_role?('guest')
-		can :read, Branch do |branch|
-			#this has to be made generic for all the record types
-	 		profile.user_profile.branch == branch
 		end
-  	end
-  	
-  	#Authorization rules for the branches
-
-  		
+	end			
+		
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
@@ -151,6 +139,5 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
-  end
   
 end

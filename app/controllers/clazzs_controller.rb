@@ -27,7 +27,7 @@ helper_method :sort_column, :sort_direction
   # GET /clazzs/1
   # GET /clazzs/1.xml
   def show
-    @clazz = Clazz.find(params[:id])
+    #@clazz = Clazz.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,7 +40,7 @@ helper_method :sort_column, :sort_direction
   # GET /clazzs/new
   # GET /clazzs/new.xml
   def new
-    @clazz = Clazz.new
+    #@clazz = Clazz.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,7 +52,7 @@ helper_method :sort_column, :sort_direction
 
   # GET /clazzs/1/edit
   def edit
-    @clazz = Clazz.find(params[:id])
+    #@clazz = Clazz.find(params[:id])
   end
 
 #-----------------------------------------------------------#
@@ -60,7 +60,7 @@ helper_method :sort_column, :sort_direction
   # POST /clazzs
   # POST /clazzs.xml
   def create
-    @clazz = Clazz.new(params[:clazz])
+    #@clazz = Clazz.new(params[:clazz])
 
     respond_to do |format|
       if @clazz.save
@@ -78,7 +78,7 @@ helper_method :sort_column, :sort_direction
   # PUT /clazzs/1
   # PUT /clazzs/1.xml
   def update
-    @clazz = Clazz.find(params[:id])
+    #@clazz = Clazz.find(params[:id])
 
     respond_to do |format|
       if @clazz.update_attributes(params[:clazz])
@@ -96,7 +96,7 @@ helper_method :sort_column, :sort_direction
   # DELETE /clazzs/1
   # DELETE /clazzs/1.xml
   def destroy
-    @clazz = Clazz.find(params[:id])
+    #@clazz = Clazz.find(params[:id])
     @clazz.destroy
 
     respond_to do |format|
@@ -108,14 +108,14 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
   
   def secnew
-  	@clazz = Clazz.find(params[:id])
+  	#@clazz = Clazz.find(params[:id])
   	@teachers = @clazz.branch.teachers
   end
   
 #-----------------------------------------------------------#
 
   def seccreate
-  	 @clazz = Clazz.find(params[:id])
+  	 #@clazz = Clazz.find(params[:id])
   	 respond_to do |format|
       if @clazz.update_attributes(params[:clazz])
         format.html { redirect_to(@clazz, :notice => ' Sections were successfully updated.') }
