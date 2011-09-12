@@ -34,6 +34,8 @@
             <string>app\views\sections\_sections.html.erb</string>
             <key>_student</key>
             <string>app\views\students\_students.html.erb</string>
+            <key>_students.ht</key>
+            <string>app\views\students\_students.html.erb</string>
             <key>_subject</key>
             <string>app\views\subjects\_subjects.html.erb</string>
             <key>_subjects</key>
@@ -198,6 +200,8 @@
             <string>app\controllers\profiles_controller.rb</string>
             <key>profiles_con</key>
             <string>app\controllers\profiles_controller.rb</string>
+            <key>profiles_cont</key>
+            <string>app\controllers\profiles_controller.rb</string>
             <key>remove_sch</key>
             <string>db\migrate\20110902035043_remove_school_ids.rb</string>
             <key>role</key>
@@ -359,6 +363,8 @@
             <key>teachers_c</key>
             <string>app\controllers\teachers_controller.rb</string>
             <key>teachers_con</key>
+            <string>app\controllers\teachers_controller.rb</string>
+            <key>teachers_cont</key>
             <string>app\controllers\teachers_controller.rb</string>
             <key>teachers_contro</key>
             <string>app\controllers\teachers_controller.rb</string>

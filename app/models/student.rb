@@ -31,6 +31,14 @@ class Student < ActiveRecord::Base
 	  else
 	    scoped
 	  end
-	end   
+	end
+	
+	def class_teacher?(teacher)
+		if self.section.class_teacher_id == teacher.id		
+			return true
+		else
+			return false
+		end
+	end
 	
 end

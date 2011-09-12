@@ -77,14 +77,9 @@ def create
   end
   
 	def default_roles(profile_type)
+		# You can use the profile_type to assign different profile to different types of users
 		roles = Array.new
-		if profile_type == Profile::PROFILE_TYPE_STUDENT
-			roles << Role.find_by_name('user').id
-		elsif profile_type == Profile::PROFILE_TYPE_TEACHER
-			roles << Role.find_by_name('teacher').id
-		else
-			roles << Role.find_by_name('guest').id
-		end
+		roles << Role.find_by_name('user').id
 		return roles  	
 	end
   

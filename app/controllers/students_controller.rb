@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
 
-# for cancan authorizatoin
+# for cancan authorization
 load_and_authorize_resource
 	
 helper_method :sort_column, :sort_direction
@@ -20,7 +20,7 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
 
   def show
-    @student = Student.find(params[:id])
+    #@student = Student.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,7 +31,7 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
 
   def update
-    @student = Student.find(params[:id])
+    #@student = Student.find(params[:id])
 
     respond_to do |format|
       if @student.update_attributes(params[:student])
@@ -47,7 +47,7 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
 
   def destroy
-    @student = Student.find(params[:id])
+    #@student = Student.find(params[:id])
     @student.destroy
 
     respond_to do |format|
@@ -59,7 +59,7 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
 
 def edit
-	@student = Student.find(params[:id])
+	#@student = Student.find(params[:id])
 	if @student.student_contact.nil?
 		@student.build_student_contact	
 	end
@@ -68,13 +68,13 @@ end
 #-----------------------------------------------------------#
   
 def emailnew
-	@student = Student.find(params[:id])
+	#@student = Student.find(params[:id])
 end	
 
 #-----------------------------------------------------------#
 
 def email	
-	@student = Student.find(params[:id])
+	#@student = Student.find(params[:id])
 	# to, cc, bcc, subject, message are part of the 'params' hash
 	SchoolMailer.email_student(@student, params).deliver
 	redirect_to(@student, :notice => 'Email Sent')
@@ -83,13 +83,13 @@ end
 #-----------------------------------------------------------#
 
 def smsnew
-	@student = Student.find(params[:id])
+	#@student = Student.find(params[:id])
 end	
 
 #-----------------------------------------------------------#
 
 def sms	
-	@student = Student.find(params[:id])
+	#@student = Student.find(params[:id])
 	message = Sms.new(params[:to], params[:message])
 	message.send
 

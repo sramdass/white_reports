@@ -6,8 +6,7 @@
 		<th> <%=sortable "name" %></th>
 		<th><%= sortable "id_no", "ID" %></th>
 		<th><%= sortable "female", "Gender" %></th>
-		<th><%= "School" %> </th>
-		<th><%= sortable "section_id", "Section" %></th>
+		<th><%= "Class" %></th>
 
 		<th>Actions</th>
 	</tr>
@@ -21,8 +20,7 @@
 			<% else %>
 				<td> Male </td>
 			<% end %>
-			<td><%= student.section.school.name %></td>
-			<td><%= student.section.name %></td>
+			<td><%= student.section.name%>, <%= student.section.clazz.name %>, <%= student.section.clazz.branch.name %></td>
 			<td> <%= link_to 'Edit', edit_student_path(student) %> | 
 				    <%= link_to 'Destroy', student, :confirm => 'Are you sure?', :method => :delete %> </td>
 		</tr>

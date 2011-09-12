@@ -81,7 +81,7 @@ class Profile < ActiveRecord::Base
 		if obj = StudentContact.find_by_primary_email(profile.email)
 			h[:type] = Profile::PROFILE_TYPE_STUDENT
 			h[:ptr] = obj.student.id
-		elsif TeacherContact.find_by_primary_email(profile.email)
+		elsif obj = TeacherContact.find_by_primary_email(profile.email)
 			h[:type] = Profile::PROFILE_TYPE_TEACHER
 			h[:ptr] = obj.teacher.id
 		else
@@ -105,6 +105,24 @@ class Profile < ActiveRecord::Base
 	def user_profile_name
 		user_profile.name
 	end	
+	
+	#called from ability.rb
+	def has_role?(role_name)
+		 if self.roles.include?Role.find_by_name(role_name)
+		 	return true
+	 	else
+	 		return false
+ 		end
+	end
+	
+	def has_any_role?(role_names)
+		for name in role_names do
+			 if self.roles.include?Role.find_by_name(name)
+			 	return true
+		 	end
+		end
+ 		return false
+	end	
 
-#--- -------------------------------END----------------------------------------- --- #	
+#--- -------------------------------END-------------------------------------------- #	
 end

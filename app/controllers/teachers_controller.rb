@@ -1,5 +1,8 @@
 class TeachersController < ApplicationController
 	
+# for cancan authorization
+load_and_authorize_resource
+	
 # Helper methods that will also be used in the view (index.html) 
 # These methods can also be moved into the model, and in that 
 # case, these methods cannot be accessed from the views
@@ -22,7 +25,7 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
 
   def show
-    @teacher = Teacher.find(params[:id])
+    #@teacher = Teacher.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -33,7 +36,7 @@ helper_method :sort_column, :sort_direction
   #-----------------------------------------------------------#
 
   def update
-    @teacher = Teacher.find(params[:id])
+    #@teacher = Teacher.find(params[:id])
 
     respond_to do |format|
       if @teacher.update_attributes(params[:teacher])
@@ -49,7 +52,7 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
 
   def destroy
-    @teacher = Teacher.find(params[:id])
+    #@teacher = Teacher.find(params[:id])
     @teacher.destroy
 
     respond_to do |format|
@@ -61,7 +64,7 @@ helper_method :sort_column, :sort_direction
 #-----------------------------------------------------------#
 
 def edit
-	@teacher = Teacher.find(params[:id])
+	#@teacher = Teacher.find(params[:id])
 	if @teacher.teacher_contact.nil?
 		@teacher.build_teacher_contact	
 	end
@@ -70,13 +73,13 @@ end
 #-----------------------------------------------------------#
 
 def emailnew
-	@teacher = Teacher.find(params[:id])
+	#@teacher = Teacher.find(params[:id])
 end	
 
 #-----------------------------------------------------------#
 
 def email	
-	@teacher = Teacher.find(params[:id])
+	#@teacher = Teacher.find(params[:id])
 	# to, cc, bcc, subject, message are part of the 'params' hash
 	SchoolMailer.email_teacher(@teacher, params).deliver
 	redirect_to(@teacher, :notice => 'Email Sent')
@@ -84,13 +87,13 @@ end
 #-----------------------------------------------------------#
 
 def smsnew
-	@teacher = Teacher.find(params[:id])
+	#@teacher = Teacher.find(params[:id])
 end	
 
 #-----------------------------------------------------------#
 
 def sms	
-	@teacher = Teacher.find(params[:id])
+	#@teacher = Teacher.find(params[:id])
 	message = Sms.new(params[:to], params[:message])
 	message.send
 
