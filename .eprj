@@ -84,12 +84,16 @@
             <string>app\models\ability.rb</string>
             <key>ability</key>
             <string>app\models\ability.rb</string>
+            <key>ability.rb</key>
+            <string>app\models\ability.rb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
             <string>db\migrate\20110902125155_add_max_marks_to_subjects.rb</string>
             <key>applica</key>
             <string>public\stylesheets\application.css</string>
+            <key>applicati</key>
+            <string>public\javascripts\application.js</string>
             <key>application</key>
             <string>public\javascripts\application.js</string>
             <key>application.ht</key>
@@ -115,6 +119,8 @@
             <key>application_he</key>
             <string>app\helpers\application_helper.rb</string>
             <key>application_hel</key>
+            <string>app\helpers\application_helper.rb</string>
+            <key>application_helper</key>
             <string>app\helpers\application_helper.rb</string>
             <key>authenti</key>
             <string>C:\Users\sramdass.PSFT\Desktop\ruby\source\stffn-decl_auth_demo_app-b1c29dc\stffn-decl_auth_demo_app-b1c29dc\lib\authenticated_system.rb</string>
@@ -163,7 +169,7 @@
             <key>edit.htm</key>
             <string>app\views\sections\edit.html.erb</string>
             <key>edit.html</key>
-            <string>app\views\sections\edit.html.erb</string>
+            <string>app\views\students\edit.html.erb</string>
             <key>email_f</key>
             <string>app\views\shared\_email_fields.erb</string>
             <key>email_st</key>
@@ -185,7 +191,7 @@
             <key>index.ht</key>
             <string>app\views\teachers\index.html.erb</string>
             <key>index.htm</key>
-            <string>app\views\profiles\index.html.erb</string>
+            <string>app\views\institutions\index.html.erb</string>
             <key>index.html</key>
             <string>app\views\institutions\index.html.erb</string>
             <key>index.html.e</key>
@@ -197,6 +203,8 @@
             <key>index.js</key>
             <string>app\views\teachers\index.js.erb</string>
             <key>instit</key>
+            <string>app\models\institution.rb</string>
+            <key>institu</key>
             <string>app\models\institution.rb</string>
             <key>institui</key>
             <string>app\controllers\institutions_controller.rb</string>
@@ -368,6 +376,8 @@
             <string>app\models\student.rb</string>
             <key>student_c</key>
             <string>app\models\student_contact.rb</string>
+            <key>student_con</key>
+            <string>app\models\student_contact.rb</string>
             <key>student_fie</key>
             <string>app\views\students\_student_fields.html.erb</string>
             <key>students_c</key>
@@ -407,6 +417,8 @@
             <key>teacher_cont</key>
             <string>app\models\teacher_contact.rb</string>
             <key>teacher_contact</key>
+            <string>app\models\teacher_contact.rb</string>
+            <key>teacher_contact.r</key>
             <string>app\models\teacher_contact.rb</string>
             <key>teacher_f</key>
             <string>app\views\branches\_teacher_fields.html.erb</string>
