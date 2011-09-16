@@ -62,6 +62,8 @@
             <string>app\views\students\_students.html.erb</string>
             <key>_subject</key>
             <string>app\views\branches\_subject_fields.html.erb</string>
+            <key>_subject_fi</key>
+            <string>app\views\branches\_subject_fields.html.erb</string>
             <key>_subjects</key>
             <string>app\views\subjects\_subjects.html.erb</string>
             <key>_teach</key>
@@ -76,6 +78,8 @@
             <string>app\views\branches\_teacher_fields.html.erb</string>
             <key>_teachers.htm</key>
             <string>app\views\teachers\_teachers.html.erb</string>
+            <key>_test_F</key>
+            <string>app\views\branches\_test_fields.html.erb</string>
             <key>_test_fi</key>
             <string>app\views\branches\_test_fields.html.erb</string>
             <key>_to_sectio</key>
