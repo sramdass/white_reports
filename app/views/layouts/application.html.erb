@@ -11,22 +11,20 @@
 <div id="page-container">
 	
 	<div id="main-nav">
-		<dl class="hidden">
-			<dt id="about"><a href="#">About</a></dt>
-			<dt id="services"><a href="#">Services</a></dt>
-			<dt id="portfolio"><a href="#">Portfolio</a></dt>
-			<dt id="contact"><a href="#">Contact Us</a></dt>
-		</dl>
+		<h1> z-Axis </h1>
 	</div>
 	
 	<div id="header">
-		<h1>White Reports</h1>
 		<% if current_profile %>
-			Logged in as <%= link_to current_profile.email, teacher_path(current_profile.user_profile) %>.
-			<%= link_to "Log out", log_out_path %>
+			<h3>
+				 Logged in as <%= link_to current_profile.email, teacher_path(current_profile.user_profile) %>.
+				<%= link_to "Log out", log_out_path %> 			
+			</h3>
 		<% else %>
-			<%= link_to "Sign up", sign_up_path %> or
-			<%= link_to "log in", log_in_path %>
+			<h3>
+				<%= link_to "Sign up", sign_up_path %> or
+				<%= link_to "log in", log_in_path %>
+			</h3>
 		<% end %>
 	</div>
 	

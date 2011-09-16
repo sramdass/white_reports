@@ -1,24 +1,44 @@
-<div id="content">
+<div id="sidebar-r" class='profiles'>
 	<div class="padding">	
-		<h2> Profiles Index </h2>
-		<table>
-			<tr>
-				<th> Email </th> <th> Type </th>  <th> Name </th>  <th> Roles </th>
-			</tr>
-			<% for profile in @profiles %>
-				<tr>
-				<td> <%= link_to profile.email, profile_path(profile) %>  </td>
-				<td>  <%= profile.profile_type  %>
-				<td><%= profile.user_profile_name %>
-				<td>
-				<% for role in profile.roles %>
-					<%= "#{role.name.humanize} " %> 
-				<% end %>
-				</td>
-				</tr>
-			<% end%>
-		</table>
-		TODO: Change the list of roles to a comma separated list
+	Sherman Minton (1890–1965) was a Democratic United States Senator from Indiana and an Associate Justice of the Supreme Court of the United States. He served as a captain in World War I, then launched a legal and political career. In 1934, Minton won election to the United States Senate. As part of the New Deal Coalition, he championed President Franklin D. Roosevelt's unsuccessful court packing plans in the Senate and became one of his top Senate allies. After Minton failed in his 1940 Senate re-election bid, Roosevelt appointed him as a judge to the United States Court of Appeals for the Seventh Circuit. After 
 	</div>
 </div>
+
+<div id='content' class='profiles'>	
+	<div id="tab-bar">
+			<ul>
+				<li><a id = 'settings' href="#">Settings</a></li>
+				<li><a id = 'profile_list' class = 'selected' href="#">Profile list</a></li>
+			</ul>
+	</div>
+	
+	<div id="content-inside">	
+		<div id='settings'>
+			<h2> Setting should be given  here <h2>
+		</div>
+		
+		<div id='profile_list'>			
+			<h2> Profiles Index </h2>
+			<table>
+				<tr>
+					<th> Email </th> <th> Type </th>  <th> Name </th>  <th> Roles </th>
+				</tr>
+				<% for profile in @profiles %>
+					<tr>
+					<td> <%= link_to profile.email, profile_path(profile) %>  </td>
+					<td>  <%= profile.profile_type  %>
+					<td><%= profile.user_profile_name %>
+					<td>
+					<% for role in profile.roles %>
+						<%= "#{role.name.humanize} " %> 
+					<% end %>
+					</td>
+					</tr>
+				<% end%>
+			</table>
+			TODO: Change the list of roles to a comma separated list
+		</div>
+	</div>	
+</div>
+
 

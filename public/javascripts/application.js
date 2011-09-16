@@ -24,6 +24,30 @@ function update_row_count(){
 $(function() {	
 	
 	update_row_count();  
+	
+	$("#content-inside div").hide();
+	$("#content-inside #profile_list").show();	
+	
+	//For the menu items in the #tab-bar
+	$("#tab-bar ul li a").live('click', function() {
+		$("#tab-bar ul li a").removeClass("selected");
+		$(this).addClass("selected");
+		return false;
+	});
+
+	$("#tab-bar #profile_list").live('click', function() {
+		$("#content-inside div").hide();
+		$("#content-inside #profile_list").show();
+		return false;
+	});
+	
+	$("#tab-bar #settings").live('click', function() {
+		$("#content-inside div").hide();
+		$("#content-inside #settings").show();
+		return false;
+	});	
+	
+	
 	//Currently the code is repeated for all the models. This should be made generic in future
 	//INSTITUTIONS
   	$("#institutions th a, #institutions .pagination a").live("click", function() {

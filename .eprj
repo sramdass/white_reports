@@ -101,11 +101,13 @@
             <key>appl</key>
             <string>public\stylesheets\application.css</string>
             <key>applica</key>
-            <string>public\stylesheets\application.css</string>
+            <string>app\views\layouts\application.html.erb</string>
             <key>applicati</key>
             <string>public\javascripts\application.js</string>
             <key>application</key>
             <string>public\javascripts\application.js</string>
+            <key>application.c</key>
+            <string>public\stylesheets\application.css</string>
             <key>application.ht</key>
             <string>app\views\layouts\application.html.erb</string>
             <key>application.htm</key>
@@ -201,7 +203,7 @@
             <key>gemfile</key>
             <string>Gemfile</string>
             <key>index</key>
-            <string>app\views\profiles\index.html.erb</string>
+            <string>app\views\institutions\index.html.erb</string>
             <key>index.h</key>
             <string>app\views\branches\index.html.erb</string>
             <key>index.ht</key>
