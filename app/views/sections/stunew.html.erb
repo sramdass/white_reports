@@ -2,13 +2,15 @@
 	<div class="padding">		
 		<h2> <%= @section.name %> (<%= @section.clazz.name  %>, <%= @section.clazz.branch.name %> ) </h2>
 		<h2> Add Students  </h2>
+	 	<p id="input_table_row_count"> </p>			
 		<%= form_for (@section, :url => stucreate_section_path(@section)) do |f| %>
-			
 			<%= render 'shared/error_messages', :target => @section %>
-			<%= f.fields_for :students do |builder| %>	
-		 	  <%= render "student_fields", :f => builder %>	 	  
-			<% end %>
-			
+			<table class="input_table">
+				<tr> <th> Name </th>  <th> ID Number </th> <th> Gender </th> <th> Date of Birth </th><th> Action </th> </tr>				
+				<%= f.fields_for :students do |builder| %>	
+			 	  <%= render "student_fields", :f => builder %>	 	  
+				<% end %>
+			</table>			
 	     	<p> <%= link_to_add_fields "Add Student", f, :students %> </p>	 	
 			<div class="actions">
 				 <%= f.submit  "Update Students" %> 

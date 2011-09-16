@@ -1,16 +1,18 @@
 <div id="content">
 	<h1><%= @clazz.name %> </h1>
 	<h2> Add Sections  </h2>
-	<%= form_for (@clazz, :url => seccreate_clazz_path(@clazz)) do |f| %>
-	
+	 <p id="input_table_row_count"> </p>		
+	<%= form_for (@clazz, :url => seccreate_clazz_path(@clazz)) do |f| %>	
 		<%= render 'shared/error_messages', :target => @clazz %>
-		<%= f.fields_for :sections do |builder| %>	
-	 	  <%= render "section_fields", :f => builder %>	 	  
-		<% end %>
-		
-     	<p> <%= link_to_add_fields "Add Section", f, :sections %> </p>
-	 	
-     	<p > <%= f.submit  "Update Sections" %> </p>
-		</div>		  
+		<table class="input_table">
+			<tr> <th> Name </th>  <th> Class Teacher </th> <th> Action </th> </tr>				
+			<%= f.fields_for :sections do |builder| %>	
+		 		<%= render "section_fields", :f => builder %>	 	  
+			<% end %>
+		</table>   
+     	<p> <%= link_to_add_fields "Add Section", f, :sections %> </p>	 	
+		<div class="actions">
+	     	<%= f.submit  "Update Sections" %>
+	     </div>       
 	<% end %>
 </div>

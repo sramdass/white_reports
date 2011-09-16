@@ -1,48 +1,14 @@
-<div class = "tfields">
-	
-  	<div class="field">
-		<%= f.label :name %><br />
-	    <%= f.text_field :name %>
-	 </div>
-	 
-	 <div class="field">
-	    <%= f.label :id_no, "ID" %><br />
-	    <%= f.text_field :id_no %>
-	</div>
-	
-	<div class="field">
-	    <%= f.label :tipe, "Type" %><br />
-	    <%= f.text_field :tipe %>
-	</div>
-	  
-	<div class="field">
-	    <%= f.label :principal %><br />
-	    <%= f.text_field :principal %>
-	</div>
-	  
-	<div class="field">
-	    <%= f.label :address %><br />
-	    <%= f.text_area :address, :cols => 30, :rows => 4 %>
-	</div> 
-	
-	<div class="field">
-	    <%= f.label :city %><br />
-	    <%= f.text_field :city %>
-	</div> 
-	
-	<div class="field">
-	    <%= f.label :state %><br />
-	    <%= f.text_field :state %>
-	</div> 
-	
-	<div class="field">
-	    <%= f.label :pin %><br />
-	    <%= f.text_field :pin %>
-	</div> 
- 
-	<%= link_to_remove_fields "Remove this branch", f %><br /><br /><br /><br />
-    
-</div>
+<tr class = "tfields">	
+	<td> <%= f.text_field :name %> </td>
+	<td> <%= f.text_field :id_no, :size=> 10 %> </td>
+	<td> <%= f.text_field :tipe, :size=> 15 %> </td>
+	<td> <%= f.text_field :principal, :size=> 20 %></td>
+	<td> <%= f.text_area :address, :cols => 25, :rows => 2 %> </td>
+	<td> <%= f.text_field :city, :size=> 12 %> </td>
+	<td>	 <%= f.text_field :state, :size=>12  %> </td>
+	<td>	 <%= f.text_field :pin, :size=> 8  %> </td>
+	<td> <%= link_to_remove_fields "Remove", f %> </td>    
+</tr>
  
  
 	

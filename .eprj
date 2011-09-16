@@ -53,7 +53,7 @@
             <key>_student_con</key>
             <string>app\views\students\_student_contact_fields.html.erb</string>
             <key>_student_f</key>
-            <string>app\views\students\_student_fields.html.erb</string>
+            <string>app\views\sections\_student_fields.html.erb</string>
             <key>_student_fi</key>
             <string>app\views\sections\_student_fields.html.erb</string>
             <key>_student_fie</key>
@@ -74,8 +74,12 @@
             <string>app\views\teachers\_teacher_contact_fields.html.erb</string>
             <key>_teacher_con</key>
             <string>app\views\teachers\_teacher_contact_fields.html.erb</string>
+            <key>_teacher_f</key>
+            <string>app\views\branches\_teacher_fields.html.erb</string>
             <key>_teacher_fie</key>
             <string>app\views\branches\_teacher_fields.html.erb</string>
+            <key>_teacher_field</key>
+            <string>app\views\teachers\_teacher_fields.html.erb</string>
             <key>_teachers.htm</key>
             <string>app\views\teachers\_teachers.html.erb</string>
             <key>_test_F</key>
@@ -94,6 +98,8 @@
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
             <string>db\migrate\20110902125155_add_max_marks_to_subjects.rb</string>
+            <key>appl</key>
+            <string>public\stylesheets\application.css</string>
             <key>applica</key>
             <string>public\stylesheets\application.css</string>
             <key>applicati</key>
@@ -138,6 +144,8 @@
             <string>app\models\branch.rb</string>
             <key>branch_cont</key>
             <string>app\controllers\branches_controller.rb</string>
+            <key>branch_fi</key>
+            <string>app\views\institutions\_branch_fields.html.erb</string>
             <key>branches</key>
             <string>app\controllers\branches_controller.rb</string>
             <key>branches_c</key>
@@ -146,6 +154,8 @@
             <string>app\controllers\branches_controller.rb</string>
             <key>branches_cont</key>
             <string>app\controllers\branches_controller.rb</string>
+            <key>branchne</key>
+            <string>app\views\institutions\branchnew.html.erb</string>
             <key>clazz.r</key>
             <string>app\models\clazz.rb</string>
             <key>clazz.rb</key>
@@ -154,6 +164,8 @@
             <string>app\controllers\clazzs_controller.rb</string>
             <key>clazzs_c</key>
             <string>app\controllers\clazzs_controller.rb</string>
+            <key>clzne</key>
+            <string>app\views\branches\clznew.html.erb</string>
             <key>clznew</key>
             <string>app\views\branches\clznew.html.erb</string>
             <key>confere</key>
@@ -314,10 +326,14 @@
             <string>app\models\sec_sub_map.rb</string>
             <key>sec_test</key>
             <string>app\models\sec_test_map.rb</string>
+            <key>secfil</key>
+            <string>app\views\clazzs\_section_fields.html.erb</string>
             <key>secnew</key>
             <string>app\views\schools\secnew.html.erb</string>
             <key>secnew.</key>
             <string>app\views\schools\secnew.html.erb</string>
+            <key>secnew.h</key>
+            <string>app\views\clazzs\secnew.html.erb</string>
             <key>secsu</key>
             <string>app\models\sec_sub_mapper.rb</string>
             <key>sectio</key>

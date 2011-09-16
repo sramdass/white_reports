@@ -1,22 +1,15 @@
-<div class = "tfields">
-	<div class="field">
-		<%= f.label :name %> <br>
-		<%= f.text_field :name, :size => 15 %>
-	</div>
-	<div class="field">
-		<%= f.label :id_no, "ID number"%> <br>
-		<%= f.text_field :id_no, :size => 10 %>
-	</div>
-	<div class="field">
-	 	<%= f.label :female, "Gender" %> <br>
+<tr class = "tfields">
+	<td><%= f.text_field :name, :size => 15 %></td>
+	<td><%= f.text_field :id_no, :size => 10 %></td>
+	<td>
 	 	<% if f.object.new_record?%>
 			<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ] ) , {:include_blank => 'None'}  %>
 		<% else %>
 			<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ], f.object.female? ) , {:include_blank => 'None'}  %>
 		<% end %>		
-	</div> 
-	<%= link_to_remove_fields "remove", f %><br /> <br /> <br />
-</div>
+	</td> 
+	<td>	<%= link_to_remove_fields "Remove", f %></td>	
+</tr>
  
  
 	

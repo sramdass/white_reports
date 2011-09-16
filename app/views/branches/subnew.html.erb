@@ -1,9 +1,11 @@
 <div id="content">
 	<h1><%= @branch.name %> </h1>
-	<h2> Add Subjects  </h2>
+	<h2>Add Subjects </h2>
+	 <p id="input_table_row_count"> </p>
 	<%= form_for (@branch, :url => subcreate_branch_path(@branch)) do |f| %>
 		
 		<%= render 'shared/error_messages', :target => @branch %>
+		
 		<table class="input_table">
 			<tr> <th> Test name </th><th> Max Marks </th> <th> Action </th> </tr>			
 			<%= f.fields_for :subjects do |builder| %>	

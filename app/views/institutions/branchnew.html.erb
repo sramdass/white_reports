@@ -2,17 +2,19 @@
 	<div class="padding">			
 		<h1><%= @institution.name %> </h1>
 		<h2> Add Branches  </h2>
-		<%= form_for (@institution, :url => branchcreate_institution_path(@institution)) do |f| %>
-		
+	 	<p id="input_table_row_count"> </p>			
+		<%= form_for (@institution, :url => branchcreate_institution_path(@institution)) do |f| %>		
 			<%= render 'shared/error_messages', :target => @institution %>
-			<%= f.fields_for :branches do |builder| %>	
-		 	  <%= render "branch_fields", :f => builder %>	 	  
-			<% end %>
-			
-	     	<p> <%= link_to_add_fields "Add Branch", f, :branches %> </p>
-		 	
-	     	<p > <%= f.submit  "Update Branches" %> </p>
-			</div>		  
+			<table class="input_table">
+				<tr> <th> Name </th> <th> ID Number </th> <th> Type </th><th> Principal </th> <th> Address </th><th> City </th> <th> State </th><th> Pin </th> <th> Action </th> </tr>			
+				<%= f.fields_for :branches do |builder| %>	
+			 	 	<%= render "branch_fields", :f => builder %>	 	  
+				<% end %>		
+			</table>   	
+	     	<p> <%= link_to_add_fields "Add Branch", f, :branches %> </p>		 	
+			<div class="actions">
+		     	<%= f.submit  "Update Branches" %>
+		     </div>      
 		<% end %>
 	</div>
 </div>

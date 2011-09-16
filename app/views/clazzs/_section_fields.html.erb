@@ -1,13 +1,13 @@
-
-<div class = "tfields">
-	<%= f.label :name %>
-	<%= f.text_field :name, :size => 15 %>
-	
-	<%= f.select :class_teacher_id, options_for_select(@teachers.collect {|t| [ t.name, t.id ] } , f.object.class_teacher_id) , {:prompt => "Select class teacher"}  %>
- 
-	<%= link_to_remove_fields "remove", f %><br />
-    
-</div>
+<tr class = "tfields">	
+	<td><%= f.text_field :name, :size => 15 %></td>	
+	<!-- Get the teachers list here. If the '@teachers' is assigned in secnew in controller,
+			 there will be problems when the seccreate get an error (from validations) and 
+			 renders the secnew. In this case '@teachers' will be blank.		
+	-->	
+	<% teachers = @clazz.branch.teachers %> 
+	<td><%= f.select :class_teacher_id, options_for_select(teachers.collect {|t| [ t.name, t.id ] } , f.object.class_teacher_id) , {:prompt => "Class teacher"}  %></td>
+ 	<td><%= link_to_remove_fields "remove", f %></td>
+</tr>
  
  
 	
