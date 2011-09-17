@@ -3,6 +3,10 @@ module ApplicationHelper
 		name
 	end
 	
+	def default_tab?(action)
+		@default_tab == action
+	end
+	
 	def sortable(column, title = nil)
 	  title ||= column.titleize
 	  css_class = column == sort_column ? "arrow #{sort_direction}" : nil

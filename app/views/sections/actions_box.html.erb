@@ -1,0 +1,26 @@
+<div id="content_box">	
+	<div id="tab_bar">
+			<ul>
+				<li><a id = 'section_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+				<% if can? :update, @section%>
+					<li><a id = 'section_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+				<% end %>
+				<% if can? :update_section_elements, @section%>				
+					<li><a id = 'section_update_students' <% if default_tab?('stunew') %> class = 'selected' <% end %> href="#">Update Students</a></li>
+				<% end %>
+			</ul>
+	</div>		
+	<div id="main_content">			
+		<div id='section_show' class='cantoggle'>	
+			<%= render 'show', :section => @section %>
+		</div> 		
+		<div id='section_edit' class='cantoggle'>
+			<%= render 'edit', :section => @section %>
+		</div> 	
+		<div id='section_update_students' class='cantoggle'>	
+			<%= render 'stunew', :section => @section %>
+		</div> 		
+
+	</div>		<!-- END of main_content -->
+</div>		<!-- End of content_box -->
+

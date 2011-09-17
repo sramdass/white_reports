@@ -1,0 +1,31 @@
+<p>
+ 	 <b>Name:</b>
+  	<%= clazz.name %>
+</p>
+
+<p>
+ 	 <b>Branch:</b>
+  	<%= link_to clazz.branch.name, branch_path(clazz.branch) %>
+</p>
+
+<p>
+ 	 <b>Institution:</b>
+  	<%= link_to clazz.branch.institution.name, institution_path(clazz.branch.institution) %>
+</p>
+
+<h2> Sections list </h2>
+
+<p>
+	<ul>
+	<% clazz.sections.each do |s| %>
+		<li> 	
+			<%= link_to s.name, section_path(s) %>
+			<% if s.class_teacher_id %>
+				- <%=Teacher.find(s.class_teacher_id).name %> 
+			<% end %>
+			
+		</li>
+	<% end %>
+	</ul>		
+</p>	
+

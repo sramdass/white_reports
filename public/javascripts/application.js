@@ -25,28 +25,28 @@ $(function() {
 	
 	update_row_count();  
 	
-	$("#content-inside div").hide();
-	$("#content-inside #profile_list").show();	
+	//COMMON
+	//Initially hide all the divs
+	$("#main_content div.cantoggle").hide();
 	
-	//For the menu items in the #tab-bar
-	$("#tab-bar ul li a").live('click', function() {
-		$("#tab-bar ul li a").removeClass("selected");
+	//Show the default divs
+	selected_tab_link = $("#tab_bar ul li a.selected")
+	selected_tab_link_id = selected_tab_link.attr('id')
+	hashed_id =  '#' + selected_tab_link_id
+	default_div_2_show = "#main_content" + " " + hashed_id
+	$(default_div_2_show).show();	
+	
+	//For the menu items in the #tab_bar
+	$("#tab_bar ul li a").live('click', function() {
+		$("#tab_bar ul li a").removeClass("selected");
 		$(this).addClass("selected");
+		hashed_id =  '#' + $(this).attr('id')
+		div2show = "#main_content" + " " + hashed_id
+		$("#main_content div.cantoggle").hide();
+		$(div2show).show();	
 		return false;
 	});
 
-	$("#tab-bar #profile_list").live('click', function() {
-		$("#content-inside div").hide();
-		$("#content-inside #profile_list").show();
-		return false;
-	});
-	
-	$("#tab-bar #settings").live('click', function() {
-		$("#content-inside div").hide();
-		$("#content-inside #settings").show();
-		return false;
-	});	
-	
 	
 	//Currently the code is repeated for all the models. This should be made generic in future
 	//INSTITUTIONS

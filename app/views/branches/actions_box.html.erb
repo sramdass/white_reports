@@ -1,0 +1,37 @@
+<div id="content_box">	
+	<div id="tab_bar">
+			<ul>
+				<li><a id = 'branch_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+				<% if can? :update, @branch%>
+					<li><a id = 'branch_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+				<% end %>
+				<% if can? :update_branch_elements, @branch%>				
+					<li><a id = 'branch_update_teachers' <% if default_tab?('tchrnew') %> class = 'selected' <% end %> href="#">Update Teachers</a></li>
+					<li><a id = 'branch_update_subjects' <% if default_tab?('subnew') %> class = 'selected' <% end %> href="#">Update Subjects</a></li>
+					<li><a id = 'branch_update_tests' <% if default_tab?('testnew') %> class = 'selected' <% end %> href="#">Update Tests</a></li>
+					<li><a id = 'branch_update_classes' <% if default_tab?('clznew') %> class = 'selected' <% end %> href="#">Update Classes</a></li>
+				<% end %>
+			</ul>
+	</div>		
+	<div id="main_content">			
+		<div id='branch_show' class='cantoggle'>	
+			<%= render 'show', :branch => @branch %>
+		</div> 		
+		<div id='branch_edit' class='cantoggle'>
+			<%= render 'edit', :branch => @branch %>
+		</div> 	
+		<div id='branch_update_teachers' class='cantoggle'>	
+			<%= render 'tchrnew', :branch => @branch %>
+		</div> 		
+		<div id='branch_update_subjects' class='cantoggle'>	
+			<%= render 'subnew', :branch => @branch %>
+		</div> 		
+		<div id='branch_update_tests' class='cantoggle'>
+			<%= render 'testnew', :branch => @branch %>
+		</div> 	
+		<div id='branch_update_classes' class='cantoggle'>	
+			<%= render 'clznew', :branch => @branch %>
+		</div> 			
+	</div>		<!-- END of main_content -->
+</div>		<!-- End of content_box -->
+

@@ -1,0 +1,51 @@
+<p>
+	<h2>  <%= student.name %>  (<%= student.female? ? "Female" : "Male" %>) </h2>
+</p>
+
+<p>
+	<b>DOB: </b>
+	<%= student.dob %>
+</p>
+
+<p>
+	<b>ID no:</b>
+	<%= student.id_no %>
+</p>
+
+<p>
+	<b>Section:</b>
+	<%= student.section.name %> in  <i> <%= student.section.clazz.branch.name %> </i>
+</p>
+
+<% if student.student_contact %>
+	<h3> Contact information </h3>			
+	<p>
+		<b> Email: </b>
+		<%= student.student_contact.primary_email  %> , <i> <%= student.student_contact.email %> </i>				
+	</p>		
+	<p>
+		<b> Address: </b> <br>
+		<%= student.student_contact.address %> <br> <br>				
+		<b> Phone: </b><%= student.student_contact.mobile%> | <%= student.student_contact.telephone%>				
+	</p>
+<% else %>
+	<% if can? :update, student%>
+		<h3> Contact information not available yet </h3>
+		Go to edit tab to update.!
+	<% end %>
+<% end %>
+		
+<br><br>
+<% if can? :update, student%>
+	<%= link_to 'Edit this student', edit_student_path(student) %>  | 
+<% end %>
+
+<% if can? :communicate, student%>
+	<%= link_to 'Email', emailnew_student_path(student) %> |
+	<%= link_to 'SMS', smsnew_student_path(student) %> |
+<% end %>
+
+<% if can? :index, Student%>
+	<%= link_to 'Students Index', students_path %> 
+<% end %>
+

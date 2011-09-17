@@ -1,4 +1,14 @@
 class BranchesController < ApplicationController
+	
+# ---------------WHAT IS @default_tab?--------------------------#
+	
+# '@default_tab' determines what the user should view when - 1. there is a update
+# action (action that needs to render other action's view to redirect), 2. when the 
+# actions_box view is rendered. According to the '@default_tab' value, a particular
+# tab will be selected in the actions_box's view	
+# --------------------------------------------------------------#	
+
+	
 # for cancan authorizatoin
 load_and_authorize_resource
 #-----------------------------------------------------------#	
@@ -83,10 +93,12 @@ helper_method :sort_column, :sort_direction
 
     respond_to do |format|
       if @branch.update_attributes(params[:branch])
-        format.html { redirect_to(@branch, :notice => 'Branch was successfully updated.') }
+		@default_tab = 'show'      	
+        format.html { redirect_to(actions_box_branch_path(@branch), :notice => 'Branch was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+      	@default_tab = 'edit'
+        format.html { render :action => "actions_box" }
         format.xml  { render :xml => @branch.errors, :status => :unprocessable_entity }
       end
     end
@@ -107,6 +119,17 @@ helper_method :sort_column, :sort_direction
   end
 
 #-----------------------------------------------------------#
+
+def actions_box
+    #@branch = branch.find(params[:id])
+	@default_tab = 'show'
+    respond_to do |format|
+      format.html # actions_box.html.erb
+      format.xml  { render :xml => @branch }
+    end	
+end
+
+#-----------------------------------------------------------#
   
   def tchrnew
   	#@branch = Branch.find(params[:id])
@@ -118,10 +141,12 @@ helper_method :sort_column, :sort_direction
   	 #@branch = Branch.find(params[:id])
   	 respond_to do |format|
       if @branch.update_attributes(params[:branch])
-        format.html { redirect_to(@branch, :notice => ' Teachers were successfully updated.') }
+		@default_tab='show'
+		format.html { redirect_to(actions_box_branch_path(@branch)	, :notice => ' Branches were successfully updated.') }      	
         format.xml  { head :ok }
       else
-        format.html { render :action => "tchrnew" }
+	    @default_tab = 'tchrnew'
+	    format.html { render :action => "actions_box" }
         format.xml  { render :xml => @branch.errors, :status => :unprocessable_entity }
       end
     end
@@ -140,10 +165,12 @@ helper_method :sort_column, :sort_direction
   	 #@branch = Branch.find(params[:id])
   	 respond_to do |format|
       if @branch.update_attributes(params[:branch])
-        format.html { redirect_to(@branch, :notice => ' Classes were successfully updated.') }
+		@default_tab='show'
+		format.html { redirect_to(actions_box_branch_path(@branch)	, :notice => ' Branches were successfully updated.') }      	
         format.xml  { head :ok }
       else
-        format.html { render :action => "clznew" }
+	    @default_tab = 'clznew'
+	    format.html { render :action => "actions_box" }      	
         format.xml  { render :xml => @branch.errors, :status => :unprocessable_entity }
       end
     end
@@ -157,18 +184,20 @@ helper_method :sort_column, :sort_direction
   	
 #-----------------------------------------------------------#
   	
-  	 def subcreate
-	  	 #@branch = Branch.find(params[:id])
-	  	 respond_to do |format|
-	      if @branch.update_attributes(params[:branch])
-	        format.html { redirect_to(@branch, :notice => ' Subjects were successfully updated.') }
-	        format.xml  { head :ok }
-	      else
-	        format.html { render :action => "subnew" }
-	        format.xml  { render :xml => @branch.errors, :status => :unprocessable_entity }
-	      end
-    end
-  end
+	def subcreate
+	#@branch = Branch.find(params[:id])
+		respond_to do |format|
+			if @branch.update_attributes(params[:branch])
+				@default_tab='show'
+				format.html { redirect_to(actions_box_branch_path(@branch)	, :notice => ' Branches were successfully updated.') }      	
+				format.xml  { head :ok }
+			else
+				@default_tab = 'subnew'
+				format.html { render :action => "actions_box" }      	
+				format.xml  { render :xml => @branch.errors, :status => :unprocessable_entity }
+			end
+		end
+	end
 
 #-----------------------------------------------------------#
 
@@ -182,10 +211,12 @@ helper_method :sort_column, :sort_direction
 	  	 #@branch = Branch.find(params[:id])
 	  	 respond_to do |format|
 	      if @branch.update_attributes(params[:branch])
-	        format.html { redirect_to(@branch, :notice => ' Tests were successfully updated.') }
+			@default_tab='show'
+			format.html { redirect_to(actions_box_branch_path(@branch)	, :notice => ' Branches were successfully updated.') }      	
 	        format.xml  { head :ok }
 	      else
-	        format.html { render :action => "testnew" }
+		    @default_tab = 'testnew'
+		    format.html { render :action => "actions_box" }      	
 	        format.xml  { render :xml => @branch.errors, :status => :unprocessable_entity }
 	      end
     end

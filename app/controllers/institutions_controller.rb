@@ -1,5 +1,13 @@
 class InstitutionsController < ApplicationController
 	
+# ---------------WHAT IS @default_tab?--------------------------#
+	
+# '@default_tab' determines what the user should view when - 1. there is a update
+# action (action that needs to render other action's view to redirect), 2. when the 
+# actions_box view is rendered. According to the '@default_tab' value, a particular
+# tab will be selected in the actions_box's view	
+# --------------------------------------------------------------#		
+	
 # for cancan authorizatoin
 load_and_authorize_resource
 
@@ -86,10 +94,12 @@ helper_method :sort_column, :sort_direction
 
     respond_to do |format|
       if @institution.update_attributes(params[:institution])
-        format.html { redirect_to(@institution, :notice => 'Institution was successfully updated.') }
+		@default_tab = 'show'      	
+        format.html { redirect_to(actions_box_institution_path(@institution), :notice => 'Institution was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+      	@default_tab = 'edit'
+        format.html { render :action => "actions_box" }
         format.xml  { render :xml => @institution.errors, :status => :unprocessable_entity }
       end
     end
@@ -108,6 +118,17 @@ helper_method :sort_column, :sort_direction
       format.xml  { head :ok }
     end
   end
+  
+#-----------------------------------------------------------#
+
+def actions_box
+    #@institution = institution.find(params[:id])
+	@default_tab = 'show'
+    respond_to do |format|
+      format.html # actions_box.html.erb
+      format.xml  { render :xml => @institution }
+    end	
+end  
 
 #-----------------------------------------------------------#
   
@@ -121,10 +142,12 @@ helper_method :sort_column, :sort_direction
   	 #@institution = Institution.find(params[:id])
   	 respond_to do |format|
       if @institution.update_attributes(params[:institution])
-        format.html { redirect_to(@institution, :notice => ' Branches were successfully updated.') }
+		@default_tab='show'
+		format.html { redirect_to(actions_box_institution_path(@institution)	, :notice => ' Branches were successfully updated.') }      	
         format.xml  { head :ok }
       else
-        format.html { render :action => "branchnew" }
+	    @default_tab = 'branchnew'
+	    format.html { render :action => "actions_box" }
         format.xml  { render :xml => @institution.errors, :status => :unprocessable_entity }
       end
     end

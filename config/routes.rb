@@ -7,6 +7,7 @@ WhiteReports::Application.routes.draw do
 	resources :institutions do
 		get 'branchnew', :on => :member
 		put 'branchcreate', :on => :member
+		get 'actions_box', :on => :member		
 	end
 		
 	resources :branches do
@@ -21,6 +22,7 @@ WhiteReports::Application.routes.draw do
 		
 		get 'testnew', :on => :member
 		put 'testcreate', :on => :member	 
+		get 'actions_box', :on => :member		
 	end
 	
 	#resources :schools do
@@ -41,28 +43,32 @@ WhiteReports::Application.routes.draw do
 		get 'stunew', :on => :member
 		put 'stucreate', :on => :member
 		get 'emailnew', :on => :member
-		post 'email', :on => :member				
+		post 'email', :on => :member			
+		get 'actions_box', :on => :member			
 	end
 	
 	resources :clazzs do
 		get 'secnew', :on => :member
 		put 'seccreate', :on => :member
 		get 'emailnew', :on => :member
-		post 'email', :on => :member				
+		post 'email', :on => :member		
+		get 'actions_box', :on => :member				
 	end	
 	
 	resources :students do
 		get 'emailnew', :on => :member
 		post 'email', :on => :member
 		get 'smsnew', :on => :member
-		post 'sms', :on => :member		
+		post 'sms', :on => :member
+		get 'actions_box', :on => :member
 	end
 	
 	resources :teachers do
 		get 'emailnew', :on => :member
 		post 'email', :on => :member	
 		get 'smsnew', :on => :member
-		post 'sms', :on => :member				
+		post 'sms', :on => :member	
+		get 'actions_box', :on => :member					
 	end
 	
 	resources :subjects

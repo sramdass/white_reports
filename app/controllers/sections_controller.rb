@@ -1,4 +1,12 @@
 class SectionsController < ApplicationController
+	
+# ---------------WHAT IS @default_tab?--------------------------#
+	
+# '@default_tab' determines what the user should view when - 1. there is a update
+# action (action that needs to render other action's view to redirect), 2. when the 
+# actions_box view is rendered. According to the '@default_tab' value, a particular
+# tab will be selected in the actions_box's view	
+# --------------------------------------------------------------#	
 
 # for cancan authorizatoin
 load_and_authorize_resource
@@ -22,25 +30,27 @@ helper_method :sort_column, :sort_direction
 
   def show
     #@section = Section.find(params[:id])
-
+	@default_tab = 'show'
+	render :action => "actions_box" 
+=begin
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @section }
     end
+=end
   end
   
   
   def edit
     #@section = Section.find(params[:id])
-    @subjects = @section.clazz.branch.subjects ||= []
-    @teachers = @section.clazz.branch.teachers ||= []
-    @tests = @section.clazz.branch.tests ||= []
-    @title = "Edit Section"
+	@default_tab = 'edit'
+	render :action => "actions_box" 
   end
 
 
 	def update
 		#@section = Section.find(params[:id])
+		@default_tab = 'show'   		
 		params[:section][:subject_ids] ||= []
 		params[:section][:test_ids] ||= []
 		@section.attributes = params[:section]
@@ -67,10 +77,11 @@ helper_method :sort_column, :sort_direction
 		if @section.valid? && @section.sec_sub_maps.all?(&:valid?) &&  ret
 			@section.save!
 			@section.sec_sub_maps.each(&:save!)
-			redirect_to @section
+			@default_tab='show'
+			redirect_to (@section,  :notice => 'Section was successfully updated.')
 		else
-			@title = "Edit Section"
-			render 'edit', :id => @section.id
+	    	@default_tab = 'edit'
+	        format.html { render :action => "actions_box" }
 		end
 	end
 
@@ -78,23 +89,37 @@ helper_method :sort_column, :sort_direction
   
   def stunew
   	#@section = Section.find(params[:id])
+	@default_tab = 'stunew'
+	render :action => "actions_box" 
   end
   
 #-----------------------------------------------------------#
 
   def stucreate
   	 #@section = Section.find(params[:id])
-  	 respond_to do |format|
+	respond_to do |format|
 	    if @section.update_attributes(params[:section])
-	    	format.html { redirect_to(@section, :notice => ' Students were successfully updated.') }
+			@default_tab='show'
+	        format.html { redirect_to (@section,  :notice => 'Students were successfully updated.')}
 	    	format.xml  { head :ok }
 	    else
-	        format.html { render :action => "stunew" }
+	    	@default_tab = 'stunew'
+	        format.html { render :action => "actions_box" }
 	        format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
 	    end
     end
   end
 
+#-----------------------------------------------------------#
+
+def actions_box
+	 #@section = Section.find(params[:id])
+	@default_tab = 'show'
+    respond_to do |format|
+      format.html # actions_box.html.erb
+      format.xml  { render :xml => @section }
+    end	
+end
 #-----------------------------------------------------------#
 
    def sort_column

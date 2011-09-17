@@ -21,7 +21,7 @@ class Ability
 	
 	def initialize(profile)
 	#Provide the aliases for the actions here	
-		alias_action :index, :show, :to => :read
+		alias_action :index, :show, :actions_box, :to => :read
 		alias_action :new, :to => :create
 		alias_action :edit, :to => :update
 		alias_action :smsnew, :sms, :emailnew, :email, :to => :communicate
@@ -30,6 +30,7 @@ class Ability
 		alias_action :subnew, :subcreate, :clznew, :clzcreate, :testnew, :testcreate, :tchrnew, :tchrcreate, :to => :update_branch_elements
 		alias_action :branchnew, :branchcreate, :to => :update_institution_elements
 		@profile = profile
+		@profile ||= Profile.new
 		@profile.roles.each { |role| send(role.name) }
 	end
 		

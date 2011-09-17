@@ -34,45 +34,52 @@ body {
 	width:180px;
 }
 #header {
-	background: #F4F5FB;
-	/* border: #efefef solid 1px; */
+	background: #092;
+	 border-bottom: #fff solid 1px; 
 	height: 50px;
+	color: #fff;	
+	padding-top: 20px; /* if this is changed to a lower value, the text moves to the middle. Need to debug.*/
+	padding-left: 10px;
 }
 
-#tab-bar{
+#header a{
+	color: #fff;	
+}
+
+#tab_bar{
 	color:#fff;
 	background: #092;
 	height: 50px;
 	
 }
-#tab-bar ul {
+#tab_bar ul {
 	float:right;
 	height:50px;
 	list-style:none;
-	width:500px;
+	width:700px;
 	/* background: #000; */
 	margin:0 0 0 0px;
 }
-#tab-bar ul li {
+#tab_bar ul li {
 	border-right:1px solid #fff;
 	float:right;
 	height:50px;
 	list-style:none;
-	width:100px;
+	width:75px;
 }
 
-#tab-bar ul li a {
+#tab_bar ul li a {
 	color:#fff;
 	display:block;
 	height:50px;
 	padding:20px 0 0 0;
 	text-align:center;
-	width:100px;
+	width:75px;
 	text-decoration:none;
 	
 }
 
-#tab-bar ul li a.selected {
+#tab_bar ul li a.selected {
 	background:#fff;
 	color:#666;
 }
@@ -112,7 +119,7 @@ body {
 	padding: 25px;
 }
 
-#content {
+#content_box {
 	/* border: #efefef solid 1px; */
 	margin-right: 280px;
 }
@@ -123,23 +130,23 @@ h1 {
 	padding-bottom: 20px;
 }
 
-#content h2 {
+#content_box h2 {
 	margin: 0;
 	padding: 0;
 	padding-bottom: 15px;
 }
 
-#content p {
+#content_box p {
 	margin: 0;
 	padding: 0;
 	padding-bottom: 15px;
 }
 
-#content .field {
+#content_box .field {
 	padding: 6px;	
 }
 
-#content .actions {
+#content_box .actions {
 	padding-top: 10px;
 	padding-bottom: 40px;
 	padding-right: 6px;

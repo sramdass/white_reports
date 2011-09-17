@@ -1,0 +1,18 @@
+<h1><%= branch.name %> </h1>
+<h2> Add Teachers  </h2>
+<p id="input_table_row_count"> hello </p>
+<%= form_for (branch, :url => tchrcreate_branch_path(branch)) do |f| %>			
+    <%= render 'shared/error_messages', :target => branch %>
+    
+    <table class="input_table">
+		<tr> <th> Name </th><th> ID Number </th> <th> Gender </th> <th> Action </th> </tr>					
+		<%= f.fields_for :teachers do |builder| %>	
+	 	  <%= render "teacher_fields", :f => builder %>	 	  
+		<% end %>
+	</table>   			
+ 	<p> <%= link_to_add_fields "Add Teacher", f, :teachers %> </p>
+ 	
+	<div class="actions">
+		 <%= f.submit  "Update Teachers" %> 
+	</div>		  
+<% end %>

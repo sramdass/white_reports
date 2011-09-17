@@ -94,19 +94,25 @@
             <string>app\models\ability.rb</string>
             <key>ability.rb</key>
             <string>app\models\ability.rb</string>
+            <key>actions_b</key>
+            <string>app\views\students\actions_box.html.erb</string>
+            <key>actions_box</key>
+            <string>app\views\students\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
             <string>db\migrate\20110902125155_add_max_marks_to_subjects.rb</string>
             <key>appl</key>
-            <string>public\stylesheets\application.css</string>
-            <key>applica</key>
             <string>app\views\layouts\application.html.erb</string>
+            <key>applica</key>
+            <string>public\stylesheets\application.css</string>
             <key>applicati</key>
             <string>public\javascripts\application.js</string>
             <key>application</key>
-            <string>public\javascripts\application.js</string>
+            <string>public\stylesheets\application.css</string>
             <key>application.c</key>
+            <string>public\stylesheets\application.css</string>
+            <key>application.css</key>
             <string>public\stylesheets\application.css</string>
             <key>application.ht</key>
             <string>app\views\layouts\application.html.erb</string>
@@ -164,6 +170,8 @@
             <string>app\models\clazz.rb</string>
             <key>clazzs</key>
             <string>app\controllers\clazzs_controller.rb</string>
+            <key>clazzs_C</key>
+            <string>app\controllers\clazzs_controller.rb</string>
             <key>clazzs_c</key>
             <string>app\controllers\clazzs_controller.rb</string>
             <key>clzne</key>
@@ -185,7 +193,7 @@
             <key>edit</key>
             <string>app\views\teachers\edit.html.erb</string>
             <key>edit.htm</key>
-            <string>app\views\sections\edit.html.erb</string>
+            <string>app\views\students\edit.html.erb</string>
             <key>edit.html</key>
             <string>app\views\students\edit.html.erb</string>
             <key>email_f</key>
@@ -213,13 +221,15 @@
             <key>index.html</key>
             <string>app\views\institutions\index.html.erb</string>
             <key>index.html.e</key>
-            <string>app\views\schools\index.html.erb</string>
+            <string>app\views\profiles\index.html.erb</string>
             <key>index.html.er</key>
             <string>app\views\sections\index.html.erb</string>
             <key>index.html.erb</key>
             <string>app\views\schools\index.html.erb</string>
             <key>index.js</key>
             <string>app\views\teachers\index.js.erb</string>
+            <key>insitutions_C</key>
+            <string>app\controllers\institutions_controller.rb</string>
             <key>instit</key>
             <string>app\models\institution.rb</string>
             <key>institu</key>
@@ -375,13 +385,13 @@
             <key>setup_ma</key>
             <string>config\initializers\setup_mail.rb</string>
             <key>show</key>
-            <string>app\views\teachers\show.html.erb</string>
+            <string>app\views\sections\show.html.erb</string>
             <key>show.ht</key>
             <string>app\views\subjects\show.html.erb</string>
             <key>show.htm</key>
             <string>app\views\sections\show.html.erb</string>
             <key>show.html</key>
-            <string>spec\views\students\show.html.erb_spec.rb</string>
+            <string>app\views\students\show.html.erb</string>
             <key>show.html.</key>
             <string>app\views\schools\show.html.erb</string>
             <key>show.html.e</key>
