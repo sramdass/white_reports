@@ -1,15 +1,22 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
 
-<table>
+<table class='index_table_z' summary="Institutions Index">
+    <thead>	
 	<tr>
-		<th> <%=sortable "name" %></th>
-		<th><%= sortable "id_no", "ID" %></th>
-		<th><%= sortable "ceo", "CEO" %></th>
-		<th> <%= "Registered Address" %></th>
-		<th>Actions</th>
+		<th scope="col"> <%=sortable "name" %></th>
+		<th scope="col"><%= sortable "id_no", "ID" %></th>
+		<th scope="col"><%= sortable "ceo", "CEO" %></th>
+		<th scope="col"> <%= "Registered Address" %></th>
+		<th scope="col">Actions</th>
 	</tr>
-
+	</thead>
+    <tfoot>
+    	<tr>
+        	<td colspan="5"><em>Click on a particular institution to view the details</em></td>
+        </tr>
+    </tfoot>	
+    <tbody>
 	<% @institutions.each do |institution| %>
 		<tr>
 			<td><%= link_to institution.name, institution %></td>
@@ -20,5 +27,7 @@
 				    <%= link_to 'Destroy', institution, :confirm => 'Are you sure?', :method => :delete %> </td>
 		</tr>
 	<% end %>
+    </tbody>	
 </table>		
+
 <%= will_paginate @institutions %>

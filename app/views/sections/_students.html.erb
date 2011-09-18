@@ -1,0 +1,23 @@
+<table class='index_table_z' summary="Section students index">
+    <thead>	
+		<tr>
+			<th scope="col"> Name </th>
+			<th scope="col"> ID number </th>
+			<th scope="col"> Gender </th>
+			<th scope="col"> Date of Birth </th>			
+		</tr>
+	</thead>
+    <tbody>
+	<% section.students.each do |s| %>
+		<tr>
+			<td> <%= s.name %> </td>
+			<td>	<%= s.id_no%>	</td>
+			<td>	<%= s.female? ? "Female" : "Male" %>	</td>
+			<td>	<%= s.dob %>	</td>						
+		</tr>
+	<% end %>
+    </tbody>	
+</table>		
+
+
+

@@ -25,6 +25,6 @@ class TeacherContact < ActiveRecord::Base
             										:uniqueness => true,   
             										:format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }  
 	validates 	:email, :mobile, :telephone,		:length => {:maximum => 50}
-	validates 	:address,	:length => {:maximum => 150}	
+	validates 	:address,	:length => {:maximum => 500}	
 	 
 end

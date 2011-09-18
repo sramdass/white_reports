@@ -31,7 +31,7 @@ helper_method :sort_column, :sort_direction
   def show
     #@student = Student.find(params[:id])
   	@default_tab = 'show'
-	render :action => 'actions_box'
+	render :actions_box
 =begin
     respond_to do |format|
       format.html # show.html.erb
@@ -52,7 +52,7 @@ helper_method :sort_column, :sort_direction
         format.xml  { head :ok }
       else
       	@default_tab = 'edit'
-        format.html { render :action => 'actions_box' }
+        format.html { render :actions_box }
         format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
       end
     end
@@ -78,7 +78,7 @@ def edit
 		@student.build_student_contact	
 	end		
   	@default_tab = 'edit'
-	render :action => 'actions_box' 
+	render :actions_box
 end	
 
 #-----------------------------------------------------------#
@@ -86,14 +86,13 @@ end
 def emailnew
 	#@student = Student.find(params[:id])
   	@default_tab = 'emailnew'
-	render :action => 'actions_box' 
+	render :actions_box
 end	
 
 #-----------------------------------------------------------#
 
 def email	
 	#@student = Student.find(params[:id])
-	@default_tab = 'show'	
 	# to, cc, bcc, subject, message are part of the 'params' hash
 	SchoolMailer.email_student(@student, params).deliver
 	@default_tab='show'
@@ -105,7 +104,7 @@ end
 def smsnew
 	#@student = Student.find(params[:id])
   	@default_tab = 'smsnew'
-	render :action => 'actions_box' 
+	render :actions_box
 end	
 
 #-----------------------------------------------------------#
@@ -123,7 +122,7 @@ def actions_box
 	#@student = Student.find(params[:id])
 	@default_tab = 'show'
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # actions_box.html.erb
       format.xml  { render :xml => @student }
     end	
 end

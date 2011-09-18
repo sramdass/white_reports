@@ -1,55 +1,51 @@
-<h1>Edit Section</h1>
-
-<p>
- 	<h2>  <%= section.name %> </h2>
-</p>
-
-<p>
-	 <b>Class:  </b>
-	 <%= section.clazz.name  %> ( <%= link_to section.clazz.branch.name, branch_path(section.clazz.branch) %> )
-</p>
-
-<p>
-	<b>Class Teacher :  </b>
-	<%= Teacher.find(section.class_teacher_id).name %>
-</p>
-
 <!-- Initialize the variables here (to be safe if there is nil) -->
 <% subjects = section.clazz.branch.subjects ||= [] %>
 <% teachers = section.clazz.branch.teachers ||= [] %>
 <% tests = section.clazz.branch.tests ||= [] %>
 
-<%= form_for section do |f| %> 
-	
-	<h3> Subjects </h3>
-	<% for subject in subjects %>
-	  	<div>
-		    <%= check_box_tag "section[subject_ids][]", subject.id, section.subjects.include?(subject) %>
-		    <%= label_tag subject.name  %>
-		    				
-		    <% if section.subjects.include?(subject) %>
-		        <% t_id = subject.sec_sub_maps.find_by_section_id(section.id).teacher_id %>
-		    <% else %>
-		    	<% t_id = 0%>
-			<%  end %>
-							  
-		    <%= select ( "teacher", "#{subject.id}", teachers.map {|p| [ p.name, p.id ] }, {:include_blank => 'None', :selected => t_id}) %>   		    		
-	 	 </div>
-	<% end %>
-	
-	<h3> Tests </h3>
-	<% for test in tests %>
-	  	<div>
-		    <%= check_box_tag "section[test_ids][]", test.id, section.tests.include?(test) %>
-		    <%= label_tag test.name  %>			
-	 	 </div>
-	<% end %>				    
-			
-	 <div class="actions">
-	    <%= f.submit "Update section" %>
-	 </div>
-
+<%= form_for section, :html => { :class => "zaform"} do |f| %> 
+	<fieldset> 
+	<legend>Subjects and Tests</legend> 
+	<ol> 	
+		
+		<li> <!-- Start of Subjects -->
+			<fieldset> 
+				<legend>Select the Subjects</legend> 
+				<table>
+				<% for subject in subjects %>
+					<tr> 
+						<td> 
+							<label> <%= check_box_tag "section[subject_ids][]", subject.id, section.subjects.include?(subject) %> <%= subject.name  %>  </label>
+						</td>								
+						<% if section.subjects.include?(subject) %>
+					        <% t_id = subject.sec_sub_maps.find_by_section_id(section.id).teacher_id %>
+					    <% else %>
+					    	<% t_id = 0%>
+						<%  end %> 						  
+					    <td> 
+					    	<label> <%= select ( "teacher", "#{subject.id}", teachers.map {|p| [ p.name, p.id ] }, {:include_blank => 'None', :selected => t_id}) %>   </label> 
+					    </td> 
+					</tr>
+				<% end %>					
+				</table>
+			</fieldset>
+		</li> <!-- End of Subjects -->
+		
+		<li> <!-- Start of Tests -->
+			<fieldset> 
+				<legend>Select the Tests</legend> 
+				<% for test in tests %>
+				 	<label> <%= check_box_tag "section[test_ids][]", test.id, section.tests.include?(test) %> <%= test.name  %> </label>
+				<% end %>	
+			</fieldset>
+		</li> <!-- End of Tests -->
+	</ol> 
+	</fieldset> 	
+	<%= f.submit "Update section" %>
 <% end %>
+
+
+
 
 
 

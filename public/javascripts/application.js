@@ -9,7 +9,7 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
   /*$(link).parent().parent().before(content.replace(regexp, new_id));*/
-  $(".input_table").append(content.replace(regexp, new_id));
+  $(".input_form_table").append(content.replace(regexp, new_id));
   
 	//Update the current number of rows the user sees
 	update_row_count();  
@@ -17,7 +17,7 @@ function add_fields(link, association, content) {
 
 function update_row_count(){
 	 //reduce one to count out the table headings
-	var row_count = $(".input_table tr").length - 1;
+	var row_count = $(".input_form_table tr").length - 1;
   $("#input_table_row_count").html("<h3> Total:  " + row_count + "</h3>");	
 }
 

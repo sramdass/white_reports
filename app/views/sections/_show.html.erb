@@ -1,46 +1,31 @@
-<p>
- 	<h2>  <%= section.name %> </h2>
-</p>
-
-<p>
-	 <b>Class:  </b>
-	 <%= link_to section.clazz.name, clazz_path(section.clazz)  %> ( <%= link_to section.clazz.branch.name, branch_path(section.clazz.branch) %> )
-</p>
-
-<p>
-	 <b>Class Teacher :  </b>
-	 <%= Teacher.find(section.class_teacher_id).name %>
-</p>
-			
-<p>
-	<h2> Subject list </h2>
-	<ul>
-	<% section.subjects.each do |s| %>
-		<li> <%= s.name %> 
-				<% if s.sec_sub_maps.find_by_section_id(section.id).teacher_id %> 
-					- <%= Teacher.find((s.sec_sub_maps.find_by_section_id(section.id).teacher_id)).name %> 
-				<% end %>
-		</li>
-	<% end %>
-	</ul>		
-</p>	
-
-<p>
-	<h2> Test list </h2>
-	<ul>
-	<% section.tests.each do |t| %>
-		<li> <%= t.name %> </li>
-	<% end %>
-	</ul>		
-</p>	
-
-<p>	
-	<h2> Student list </h2>
-	<ul>
-	<% section.students.each do |s| %>
-		<li> <%= s.name %> </li>
-	<% end %>
-	</ul>		
-</p>
+<table id='section_show' class="one-column-emphasis" summary="Section Details">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+    	<tr>
+        	<th scope="col">Name</th>
+            <th scope="col"> <%= section.name %></th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td>Class</td>
+            <td>	 <%= link_to section.clazz.name, clazz_path(section.clazz) %> </td>
+        </tr>    	
+    	<tr>
+        	<td> Class Teacher </td>
+            <td>	  <%= Teacher.find(section.class_teacher_id).name %> </td>
+        </tr>           
+    	<tr>
+        	<td>Branch</td>
+            <td>	 <%= link_to section.clazz.branch.name, branch_path(section.clazz.branch) %> </td>
+        </tr>       
+    	<tr>
+        	<td>Institution</td>
+            <td>	 <%= link_to section.clazz.branch.institution.name, institution_path(section.clazz.branch.institution) %> </td>
+        </tr>               
+    </tbody>
+</table>
 
 

@@ -19,7 +19,7 @@ load_and_authorize_resource
 helper_method :sort_column, :sort_direction
 
   def index
- 	@sections = Section.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+ 	@sections = Section.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,8 +30,8 @@ helper_method :sort_column, :sort_direction
 
   def show
     #@section = Section.find(params[:id])
-	@default_tab = 'show'
-	render :action => "actions_box" 
+  	@default_tab = 'show'
+	render :actions_box
 =begin
     respond_to do |format|
       format.html # show.html.erb
@@ -43,8 +43,8 @@ helper_method :sort_column, :sort_direction
   
   def edit
     #@section = Section.find(params[:id])
-	@default_tab = 'edit'
-	render :action => "actions_box" 
+  	@default_tab = 'edit'
+	render :actions_box
   end
 
 
@@ -62,8 +62,8 @@ helper_method :sort_column, :sort_direction
 		    d.attributes = {:subject_id => sid, :teacher_id => params["teacher"]["#{sid}"]}
 		end
 		
-		ret = mark_table("sec_#{@section.id}_#{current_year}_marks", params[:section])
-		
+		#ret = mark_table("sec_#{@section.id}_#{current_year}_marks", params[:section])
+=begin		
 		if ret
 			flash[:notice] = "Marks table created"
 			logger.debug "This is the log message!!!"
@@ -73,15 +73,15 @@ helper_method :sort_column, :sort_direction
 			logger.debug "This is the log error message!!!"
 			# logger.debug_variables(binding)
 		end
-		
-		if @section.valid? && @section.sec_sub_maps.all?(&:valid?) &&  ret
+=end		
+		if @section.valid? && @section.sec_sub_maps.all?(&:valid?) # &&  ret
 			@section.save!
 			@section.sec_sub_maps.each(&:save!)
 			@default_tab='show'
 			redirect_to (@section,  :notice => 'Section was successfully updated.')
 		else
 	    	@default_tab = 'edit'
-	        format.html { render :action => "actions_box" }
+	        format.html { render :actions_box }
 		end
 	end
 
@@ -90,7 +90,7 @@ helper_method :sort_column, :sort_direction
   def stunew
   	#@section = Section.find(params[:id])
 	@default_tab = 'stunew'
-	render :action => "actions_box" 
+	render :actions_box
   end
   
 #-----------------------------------------------------------#
@@ -104,7 +104,7 @@ helper_method :sort_column, :sort_direction
 	    	format.xml  { head :ok }
 	    else
 	    	@default_tab = 'stunew'
-	        format.html { render :action => "actions_box" }
+	        format.html { render :actions_box }
 	        format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
 	    end
     end

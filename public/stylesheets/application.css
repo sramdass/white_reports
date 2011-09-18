@@ -34,8 +34,9 @@ body {
 	width:180px;
 }
 #header {
-	background: #092;
-	 border-bottom: #fff solid 1px; 
+	/* background: #092; */
+	background:#8A2908;
+	/* border-bottom: #fff solid 1px; */
 	height: 50px;
 	color: #fff;	
 	padding-top: 20px; /* if this is changed to a lower value, the text moves to the middle. Need to debug.*/
@@ -48,7 +49,8 @@ body {
 
 #tab_bar{
 	color:#fff;
-	background: #092;
+	/* background: #092; */
+	background: #8A2908;
 	height: 50px;
 	
 }
@@ -75,8 +77,7 @@ body {
 	padding:20px 0 0 0;
 	text-align:center;
 	width:75px;
-	text-decoration:none;
-	
+	text-decoration:none;	
 }
 
 #tab_bar ul li a.selected {

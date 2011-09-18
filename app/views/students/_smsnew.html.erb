@@ -1,0 +1,4 @@
+<%= form_tag (sms_student_path(student), :method => 'post',  :class => "zaform") do |f| %>		
+	<%= render 'sms_fields' %>
+	<%= submit_tag "Send Message" %>
+<% end %>

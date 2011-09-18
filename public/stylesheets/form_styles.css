@@ -1,0 +1,117 @@
+form.zaform fieldset { margin-bottom: 10px; }
+	
+form.zaform legend {
+	padding: 0 2px;
+	font-weight: bold;
+	_margin: 0 -7px; /* IE Win */
+	}
+	
+form.zaform label {
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align: top;
+	}
+	
+form.zaform fieldset ol {
+	margin: 0;
+	padding: 0;
+	}
+	
+form.zaform fieldset li {
+	list-style: none;
+	padding: 5px;
+	margin: 0;
+	}
+	
+form.zaform fieldset fieldset {
+	border: none;
+	margin: 3px 0 0;
+	}
+	
+form.zaform fieldset fieldset legend {
+	padding: 0 0 5px;
+	font-weight: normal;
+	}
+	
+form.zaform fieldset fieldset label {
+	display: block;
+	width: auto;
+	}
+
+form.zaform em {
+	font-weight: bold;
+	font-style: normal;
+	color: #f00;
+	}
+
+form.zaform label { width: 120px; } /* Width of labels */
+form.zaform fieldset fieldset label { margin-left: 123px; } /* Width plus 3 (html space) */
+
+/*\*//*/ form.zaform legend { display: inline-block; } /* IE Mac legend fix */
+
+
+/***************************************************************/
+
+form.zaform {
+	width: 500px;
+	/* font-size: 1.1em; */
+	color: #333;
+	/* font: normal 64% "Lucida Grande", Helvetica, Verdana, Arial; */
+	font-family: Verdana, Helvetica, Sans-serif;
+	font-size: 11px;
+}
+	
+form.zaform, fieldset {
+	margin: 0;
+	padding: 0;
+	}
+	
+form.zaform legend {
+	padding: 0;
+	color: #000;
+	}
+	
+form.zaform legend,
+form.zaform label { color: #333; }
+
+form.zaform fieldset {
+	border: none;
+	border-top: 1px solid #C9DCA6;
+	background: url(../images/zaform-fieldset.gif) left bottom repeat-x;
+	}	
+form.zaform fieldset fieldset { background: none; }
+	
+form.zaform fieldset li {
+	padding: 5px 10px 7px;
+	background: url(../images/zaform-divider.gif) left bottom repeat-x;
+	}
+
+form.zaform input, form.zaform textarea, form.zaform select {
+	margin: 0;
+	padding: 1px;
+	font-size: 100%;
+	font-family: inherit;
+}
+
+form.zaform input.small {
+	width: 100px;
+}
+
+form.zaform input.medium {
+	width: 200px;
+}
+
+form.zaform input.big {
+	width: 350px;
+}
+	
+form.zaform select { padding: 0; }	
+
+form.zaform .sr {
+	position: absolute;
+	left: -9999em;
+	top: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	}

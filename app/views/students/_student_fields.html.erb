@@ -1,21 +1,26 @@
-<div class="field">
-	<%= f.label :name %> <br>
-	<%= f.text_field :name %> 
-</div>
-<div class="field">
-	<%= f.label :id_no, "ID number"%> <br>
-	<%= f.text_field :id_no %>
-</div>
-<div class="field">
-	<%= f.label :female, "Gender" %> <br>
-		<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ], f.object.female? ) , {:prompt => "Gender"}  %>
-	</div>
-<div class="field">
-	<%= f.label :dob, "DOB"%><br>
-	<%= f.date_select :dob, {:prompt => true, :start_year => Time.now.year - 30, 
-												:end_year => Time.now.year, :use_month_numbers => true, 
-												:order => [:day, :month, :year]} %>  <br><br>													
-</div>
+<fieldset> 
+	<legend>Basic Information</legend> 
+	<ol> 	
+		<li>
+			<%= f.label :name %>
+			<%= f.text_field :name %> 
+		</li>		
+		<li>
+			<%= f.label :id_no, "ID number"%>
+			<%= f.text_field :id_no %>
+		</li>		
+		<li>
+			<%= f.label :female, "Gender" %>
+			<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ], f.object.female? ) , {:prompt => "Gender"}  %>
+		</li>				
+		<li>
+			<%= f.label :dob, "DOB"%>
+			<%= f.date_select :dob, {:prompt => true, :start_year => Time.now.year - 30, 
+											:end_year => Time.now.year, :order => [:day, :month, :year]} %> 
+		</li>
+	</ol>					
+</fieldset> 																				
+
 
  
 	

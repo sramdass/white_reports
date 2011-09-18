@@ -25,7 +25,7 @@ helper_method :sort_column, :sort_direction
   # GET /institutions.xml
   def index
   	
- 	@institutions = Institution.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+ 	@institutions = Institution.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

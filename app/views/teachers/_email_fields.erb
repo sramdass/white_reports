@@ -1,28 +1,23 @@
-<p>	  
-	To <br>
+<fieldset> 
+	<legend>Basic Information</legend> 
+	<ol> 	
+		<li>
+	<%= label_tag "To"%>
 	<%= text_field_tag :to, @teacher.teacher_contact.primary_email, :size => 50 %>
-</p>
 
-<p>	  
-	CC <br>
+	CC 
 	<%= text_field_tag :cc, nil, :size => 50 %>
-</p>
-
-<p>	  
-	BCC <br>
+ 
+	BCC 
 	<%= text_field_tag :bcc, nil, :size => 50 %>
-</p>						
 
-<p>	  
-	Subject <br>
+	Subject
 	<%= text_field_tag :subject, nil,  {:size => 50}%>
-</p>
 
-<p>	  
-	Message <br>
+	Message
 	<%= text_area_tag :message, nil, {:rows => 15, :cols => 40} %> <br>
-</p>
 
-<p>
     <%= submit_tag "Send Email" %>
-</p>
+	</li>
+	</ol>					
+</fieldset> 																				

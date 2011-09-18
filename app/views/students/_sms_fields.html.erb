@@ -1,0 +1,13 @@
+<fieldset> 
+	<legend>Basic Information</legend> 
+	<ol> 	
+	<li>
+		<%= label_tag "Number (Lasts 10 digits)"%>
+		<%= text_field_tag :to, @student.student_contact.mobile, :class => 'medium' %>
+	</li>
+	<li>
+		<%= label_tag "Message"%>
+		<%= text_area_tag :message, nil, {:rows => 5, :cols => 40} %> 
+	</li>
+	</ol>					
+</fieldset> 	

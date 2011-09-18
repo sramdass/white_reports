@@ -30,6 +30,8 @@
             <string>app\controllers\teachers_controller.rb</string>
             <key>_Teacher_f</key>
             <string>app\views\schools\_teacher_fields.html.erb</string>
+            <key>_Tests</key>
+            <string>app\views\sections\_tests.html.erb</string>
             <key>_bra</key>
             <string>app\views\institutions\_branch_fields.html.erb</string>
             <key>_branc</key>
@@ -38,28 +40,46 @@
             <string>app\views\branches\_branches.html.erb</string>
             <key>_clazz_fi</key>
             <string>app\views\branches\_clazz_fields.html.erb</string>
+            <key>_edit</key>
+            <string>app\views\sections\_edit.html.erb</string>
+            <key>_email</key>
+            <string>app\views\students\_email_fields.erb</string>
+            <key>_email_f</key>
+            <string>app\views\teachers\_email_fields.erb</string>
             <key>_form</key>
             <string>app\views\institutions\_form.html.erb</string>
             <key>_form.</key>
             <string>app\views\schools\_form.html.erb</string>
             <key>_instit</key>
             <string>app\views\institutions\_institutions.html.erb</string>
+            <key>_institutio</key>
+            <string>app\views\institutions\_institutions.html.erb</string>
+            <key>_section_f</key>
+            <string>app\views\clazzs\_section_fields.html.erb</string>
             <key>_section_fiel</key>
             <string>app\views\schools\_section_fields.html.erb</string>
             <key>_sections</key>
             <string>app\views\sections\_sections.html.erb</string>
+            <key>_show</key>
+            <string>app\views\sections\_show.html.erb</string>
+            <key>_sms</key>
+            <string>app\views\students\_sms.html.erb</string>
             <key>_student</key>
             <string>app\views\students\_students.html.erb</string>
             <key>_student_con</key>
             <string>app\views\students\_student_contact_fields.html.erb</string>
             <key>_student_f</key>
-            <string>app\views\sections\_student_fields.html.erb</string>
+            <string>app\views\students\_student_fields.html.erb</string>
             <key>_student_fi</key>
             <string>app\views\sections\_student_fields.html.erb</string>
             <key>_student_fie</key>
             <string>app\views\students\_student_fields.html.erb</string>
+            <key>_students</key>
+            <string>app\views\sections\_students.html.erb</string>
             <key>_students.ht</key>
             <string>app\views\students\_students.html.erb</string>
+            <key>_stunew</key>
+            <string>app\views\sections\_stunew.html.erb</string>
             <key>_subject</key>
             <string>app\views\branches\_subject_fields.html.erb</string>
             <key>_subject_fi</key>
@@ -97,7 +117,7 @@
             <key>actions_b</key>
             <string>app\views\students\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\students\actions_box.html.erb</string>
+            <string>app\views\sections\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -111,6 +131,8 @@
             <key>application</key>
             <string>public\stylesheets\application.css</string>
             <key>application.c</key>
+            <string>public\stylesheets\application.css</string>
+            <key>application.cs</key>
             <string>public\stylesheets\application.css</string>
             <key>application.css</key>
             <string>public\stylesheets\application.css</string>
@@ -191,7 +213,7 @@
             <key>development.r</key>
             <string>config\environments\development.rb</string>
             <key>edit</key>
-            <string>app\views\teachers\edit.html.erb</string>
+            <string>app\views\students\_edit.html.erb</string>
             <key>edit.htm</key>
             <string>app\views\students\edit.html.erb</string>
             <key>edit.html</key>
@@ -202,6 +224,8 @@
             <string>app\views\school_mailer\email_student.html.erb</string>
             <key>environ</key>
             <string>config\environment.rb</string>
+            <key>form_St</key>
+            <string>public\stylesheets\form_styles.css</string>
             <key>from_sec</key>
             <string>db\migrate\20110902042737_remove_branch_id_from_sections.rb</string>
             <key>gem</key>
@@ -241,6 +265,8 @@
             <key>institution.rb</key>
             <string>app\models\institution.rb</string>
             <key>institutions</key>
+            <string>app\controllers\institutions_controller.rb</string>
+            <key>institutions_</key>
             <string>app\controllers\institutions_controller.rb</string>
             <key>institutions_c</key>
             <string>app\controllers\institutions_controller.rb</string>
@@ -385,13 +411,13 @@
             <key>setup_ma</key>
             <string>config\initializers\setup_mail.rb</string>
             <key>show</key>
-            <string>app\views\sections\show.html.erb</string>
+            <string>app\views\students\_show.html.erb</string>
             <key>show.ht</key>
             <string>app\views\subjects\show.html.erb</string>
             <key>show.htm</key>
             <string>app\views\sections\show.html.erb</string>
             <key>show.html</key>
-            <string>app\views\students\show.html.erb</string>
+            <string>app\views\students\_show.html.erb</string>
             <key>show.html.</key>
             <string>app\views\schools\show.html.erb</string>
             <key>show.html.e</key>
@@ -410,6 +436,8 @@
             <string>app\models\student_contact.rb</string>
             <key>student_con</key>
             <string>app\models\student_contact.rb</string>
+            <key>student_f</key>
+            <string>app\views\students\_student_fields.html.erb</string>
             <key>student_fie</key>
             <string>app\views\students\_student_fields.html.erb</string>
             <key>students_c</key>
@@ -417,7 +445,7 @@
             <key>students_co</key>
             <string>app\controllers\students_controller.rb</string>
             <key>stunew</key>
-            <string>app\views\sections\stunew.html.erb</string>
+            <string>app\views\sections\_stunew.html.erb</string>
             <key>subject</key>
             <string>app\models\subject.rb</string>
             <key>subject.r</key>
@@ -438,6 +466,8 @@
             <string>app\views\branches\subnew.html.erb</string>
             <key>subnew.html</key>
             <string>app\views\schools\subnew.html.erb</string>
+            <key>table_st</key>
+            <string>public\stylesheets\table_styles.css</string>
             <key>tchrnew</key>
             <string>app\views\branches\tchrnew.html.erb</string>
             <key>teac</key>
@@ -446,6 +476,8 @@
             <string>app\models\teacher.rb</string>
             <key>teacher.rb</key>
             <string>app\models\teacher.rb</string>
+            <key>teacher_c</key>
+            <string>app\models\teacher_contact.rb</string>
             <key>teacher_cont</key>
             <string>app\models\teacher_contact.rb</string>
             <key>teacher_contact</key>

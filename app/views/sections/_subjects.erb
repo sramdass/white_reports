@@ -1,0 +1,23 @@
+<table class='index_table_z' summary="Section subjects index">
+    <thead>	
+		<tr>
+			<th scope="col"> Subject Name </th>
+			<th scope="col"> Teacher</th>
+		</tr>
+	</thead>
+    <tbody>
+	<% section.subjects.each do |s| %>
+		<tr>
+			<td> <%= s.name %> </td>
+			<td>
+				<% if s.sec_sub_maps.find_by_section_id(section.id).teacher_id %>  
+					<%= Teacher.find((s.sec_sub_maps.find_by_section_id(section.id).teacher_id)).name %> 
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+    </tbody>	
+</table>		
+
+
+
