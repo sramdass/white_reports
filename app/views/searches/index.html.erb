@@ -1,0 +1,43 @@
+			<%= form_for @search, :url => searches_path, :html => {:method => 'get'} do |f| %>
+				 <p>
+			    	<%= f.text_field :name_contains %>
+			    	<%=f.date_select :dob_greater_than, {:prompt => true, :start_year => Time.now.year - 30, 
+													:end_year => Time.now.year, :order => [:day, :month, :year]} %>
+													
+  <h4>How many heads?</h4>
+  <ul>
+    <% f.checks :id_no_contains,
+      [['One', 1], ['Two', 2], ['Three', 3]], :class => 'checkboxy' do |check| %>
+      <li>
+        <%= check.box %>
+        <%= check.label %>
+      </li>
+    <% end %>
+  </ul>
+  
+    <h4>How many heads?</h4>
+  <p>
+    <% f.checks(:id_no_in,
+       [['One', 1], ['Two', 2], ['Three', 3]],
+       :class => 'checkboxy').in_groups_of(2, false) do |checks| %>
+      <% checks.each do |check| %>
+        <%= check.box %>
+        <%= check.label %>
+      <% end %>
+      <br />
+    <% end %>
+  </p>
+  
+    <%= f.multiparameter_field :name_contains_any,
+        *5.times.inject([]) {|a, b| a << {:field_type => :text_field}} +
+        [:size => 10] %>
+  													
+			    	<%= f.submit "Search" %>
+			    	
+			  	</p>			  	
+			<% end %>
+  <p>
+  <% for student in @students %>
+  <%= student.name%> - <%= student.dob%> <br>
+  <%end%>
+  </p>
