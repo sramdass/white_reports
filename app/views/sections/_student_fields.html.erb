@@ -1,6 +1,6 @@
 <tr class = "tfields">	
-	<td><%= f.text_field :name, :size => 15 %>
-	<td><%= f.text_field :id_no, :size => 10 %>
+	<td><%= f.text_field :name, :size => 15 %> </td>
+	<td><%= f.text_field :id_no, :size => 10 %> </td>
 	<td>
 		<% if f.object.new_record?%>
 			<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ] ) , {:include_blank => 'None'}  %>

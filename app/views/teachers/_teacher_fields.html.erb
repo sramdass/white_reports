@@ -1,16 +1,20 @@
-<div class="field">
-	<%= f.label :name %> <br>
-	<%= f.text_field :name, :size => 15 %>
-</div>
-<div class="field">
-	<%= f.label :id_no, "ID number"%> <br>
-	<%= f.text_field :id_no, :size => 10 %>
-</div>
-<div class="field">
- 	<%= f.label :female, "Gender" %> <br>
-	<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ], f.object.female? ) , {:prompt => "Gender"}  %>
-</div>
-
+<fieldset> 
+	<legend>Basic Information</legend> 
+	<ol> 	
+		<li>
+			<%= f.label :name %> 
+			<%= f.text_field :name %>
+		</li>		
+		<li>
+			<%= f.label :id_no, "ID number"%> 
+			<%= f.text_field :id_no %>
+		</li>		
+		<li>
+		 	<%= f.label :female, "Gender" %>
+			<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ], f.object.female? ) , {:prompt => "Gender"}  %>
+		</li>
+	</ol>					
+</fieldset> 			
  
  
 	

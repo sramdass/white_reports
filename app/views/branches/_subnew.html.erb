@@ -4,15 +4,20 @@
 <%= form_for (branch, :url => subcreate_branch_path(branch)) do |f| %>
 	
 	<%= render 'shared/error_messages', :target => branch %>
-	
-	<table class="input_table">
-		<tr> <th> Test name </th><th> Max Marks </th> <th> Action </th> </tr>			
+	<table class="input_form_table"  summary="Test details">
+		<thead>
+	    	<tr>
+	        	<th scope="col">Test Name</th>
+	        	<th scope="col">Max Marks</th>
+	        	<th scope="col">Action</th>	        		        	
+	        </tr>
+	    </thead>
+	    <tbody>
 		<%= f.fields_for :subjects do |builder| %>	
 				<%= render "subject_fields", :f => builder %>	 	  
 		<% end %>
- 	</table>   			
+	    </tbody>		
+	</table>			
 	<p> <%= link_to_add_fields "Add Subject", f, :subjects %> </p>		
-	<div class="actions">
-     	<%= f.submit  "Update Subjects" %>
-     </div>         	
+	<p> <%= f.submit  "Update Subjects" %> </p>    
 <% end %>

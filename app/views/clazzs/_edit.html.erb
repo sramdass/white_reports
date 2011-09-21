@@ -1,2 +1,13 @@
-<h1>Edit Class</h1>
-<%= render 'form' %>
+<%= form_for @clazz,  :html => { :class => "zaform"} do |f| %>
+	<%= render 'shared/error_messages', :target => @clazz %>	  
+	<fieldset> 
+		<legend>Class Details</legend> 
+		<ol> 	
+			<li>
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+			</li>
+		</ol>					
+	</fieldset> 		 
+    <%= f.submit "Update Class" %>
+<% end %>

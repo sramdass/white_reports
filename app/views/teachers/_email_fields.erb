@@ -1,23 +1,29 @@
 <fieldset> 
-	<legend>Basic Information</legend> 
+	<legend>Email</legend> 
 	<ol> 	
 		<li>
-	<%= label_tag "To"%>
-	<%= text_field_tag :to, @teacher.teacher_contact.primary_email, :size => 50 %>
-
-	CC 
-	<%= text_field_tag :cc, nil, :size => 50 %>
- 
-	BCC 
-	<%= text_field_tag :bcc, nil, :size => 50 %>
-
-	Subject
-	<%= text_field_tag :subject, nil,  {:size => 50}%>
-
-	Message
-	<%= text_area_tag :message, nil, {:rows => 15, :cols => 40} %> <br>
-
-    <%= submit_tag "Send Email" %>
-	</li>
+			<%= label_tag "To"%>
+			<%= text_field_tag :to, @teacher.teacher_contact.primary_email, :class=> 'medium' %>
+		</li>
+		<li>
+			<%= label_tag "CC"%>
+			<%= text_field_tag :cc, nil, :class=> 'medium' %>
+		</li>
+		<li>
+			<%= label_tag "BCC"%>
+			<%= text_field_tag :bcc, nil, :class=> 'medium' %>
+		</li>
+		<li>
+			<%= label_tag "Subject"%>
+			<%= text_field_tag :subject, nil, :class=> 'medium'%>
+		</li>
+		<li>
+			<%= label_tag "Message"%>
+			<%= text_area_tag :message, nil, {:rows => 8, :cols => 40} %> <br>
+		</li>
 	</ol>					
-</fieldset> 																				
+</fieldset> 	
+
+
+
+		

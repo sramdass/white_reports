@@ -1,0 +1,19 @@
+<table class='index_table_z' summary="Branch teachers index">
+    <thead>	
+		<tr>
+			<th scope="col"> Name </th>
+			<th scope="col"> ID number </th>
+			<th scope="col"> Gender </th>
+		</tr>
+	</thead>
+    <tbody>
+	<% branch.teachers.each do |t| %>
+		<tr>
+			<td> <%= t.name %> </td>
+			<td>	<%= t.id_no%>	</td>
+			<td>	<%= t.female? ? "Female" : "Male" %>	</td>
+		</tr>
+	<% end %>
+    </tbody>	
+</table>		
+

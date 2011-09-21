@@ -1,11 +1,11 @@
 <p id="input_table_row_count"> </p>			
 <%= form_for (section, :url => stucreate_section_path(section)) do |f| %>
 	<%= render 'shared/error_messages', :target => section %>
-	<table class="input_form_table"  summary="Student details">
+	<table class="input_form_table"  summary="Section Student Index">
 		<thead>
 	    	<tr>
 	        	<th scope="col">Name</th>
-	            <th scope="col">ID Number</th>
+	            <th scope="col"> ID Number </th>
 	            <th scope="col">Gender</th>
 	            <th scope="col">Date of Birth</th>
 	            <th scope="col">Action</th>            
@@ -18,9 +18,7 @@
 	    </tbody>		
 	</table>			
  	<p> <%= link_to_add_fields "Add Student", f, :students %> </p>	 	
-	<div class="actions">
-		 <%= f.submit  "Update Students" %> 
-	</div>		  	  
+	<p> <%= f.submit  "Update Students" %>  </p>	  
 <% end %>
 
 

@@ -1,29 +1,29 @@
-<p>
- 	 <b>Name:</b>
-  	<%= institution.name %>
-</p>
+<table id='branch_show' class="one-column-emphasis" summary="Branch Details">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+    	<tr>
+        	<th scope="col">Name</th>
+            <th scope="col"> <%= institution.name %></th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td> ID Number </td>
+            <td>	 <%= institution.id_no %> </td>
+        </tr>         	
+    	<tr>
+        	<td>CEO</td>
+            <td>  <%= institution.ceo %>  </td>
+        </tr>    	      
+    	<tr>
+        	<td>Registered Address</td>
+            <td>	<%= institution.registered_address %>, <br> <%= institution.city %>, <%= institution.state %>, <br> <%= institution.pin %> </td>
+        </tr>                  
+    </tbody>
+</table>
 
-<p>
- 	 <b>ID:</b>
- 	 <%= institution.id_no %>
-</p>
 
-<p>
- 	<b>CEO:</b>
-	<%= institution.ceo %>
-</p>
 
-<p>
-  	<b>Registered Address:</b> <br \>
-	<%= institution.registered_address %>, <br> <%= institution.city %>, <%= institution.state %>, <br> <%= institution.pin %>
-</p>			
-
-<p>
-	<h2> Branch list </h2>						
-	<ul>
-		<% institution.branches.each do |b| %>
-			<li> <%= link_to b.name, branch_path(b) %> </li>
-		<% end %>
-	</ul>		
-</p>
 

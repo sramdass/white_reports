@@ -26,11 +26,14 @@ helper_method :sort_column, :sort_direction
 
   def show
     #@teacher = Teacher.find(params[:id])
-
+  	@default_tab = 'show'
+	render :actions_box
+=begin	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @teacher }
     end
+=end    
   end
   
   #-----------------------------------------------------------#
@@ -40,10 +43,12 @@ helper_method :sort_column, :sort_direction
 
     respond_to do |format|
       if @teacher.update_attributes(params[:teacher])
-        format.html { redirect_to(@teacher, :notice => 'Teacher was successfully updated.') }
+      	@default_tab = 'show'
+        format.html { redirect_to(@teacher, :notice => 'Teacher was successfully updated') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+      	@default_tab = 'edit'
+        format.html { render :actions_box }        
         format.xml  { render :xml => @teacher.errors, :status => :unprocessable_entity }
       end
     end
@@ -68,12 +73,16 @@ def edit
 	if @teacher.teacher_contact.nil?
 		@teacher.build_teacher_contact	
 	end
+  	@default_tab = 'edit'
+	render :actions_box	
 end	
 
 #-----------------------------------------------------------#
 
 def emailnew
 	#@teacher = Teacher.find(params[:id])
+  	@default_tab = 'emailnew'
+	render :actions_box	
 end	
 
 #-----------------------------------------------------------#
@@ -82,12 +91,15 @@ def email
 	#@teacher = Teacher.find(params[:id])
 	# to, cc, bcc, subject, message are part of the 'params' hash
 	SchoolMailer.email_teacher(@teacher, params).deliver
-	redirect_to(@teacher, :notice => 'Email Sent')
+	@default_tab='show'
+	redirect_to(@teacher, :notice => 'Email Sent')	
 end
 #-----------------------------------------------------------#
 
 def smsnew
 	#@teacher = Teacher.find(params[:id])
+  	@default_tab = 'smsnew'
+	render :actions_box	
 end	
 
 #-----------------------------------------------------------#
@@ -96,9 +108,21 @@ def sms
 	#@teacher = Teacher.find(params[:id])
 	message = Sms.new(params[:to], params[:message])
 	message.send
-
-	redirect_to(@teacher, :notice => 'Message Sent')
+	@default_tab='show'
+	redirect_to(@teacher, :notice => 'Email Sent')
 end
+
+#-----------------------------------------------------------#
+
+def actions_box
+	#@teacher = Teacher.find(params[:id])
+	@default_tab = 'show'
+    respond_to do |format|
+      format.html # actions_box.html.erb
+      format.xml  { render :xml => @teacher }
+    end	
+end
+
 #-----------------------------------------------------------#
   
    def sort_column

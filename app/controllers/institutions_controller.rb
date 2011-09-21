@@ -40,11 +40,14 @@ helper_method :sort_column, :sort_direction
   # GET /institutions/1.xml
   def show
 	 #@institution = Institution.find(params[:id])
-
+  	@default_tab = 'show'
+	render :actions_box
+=begin	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @institution }
     end
+=end    
   end
 
 #-----------------------------------------------------------#
@@ -65,6 +68,8 @@ helper_method :sort_column, :sort_direction
   # GET /institutions/1/edit
   def edit
      #@institution = Institution.find(params[:id])
+  	@default_tab = 'edit'
+	render :actions_box         
   end
 
 #-----------------------------------------------------------#
@@ -95,11 +100,11 @@ helper_method :sort_column, :sort_direction
     respond_to do |format|
       if @institution.update_attributes(params[:institution])
 		@default_tab = 'show'      	
-        format.html { redirect_to(actions_box_institution_path(@institution), :notice => 'Institution was successfully updated.') }
+        format.html { redirect_to(@institution, :notice => 'Institution was successfully updated.') }
         format.xml  { head :ok }
       else
       	@default_tab = 'edit'
-        format.html { render :action => "actions_box" }
+        format.html {render :actions_box }
         format.xml  { render :xml => @institution.errors, :status => :unprocessable_entity }
       end
     end
@@ -134,6 +139,8 @@ end
   
   def branchnew
   	#@institution = Institution.find(params[:id])
+	@default_tab = 'branchnew'
+	render :actions_box  	  	
   end
   
 #-----------------------------------------------------------#
@@ -142,12 +149,12 @@ end
   	 #@institution = Institution.find(params[:id])
   	 respond_to do |format|
       if @institution.update_attributes(params[:institution])
-		@default_tab='show'
-		format.html { redirect_to(actions_box_institution_path(@institution)	, :notice => ' Branches were successfully updated.') }      	
+		@default_tab='teachers'
+		format.html { redirect_to(@institution	, :notice => ' Branches were successfully updated.') }      	
         format.xml  { head :ok }
       else
 	    @default_tab = 'branchnew'
-	    format.html { render :action => "actions_box" }
+	    format.html { render :actions_box }
         format.xml  { render :xml => @institution.errors, :status => :unprocessable_entity }
       end
     end

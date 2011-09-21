@@ -60,7 +60,8 @@ body {
 	list-style:none;
 	width:700px;
 	/* background: #000; */
-	margin:0 0 0 0px;
+	margin: 0px;
+	border:1px solid #000;
 }
 #tab_bar ul li {
 	border-right:1px solid #fff;
@@ -68,16 +69,20 @@ body {
 	height:50px;
 	list-style:none;
 	width:75px;
+	border:1px solid #000;
 }
 
 #tab_bar ul li a {
 	color:#fff;
+	background: green;
 	display:block;
 	height:50px;
-	padding:20px 0 0 0;
+	padding: 0;
 	text-align:center;
 	width:75px;
 	text-decoration:none;	
+	margin:0px;
+	
 }
 
 #tab_bar ul li a.selected {

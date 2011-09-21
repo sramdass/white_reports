@@ -1,0 +1,38 @@
+<table id='teacher_show' class="one-column-emphasis" summary="Teacher Details">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+    	<tr>
+        	<th scope="col">Name</th>
+            <th scope="col"> <%= teacher.name %></th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td>Gender</td>
+            <td><%= teacher.female? ? "Female" : "Male" %></td>
+        </tr>    	
+    	<tr>
+        	<td>ID Number</td>
+            <td><%= teacher.id_no %></td>
+        </tr>
+        <tr>
+        	<td>Branch</td>
+            <td> <%= teacher.branch.name %> </td>
+        </tr>        
+        <tr>
+        	<td>Email</td>
+            <td>	<%= teacher.teacher_contact.primary_email  %> , <i> <%= teacher.teacher_contact.email %></td>
+        </tr>
+        <tr>
+        	<td>Address</td>
+            <td><%= teacher.teacher_contact.address %></td>
+        </tr>
+        <tr>
+        	<td>Phone</td>
+            <td><%= teacher.teacher_contact.mobile%> | <%= teacher.teacher_contact.telephone%> </td>
+        </tr>            
+    </tbody>
+</table>
+

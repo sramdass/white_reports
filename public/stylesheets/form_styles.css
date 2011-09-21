@@ -77,7 +77,8 @@ form.zaform label { color: #333; }
 form.zaform fieldset {
 	border: none;
 	border-top: 1px solid #C9DCA6;
-	background: url(../images/zaform-fieldset.gif) left bottom repeat-x;
+	/* background: url(../images/zaform-fieldset.gif) left bottom repeat-x;*/
+	background: url(../images/form_bg.jpg) left bottom repeat-x;
 	}	
 form.zaform fieldset fieldset { background: none; }
 	

@@ -1,18 +1,21 @@
-<h1><%= branch.name %> </h1>
-<h2> Add Classes  </h2>
  <p id="input_table_row_count"> </p>	
 <%= form_for (branch, :url => clzcreate_branch_path(branch)) do |f| %>		
 	<%= render 'shared/error_messages', :target => branch %>
-	<table class="input_table">
-		<tr> <th> Name </th> <th> Action </th> </tr>					
+	<table class="input_form_table"  summary="Branch Teachers index">
+		<thead>
+	    	<tr>
+	        	<th scope="col">Class Name</th>
+	            <th scope="col"> Action </th>
+	        </tr>
+	    </thead>
+	    <tbody>		
 		<%= f.fields_for :clazzs do |builder| %>	
 	 		<%= render "clazz_fields", :f => builder %>	 	  
 		<% end %>		
-	</table>   
- 	<p> <%= link_to_add_fields "Add Class", f, :clazzs %> </p>     	
-	  
-	<div class="actions">
-     	<%= f.submit  "Update Classes" %>
+	    </tbody>		
+	</table>	
+ 	<p> <%= link_to_add_fields "Add Class", f, :clazzs %> </p>     		  
+	<p> <%= f.submit  "Update Classes" %> </p>
      </div>     	
 <% end %>
 

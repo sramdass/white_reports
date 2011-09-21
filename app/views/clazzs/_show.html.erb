@@ -1,31 +1,23 @@
-<p>
- 	 <b>Name:</b>
-  	<%= clazz.name %>
-</p>
+<table id='section_show' class="one-column-emphasis" summary="Class Details">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+    	<tr>
+        	<th scope="col">Name</th>
+            <th scope="col"> <%= clazz.name %></th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td>Branch</td>
+            <td>	 <%= link_to clazz.branch.name, branch_path(clazz.branch) %> </td>
+        </tr>    	
+    	<tr>
+        	<td> Institution </td>
+            <td>	 <%= link_to clazz.branch.institution.name, institution_path(clazz.branch.institution) %> </td>
+        </tr>           
+    </tbody>
+</table>
 
-<p>
- 	 <b>Branch:</b>
-  	<%= link_to clazz.branch.name, branch_path(clazz.branch) %>
-</p>
-
-<p>
- 	 <b>Institution:</b>
-  	<%= link_to clazz.branch.institution.name, institution_path(clazz.branch.institution) %>
-</p>
-
-<h2> Sections list </h2>
-
-<p>
-	<ul>
-	<% clazz.sections.each do |s| %>
-		<li> 	
-			<%= link_to s.name, section_path(s) %>
-			<% if s.class_teacher_id %>
-				- <%=Teacher.find(s.class_teacher_id).name %> 
-			<% end %>
-			
-		</li>
-	<% end %>
-	</ul>		
-</p>	
 

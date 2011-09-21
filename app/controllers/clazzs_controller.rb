@@ -40,11 +40,14 @@ helper_method :sort_column, :sort_direction
   # GET /clazzs/1.xml
   def show
     #@clazz = Clazz.find(params[:id])
-
+  	@default_tab = 'show'
+	render :actions_box
+=begin	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @clazz }
     end
+=end    
   end
 
 #-----------------------------------------------------------#
@@ -65,6 +68,8 @@ helper_method :sort_column, :sort_direction
   # GET /clazzs/1/edit
   def edit
     #@clazz = Clazz.find(params[:id])
+  	@default_tab = 'edit'
+	render :actions_box    
   end
 
 #-----------------------------------------------------------#
@@ -95,11 +100,11 @@ helper_method :sort_column, :sort_direction
     respond_to do |format|
       if @clazz.update_attributes(params[:clazz])
 		@default_tab = 'show'      	
-        format.html { redirect_to(actions_box_clazz_path(@clazz), :notice => 'Clazz was successfully updated.') }
+        format.html { redirect_to (@clazz, :notice => 'Clazz was successfully updated.') }
         format.xml  { head :ok }
       else
-      	@default_tab = 'edit'
-        format.html { render :action => "actions_box" }
+    	@default_tab = 'edit'
+        format.html { render :actions_box }
         format.xml  { render :xml => @clazz.errors, :status => :unprocessable_entity }
       end
     end
@@ -135,6 +140,8 @@ end
   def secnew
   	#@clazz = Clazz.find(params[:id])
   	@teachers = @clazz.branch.teachers
+	@default_tab = 'secnew'
+	render :actions_box  	
   end
   
 #-----------------------------------------------------------#
@@ -144,11 +151,11 @@ end
   	 respond_to do |format|
       if @clazz.update_attributes(params[:clazz])
 		@default_tab='show'
-		format.html { redirect_to(actions_box_clazz_path(@clazz)	, :notice => ' Classes were successfully updated.') }      	
+		format.html { redirect_to(@clazz	, :notice => ' Classes were successfully updated.') }      	
         format.xml  { head :ok }
       else
 	    @default_tab = 'secnew'
-	    format.html { render :action => "actions_box" }      	        
+	    format.html { render :actions_box }      	        
         format.xml  { render :xml => @clazz.errors, :status => :unprocessable_entity }
       end
     end

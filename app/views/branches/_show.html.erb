@@ -1,58 +1,31 @@
-<p>
-  <b>Name:</b>
-  <%= branch.name %>
-</p>
+<table id='branch_show' class="one-column-emphasis" summary="Branch Details">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+    	<tr>
+        	<th scope="col">Name</th>
+            <th scope="col"> <%= branch.name %></th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td> ID Number </td>
+            <td>	 <%= branch.id_no %> </td>
+        </tr>         	
+    	<tr>
+        	<td>Principal</td>
+            <td>  <%= branch.principal %>  </td>
+        </tr>    	      
+    	<tr>
+        	<td>Institution Name </td>
+            <td>	 <%= link_to branch.institution.name, institution_path(branch.institution) %> </td>
+        </tr>        
+    	<tr>
+        	<td>Address</td>
+            <td>	 <%= branch.address %>, <br> <%= branch.city %>, <%= branch.state %>, <br> <%= branch.pin %> </td>
+        </tr>                  
+    </tbody>
+</table>
 
-<p>
-  <b>Principal:</b>
-  <%= branch.principal %>
-</p>
-
-<p>
- 	 <b>ID:</b>
- 	 <%= branch.id_no %>
-</p>
-
-<p>
-  	<b>Address:</b>
-	<%= branch.address %>, <br> <%= branch.city %>, <%= branch.state %>, <br> <%= branch.pin %>
-</p>						
-
-<p>
-	<h2> Teacher list </h2>						
-	<ul>
-	<% branch.teachers.each do |t| %>
-		<li> <%= link_to t.name, teacher_path(t) %> </li>
-	<% end %>
-	</ul>		
-</p>
-
-<p>	
-	<h2> Class list </h2>
-	<ul>
-	<% branch.clazzs.each do |s| %>
-		<li> <%= link_to s.name, clazz_path(s) %> </li>
-	<% end %>
-	</ul>		
-</p>
-
-<h2> Subject list </h2>
-
-<p>
-	<ul>
-	<% branch.subjects.each do |s| %>
-		<li> <%= s.name %> (<%= "%.0f" % s.max_marks %>) </li>
-	<% end %>
-	</ul>		
-</p>	
-
-<h2> Test list </h2>
-
-<p>
-	<ul>
-	<% branch.tests.each do |t| %>
-		<li> <%= t.name %> </li>
-	<% end %>
-	</ul>		
-</p>	
 

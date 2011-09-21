@@ -1,0 +1,14 @@
+<table class='index_table_z' summary="Branch tests index">
+    <thead>	
+		<tr>
+			<th scope="col"> Name </th>
+		</tr>
+	</thead>
+    <tbody>
+	<% branch.tests.each do |t| %>
+		<tr>
+			<td> <%= t.name %> </td>
+		</tr>
+	<% end %>
+    </tbody>	
+</table>		

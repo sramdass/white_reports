@@ -1,0 +1,19 @@
+<table class='index_table_z' summary="Branch teachers index">
+    <thead>	
+		<tr>
+			<th scope="col"> Name </th>
+			<th scope="col"> ID number </th>
+			<th scope="col"> Principal </th>
+		</tr>
+	</thead>
+    <tbody>
+		<% institution.branches.each do |b| %>
+		<tr>
+			<td> <%= b.name %> </td>
+			<td>	<%= b.id_no %>	</td>
+			<td>	<%= b.principal %> </td>
+		</tr>
+	<% end %>
+    </tbody>	
+</table>		
+

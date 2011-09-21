@@ -2,6 +2,10 @@
 	<div id="tab_bar">
 			<ul>
 				<li><a id = 'branch_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+				<li><a id = 'branch_teachers' <% if default_tab?('teachers') %> class = 'selected' <% end %> href="#">Teachers</a></li>
+				<li><a id = 'branch_classes' <% if default_tab?('classes') %> class = 'selected' <% end %> href="#">Classes</a></li>
+				<li><a id = 'branch_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
+				<li><a id = 'branch_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>																
 				<% if can? :update, @branch%>
 					<li><a id = 'branch_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
 				<% end %>
@@ -16,6 +20,18 @@
 	<div id="main_content">			
 		<div id='branch_show' class='cantoggle'>	
 			<%= render 'show', :branch => @branch %>
+		</div> 	
+		<div id='branch_teachers' class='cantoggle'>	
+			<%= render 'teachers', :branch => @branch %>
+		</div> 		
+		<div id='branch_classes' class='cantoggle'>	
+			<%= render 'classes', :branch => @branch %>
+		</div> 		
+		<div id='branch_subjects' class='cantoggle'>	
+			<%= render 'subjects', :branch => @branch %>
+		</div> 		
+		<div id='branch_tests' class='cantoggle'>	
+			<%= render 'tests', :branch => @branch %>
 		</div> 		
 		<div id='branch_edit' class='cantoggle'>
 			<%= render 'edit', :branch => @branch %>

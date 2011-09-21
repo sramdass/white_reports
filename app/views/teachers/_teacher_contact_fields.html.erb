@@ -1,21 +1,25 @@
-<div class="field">
-	<%= f.label :primary_email, "Primary Email" %><br>
-	<%= f.text_field :primary_email %> 
-</div>		
-<div class="field">
-	<%= f.label :email, "Other Email" %><br>
-	<%= f.text_area :email, :cols => 30, :rows => 4 %> 
-</div>				
-<div class="field">
-	<%= f.label :mobile %><br>
-	<%= f.text_field :mobile %> 
-</div>				
-<div class="field">
-	<%= f.label :telephone, "Telephone(s)" %><br>
-	<%= f.text_area :telephone,  :cols => 20, :rows => 3 %> 
-</div>				
-<div class="field">
-	<%= f.label :address %><br>
-	<%= f.text_area :address, :cols => 30, :rows => 5 %> <br>
-</div>				
-	
+<fieldset> 
+	<legend>Contact Information</legend> 
+	<ol> 	
+		<li>
+			<%= f.label :primary_email, "Primary Email" %>
+			<%= f.text_field :primary_email %> 
+		</li>		
+		<li>
+			<%= f.label :email, "Other Email" %>
+			<%= f.text_area :email, :cols => 30, :rows => 4 %> 
+		</li>		
+		<li>
+			<%= f.label :mobile %>
+			<%= f.text_field :mobile %> 
+		</li>		
+		<li>
+			<%= f.label :telephone, "Telephone(s)" %>
+			<%= f.text_area :telephone,  :cols => 20, :rows => 3 %> 
+		</li>		
+		<li>
+			<%= f.label :address %>
+			<%= f.text_area :address, :cols => 30, :rows => 5 %> 							
+		</li>
+	</ol>					
+</fieldset> 		

@@ -1,0 +1,23 @@
+<table class='index_table_z' summary="Class Sections index">
+    <thead>	
+		<tr>
+			<th scope="col"> Section Name </th>
+			<th scope="col"> Class Teacher  </th>			
+		</tr>
+	</thead>
+    <tbody>
+		<% clazz.sections.each do |s| %>
+		<tr>
+			<td> 
+				<%= s.name %> </td>
+			<td> 
+				<% if  s.class_teacher_id? %> 
+					<%= Teacher.find(s.class_teacher_id).name %>
+				<% else %> 
+					Not Assigned 
+				<% end %> 
+			</td>			
+		</tr>
+	<% end %>
+    </tbody>	
+</table>		
