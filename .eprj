@@ -47,7 +47,7 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\institutions\_edit.html.erb</string>
+            <string>app\views\teachers\_edit.html.erb</string>
             <key>_email</key>
             <string>app\views\students\_email_fields.erb</string>
             <key>_email_f</key>
@@ -126,6 +126,8 @@
             <string>app\views\branches\_test_fields.html.erb</string>
             <key>_testnew</key>
             <string>app\views\branches\_testnew.html.erb</string>
+            <key>_tips.txt</key>
+            <string>others\ruby on rails_tips.txt</string>
             <key>_to_sectio</key>
             <string>db\migrate\20110902042840_add_clazz_id_to_sections.rb</string>
             <key>abi</key>
@@ -162,6 +164,8 @@
             <string>public\stylesheets\application.css</string>
             <key>application.css</key>
             <string>public\stylesheets\application.css</string>
+            <key>application.h</key>
+            <string>app\views\layouts\application.html.erb</string>
             <key>application.ht</key>
             <string>app\views\layouts\application.html.erb</string>
             <key>application.htm</key>
@@ -271,11 +275,11 @@
             <key>index.htm</key>
             <string>app\views\institutions\index.html.erb</string>
             <key>index.html</key>
-            <string>app\views\institutions\index.html.erb</string>
+            <string>app\views\branches\index.html.erb</string>
             <key>index.html.e</key>
             <string>app\views\profiles\index.html.erb</string>
             <key>index.html.er</key>
-            <string>app\views\sections\index.html.erb</string>
+            <string>app\views\searches\index.html.erb</string>
             <key>index.html.erb</key>
             <string>app\views\schools\index.html.erb</string>
             <key>index.js</key>
@@ -386,6 +390,8 @@
             <string>app\controllers\schools_controller.rb</string>
             <key>schools_cont</key>
             <string>app\controllers\schools_controller.rb</string>
+            <key>searches_c</key>
+            <string>app\controllers\searches_controller.rb</string>
             <key>sec_su</key>
             <string>app\models\sec_sub_map.rb</string>
             <key>sec_sub</key>

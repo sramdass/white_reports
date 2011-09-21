@@ -10,6 +10,9 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem "declarative_authorization", "~> 0.5.3"
 gem "cancan"
 gem "hirb", "~> 0.5.0"
+gem "meta_where"
+gem "meta_search"
+
 
 group :development do
   gem 'rspec-rails', '2.6.1'

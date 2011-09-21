@@ -32,7 +32,7 @@ class Student < ActiveRecord::Base
 	 validates 	:female, :inclusion => { :in => [true, false] }
 	 
 #-------- INSTANCE MODULES --------#		
-	
+=begin	
 	def self.search(search)
 	  if search
 	    where('name LIKE ?', "%#{search}%")
@@ -40,6 +40,7 @@ class Student < ActiveRecord::Base
 	    scoped
 	  end
 	end
+=end	
 	
 	def class_teacher?(teacher)
 		if self.section.class_teacher_id == teacher.id		
