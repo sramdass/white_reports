@@ -1,0 +1,33 @@
+ <h1> <%= test.name %> </h1>
+ 
+ <p id="input_table_row_count"> </p>			
+<%= form_for (section, :url => stucreate_section_path(section)) do |f| %>
+	<%= render 'shared/error_messages', :target => section %>
+	
+	<% if !test %>
+		<h2> Update the tests before creating marks </h2>
+	<% else %>			
+		<table class="input_form_table"  summary="Section Mark Index">
+			<thead>
+		    	<tr>
+		        	<th scope="col">Student Name</th>
+		        	<% for sub in section.subjects %>
+		            	<th scope="col"> <%= sub.name %> </th>
+		            <% end %>
+		            <!-- <th scope="col">Action</th> -->
+		        </tr>
+		    </thead>
+		    <tbody>
+				<%= f.fields_for :marks do |builder| %>
+					<% if builder.object.test_id == test.id %>
+						<%=render 'mark_fields',  :f => builder, :section => section, :test => test %>	 	  
+					<% end %>					
+			 	<% end %>
+		    </tbody>		
+		</table>	
+	<% end %>	
+ 	<!-- <p> <%= link_to_add_fields "Add Mark", f, :marks,  {:section => section, :test => test} %> </p>	 	-->
+	<p> <%= f.submit  "Update Marks" %>  </p>	  
+<% end %>
+
+

@@ -43,7 +43,9 @@ WhiteReports::Application.routes.draw do
 		get 'stunew', :on => :member
 		put 'stucreate', :on => :member
 		get 'emailnew', :on => :member
-		post 'email', :on => :member			
+		post 'email', :on => :member
+		get 'marknew', :on => :member
+		post 'markcreate', :on => :member
 		get 'actions_box', :on => :member			
 	end
 	

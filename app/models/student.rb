@@ -22,6 +22,8 @@ class Student < ActiveRecord::Base
 	has_one :student_contact, :dependent => :destroy
 	accepts_nested_attributes_for :student_contact
 	
+	has_many :marks
+	
 #-------VALIDATIONS------------#
 	
 	 validates 	:name, 	:presence => true, 

@@ -126,6 +126,8 @@
             <string>app\views\branches\_test_fields.html.erb</string>
             <key>_testnew</key>
             <string>app\views\branches\_testnew.html.erb</string>
+            <key>_tests</key>
+            <string>app\views\sections\_tests.html.erb</string>
             <key>_tips.txt</key>
             <string>others\ruby on rails_tips.txt</string>
             <key>_to_sectio</key>
@@ -143,7 +145,7 @@
             <key>actions_bo</key>
             <string>app\views\students\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\branches\actions_box.html.erb</string>
+            <string>app\views\sections\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -155,7 +157,7 @@
             <key>applica</key>
             <string>public\stylesheets\application.css</string>
             <key>applicati</key>
-            <string>public\javascripts\application.js</string>
+            <string>app\helpers\application_helper.rb</string>
             <key>application</key>
             <string>public\stylesheets\application.css</string>
             <key>application.c</key>
@@ -211,6 +213,8 @@
             <key>branches_c</key>
             <string>app\controllers\branches_controller.rb</string>
             <key>branches_co</key>
+            <string>app\controllers\branches_controller.rb</string>
+            <key>branches_con</key>
             <string>app\controllers\branches_controller.rb</string>
             <key>branches_cont</key>
             <string>app\controllers\branches_controller.rb</string>
@@ -308,6 +312,10 @@
             <string>app\controllers\institutions_controller.rb</string>
             <key>institutions_con</key>
             <string>app\controllers\institutions_controller.rb</string>
+            <key>mark.r</key>
+            <string>app\models\mark.rb</string>
+            <key>mark.rb</key>
+            <string>app\models\mark.rb</string>
             <key>mark_Re</key>
             <string>db\migrate\20110902130519_create_mark_rec_defns.rb</string>
             <key>mark_rec</key>
@@ -503,7 +511,7 @@
             <key>subjects_cont</key>
             <string>app\controllers\subjects_controller.rb</string>
             <key>subnew</key>
-            <string>app\views\branches\subnew.html.erb</string>
+            <string>app\views\branches\_subnew.html.erb</string>
             <key>subnew.html</key>
             <string>app\views\schools\subnew.html.erb</string>
             <key>table_st</key>

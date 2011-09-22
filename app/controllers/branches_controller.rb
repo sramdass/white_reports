@@ -196,17 +196,33 @@ end
 #-----------------------------------------------------------#
   	
 	def subcreate
-	#@branch = Branch.find(params[:id])
-		respond_to do |format|
-			if @branch.update_attributes(params[:branch])
-			@default_tab='subjects'
-			format.html { redirect_to(@branch	, :notice => ' Subjects were successfully updated.') }      	  	
-				format.xml  { head :ok }
-			else
-				@default_tab = 'subnew'
-	    		format.html { render  :actions_box }
-				format.xml  { render :xml => @branch.errors, :status => :unprocessable_entity }
+		#@branch = Branch.find(params[:id])
+		debugger
+		ret_update = ret_create = false
+		ret_update = @branch.update_attributes(params[:branch])
+		
+		#use a temp_branch and do NOT use @branch. @branch caches the old attributes.
+		#if a delete comes from the browser, it is not update in @branch.subjects
+		temp_branch = Branch.find(params[:id])
+		if ret_update	
+			subject_ids = Array.new
+			for sub in temp_branch.subjects
+				subject_ids << sub.id
 			end
+			debugger
+			ret_create = create_base_mark_table("marks", subject_ids)
+		end
+		
+		if ret_update && ret_create
+			redirect_to(@branch	, :notice => ' Subjects were successfully updated.')
+		else			
+			@default_tab = 'subnew'
+			if !ret_update
+				flash.error = "Cannot update subjects"
+			elsif 
+				flash.error = "Cannot update/create base marks table"
+			end
+    		render  :actions_box
 		end
 	end
 

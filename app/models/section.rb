@@ -24,8 +24,11 @@ class Section < ActiveRecord::Base
 	has_many :tests, :through => :sec_test_maps
 	
 	has_many :students, :dependent => :destroy
-	accepts_nested_attributes_for :students, :reject_if => :has_only_destroy?, :allow_destroy => true
-
+	accepts_nested_attributes_for :students, :reject_if => :has_only_destroy?, :allow_destroy => true	
+	
+	has_many :marks, :dependent => :destroy
+	accepts_nested_attributes_for :marks, :reject_if => :has_only_destroy?, :allow_destroy => true
+	
 #-------VALIDATIONS------------#
 	
 	validates	:name,  :presence => true, 

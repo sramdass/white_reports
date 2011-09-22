@@ -8,10 +8,10 @@
     <tbody>
 	<% section.tests.each do |t| %>
 		<tr>
-			<td> <%= t.name %> </td>
+			<td> <%= link_to t.name, marknew_section_path(section, :test_id => t.id) %> </td>
 			<td>
 				<i> Date to be updated </i>
-			</td>
+			</td>			
 		</tr>
 	<% end %>
     </tbody>	

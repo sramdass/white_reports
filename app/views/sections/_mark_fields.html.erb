@@ -1,0 +1,10 @@
+<tr class = "tfields">	
+	 <!-- <td> <%= f.select ( 'student_id', section.students.map {|p| [ p.name, p.id ] }, {:include_blank => 'None', :selected => f.object.student_id}) %> </td> -->
+	<td> <%= section.students.map {|p| p.name if p.id.eql?(f.object.student_id.to_i)}%> </td>
+	<%= f.hidden_field :test_id, :value => test.id %>
+ 	<% section.subjects.each do |sub| %>
+		<td><%= f.text_field sub.name, :size => 10 %> </td>
+	<% end %>
+	<td> <%= link_to_remove_fields "Remove", f %> </td>
+ </tr>
+	

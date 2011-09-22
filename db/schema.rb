@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110907130147) do
+ActiveRecord::Schema.define(:version => 20110922050521) do
 
   create_table "branches", :force => true do |t|
     t.integer  "institution_id"
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(:version => 20110907130147) do
     t.datetime "updated_at"
   end
 
+  create_table "marks", :force => true do |t|
+    t.integer  "section_id"
+    t.integer  "test_id"
+    t.integer  "student_id"
+    t.float    "english"
+    t.float    "maths"
+    t.float    "science"
+    t.float    "tamil"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "memberships", :force => true do |t|
     t.integer  "profile_id"
     t.integer  "role_id"
@@ -80,14 +92,6 @@ ActiveRecord::Schema.define(:version => 20110907130147) do
     t.datetime "updated_at"
   end
 
-  create_table "schools", :force => true do |t|
-    t.string   "name"
-    t.string   "location"
-    t.string   "principal"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "sec_33_2010-11_marks", :force => true do |t|
     t.float    "Maths"
     t.float    "Science"
@@ -104,7 +108,8 @@ ActiveRecord::Schema.define(:version => 20110907130147) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "Tamil"
-    t.float    "Science"
+    t.float    "History"
+    t.float    "Hindi"
   end
 
   create_table "sec_sub_maps", :force => true do |t|

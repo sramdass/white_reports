@@ -10,10 +10,11 @@
 				<% end %>
 				<% if can? :update_section_elements, @section%>				
 					<li><a id = 'section_update_students' <% if default_tab?('stunew') %> class = 'selected' <% end %> href="#">Update Students</a></li>
+					<li><a id = 'section_update_marks' <% if default_tab?('marknew') %> class = 'selected' <% end %> href="#">Update Students</a></li>					
 				<% end %>
 			</ul>
 	</div>		
-	<div id="main_content">			
+	<div id="main_content">
 		<div id='section_show' class='cantoggle'>	
 			<%= render 'show', :section => @section %>
 		</div> 		
@@ -32,7 +33,9 @@
 		<div id='section_update_students' class='cantoggle'>	
 			<%= render 'stunew', :section => @section %>
 		</div> 		
-
+		<div id='section_update_marks' class='cantoggle'>	
+			<%= render 'marknew', :section => @section, :test => @test %>
+		</div> 	
 	</div>		<!-- END of main_content -->
 </div>		<!-- End of content_box -->
 
