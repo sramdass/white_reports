@@ -47,7 +47,7 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\teachers\_edit.html.erb</string>
+            <string>app\views\institutions\_edit.html.erb</string>
             <key>_email</key>
             <string>app\views\students\_email_fields.erb</string>
             <key>_email_f</key>
@@ -126,10 +126,6 @@
             <string>app\views\branches\_test_fields.html.erb</string>
             <key>_testnew</key>
             <string>app\views\branches\_testnew.html.erb</string>
-            <key>_tests</key>
-            <string>app\views\sections\_tests.html.erb</string>
-            <key>_tips.txt</key>
-            <string>others\ruby on rails_tips.txt</string>
             <key>_to_sectio</key>
             <string>db\migrate\20110902042840_add_clazz_id_to_sections.rb</string>
             <key>abi</key>
@@ -145,7 +141,7 @@
             <key>actions_bo</key>
             <string>app\views\students\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\sections\actions_box.html.erb</string>
+            <string>app\views\branches\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -157,7 +153,7 @@
             <key>applica</key>
             <string>public\stylesheets\application.css</string>
             <key>applicati</key>
-            <string>app\helpers\application_helper.rb</string>
+            <string>public\javascripts\application.js</string>
             <key>application</key>
             <string>public\stylesheets\application.css</string>
             <key>application.c</key>
@@ -166,8 +162,6 @@
             <string>public\stylesheets\application.css</string>
             <key>application.css</key>
             <string>public\stylesheets\application.css</string>
-            <key>application.h</key>
-            <string>app\views\layouts\application.html.erb</string>
             <key>application.ht</key>
             <string>app\views\layouts\application.html.erb</string>
             <key>application.htm</key>
@@ -213,8 +207,6 @@
             <key>branches_c</key>
             <string>app\controllers\branches_controller.rb</string>
             <key>branches_co</key>
-            <string>app\controllers\branches_controller.rb</string>
-            <key>branches_con</key>
             <string>app\controllers\branches_controller.rb</string>
             <key>branches_cont</key>
             <string>app\controllers\branches_controller.rb</string>
@@ -279,11 +271,11 @@
             <key>index.htm</key>
             <string>app\views\institutions\index.html.erb</string>
             <key>index.html</key>
-            <string>app\views\branches\index.html.erb</string>
+            <string>app\views\institutions\index.html.erb</string>
             <key>index.html.e</key>
             <string>app\views\profiles\index.html.erb</string>
             <key>index.html.er</key>
-            <string>app\views\searches\index.html.erb</string>
+            <string>app\views\sections\index.html.erb</string>
             <key>index.html.erb</key>
             <string>app\views\schools\index.html.erb</string>
             <key>index.js</key>
@@ -315,7 +307,7 @@
             <key>mark.r</key>
             <string>app\models\mark.rb</string>
             <key>mark.rb</key>
-            <string>app\models\mark.rb</string>
+            <string>annotate\ruby\1.8\gems\activesupport-3.0.9\lib\active_support\core_ext\benchmark.rb</string>
             <key>mark_Re</key>
             <string>db\migrate\20110902130519_create_mark_rec_defns.rb</string>
             <key>mark_rec</key>
@@ -398,8 +390,6 @@
             <string>app\controllers\schools_controller.rb</string>
             <key>schools_cont</key>
             <string>app\controllers\schools_controller.rb</string>
-            <key>searches_c</key>
-            <string>app\controllers\searches_controller.rb</string>
             <key>sec_su</key>
             <string>app\models\sec_sub_map.rb</string>
             <key>sec_sub</key>
@@ -511,7 +501,7 @@
             <key>subjects_cont</key>
             <string>app\controllers\subjects_controller.rb</string>
             <key>subnew</key>
-            <string>app\views\branches\_subnew.html.erb</string>
+            <string>app\views\branches\subnew.html.erb</string>
             <key>subnew.html</key>
             <string>app\views\schools\subnew.html.erb</string>
             <key>table_st</key>

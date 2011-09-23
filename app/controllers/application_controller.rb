@@ -15,13 +15,16 @@ class ApplicationController < ActionController::Base
 	#---------------------------------------------------------------------------#
 	#            MODULES TO CREATE, EDIT AND DELETE TABLES DYNAMICALLY                            #
 	#---------------------------------------------------------------------------#
-	def create_model_file(table_name)
-		model_file = File.join("app", "models", table_name.singularize+".rb")
-		model_name = table_name.singularize.capitalize
+	def create_model_file(table_name)		
+		# if the table_name is "branch_33_marks"
+		# model_file = /app/models/branch_33_mark.rb
+		#model_name=Branch33Mark
+		model_file = File.join("app", "models", table_name.singularize) +".rb"
+		model_name = table_name_2_marks_model_name(table_name)
 		File.open(model_file, "w+") do |f|
 			#The following line can be used to set a particular table to the Model using 'set_table_name'
 			# f << "class #{model_name} < ActiveRecord::Base \n set_table_name '#{table_name}' \n end"
-			f << "class #{model_name} < ActiveRecord::Base \n end"
+			f << "class #{model_name} < ActiveRecord::Base \n set_table_name '#{table_name}' \n end"
 		end
 	end
 	
@@ -114,6 +117,54 @@ class ApplicationController < ActionController::Base
 	#        END OF MODULES TO CREATE, EDIT AND DELETE TABLES DYNAMICALLY               #
 	#---------------------------------------------------------------------------#	
 	
+	
+	# ------------- Modules related to marks table -----------------------------------#
+	
+	def object_instance_2_class_name(obj_instance)
+		obj_instance.class.name		
+	end
+	
+	def object_instance_2_branch_instance(obj_instance)
+		if object_instance_2_class_name(obj_instance).eql? "Branch"
+			return obj_instance
+		elsif  object_instance_2_class_name(obj_instance).eql? "Clazz"
+			return obj_instance.branch
+		elsif  object_instance_2_class_name(obj_instance).eql? "Section"
+			return obj_instance.branch
+		end		
+	end
+	
+	def object_instance_2_marks_table_name(obj_instance)
+		branch_id = object_instance_2_branch_instance(obj_instance).id
+		return "branch_#{branch_id}_marks"
+	end
+	
+	def table_name_2_marks_model_name(table_name)
+		table_name.singularize.camelize
+	end
+	
+	def table_name_2_marks_model(table_name)
+	#	model_name = table_name.singularize.camelize
+	#	model_name.constantize		
+	model = Class.new(ActiveRecord::Base) do
+   		set_table_name table_name
+	end
+	return model
+	end
+	
+	def object_instance_2_marks_model(obj_instance)
+		table_name = object_instance_2_marks_table_name(obj_instance)
+		#model_name= table_name_2_marks_model_name(table_name)
+		#model_name.constantize
+		model = Class.new(ActiveRecord::Base) do
+	   		set_table_name table_name
+		end
+		return model		
+	end
+	
+	# ------------- End of Modules related to marks table ------------------------------#
+	
+	
 	# TODO need to make the required modules as private
 	
 	def current_profile
@@ -176,6 +227,7 @@ class ApplicationController < ActionController::Base
 	
 	 	def create_base_mark_table(table_name, subject_ids)
 		debugger
+		zModel=nil
   		# return as soon as an error is encountered. Othewise there is a chance that this true is returned
   		ret = true
   		columns = default_mark_columns
@@ -186,6 +238,7 @@ class ApplicationController < ActionController::Base
 				columns[column_name]=:float
 			end
 			ret = create_table(table_name, columns)
+			zModel = table_name_2_marks_model(table_name)		
 			if ret
 				#add a row for this new table in the 'mark_rec_defns' table
 				recdefn = MarkRecDefn.new(:name => table_name)
@@ -194,28 +247,27 @@ class ApplicationController < ActionController::Base
 			return ret
 			
 		else #Table is already there, just alter it
+			zModel = table_name_2_marks_model(table_name)			
 			add_columns = Hash.new
 			delete_columns = Array.new
-			Mark.set_table_name(table_name)
-			marks = Mark.new
+			marks = zModel.new
 
 			#add the new columns(only marks) here
   			subject_ids.each do |sid|
 				column_name =  "sub_#{sid}"
-				add_columns[column_name]=:float unless Mark.column_names.include?(column_name)
+				add_columns[column_name]=:float unless zModel.column_names.include?(column_name)
 			end
 
 			if !add_columns.empty?
 				if add_columns_to_table(table_name, add_columns) 
-					Mark.reset_column_information()
-					#Mark.set_table_name(table_name)
+					zModel.reset_column_information()
 				else
 					return false
 				end				
 			end
 					
 			#remove the unwanted columns (only marks) here
-			source_columns =  Mark.column_names
+			source_columns =  zModel.column_names
 			
 			#following columns should not be deleted from the table
 			source_columns.delete_if { |col| col == 'id' || col == 'created_at' || col == 'updated_at'}

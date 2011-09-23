@@ -204,13 +204,14 @@ end
 		#use a temp_branch and do NOT use @branch. @branch caches the old attributes.
 		#if a delete comes from the browser, it is not update in @branch.subjects
 		temp_branch = Branch.find(params[:id])
+		m_table_name = object_instance_2_marks_table_name(@branch)
 		if ret_update	
 			subject_ids = Array.new
 			for sub in temp_branch.subjects
 				subject_ids << sub.id
 			end
-			debugger
-			ret_create = create_base_mark_table("marks", subject_ids)
+			
+			ret_create = create_base_mark_table(m_table_name, subject_ids)
 		end
 		
 		if ret_update && ret_create
