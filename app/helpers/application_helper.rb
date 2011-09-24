@@ -19,14 +19,18 @@ module ApplicationHelper
 		f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
 	end
 	  
-	def link_to_add_fields(name, f, association)
+
+	# If extra local variables have to passed to the partial, they will passed in to params
+	# If no extra variables are required, a blank hash will be used as a default value.	
+	def link_to_add_fields(name, f, association, params={})
 		new_object = f.object.class.reflect_on_association(association).klass.new
 		fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-	  		render(association.to_s.singularize + "_fields", :f => builder)
+			#merge the params hash with the form builder being sent as a local variable to the partial
+	  		render(association.to_s.singularize + "_fields", {:f => builder}.merge(params))
 		end
 		link_to_function(name, "add_fields(this, '#{association}', '#{escape_javascript(fields)}')")
-	end
-
+	end	
+	
 end
 	
 

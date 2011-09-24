@@ -10,6 +10,11 @@ class SectionsController < ApplicationController
 
 # for cancan authorizatoin
 load_and_authorize_resource
+
+# Make sure there is a valid mark table and a @test object before you view the section.
+# if @test==nil, there will be problems in the views since we are rendering all the actions (with different divs)	
+# if there is no mark table, no table will be displayed by default in the update marks tab
+before_filter :initialize_test_and_marks_table, :only => [:show, :edit, :actions_box, :stunew, :marknew]
 	
 # Helper methods that will also be used in the view (index.html) 
 # These methods can also be moved into the model, and in that 
@@ -18,26 +23,18 @@ load_and_authorize_resource
 
 helper_method :sort_column, :sort_direction
 
-  def index
- 	@sections = Section.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @sections }
-      format.js
-    end
-  end
+def index
+	@sections = Section.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+	respond_to do |format|
+		format.html # index.html.erb
+		format.js
+	end
+end
 
   def show
     #@section = Section.find(params[:id])
   	@default_tab = 'show'
 	render :actions_box
-=begin
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @section }
-    end
-=end
   end
   
   
@@ -59,25 +56,27 @@ helper_method :sort_column, :sort_direction
 		#Note that the subjects and the tests will be updated automatically (without any parsing)
 		@section.sec_sub_maps.each do |d|
 		    sid = d.subject_id
-		    d.attributes = {:subject_id => sid, :teacher_id => params["teacher"]["#{sid}"]}
-		end
-		
-		#ret = mark_table("sec_#{@section.id}_#{current_year}_marks", params[:section])
-=begin		
-		if ret
-			flash[:notice] = "Marks table created"
-			logger.debug "This is the log message!!!"
-			#	logger.debug_variables(binding)
-		else
-			flash[:error] = "Marks table error"
-			logger.debug "This is the log error message!!!"
-			# logger.debug_variables(binding)
-		end
-=end		
-		if @section.valid? && @section.sec_sub_maps.all?(&:valid?) # &&  ret
+		    mark_col = mark_column(sid)
+		    if mark_col != -1
+		    	d.attributes = {:subject_id => sid, :teacher_id => params["teacher"]["#{sid}"], :mark_column => mark_col}
+		    else
+			    @default_tab = 'edit'
+		        render :actions_box, :error => "Cannot update mark column in the section subject maps"
+		        return
+			end
+		end			
+
+		if @section.valid? && @section.sec_sub_maps.all?(&:valid?)
 			@section.save!
 			@section.sec_sub_maps.each(&:save!)
 			@default_tab='show'
+			
+			# Whenever the list of tests for a section changes. update the marks table with rows for that test
+			# If this is not done - there might be problems. However, since there is a redirect, we should not 
+			# have any problem. Various use cases should be tested for this scenario
+			for test_id in params[:section][:test_ids]
+				build_marks_table(@section.id, test_id)				
+			end			
 			redirect_to (@section,  :notice => 'Section was successfully updated.')
 		else
 	    	@default_tab = 'edit'
@@ -97,16 +96,37 @@ helper_method :sort_column, :sort_direction
 
   def stucreate
   	 #@section = Section.find(params[:id])
-	respond_to do |format|
-	    if @section.update_attributes(params[:section])
-			@default_tab='show'
-	        format.html { redirect_to (@section,  :notice => 'Students were successfully updated.')}
-	    	format.xml  { head :ok }
-	    else
-	    	@default_tab = 'stunew'
-	        format.html { render :actions_box }
-	        format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
-	    end
+    if @section.update_attributes(params[:section])
+		@default_tab='show'
+			redirect_to (@section,  :notice => 'Students were successfully updated.')
+    else
+    	@default_tab = 'stunew'
+        render :actions_box
+    end
+  end
+
+#-----------------------------------------------------------#
+
+
+#-----------------------------------------------------------#
+  
+  def marknew
+  	#@section = Section.find(params[:id])
+	@test = Test.find(params[:test_id]) || Test.first
+  	@default_tab = 'marknew'	  	
+	render :actions_box
+  end
+  
+#-----------------------------------------------------------#
+
+  def markcreate
+  	 #@section = Section.find(params[:id])
+    if @section.update_attributes(params[:section])
+		@default_tab='show'			
+		redirect_to (@section,  :notice => 'Marks were successfully updated.')    	
+    else
+    	@default_tab = 'stunew'
+        render :actions_box
     end
   end
 
@@ -115,10 +135,6 @@ helper_method :sort_column, :sort_direction
 def actions_box
 	 #@section = Section.find(params[:id])
 	@default_tab = 'show'
-    respond_to do |format|
-      format.html # actions_box.html.erb
-      format.xml  { render :xml => @section }
-    end	
 end
 #-----------------------------------------------------------#
 
@@ -133,75 +149,41 @@ end
   end
   
 #-----------------------------------------------------------#
-	def new_table?(table_name)
-		if MarkRecDefn.find_by_name(table_name)
-			return false
+  
+	def mark_column(sub_id)
+		temp_row = @section.sec_sub_maps.find_by_subject_id(sub_id)
+		if temp_row.mark_column	
+			return temp_row.mark_column
 		else
-			return true
-		end
+			cols = (1..MARKS_SUBJECTS_COUNT).to_a
+			@section.sec_sub_maps.each do |map|
+			cols.delete_if {|x| x == map.mark_column}
+			end			
+			return cols[0] if !cols.empty?
+			return -1	
+		end	
 	end
-#-----------------------------------------------------------#  
-  	def mark_table(table_name, params)
+#-----------------------------------------------------------#	
+	def initialize_test_and_marks_table
+		@section ||= Section.find(params[:id])
+		if params[:test_id]
+			@test = Test.find(params[:test_id]) || Test.first	
+		else		
+			@test = @section.tests.first
+		end		
+		build_marks_table(@section.id, @test.id)
+	end	
+#-----------------------------------------------------------#
 
-  		# return as soon as an error is enconuntered. Othewise there is a chance that this true is returned
-  		ret = true
-  		columns = default_mark_columns
-		if new_table?(table_name) # Table for this 'section + year' is not there yet
-		  	params[:subject_ids].each do |sid|
-				column_name = Subject.find(sid).name
-				columns[column_name]=:float
-			end
-			ret = create_table(table_name, columns)
-			if ret
-				#add a row for this new table in the 'mark_rec_defns' table
-				recdefn = MarkRecDefn.new(:name => table_name)
-				recdefn.save!
-			end
-			return ret
+	def build_marks_table(section_id, test_id)
+		marks = Mark.find(:all,:conditions => {:section_id.eq => section_id, :test_id.eq => test_id })
+	 	if (marks.empty?)
+	 		for student in @section.students 
+	 			m = Mark.new( {:section_id => @section.id, :test_id => test_id, :student_id => student.id })
+	 			m.save!
+	 		end
+		end 				
+	end		
+#-----------------------------------------------------------#	
 			
-		else #Table is already there, just alter it
-			add_columns = Hash.new
-			delete_columns = Array.new
-			Mark.set_table_name(table_name)
-			marks = Mark.new
-
-			#add the new columns(only marks) here
-  			params[:subject_ids].each do |sid|
-				column_name = Subject.find(sid).name
-				add_columns[column_name]=:float unless Mark.column_names.include?(column_name)
-			end
-
-			if !add_columns.empty?
-				if add_columns_to_table(table_name, add_columns) 
-					Mark.reset_column_information()
-					#Mark.set_table_name(table_name)
-				else
-					return false
-				end				
-			end
-					
-			#remove the unwanted columns (only marks) here
-			source_columns =  Mark.column_names
-			
-			#following columns should not be deleted from the table
-			source_columns.delete_if { |col| col == 'id' || col == 'created_at' || col == 'updated_at'}
-			
-			#default marks columns
-			if  source_columns.count > params[:subject_ids].count + default_mark_columns.count
-				target_columns = hash_to_keys_array(default_mark_columns)
-				params[:subject_ids].each do |sid|
-					target_columns << Subject.find(sid).name
-				end
-				source_columns.each do |col_name|
-					delete_columns << col_name unless target_columns.include?(col_name)
-				end
-				ret = delete_columns_from_table(table_name, delete_columns) unless delete_columns.empty?
-				return ret
-			end
-			
-			return ret			
-			
-		end # end of if newtable
-	end #end of mark_table
-	
 end

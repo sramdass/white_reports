@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110907130147) do
+ActiveRecord::Schema.define(:version => 20110924104302) do
 
   create_table "branches", :force => true do |t|
     t.integer  "institution_id"
@@ -53,6 +53,33 @@ ActiveRecord::Schema.define(:version => 20110907130147) do
     t.datetime "updated_at"
   end
 
+  create_table "marks", :force => true do |t|
+    t.integer  "section_id"
+    t.integer  "test_id"
+    t.integer  "student_id"
+    t.float    "sub1"
+    t.float    "sub2"
+    t.float    "sub3"
+    t.float    "sub4"
+    t.float    "sub5"
+    t.float    "sub6"
+    t.float    "sub7"
+    t.float    "sub8"
+    t.float    "sub9"
+    t.float    "sub10"
+    t.float    "sub11"
+    t.float    "sub12"
+    t.float    "sub13"
+    t.float    "sub14"
+    t.float    "sub15"
+    t.float    "total"
+    t.integer  "rank"
+    t.string   "grade"
+    t.string   "remarks"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "memberships", :force => true do |t|
     t.integer  "profile_id"
     t.integer  "role_id"
@@ -80,31 +107,11 @@ ActiveRecord::Schema.define(:version => 20110907130147) do
     t.datetime "updated_at"
   end
 
-  create_table "schools", :force => true do |t|
-    t.string   "name"
-    t.string   "location"
-    t.string   "principal"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "sec_33_2010-11_marks", :force => true do |t|
     t.float    "Maths"
     t.float    "Science"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "sec_33_2010_marks", :force => true do |t|
-    t.integer  "student_id"
-    t.string   "remarks"
-    t.integer  "arrears"
-    t.integer  "rank"
-    t.integer  "test_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.float    "Tamil"
-    t.float    "Science"
   end
 
   create_table "sec_sub_maps", :force => true do |t|
@@ -113,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20110907130147) do
     t.integer  "teacher_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mark_column"
   end
 
   create_table "sec_test_maps", :force => true do |t|
