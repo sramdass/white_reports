@@ -18,7 +18,7 @@
 
 
 <% for t in section.tests %>
-<h2> <%= t.name.humanize %> </h2>
+<h2> <%= t.name %> </h2>
 	<table class='index_table_z' summary=<% "#{t.name} index" %>>
 	    <thead>		    	
 		    	<tr>
@@ -26,6 +26,7 @@
 		        	<% for map in section.sec_sub_maps %>
 		        			<th scope="col"> <%= Subject.find(map.subject_id).name.humanize %> </th>
 		            <% end %>
+		            <th scope="col"> Total </th>
 		            <!-- <th scope="col">Action</th> -->
 		        </tr>	    	
 		</thead>
@@ -39,6 +40,7 @@
 							<% m_col = "sub#{map.mark_column}" %>
 		        			<td> <%= mark.send(m_col) %> </td>
 			            <% end %>
+			            <td> <%= mark.total %>
 			        </tr>
 				<% end %>			
 	    </tbody>	

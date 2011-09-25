@@ -12,6 +12,7 @@ gem "cancan"
 gem "hirb", "~> 0.5.0"
 gem "meta_where"
 gem "meta_search"
+gem "lazy_high_charts"
 
 group :development do
   gem 'rspec-rails', '2.6.1'

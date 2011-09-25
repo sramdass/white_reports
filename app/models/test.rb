@@ -16,6 +16,9 @@ class Test < ActiveRecord::Base
 	#Whenever it is saved, make sure the object has a valid parent available
 	validates_presence_of :branch	
 	
+	has_many :sec_test_maps, :dependent => true, :dependent => :destroy
+	has_many :sections, :through => :sec_test_maps	
+	
 #-------VALIDATIONS------------#		
 		
 	validates	:name,  	:presence => true, 
