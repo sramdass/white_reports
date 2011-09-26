@@ -454,6 +454,8 @@
             <string>app\controllers\sections_controller.rb</string>
             <key>sections_cont</key>
             <string>app\controllers\sections_controller.rb</string>
+            <key>sections_controller</key>
+            <string>app\controllers\sections_controller.rb</string>
             <key>sections_cp</key>
             <string>spec\controllers\sections_controller_spec.rb</string>
             <key>secure_ran</key>
@@ -537,6 +539,8 @@
             <key>teacher_c</key>
             <string>app\models\teacher_contact.rb</string>
             <key>teacher_cont</key>
+            <string>app\models\teacher_contact.rb</string>
+            <key>teacher_conta</key>
             <string>app\models\teacher_contact.rb</string>
             <key>teacher_contact</key>
             <string>app\models\teacher_contact.rb</string>
