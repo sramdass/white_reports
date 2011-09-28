@@ -74,12 +74,12 @@ WhiteReports::Application.routes.draw do
 	end
 	
 	resources :marks do
-	get "table", :on => :collection
-	get "graphs", :on => :collection
-	get "students", :on => :collection
-	get "sections", :on => :collection
-	get "subjects", :on => :collection	
-	get "clazzs", :on => :collection
+	get "section_dyn_vals", :on => :collection
+	get "cols_and_spline", :on => :collection
+	get "stacked_cols", :on => :collection	
+	get "table_cols", :on => :collection
+	get "negative_stack", :on => :collection
+	get "section_any1_graphs", :on => :collection			
 	end
 	
 	resources :subjects

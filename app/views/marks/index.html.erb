@@ -1,28 +1,112 @@
 <div id="content_box">	
+	<div id="tab_bar">
+			<ul>
+				<li><a id = 'students_on_a_subject' class = 'selected' href="#">Students on a subject</a></li>
+				<li><a id = 'students_total_split_up' href="#">students total split up</a></li>
+				<li><a id = 'range_gender_wise' href="#">Range gender-wise</a></li>
+			</ul>
+	</div>		
 	<div id="main_content">
-		<%= form_tag graphs_marks_path, :method => 'get', :id => "graphs" do %>
-		<p>
-		  <%= label_tag :classes  %><br />
-		  <%= text_field_tag :clazz_ids %>
-		</p>
-		<p>
-		  <%= label_tag :sections  %><br />
-		  <%= text_field_tag :section_ids %>
-		</p>
-		<p>
-		<p>
-		  <%= label_tag :subjects  %><br />
-		  <%= text_field_tag :subject_ids %>
-		</p>
-		<p>			
-		  <%= label_tag :students , "Students" %><br />
-		  <%= text_field_tag :student_ids %>
-		</p>
-						
-		<%= submit_tag "Search", :name => nil %>
-		<% end %>
+		
+		<div id='students_on_a_subject' class='cantoggle'>	
+			students_on_a_subject
+			<h2> Stacked Columns </h2>
+			
+			<%= form_tag stacked_cols_marks_path, :method => 'get', :id => "graphs" do %>
+				<p>
+				  <%= label_tag :classes  %><br />
+				  <%= text_field_tag :clazz_ids %>
+				</p>
+				<p>
+				  <%= label_tag :sections  %><br />
+				  <%= text_field_tag :section_ids %>
+				</p>
+				<p>
+				<p>
+				  <%= label_tag :tests  %><br />
+				  <%= text_field_tag :test_ids %>
+				</p>
+				<p>
+				  <%= label_tag :subjects  %><br />
+				  <%= text_field_tag :subject_ids %>
+				</p>		
+				<p>			
+				  <%= label_tag :students %><br />
+				  <%= text_field_tag :student_ids %>
+				</p>
+								
+				<%= submit_tag "Graph this", :name => nil %>
+			<% end %>
+		</div> 		
+		<div id='students_total_split_up' class='cantoggle'>	
+			students_total_split
+						<h2> Stacked Columns </h2>
+			
+			<%= form_tag stacked_cols_marks_path, :method => 'get', :id => "graphs" do %>
+				<p>
+				  <%= label_tag :classes  %><br />
+				  <%= text_field_tag :clazz_ids %>
+				</p>
+				<p>
+				  <%= label_tag :sections  %><br />
+				  <%= text_field_tag :section_ids %>
+				</p>
+				<p>
+				<p>
+				  <%= label_tag :tests  %><br />
+				  <%= text_field_tag :test_ids %>
+				</p>
+				<p>
+				  <%= label_tag :subjects  %><br />
+				  <%= text_field_tag :subject_ids %>
+				</p>		
+				<p>			
+				  <%= label_tag :students %><br />
+				  <%= text_field_tag :student_ids %>
+				</p>
+								
+				<%= submit_tag "Graph this", :name => nil %>
+				<% end %>
+		</div> 		
+		<div id='range_gender_wise' class='cantoggle'>	
+			range_gender_wise
+			<h2> Stacked Columns </h2>
+			
+			<%= form_tag stacked_cols_marks_path, :method => 'get', :id => "graphs" do %>
+				<p>
+				  <%= label_tag :classes  %><br />
+				  <%= text_field_tag :clazz_ids %>
+				</p>
+				<p>
+				  <%= label_tag :sections  %><br />
+				  <%= text_field_tag :section_ids %>
+				</p>
+				<p>
+				<p>
+				  <%= label_tag :tests  %><br />
+				  <%= text_field_tag :test_ids %>
+				</p>
+				<p>
+				  <%= label_tag :subjects  %><br />
+				  <%= text_field_tag :subject_ids %>
+				</p>		
+				<p>			
+				  <%= label_tag :students %><br />
+				  <%= text_field_tag :student_ids %>
+				</p>
+								
+				<%= submit_tag "Graph this", :name => nil %>
+				<% end %>			
+		</div> 		
+		<br><br><br><br><br><br><br>
+		
+
+			
 </div>
 </div>
+
+
+
 
 
 

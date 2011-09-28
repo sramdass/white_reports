@@ -1,2 +1,35 @@
 
-<%= high_chart("my_id", @h) %>
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    new Highcharts.Chart({
+      chart: {
+        renderTo: "orders_chart"
+      },
+      title: {
+        text: "Orders by Day"
+      },
+      xAxis: {
+        type: "datetime"
+      },
+      yAxis: {
+        title: {
+          text: "Dollars"
+        }
+      },
+      tooltip: {
+        formatter: function() {
+          return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' +
+            "$" + Highcharts.numberFormat(this.y, 2);
+        }
+      },
+      series: [ {
+        name: "Satheesh" ,
+        data: [3,9,4,7,3,1]
+      }, {
+        name: "Kumar" ,
+        data: [1,2,5,3,7,9]
+      } ]
+    });
+  });
+</script>
+<div id="orders_chart" style="width:560px; height:300px;"></div>

@@ -1,0 +1,37 @@
+<div id="content_box">	
+	<div id="main_content">
+		<%= form_tag cols_and_spline_marks_path, :method => 'get', :class => "sections_graph" do %>
+			<%= hidden_field_tag :section_id, @section.id %>
+			<%= hidden_field_tag :type, @type %>			
+				<p>
+				<% if @type.eql?('one_student')%>
+					 <h3> Student:  </h3>	 <%= select_tag :student_id, options_from_collection_for_select(@section.students, 'id', 'name') %> 
+				<% else %>
+					 <h3> Students:</h3>	  <%= text_field_tag :student_ids %>
+				<% end %>
+				</p>
+				<p>
+					<% if @type.eql?('one_subject')%>	
+						<h3> Subject: </h3>	<%= select_tag :subject_id, options_from_collection_for_select(@section.subjects, 'id', 'name') %> 
+					<% else %>
+						<h3> Subjects:	</h3>
+						<% for subject in @section.subjects %>
+							<%= check_box_tag "subject_ids[]", subject.id %> <%= subject.name  %>  </label>
+						<% end %>
+					<% end %>
+				</p>
+				<p>
+					<% if @type.eql?('one_test')%>
+						<h3> Test:</h3>	 <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> 
+					<% else %>
+						<h3> Tests: </h3>	
+						<% for test in @section.tests %>
+							<%= check_box_tag "test_ids[]", test.id %> <%= test.name  %> 
+						<% end %>
+					<% end %>									
+				</p>
+				<p> <%= submit_tag "Graph this" %> </p>
+
+		<% end %>
+	</div>
+</div>	

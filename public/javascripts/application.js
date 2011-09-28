@@ -140,37 +140,4 @@ $(function() {
     	return false;
   	});
   	
-$("#student_ids").tokenInput(function() {   
-	return '/marks/students.json?type=students&section_ids=' + $('#section_ids').val(); 	},
-	{
-    crossDomain: false,
-    //prePopulate: $("#book_author_tokens").data("pre"),
-    //theme: "facebook"
-  });
-  
-$("#subject_ids").tokenInput(function() {   
-	return '/marks/subjects.json?type=subjects&section_ids=' + $('#section_ids').val(); 	},
-	{
-    crossDomain: false,
-    //prePopulate: $("#book_author_tokens").data("pre"),
-    //theme: "facebook"
-  });  
-    
-$("#section_ids").tokenInput(function() {   
-	return '/marks/sections.json?type=sections&clazz_ids=' + $('#clazz_ids').val(); 	},
-	{
-    crossDomain: false,
-    //prePopulate: $("#book_author_tokens").data("pre"),
-    //theme: "facebook"
-  });
-  
-  $("#clazz_ids").tokenInput(function() { 
-  	return '/marks/clazzs.json?type=clazzs'; },
-	{
-    crossDomain: false,
-    //prePopulate: $("#book_author_tokens").data("pre"),
-    //theme: "facebook"
-  });
-  
- 	
 });

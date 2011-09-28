@@ -22,6 +22,14 @@ class Student < ActiveRecord::Base
 	has_one :student_contact, :dependent => :destroy
 	accepts_nested_attributes_for :student_contact
 	
+	scope :by_section, lambda { |section_id| 
+		where('section_id = ?', section_id)
+	}	
+	
+	scope :name_like, lambda { |name| 
+		where('name like ?', name)
+	}	
+	
 #-------VALIDATIONS------------#
 	
 	 validates 	:name, 	:presence => true, 

@@ -19,6 +19,10 @@ class Test < ActiveRecord::Base
 	has_many :sec_test_maps, :dependent => true, :dependent => :destroy
 	has_many :sections, :through => :sec_test_maps	
 	
+	scope :by_section, lambda { |section_id| 
+		joins(:sec_test_maps).where('sec_test_maps.section_id = ?', section_id)
+	}	
+	
 #-------VALIDATIONS------------#		
 		
 	validates	:name,  	:presence => true, 

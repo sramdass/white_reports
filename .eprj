@@ -47,9 +47,9 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\institutions\_edit.html.erb</string>
+            <string>app\views\sections\_edit.html.erb</string>
             <key>_email</key>
-            <string>app\views\students\_email_fields.erb</string>
+            <string>app\views\teachers\_emailnew.html.erb</string>
             <key>_email_f</key>
             <string>app\views\teachers\_email_fields.erb</string>
             <key>_form</key>
@@ -142,12 +142,14 @@
             <string>app\models\ability.rb</string>
             <key>action_box</key>
             <string>app\views\branches\actions_box.html.erb</string>
+            <key>actions</key>
+            <string>app\views\sections\actions_box.html.erb</string>
             <key>actions_b</key>
             <string>app\views\institutions\actions_box.html.erb</string>
             <key>actions_bo</key>
             <string>app\views\students\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\branches\actions_box.html.erb</string>
+            <string>app\views\sections\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -234,6 +236,8 @@
             <string>app\views\branches\clznew.html.erb</string>
             <key>clznew</key>
             <string>app\views\branches\clznew.html.erb</string>
+            <key>cols_and_spline</key>
+            <string>app\views\marks\cols_and_spline.html.erb</string>
             <key>confere</key>
             <string>C:\Users\sramdass.PSFT\Desktop\ruby\source\stffn-decl_auth_demo_app-b1c29dc\stffn-decl_auth_demo_app-b1c29dc\app\models\conference.rb</string>
             <key>constat</key>
@@ -272,7 +276,11 @@
             <string>Gemfile</string>
             <key>gemfile</key>
             <string>Gemfile</string>
+            <key>graph_in</key>
+            <string>public\javascripts\graph_input.js</string>
             <key>graphs.</key>
+            <string>app\views\marks\graphs.html.erb</string>
+            <key>graphs.html</key>
             <string>app\views\marks\graphs.html.erb</string>
             <key>index</key>
             <string>app\views\branches\index.html.erb</string>
@@ -283,7 +291,7 @@
             <key>index.htm</key>
             <string>app\views\institutions\index.html.erb</string>
             <key>index.html</key>
-            <string>app\views\institutions\index.html.erb</string>
+            <string>app\views\marks\index.html.erb</string>
             <key>index.html.e</key>
             <string>app\views\profiles\index.html.erb</string>
             <key>index.html.er</key>
@@ -326,12 +334,18 @@
             <string>app\models\mark_rec_defn.rb</string>
             <key>marks_con</key>
             <string>app\controllers\marks_controller.rb</string>
+            <key>marks_cont</key>
+            <string>app\controllers\marks_controller.rb</string>
             <key>marks_contro</key>
+            <string>app\controllers\marks_controller.rb</string>
+            <key>marks_controller</key>
             <string>app\controllers\marks_controller.rb</string>
             <key>member</key>
             <string>app\models\membership.rb</string>
             <key>membership.rb</key>
             <string>app\models\membership.rb</string>
+            <key>nega</key>
+            <string>app\views\marks\negative_stack.html.erb</string>
             <key>new</key>
             <string>spec\views\branches\new.html.erb_spec.rb</string>
             <key>new.ht</key>
@@ -348,6 +362,8 @@
             <string>app\controllers\password_resets_controller.rb</string>
             <key>password_reset_C</key>
             <string>app\controllers\password_resets_controller.rb</string>
+            <key>pie_anc</key>
+            <string>app\views\marks\pie_and_col.erb</string>
             <key>profile.r</key>
             <string>app\models\profile.rb</string>
             <key>profile.rb</key>
@@ -411,6 +427,8 @@
             <key>sec_sub</key>
             <string>app\models\sec_sub_map.rb</string>
             <key>sec_sub_</key>
+            <string>app\models\sec_sub_map.rb</string>
+            <key>sec_sub_ma</key>
             <string>app\models\sec_sub_map.rb</string>
             <key>sec_sub_map.r</key>
             <string>app\models\sec_sub_map.rb</string>

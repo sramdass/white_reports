@@ -1,4 +1,71 @@
-<table class='index_table_z' summary="Section tests index">
+<script type="text/javascript">
+
+		/**
+		 * Visualize an HTML table using Highcharts. The top (horizontal) header 
+		 * is used for series names, and the left (vertical) header is used 
+		 * for category names. This function is based on jQuery.
+		 * @param {Object} table The reference to the HTML table to visualize
+		 * @param {Object} options Highcharts options
+		 */
+		Highcharts.visualize = function(table, options) {
+			// the categories
+			options.xAxis.categories = [];
+			jQuery('tbody th', table).each( function(i) {
+				options.xAxis.categories.push(this.innerHTML);
+			});
+			
+			// the data series
+			options.series = [];
+			jQuery('tr', table).each( function(i) {
+				var tr = this;
+				jQuery('th, td', tr).each( function(j) {
+					if (j > 0) { // skip first column
+						if (i == 0) { // get the name and init the series
+							options.series[j - 1] = { 
+								name: this.innerHTML,
+								data: []
+							};
+						} else { // add values
+							options.series[j - 1].data.push(parseFloat(this.innerHTML));
+						}
+					}
+				});
+			});
+			
+			var chart = new Highcharts.Chart(options);
+		}
+	
+		// On document ready, call visualize on the datatable.
+		jQuery(document).ready(function() {			
+			var table = document.getElementById('datatable'),
+			options = {
+				   chart: {
+				      renderTo: 'container',
+				      defaultSeriesType: 'column'
+				   },
+				   title: {
+				      text: 'Data extracted from a HTML table in the page'
+				   },
+				   xAxis: {
+				   },
+				   yAxis: {
+				      title: {
+				         text: 'Units'
+				      }
+				   },
+				   tooltip: {
+				      formatter: function() {
+				         return '<b>'+ this.series.name +'</b><br/>'+
+				            this.y +' '+ this.x.toLowerCase();
+				      }
+				   }
+				};
+	  					
+			Highcharts.visualize(table, options);
+		});
+	</script>
+
+<table class='index_table_z'  summary="Section tests index">
     <thead>	
 		<tr>
 			<th scope="col"> Test Name </th>
@@ -19,14 +86,14 @@
 
 <% for t in section.tests %>
 <h2> <%= t.name %> </h2>
-	<table class='index_table_z' summary=<% "#{t.name} index" %>>
+	<table class='index_table_z' id='datatable' summary=<% "#{t.name} index" %>>
 	    <thead>		    	
 		    	<tr>
 		    		<th scope="col">Student Name</th>
 		        	<% for map in section.sec_sub_maps %>
 		        			<th scope="col"> <%= Subject.find(map.subject_id).name.humanize %> </th>
 		            <% end %>
-		            <th scope="col"> Total </th>
+		         <!--   <th scope="col"> Total </th> -->
 		            <!-- <th scope="col">Action</th> -->
 		        </tr>	    	
 		</thead>
@@ -40,12 +107,16 @@
 							<% m_col = "sub#{map.mark_column}" %>
 		        			<td> <%= mark.send(m_col) %> </td>
 			            <% end %>
-			            <td> <%= mark.total %>
+			    <!--         <td> <%= mark.total %> </td> -->
 			        </tr>
 				<% end %>			
 	    </tbody>	
 	</table>
 <% end %>
+
+
+	<div id="container" class="highcharts-container" style="width: 1200px; height: 450px ;">
+	</div>
 
 
 

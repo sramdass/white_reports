@@ -6,6 +6,9 @@ class Mark < ActiveRecord::Base
 scope :by_test_id, lambda { |id| where(:test_id => id) }
 scope :by_section_id, lambda { |id| where(:section_id => id)}
 scope :by_student_id, lambda { |id| where(:student_id => id)}
+scope :boys_only, joins(:student).where('students.female = ?', false)
+scope :girls_only, joins(:student).where('students.female = ?', true)
+scope :in_range, lambda { |mark_col, lower_range, upper_range| where(mark_col.to_sym => (lower_range..upper_range))}
 
 before_save :update_total
 
@@ -17,6 +20,12 @@ def update_total
 		end
 	end
 	self.total=total	
+end
+
+def self.total_on(section_id, subject_id, test_id)
+	column_name = SecSubMap.by_section_id(section_id).by_subject_id(subject_id).first.mark_column
+	column_name = "sub#{column_name}"
+	where('section_id = ? and test_id = ?', section_id, test_id).sum(column_name.to_sym)
 end
 
 =begin

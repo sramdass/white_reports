@@ -20,6 +20,11 @@ class Subject < ActiveRecord::Base
 	has_many :sec_sub_maps, :dependent => true, :dependent => :destroy
 	has_many :sections, :through => :sec_sub_maps
 	
+	
+	scope :by_section, lambda { |section_id| 
+		joins(:sec_sub_maps).where('sec_sub_maps.section_id = ?', section_id)
+	}
+	
 #-------VALIDATIONS------------#	
 
 	validates	:name,  	:presence => true, 

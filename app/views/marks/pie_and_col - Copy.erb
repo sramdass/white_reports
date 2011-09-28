@@ -1,0 +1,54 @@
+
+<script type="text/javascript" charset="utf-8">
+ var chart;
+  $(function() {
+     var catArray = [] ;
+	<% @exams.each do |e| %>
+		catArray.push('<%= e %>')
+	<% end %>
+   new Highcharts.Chart({
+      chart: {
+         renderTo: 'container'
+      },
+      title: {
+         text: 'Combination chart'
+      },
+      xAxis: {
+         categories: catArray
+      },
+      tooltip: {
+         formatter: function() {
+            var s;
+            if (this.point.name) { // the pie chart
+               s = ''+
+                  this.point.name +': '+ this.y +' fruits';
+            } else {
+               s = ''+
+                  this.x  +': '+ this.y;
+            }
+            return s;
+         }
+      },
+      labels: {
+         items: [{
+            html: 'Total fruit consumption',
+            style: {
+               left: '40px',
+               top: '8px',
+               color: 'black'            
+            }
+         }]
+	  },
+	  series: [
+	  <% @students.each do |s| %>
+		  {
+	         type: 'column',
+	         name: '<%= s[:name] %>',
+	         data: <%= s[:marks].inspect %>
+	      },
+      <% end %>
+      ]
+   });   
+});
+</script>
+<div id="container"></div>

@@ -1,0 +1,74 @@
+<script type="text/javascript" charset="utf-8">
+var catArray = [] ;
+<% @range.each do |s| %>
+	catArray.push('<%= s %>')
+<% end %>	
+
+   categories = ['0-4', '5-9', '10-14', '15-19',
+      '20-24', '25-29', '30-34', '35-39', '40-44',
+      '45-49', '50-54', '55-59', '60-64', '65-69',
+      '70-74', '75-79', '80-84', '85-89', '90-94',
+      '95-99', '100 +'];
+      
+$(document).ready(function() {
+   chart = new Highcharts.Chart({
+      chart: {
+         renderTo: 'container',
+         defaultSeriesType: 'bar'
+      },
+      title: {
+         text: 'Population pyramid for Germany, midyear 2010'
+      },
+      subtitle: {
+         text: 'Source: www.census.gov'
+      },
+      xAxis: [{
+         categories: catArray,
+         reversed: false
+      }, { // mirror axis on right side
+         opposite: true,
+         reversed: false,
+         categories: catArray,
+         linkedTo: 0
+      }],
+      yAxis: {
+         title: {
+            text: null
+         },
+         labels: {
+            formatter: function(){
+               //return (Math.abs(this.value) / 1000000) + 'M';
+               return this.value;
+            }
+         },
+         min: -10,
+         max: 10
+      },
+      
+      plotOptions: {
+         series: {
+            stacking: 'normal'
+         }
+      },
+      
+      tooltip: {
+         formatter: function(){
+            return '<b>'+ this.series.name +', marks '+ this.point.category +'</b><br/>'+
+                'Count: '+ Highcharts.numberFormat(Math.abs(this.point.y), 0);
+         }
+      },
+      
+      series: [{
+         name: 'Boys',
+         data: <%= @boys.inspect %>
+      }, {
+         name: 'Girls',
+         data: <%= @girls.inspect %>
+      }]
+   });
+     
+});
+
+</script>
+
+<div id="container"></div>
