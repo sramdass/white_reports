@@ -62,6 +62,8 @@
             <string>app\views\institutions\_institutions.html.erb</string>
             <key>_marknew</key>
             <string>app\views\sections\_marknew.html.erb</string>
+            <key>_repor</key>
+            <string>app\views\sections\_report_options.html.erb</string>
             <key>_secnew</key>
             <string>app\views\clazzs\_secnew.html.erb</string>
             <key>_section_f</key>
@@ -147,9 +149,9 @@
             <key>actions_b</key>
             <string>app\views\institutions\actions_box.html.erb</string>
             <key>actions_bo</key>
-            <string>app\views\students\actions_box.html.erb</string>
-            <key>actions_box</key>
             <string>app\views\sections\actions_box.html.erb</string>
+            <key>actions_box</key>
+            <string>app\views\students\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -236,6 +238,12 @@
             <string>app\views\branches\clznew.html.erb</string>
             <key>clznew</key>
             <string>app\views\branches\clznew.html.erb</string>
+            <key>cols_ad</key>
+            <string>app\views\marks\cols_and_spline.html.erb</string>
+            <key>cols_and</key>
+            <string>app\views\marks\cols_and_spline.html.erb</string>
+            <key>cols_and_sp</key>
+            <string>app\views\marks\cols_and_spline.html.erb</string>
             <key>cols_and_spline</key>
             <string>app\views\marks\cols_and_spline.html.erb</string>
             <key>confere</key>
@@ -346,6 +354,8 @@
             <string>app\models\membership.rb</string>
             <key>nega</key>
             <string>app\views\marks\negative_stack.html.erb</string>
+            <key>negative_St</key>
+            <string>app\views\marks\negative_stack.html.erb</string>
             <key>new</key>
             <string>spec\views\branches\new.html.erb_spec.rb</string>
             <key>new.ht</key>
@@ -378,6 +388,8 @@
             <string>app\controllers\profiles_controller.rb</string>
             <key>remove_sch</key>
             <string>db\migrate\20110902035043_remove_school_ids.rb</string>
+            <key>report_op</key>
+            <string>app\views\sections\_report_options.html.erb</string>
             <key>role</key>
             <string>app\models\role.rb</string>
             <key>role.r</key>
@@ -454,6 +466,8 @@
             <string>app\models\section.rb</string>
             <key>section.rb</key>
             <string>app\models\section.rb</string>
+            <key>section_an</key>
+            <string>app\views\marks\section_any1_graphs.html.erb</string>
             <key>section_c</key>
             <string>app\controllers\sections_controller.rb</string>
             <key>section_co</key>
@@ -502,6 +516,12 @@
             <string>app\views\students\show.html.erb</string>
             <key>show.html.erb</key>
             <string>app\views\clazzs\show.html.erb</string>
+            <key>stack</key>
+            <string>app\views\marks\stacked_cols.html.erb</string>
+            <key>stacked_</key>
+            <string>app\views\marks\stacked_cols.html.erb</string>
+            <key>stacked_C</key>
+            <string>app\views\marks\stacked_cols.html.erb</string>
             <key>student</key>
             <string>app\views\sections\_student_fields.html.erb</string>
             <key>student.r</key>

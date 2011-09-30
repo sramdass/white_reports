@@ -9,6 +9,7 @@
 					<li><a id = 'student_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
 					<li><a id = 'student_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
 				<% end %>
+				<li><a id = 'student_reports' href="#">Reports</a></li>									
 			</ul>
 	</div>		
 	<div id="main_content">			
@@ -24,6 +25,9 @@
 		<div id='student_sms' class='cantoggle'>
 			<%= render 'smsnew', :student => @student %>
 		</div> 			
+		<div id='student_reports' class='cantoggle'>	
+			<%= render 'report_options', :student => @student %>
+		</div> 				
 	</div>		<!-- END of main_content -->
 </div>		<!-- End of content_box -->
 

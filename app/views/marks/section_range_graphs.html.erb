@@ -1,0 +1,33 @@
+<div id="content_box">	
+	<div id="main_content">
+		<%= form_tag negative_stack_marks_path, :method => 'get', :class => "sections_graph" do %>
+			<%= hidden_field_tag :section_id, @section.id %>
+			<%= hidden_field_tag :type, @type %>			
+			<p>
+				<% if @type.eql?('range_1test_2subjects')%>
+					<h3> Test:</h3>	 <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> 
+					<h3> Subjects:	</h3>
+					<% for subject in @section.subjects %>
+						<%= check_box_tag "subject_ids[]", subject.id %> <%= subject.name  %>
+					<% end %>
+				<% end %>
+			</p>
+			<p>
+				<% if @type.eql?('range_1subject_2tests')%>	
+					<h3> Subject: </h3>	<%= select_tag :subject_id, options_from_collection_for_select(@section.subjects, 'id', 'name') %> 
+					<h3> Tests: </h3>	
+					<% for test in @section.tests %>
+						<%= check_box_tag "test_ids[]", test.id %> <%= test.name  %> 
+					<% end %>					
+				<% end %>
+			</p>
+			<p>
+				<% if @type.eql?('range_gender')%>
+					<h3> Test:</h3>	 <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> 
+					<h3> Subject: </h3>	<%= select_tag :subject_id, options_from_collection_for_select(@section.subjects, 'id', 'name') %> 						
+				<% end %>									
+			</p>
+			<p> <%= submit_tag "Graph this" %> </p>
+		<% end %>
+	</div>
+</div>	

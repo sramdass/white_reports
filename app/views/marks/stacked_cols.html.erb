@@ -2,7 +2,7 @@
 
 	$(document).ready(function() {
 		var catArray = [] ;
-		<% @students.each do |s| %>
+		<% @categories.each do |s| %>
 			catArray.push('<%= s %>')
 		<% end %>	
 				
@@ -12,15 +12,18 @@
 				defaultSeriesType: 'column'
 			},
 			title: {
-				text: 'Stacked column chart'
+				text: '<%= @title_text%>'
 			},
+			subtitle: {
+         		text: '<%= @subtitle_text %>'
+      		},
 			xAxis: {
 				categories: catArray
 			},
 			yAxis: {
 				min: 0,
 				title: {
-					text: 'Total Marks'
+					text: '<%= @y_axis_title %>'
 				},
 				stackLabels: {
 					enabled: true,
@@ -32,7 +35,7 @@
 			},
 			legend: {
 				align: 'right',
-				x: -100,
+				x: 0,
 				verticalAlign: 'top',
 				y: 20,
 				floating: true,
@@ -58,10 +61,10 @@
 				}
 			},
 			series: [
-					<% @subjects_and_marks.each do |sub_mark| %>
+					<% @series.each do |s| %>
 					{
-					name: '<%= sub_mark[:name] %>' ,
-					data: <%= sub_mark[:marks].inspect %>
+					name: '<%= s[:name] %>' ,
+					data: <%= s[:marks].inspect %>
 					}, 
 				<% end %>
 			]

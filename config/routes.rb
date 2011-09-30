@@ -74,12 +74,16 @@ WhiteReports::Application.routes.draw do
 	end
 	
 	resources :marks do
-	get "section_dyn_vals", :on => :collection
-	get "cols_and_spline", :on => :collection
-	get "stacked_cols", :on => :collection	
-	get "table_cols", :on => :collection
-	get "negative_stack", :on => :collection
-	get "section_any1_graphs", :on => :collection			
+		get "section_dyn_vals", :on => :collection
+		get "cols_and_spline", :on => :collection
+		get "stacked_cols", :on => :collection	
+		get "table_cols", :on => :collection
+		get "negative_stack", :on => :collection
+		get "section_any1_graphs", :on => :collection			
+		get "section_range_graphs", :on => :collection	
+		get "section_total_graphs", :on => :collection
+		get "student_total_graphs"	, :on => :collection
+		get "student_master_graphs", :on => :collection			
 	end
 	
 	resources :subjects

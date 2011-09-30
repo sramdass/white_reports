@@ -17,10 +17,10 @@ $(document).ready(function() {
          defaultSeriesType: 'bar'
       },
       title: {
-         text: 'Population pyramid for Germany, midyear 2010'
+         text: '<%= @title_text %>'
       },
       subtitle: {
-         text: 'Source: www.census.gov'
+         text: '<%= @subtitle_text %>'
       },
       xAxis: [{
          categories: catArray,
@@ -41,8 +41,8 @@ $(document).ready(function() {
                return this.value;
             }
          },
-         min: -10,
-         max: 10
+         min: <%= @negative_length %>,
+         max: <%= @positive_length %>
       },
       
       plotOptions: {
@@ -58,15 +58,15 @@ $(document).ready(function() {
          }
       },
       
-      series: [{
-         name: 'Boys',
-         data: <%= @boys.inspect %>
-      }, {
-         name: 'Girls',
-         data: <%= @girls.inspect %>
-      }]
-   });
-     
+      series: [ 
+      <% @series.each do |s| %>     
+	      {
+	         name: '<%= s[:name] %>',
+	         data: <%=s[:count].inspect %>
+	      }, 
+	    <% end %>
+      ]
+   });     
 });
 
 </script>

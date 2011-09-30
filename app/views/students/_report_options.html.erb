@@ -1,0 +1,4 @@
+<ol>
+	<li> <%= link_to 'Compare my total with others in a particular test', student_total_graphs_marks_path( :student_id => student.id)%> </li>
+	<li> <%= link_to 'Compare my subject marks in different tests', student_master_graphs_marks_path( :type => 'one_test', :student_id => student.id)%> </li>
+</ol>

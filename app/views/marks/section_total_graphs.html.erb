@@ -1,0 +1,15 @@
+<div id="content_box">	
+	<div id="main_content">
+		<%= form_tag stacked_cols_marks_path, :method => 'get', :class => "sections_graph" do %>
+			<%= hidden_field_tag :section_id, @section.id %>
+			<%= hidden_field_tag :type, @type %>			
+				<p>
+					 <h3> Students:</h3>	  <%= text_field_tag :student_ids %>
+				</p>
+				<p>
+					<h3> Test:</h3>	 <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> 
+				</p>
+				<p> <%= submit_tag "Graph this" %> </p>
+		<% end %>
+	</div>
+</div>	

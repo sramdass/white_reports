@@ -13,6 +13,9 @@
 			title: {
 				text: '<%= @title_text %>'
 			},
+			subtitle: {
+         		text: '<%= @subtitle_text %>'
+      		},
 			xAxis: {
 				categories: catArray
 			},
@@ -42,11 +45,12 @@
 					data: <%= s[:marks].inspect %>
 					},
 			<% end %>
-			/*	{
-					type: 'spline',
-					name: 'Class average',
-					data: <%= @class_average.inspect %>
-					}*/
+			/*
+			{
+				type: 'spline',
+				name: 'Class average',
+				data: <%= @average.inspect %>
+			}*/
 			]
 		});   
 	});
