@@ -1,33 +1,40 @@
-<div id="content_box">	
-	<div id="tab_bar">
-			<ul>
-				<li><a id = 'student_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-				<% if can? :update, @student%>
-					<li><a id = 'student_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-				<% end %>
-				<% if can? :communicate, @student%>				
-					<li><a id = 'student_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
-					<li><a id = 'student_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
-				<% end %>
-				<li><a id = 'student_reports' href="#">Reports</a></li>									
-			</ul>
-	</div>		
-	<div id="main_content">			
-		<div id='student_show' class='cantoggle'>	
-			<%= render 'show', :student => @student %>
-		</div> 		
-		<div id='student_edit' class='cantoggle'>
-			<%= render 'edit', :student => @student %>
-		</div> 	
-		<div id='student_email' class='cantoggle'>	
-			<%= render 'emailnew', :student => @student %>
-		</div> 		
-		<div id='student_sms' class='cantoggle'>
-			<%= render 'smsnew', :student => @student %>
-		</div> 			
-		<div id='student_reports' class='cantoggle'>	
-			<%= render 'report_options', :student => @student %>
-		</div> 				
-	</div>		<!-- END of main_content -->
-</div>		<!-- End of content_box -->
+<div id="nav-column">
+	<div id="photo-box">
+		My photo will come here
+	</div>
+	<strong> STUDENT LINKS </strong>
+	<ul class='nav-list'>
+		<li><a id = 'student_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+		<% if can? :update, @student%>
+			<li><a id = 'student_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+		<% end %>
+		<% if can? :communicate, @student%>				
+			<li><a id = 'student_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
+			<li><a id = 'student_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
+		<% end %>
+		<li><a id = 'student_reports' href="#">Reports</a></li>									
+	</ul>					
+</div>
+
+<div id="main-column">		
+	<p class="heading1">
+		Satheesh Ramdass
+	</p>	
+	<div id='student_show' class='cantoggle'>	
+		<%= render 'show', :student => @student %>
+	</div> 		
+	<div id='student_edit' class='cantoggle'>
+		<%= render 'edit', :student => @student %>
+	</div> 	
+	<div id='student_email' class='cantoggle'>	
+		<%= render 'emailnew', :student => @student %>
+	</div> 		
+	<div id='student_sms' class='cantoggle'>
+		<%= render 'smsnew', :student => @student %>
+	</div> 			
+	<div id='student_reports' class='cantoggle'>	
+		<%= render 'report_options', :student => @student %>
+	</div> 				
+</div>		<!-- END of main_column -->
+
 

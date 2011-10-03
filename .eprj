@@ -47,7 +47,7 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\sections\_edit.html.erb</string>
+            <string>app\views\students\_edit.html.erb</string>
             <key>_email</key>
             <string>app\views\teachers\_emailnew.html.erb</string>
             <key>_email_f</key>
@@ -78,6 +78,8 @@
             <string>app\views\branches\_show.html.erb</string>
             <key>_sms</key>
             <string>app\views\students\_sms.html.erb</string>
+            <key>_smsnew</key>
+            <string>app\views\students\_smsnew.html.erb</string>
             <key>_student</key>
             <string>app\views\students\_students.html.erb</string>
             <key>_student_con</key>
@@ -163,7 +165,7 @@
             <key>applica</key>
             <string>public\stylesheets\application.css</string>
             <key>applicati</key>
-            <string>public\javascripts\application.js</string>
+            <string>public\stylesheets\application.css</string>
             <key>application</key>
             <string>public\stylesheets\application.css</string>
             <key>application.c</key>
@@ -254,6 +256,8 @@
             <string>db\migrate\20110924104013_create_marks.rb</string>
             <key>create_su</key>
             <string>db\migrate\20110815163153_create_subjects.rb</string>
+            <key>css</key>
+            <string>public\stylesheets\form_styles.css</string>
             <key>dev</key>
             <string>log\development.log</string>
             <key>deve</key>
@@ -272,6 +276,8 @@
             <string>app\views\shared\_email_fields.erb</string>
             <key>email_st</key>
             <string>app\views\school_mailer\email_student.html.erb</string>
+            <key>emailnew</key>
+            <string>app\views\students\_emailnew.html.erb</string>
             <key>environ</key>
             <string>config\environment.rb</string>
             <key>form_St</key>
@@ -340,6 +346,8 @@
             <string>db\migrate\20110902130519_create_mark_rec_defns.rb</string>
             <key>mark_rec</key>
             <string>app\models\mark_rec_defn.rb</string>
+            <key>marknew</key>
+            <string>app\views\sections\_marknew.html.erb</string>
             <key>marks_con</key>
             <string>app\controllers\marks_controller.rb</string>
             <key>marks_cont</key>
@@ -516,6 +524,8 @@
             <string>app\views\students\show.html.erb</string>
             <key>show.html.erb</key>
             <string>app\views\clazzs\show.html.erb</string>
+            <key>sms_fi</key>
+            <string>app\views\students\_sms_fields.html.erb</string>
             <key>stack</key>
             <string>app\views\marks\stacked_cols.html.erb</string>
             <key>stacked_</key>

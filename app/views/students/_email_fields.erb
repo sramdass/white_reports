@@ -1,28 +1,43 @@
-<fieldset> 
-	<legend>Basic Information</legend> 
-	<ol> 	
-		<li>
-			<%= label_tag "To"%>
-			<%= text_field_tag :to, @student.student_contact.primary_email, :class=> 'medium' %>
-		</li>
-		<li>
-			<%= label_tag "CC"%>
+<tr>
+	<td> 
+		<strong><%= label_tag "To"%> </strong> 
+	</td> 
+	<td> 
+		<%= text_field_tag :to, @student.student_contact.primary_email, :class=> 'medium' %>
+	</td>
+</tr>			
+<tr>
+	<td> 
+		<strong> <%= label_tag "CC"%> </strong> 
+	</td> 
+	<td> 
 			<%= text_field_tag :cc, nil, :class=> 'medium' %>
-		</li>
-		<li>
-			<%= label_tag "BCC"%>
+	</td>
+</tr>			
+<tr>
+	<td> 
+		<strong><%= label_tag "BCC"%> </strong> 
+	</td> 
+	<td> 
 			<%= text_field_tag :bcc, nil, :class=> 'medium' %>
-		</li>
-		<li>
-			<%= label_tag "Subject"%>
+	</td>
+</tr>			
+<tr>
+	<td> 
+		<strong><%= label_tag "Subject"%> </strong> 
+	</td> 
+	<td> 
 			<%= text_field_tag :subject, nil, :class=> 'medium'%>
-		</li>
-		<li>
-			<%= label_tag "Message"%>
+	</td>
+</tr>			
+<tr>
+	<td> 
+		<strong><%= label_tag "Message"%> </strong> 
+	</td> 
+	<td> 
 			<%= text_area_tag :message, nil, {:rows => 8, :cols => 40} %> <br>
-		</li>
-	</ol>					
-</fieldset> 	
+	</td>
+</tr>
 
 
 

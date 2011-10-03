@@ -1,8 +1,12 @@
 <%= form_for student, :html => { :class => "zaform"} do |f| %>		
-	<%= render 'shared/error_messages', :target => student %> <br>
-	<%= render 'student_fields', :f => f%>
-	<%= f.fields_for :student_contact do |builder| %>
-		<%= render 'student_contact_fields', :f => builder %>
-	<% end %>
+	<%= render 'shared/error_messages', :target => student %>
+	<table class="form-table"  summary="Student edit information">
+	    <tbody>
+			<%= render 'student_fields', :f => f %>
+			<%= f.fields_for :student_contact do |builder| %>
+				<%= render 'student_contact_fields', :f => builder %>
+			<% end %>
+		</tbody>
+	</table>
 	<p> <%= f.submit  "Update Student" %> </p>	
 <% end %>

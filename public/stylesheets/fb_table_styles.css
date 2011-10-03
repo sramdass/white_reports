@@ -1,0 +1,67 @@
+/* 'z' stands for zebra table */
+
+.index_table_z, .one-column-emphasis, .input_form_table{
+	color: #333;
+	margin: 20px;
+	/* width: 480px; */
+	text-align: left;
+	border-collapse: collapse;
+	border-top: 2px solid #F2F2F2;
+	border-bottom: 2px solid #F2F2F2;	
+}
+.index_table_z th, .one-column-emphasis th, .input_form_table th {
+	font-size: 120%;
+	font-weight: bold;
+	letter-spacing: 0.05em;
+	padding: 10px 8px;
+	border-right: 1px solid #F2F2F2;
+	border-left: 1px solid #F2F2F2;
+	border-bottom: 2px solid #F2F2F2;		
+}
+.index_table_z td, .one-column-emphasis td {
+	padding: 8px;
+	border-right: 1px solid #F2F2F2;
+	border-left: 1px solid #F2F2F2;	
+}
+
+.index_table_z tbody tr:hover td, .one-column-emphasis tr:hover td {
+	color: #2E2EFE;
+}
+
+.index_table_z tr:nth-child(even) {
+	background: #E5ECFC;
+}
+.index_table_z tr:nth-child(odd) {
+	background: #FFF
+}
+
+.one-column-emphasis {
+	width: 600px;
+}
+.one-column-emphasis td {
+	border-bottom: 1px solid #F2F2F2;	
+}
+.oce-first {
+	width: 125px;
+	background: #E5ECFC;
+}
+
+.input_form_table th {
+	/* overwrite the borders here */ 
+	border:1px solid #ccc;
+	background: #E5ECFC;
+}
+
+.input_form_table td {
+	border:1px solid #ccc;
+	padding: 6px 8px;
+}
+
+.input_form_table input, .input_form_table textarea, .input_form_table select {
+	padding: 2px 1px 2px 1px;
+	font-size: 100%;
+	font-family: inherit;	
+}
+.input_form_table input, .input_form_table textarea {
+	border: 0px; /*  This is not working */
+}

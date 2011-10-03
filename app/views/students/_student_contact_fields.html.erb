@@ -1,25 +1,41 @@
-<fieldset> 
-	<legend>Contact Information</legend> 
-	<ol> 	
-		<li>
-			<%= f.label :primary_email, "Primary Email" %>
-			<%= f.text_field :primary_email %> 
-		</li>		
-		<li>
-			<%= f.label :email, "Other Email" %>
-			<%= f.text_area :email, :cols => 30, :rows => 4 %> 
-		</li>		
-		<li>
-			<%= f.label :mobile %>
-			<%= f.text_field :mobile %> 
-		</li>		
-		<li>
-			<%= f.label :telephone, "Telephone(s)" %>
-			<%= f.text_area :telephone,  :cols => 20, :rows => 3 %> 
-		</li>		
-		<li>
-			<%= f.label :address %>
-			<%= f.text_area :address, :cols => 30, :rows => 5 %> 							
-		</li>
-	</ol>					
-</fieldset> 		
+<tr>
+	<td> 
+		<strong> <%= f.label :primary_email, "Primary Email" %> </strong> 
+	</td> 
+	<td> 
+		<%= f.text_field :primary_email %> 
+	</td>
+</tr>
+<tr>
+	<td> 
+		<strong> <%= f.label :email, "Other Email" %> </strong> 
+	</td> 
+	<td> 
+		<%= f.text_area :email, :cols => 30, :rows => 4 %> 
+	</td>
+</tr>
+<tr>
+	<td>
+		 <strong> <%= f.label :mobile %> </strong> 
+	</td>
+	<td> 
+	  	<%= f.text_field :mobile %>  
+  	</td>
+</tr>
+<tr>
+	<td> 
+		<strong> <%= f.label :telephone, "Telephone(s)" %> </strong> 
+	</td> 
+	<td> 
+		<%= f.text_area :telephone,  :cols => 20, :rows => 3 %> 
+	</td>
+</tr>
+<tr>
+	<td> 
+		<strong> <%= f.label :address %> </strong> 
+	</td> 
+	<td> 
+		<%= f.text_area :address, :cols => 30, :rows => 5 %> 
+	</td>
+</tr>
+	
