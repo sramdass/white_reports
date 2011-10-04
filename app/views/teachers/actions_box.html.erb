@@ -1,29 +1,35 @@
-<div id="content_box">	
-	<div id="tab_bar">
-			<ul>
-				<li><a id = 'teacher_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-				<% if can? :update, @teacher%>
-					<li><a id = 'teacher_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-				<% end %>
-				<% if can? :communicate, @teacher%>				
-					<li><a id = 'teacher_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
-					<li><a id = 'teacher_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
-				<% end %>
-			</ul>
-	</div>		
-	<div id="main_content">			
-		<div id='teacher_show' class='cantoggle'>	
-			<%= render 'show', :teacher => @teacher %>
-		</div> 		
-		<div id='teacher_edit' class='cantoggle'>
-			<%= render 'edit', :teacher => @teacher %>
-		</div> 	
-		<div id='teacher_email' class='cantoggle'>	
-			<%= render 'emailnew', :teacher => @teacher %>
-		</div> 		
-		<div id='teacher_sms' class='cantoggle'>
-			<%= render 'smsnew', :teacher => @teacher %>
-		</div> 			
-	</div>		<!-- END of main_content -->
-</div>		<!-- End of content_box -->
+<div id="nav-column">
+	<div id="photo-box">
+		My photo will come here
+	</div>
+	<strong> TEACHER LINKS </strong>
+	<ul class='nav-list'>
+		<li><a id = 'teacher_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+		<% if can? :update, @teacher%>
+			<li><a id = 'teacher_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+		<% end %>
+		<% if can? :communicate, @teacher%>				
+			<li><a id = 'teacher_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
+			<li><a id = 'teacher_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
+		<% end %>
+	</ul>
+</div>		
+<div id="main-column">	
+	<p class="heading1">
+		Ravi Shankar
+	</p>		
+	<div id='teacher_show' class='cantoggle'>	
+		<%= render 'show', :teacher => @teacher %>
+	</div> 		
+	<div id='teacher_edit' class='cantoggle'>
+		<%= render 'edit', :teacher => @teacher %>
+	</div> 	
+	<div id='teacher_email' class='cantoggle'>	
+		<%= render 'emailnew', :teacher => @teacher %>
+	</div> 		
+	<div id='teacher_sms' class='cantoggle'>
+		<%= render 'smsnew', :teacher => @teacher %>
+	</div> 			
+</div>		<!-- END of main-column-->
+
 

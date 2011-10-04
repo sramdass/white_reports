@@ -1,4 +1,8 @@
-<%= form_tag (email_teacher_path(teacher), :method => 'post',  :class => "zaform") do |f| %>		
-	<%= render 'email_fields' %>
+<%= form_tag (email_teacher_path(teacher)) do |f| %>		
+	<table class="form-table"  summary="Teacher email fields">
+	    <tbody>		
+			<%= render 'email_fields' %>
+		</tbody>
+	</table>				
 	<p> <%= submit_tag "Send Email" %> </p>
 <% end %>

@@ -22,12 +22,16 @@
             <string>db\migrate\20110907130147_remove_class_teacher_id_from_clazzs.rb</string>
             <key>ABILI</key>
             <string>app\models\ability.rb</string>
+            <key>SECNEW</key>
+            <string>app\views\clazzs\_secnew.html.erb</string>
             <key>STUDENTS_C</key>
             <string>app\controllers\students_controller.rb</string>
             <key>Show.html</key>
             <string>app\views\students\show.html.erb</string>
             <key>TEACHERS_con</key>
             <string>app\controllers\teachers_controller.rb</string>
+            <key>_Teacher_co</key>
+            <string>app\views\teachers\_teacher_contact_fields.html.erb</string>
             <key>_Teacher_f</key>
             <string>app\views\schools\_teacher_fields.html.erb</string>
             <key>_Tests</key>
@@ -47,7 +51,7 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\students\_edit.html.erb</string>
+            <string>app\views\institutions\_edit.html.erb</string>
             <key>_email</key>
             <string>app\views\teachers\_emailnew.html.erb</string>
             <key>_email_f</key>
@@ -70,6 +74,8 @@
             <string>app\views\clazzs\_section_fields.html.erb</string>
             <key>_section_fiel</key>
             <string>app\views\schools\_section_fields.html.erb</string>
+            <key>_section_fields</key>
+            <string>app\views\clazzs\_section_fields.html.erb</string>
             <key>_sections</key>
             <string>app\views\clazzs\_sections.html.erb</string>
             <key>_show</key>
@@ -78,6 +84,8 @@
             <string>app\views\branches\_show.html.erb</string>
             <key>_sms</key>
             <string>app\views\students\_sms.html.erb</string>
+            <key>_sms_fie</key>
+            <string>app\views\students\_sms_fields.html.erb</string>
             <key>_smsnew</key>
             <string>app\views\students\_smsnew.html.erb</string>
             <key>_student</key>
@@ -89,6 +97,8 @@
             <key>_student_fi</key>
             <string>app\views\students\_student_fields.html.erb</string>
             <key>_student_fie</key>
+            <string>app\views\students\_student_fields.html.erb</string>
+            <key>_student_fields</key>
             <string>app\views\students\_student_fields.html.erb</string>
             <key>_students</key>
             <string>app\views\sections\_students.html.erb</string>
@@ -149,11 +159,11 @@
             <key>actions</key>
             <string>app\views\sections\actions_box.html.erb</string>
             <key>actions_b</key>
-            <string>app\views\institutions\actions_box.html.erb</string>
+            <string>app\views\teachers\actions_box.html.erb</string>
             <key>actions_bo</key>
-            <string>app\views\sections\actions_box.html.erb</string>
+            <string>app\views\clazzs\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\students\actions_box.html.erb</string>
+            <string>app\views\clazzs\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -273,13 +283,17 @@
             <key>edit.html</key>
             <string>app\views\students\edit.html.erb</string>
             <key>email_f</key>
-            <string>app\views\shared\_email_fields.erb</string>
+            <string>app\views\students\_email_fields.erb</string>
+            <key>email_fi</key>
+            <string>app\views\teachers\_email_fields.erb</string>
             <key>email_st</key>
             <string>app\views\school_mailer\email_student.html.erb</string>
             <key>emailnew</key>
             <string>app\views\students\_emailnew.html.erb</string>
             <key>environ</key>
             <string>config\environment.rb</string>
+            <key>fb_main</key>
+            <string>public\stylesheets\fb_main.css</string>
             <key>form_St</key>
             <string>public\stylesheets\form_styles.css</string>
             <key>from_sec</key>
@@ -526,6 +540,10 @@
             <string>app\views\clazzs\show.html.erb</string>
             <key>sms_fi</key>
             <string>app\views\students\_sms_fields.html.erb</string>
+            <key>smsfields</key>
+            <string>app\views\teachers\_sms_fields.html.erb</string>
+            <key>smsnew</key>
+            <string>app\views\teachers\_smsnew.html.erb</string>
             <key>stack</key>
             <string>app\views\marks\stacked_cols.html.erb</string>
             <key>stacked_</key>
@@ -545,6 +563,10 @@
             <key>student_f</key>
             <string>app\views\students\_student_fields.html.erb</string>
             <key>student_fie</key>
+            <string>app\views\students\_student_fields.html.erb</string>
+            <key>student_fiel</key>
+            <string>app\views\students\_student_fields.html.erb</string>
+            <key>student_fields</key>
             <string>app\views\students\_student_fields.html.erb</string>
             <key>students_c</key>
             <string>app\controllers\students_controller.rb</string>
@@ -574,6 +596,8 @@
             <string>app\views\branches\subnew.html.erb</string>
             <key>subnew.html</key>
             <string>app\views\schools\subnew.html.erb</string>
+            <key>table_Sty</key>
+            <string>public\stylesheets\fb_table_styles.css</string>
             <key>table_st</key>
             <string>public\stylesheets\table_styles.css</string>
             <key>tchrnew</key>
@@ -597,6 +621,8 @@
             <key>teacher_f</key>
             <string>app\views\branches\_teacher_fields.html.erb</string>
             <key>teacher_fi</key>
+            <string>app\views\teachers\_teacher_fields.html.erb</string>
+            <key>teacher_fields</key>
             <string>app\views\teachers\_teacher_fields.html.erb</string>
             <key>teacherc</key>
             <string>app\models\teacher_contact.rb</string>

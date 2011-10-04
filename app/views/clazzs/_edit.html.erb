@@ -1,13 +1,16 @@
-<%= form_for @clazz,  :html => { :class => "zaform"} do |f| %>
-	<%= render 'shared/error_messages', :target => @clazz %>	  
-	<fieldset> 
-		<legend>Class Details</legend> 
-		<ol> 	
-			<li>
-				<%= f.label :name %>
-				<%= f.text_field :name %>
-			</li>
-		</ol>					
-	</fieldset> 		 
+<%= form_for @clazz do |f| %>
+	<%= render 'shared/error_messages', :target => @clazz %>	
+	<table class="form-table"  summary="Class edit information">
+	    <tbody>	  
+			<tr>
+				<td> 
+					<strong><%= f.label :name %></strong>
+				</td> 		
+				<td> 
+					<%= f.text_field :name %>
+				</td>
+			</tr> 
+		</tbody>
+	</table>
     <%= f.submit "Update Class" %>
 <% end %>

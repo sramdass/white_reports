@@ -215,54 +215,6 @@ ul.nav-list li a.selected {
 	background: #ccc;
 }
 
-/*********** Form Table***********************/
-.form-table {
-	border-collapse: collapse;
-	background: #E5ECFC;	
-	width: 600px;
-}
-.form-table td {
-	padding: 10px;
-	border: 0px;
-	border-bottom: 1px solid #fff;
-}
-
-.form-table input, .form-table textarea, .form-table select {
-	padding: 1px;
-	font-size: 100%;
-	font-family: inherit;	
-}
-
-.form-table td strong {
-	font-weight: bold;
-	font-family: inherit;
-}
-/********************posts table********************/
-
-.posts-table {
-	border-collapse: collapse;
-	border-top: 2px solid #eee;
-	border-bottom: 1px solid #eee;
-	width: 600px;
-	background: #E5ECFC;
-}
-.posts-table td {
-	padding: 10px 5px 20px 5px;
-	border-bottom: 2px solid #fff;
-}
-
-.posts-table td strong {
-font-weight: bold;
-}
-.posts-table td light {
-color: #999;
-}
-.posts-table input, .posts-table textarea {
-	padding: 1px;
-	font-size: 100%;
-	font-family: inherit;	
-}
-
 .heading1, .heading2, .heading3{
 	font-family: Tahoma, "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	color: #333;

@@ -1,29 +1,35 @@
-<div id="content_box">	
-	<div id="tab_bar">
-			<ul>
-				<li><a id = 'clazz_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-				<li><a id = 'clazz_sections' <% if default_tab?('sections') %> class = 'selected' <% end %> href="#">Sections</a></li>				
-				<% if can? :update, @clazz%>
-					<li><a id = 'clazz_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-				<% end %>
-				<% if can? :update_clazz_elements, @clazz%>				
-					<li><a id = 'clazz_update_sections' <% if default_tab?('secnew') %> class = 'selected' <% end %> href="#">Update Sections</a></li>
-				<% end %>
-			</ul>
-	</div>		
-	<div id="main_content">			
-		<div id='clazz_show' class='cantoggle'>	
-			<%= render 'show', :clazz => @clazz %>
-		</div> 	
-		<div id='clazz_sections' class='cantoggle'>
-			<%= render 'sections', :clazz => @clazz %>
-		</div> 			
-		<div id='clazz_edit' class='cantoggle'>
-			<%= render 'edit', :clazz => @clazz %>
-		</div> 	
-		<div id='clazz_update_sections' class='cantoggle'>	
-			<%= render 'secnew', :clazz => @clazz %>
-		</div> 		
-	</div>		<!-- END of main_content -->
-</div>		<!-- End of content_box -->
+<div id="nav-column">
+	<div id="photo-box">
+		My photo will come here
+	</div>
+	<strong> CLASS LINKS </strong>
+	<ul class='nav-list'>
+		<li><a id = 'clazz_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+		<li><a id = 'clazz_sections' <% if default_tab?('sections') %> class = 'selected' <% end %> href="#">Sections</a></li>				
+		<% if can? :update, @clazz%>
+			<li><a id = 'clazz_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+		<% end %>
+		<% if can? :update_clazz_elements, @clazz%>				
+			<li><a id = 'clazz_update_sections' <% if default_tab?('secnew') %> class = 'selected' <% end %> href="#">Update Sections</a></li>
+		<% end %>
+	</ul>
+</div>		
+<div id="main-column">		
+	<p class="heading1">
+		I std, ES Middle School
+	</p>
+	<div id='clazz_show' class='cantoggle'>	
+		<%= render 'show', :clazz => @clazz %>
+	</div> 	
+	<div id='clazz_sections' class='cantoggle'>
+		<%= render 'sections', :clazz => @clazz %>
+	</div> 			
+	<div id='clazz_edit' class='cantoggle'>
+		<%= render 'edit', :clazz => @clazz %>
+	</div> 	
+	<div id='clazz_update_sections' class='cantoggle'>	
+		<%= render 'secnew', :clazz => @clazz %>
+	</div> 		
+</div>		<!-- END of main-column -->
+
 

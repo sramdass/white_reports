@@ -1,45 +1,51 @@
-<div id="content_box">	
-	<div id="tab_bar">
-			<ul>
-				<li><a id = 'section_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-				<li><a id = 'section_students' <% if default_tab?('students') %> class = 'selected' <% end %> href="#">Students</a></li>
-				<li><a id = 'section_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
-				<li><a id = 'section_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>												
-				<% if can? :update, @section%>
-					<li><a id = 'section_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-				<% end %>
-				<% if can? :update_section_elements, @section%>				
-					<li><a id = 'section_update_students' <% if default_tab?('stunew') %> class = 'selected' <% end %> href="#">Update Students</a></li>
-					<li><a id = 'section_update_marks' <% if default_tab?('marknew') %> class = 'selected' <% end %> href="#">Update Marks</a></li>					
-				<% end %>
-				<li><a id = 'section_reports' href="#">Reports</a></li>					
-			</ul>
-	</div>		
-	<div id="main_content">
-		<div id='section_show' class='cantoggle'>	
-			<%= render 'show', :section => @section %>
-		</div> 		
-		<div id='section_students' class='cantoggle'>	
-			<%= render 'students', :section => @section %>
-		</div> 		
-		<div id='section_subjects' class='cantoggle'>	
-			<%= render 'subjects', :section => @section %>
-		</div> 		
-		<div id='section_tests' class='cantoggle'>	
-			<%= render 'tests', :section => @section %>
-		</div> 								
-		<div id='section_edit' class='cantoggle'>
-			<%= render 'edit', :section => @section %>
-		</div> 	
-		<div id='section_update_students' class='cantoggle'>	
-			<%= render 'stunew', :section => @section %>
-		</div> 		
-		<div id='section_update_marks' class='cantoggle'>	
-			<%= render 'marknew', :section => @section, :test => @test %>
-		</div> 	
-		<div id='section_reports' class='cantoggle'>	
-			<%= render 'report_options', :section => @section%>
-		</div> 			
-	</div>		<!-- END of main_content -->
-</div>		<!-- End of content_box -->
+<div id="nav-column">
+	<div id="photo-box">
+		My photo will come here
+	</div>
+	<strong> STUDENT LINKS </strong>
+	<ul class='nav-list'>
+		<li><a id = 'section_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+		<li><a id = 'section_students' <% if default_tab?('students') %> class = 'selected' <% end %> href="#">Students</a></li>
+		<li><a id = 'section_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
+		<li><a id = 'section_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>												
+		<% if can? :update, @section%>
+			<li><a id = 'section_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+		<% end %>
+		<% if can? :update_section_elements, @section%>				
+			<li><a id = 'section_update_students' <% if default_tab?('stunew') %> class = 'selected' <% end %> href="#">Update Students</a></li>
+			<li><a id = 'section_update_marks' <% if default_tab?('marknew') %> class = 'selected' <% end %> href="#">Update Marks</a></li>					
+		<% end %>
+		<li><a id = 'section_reports' href="#">Reports</a></li>					
+	</ul>
+</div>		
+<div id="main-column">		
+	<p class="heading1">
+		Section A, III std
+	</p>	
+	<div id='section_show' class='cantoggle'>	
+		<%= render 'show', :section => @section %>
+	</div> 		
+	<div id='section_students' class='cantoggle'>	
+		<%= render 'students', :section => @section %>
+	</div> 		
+	<div id='section_subjects' class='cantoggle'>	
+		<%= render 'subjects', :section => @section %>
+	</div> 		
+	<div id='section_tests' class='cantoggle'>	
+		<%= render 'tests', :section => @section %>
+	</div> 								
+	<div id='section_edit' class='cantoggle'>
+		<%= render 'edit', :section => @section %>
+	</div> 	
+	<div id='section_update_students' class='cantoggle'>	
+		<%= render 'stunew', :section => @section %>
+	</div> 		
+	<div id='section_update_marks' class='cantoggle'>	
+		<%= render 'marknew', :section => @section, :test => @test %>
+	</div> 	
+	<div id='section_reports' class='cantoggle'>	
+		<%= render 'report_options', :section => @section%>
+	</div> 			
+</div>		<!-- END of main-column -->
+
 

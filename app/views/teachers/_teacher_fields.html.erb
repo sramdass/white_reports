@@ -1,20 +1,27 @@
-<fieldset> 
-	<legend>Basic Information</legend> 
-	<ol> 	
-		<li>
-			<%= f.label :name %> 
+<tr>
+	<td> 
+		<strong><%= f.label :name %>  </strong>
+	</td>
+	<td> 
 			<%= f.text_field :name %>
-		</li>		
-		<li>
-			<%= f.label :id_no, "ID number"%> 
+	</td>
+</tr>			
+<tr>
+	<td> 
+		<strong><%= f.label :id_no, "ID number"%>  </strong>
+	</td>		
+	<td> 
 			<%= f.text_field :id_no %>
-		</li>		
-		<li>
-		 	<%= f.label :female, "Gender" %>
+	</td>
+</tr>			
+<tr>
+	<td> 
+		<strong><%= f.label :female, "Gender" %> </strong>
+	</td>		
+	<td> 
 			<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ], f.object.female? ) , {:prompt => "Gender"}  %>
-		</li>
-	</ol>					
-</fieldset> 			
+	</td>
+</tr>	
  
  
 	

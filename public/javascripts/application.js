@@ -155,9 +155,10 @@ $(function() {
 
 	$(this).click(function() {
 		$('#header-drop-down').hide();
-		return false;
+		//Don't return a false here. If you did, it would cancel all the actions that you do in the page.
+		//Example, you cannot submit any form action
 	});	
-			
+				
 	$('#header-drop-down-list').click(function() {
 		$('#header-drop-down').show();
 		return false;

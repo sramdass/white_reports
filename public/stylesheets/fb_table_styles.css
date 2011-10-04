@@ -65,3 +65,58 @@
 .input_form_table input, .input_form_table textarea {
 	border: 0px; /*  This is not working */
 }
+
+/*********** Form Table and posts table***********************/
+.form-table, .posts-table {
+	color: #333;
+	margin: 20px;	
+	border-collapse: collapse;
+	background: #E5ECFC;	
+	width: 600px;
+}
+
+.form-table td, .form-table th{
+	padding: 10px;
+	border: 0px;
+	border-bottom: 1px solid #fff;
+}
+
+ .form-table th {
+	font-size: 120%;
+	font-weight: bold;
+	text-align:left;
+	letter-spacing: 0.05em;
+ 	border-top: 2px solid #F2F2F2;
+ }
+
+.form-table input, .form-table textarea, .form-table select {
+	padding: 1px;
+	font-size: 100%;
+	font-family: inherit;	
+}
+
+.form-table td strong {
+	font-weight: bold;
+	font-family: inherit;
+}
+
+.posts-table {
+	border-top: 2px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+.posts-table td {
+	padding: 10px 5px 20px 5px;
+	border-bottom: 2px solid #fff;
+}
+
+.posts-table td strong {
+font-weight: bold;
+}
+.posts-table td light {
+color: #999;
+}
+.posts-table input, .posts-table textarea {
+	padding: 1px;
+	font-size: 100%;
+	font-family: inherit;	
+}

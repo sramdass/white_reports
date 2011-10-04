@@ -3,44 +3,46 @@
 <% teachers = section.clazz.branch.teachers ||= [] %>
 <% tests = section.clazz.branch.tests ||= [] %>
 
-<%= form_for section, :html => { :class => "zaform"} do |f| %> 
-	<fieldset> 
-	<legend>Subjects and Tests</legend> 
-	<ol> 	
-		
-		<li> <!-- Start of Subjects -->
-			<fieldset> 
-				<legend>Select the Subjects</legend> 
-				<table>
-				<% for subject in subjects %>
-					<tr> 
-						<td> 
-							<label> <%= check_box_tag "section[subject_ids][]", subject.id, section.subjects.include?(subject) %> <%= subject.name  %>  </label>
-						</td>								
-						<% if section.subjects.include?(subject) %>
-					        <% t_id = subject.sec_sub_maps.find_by_section_id(section.id).teacher_id %>
-					    <% else %>
-					    	<% t_id = 0%>
-						<%  end %> 						  
-					    <td> 
-					    	<label> <%= select ( "teacher", "#{subject.id}", teachers.map {|p| [ p.name, p.id ] }, {:include_blank => 'None', :selected => t_id}) %>   </label> 
-					    </td> 
-					</tr>
-				<% end %>					
-				</table>
-			</fieldset>
-		</li> <!-- End of Subjects -->
-		
-		<li> <!-- Start of Tests -->
-			<fieldset> 
-				<legend>Select the Tests</legend> 
+<%= form_for section do |f| %> 
+	<div class="heading3">
+		Subjects and Teachers
+	</div>
+
+	<table class="form-table"  style='width: 300px' summary="Section Subjects">
+	    <tbody>
+	    	<tr><th>Subject</th><th>Teacher</th></tr>
+			<% for subject in subjects %>
+				<tr>
+					<td>
+					 	<%= check_box_tag "section[subject_ids][]", subject.id, section.subjects.include?(subject) %> <%= subject.name  %> 
+					</td>					
+					<% if section.subjects.include?(subject) %>
+				        <% t_id = subject.sec_sub_maps.find_by_section_id(section.id).teacher_id %>
+				    <% else %>
+				    	<% t_id = 0%>
+					<%  end %> 				  
+					<td>
+						<%= select ( "teacher", "#{subject.id}", teachers.map {|p| [ p.name, p.id ] }, {:include_blank => 'None', :selected => t_id}) %> 
+					</td>
+				</tr>
+			<% end %>					
+		</tbody>
+	</table>	
+	
+	<div class="heading3">
+		Tests
+	</div>
+	
+	<table class="form-table"  style='width: 200px' summary="Section Tests">
+	    <tbody>	
+	    		<tr><th>Tests</th></tr>	    	
 				<% for test in tests %>
-				 	<label> <%= check_box_tag "section[test_ids][]", test.id, section.tests.include?(test) %> <%= test.name  %> </label>
+				<tr> <td>
+				 	<label> <%= check_box_tag "section[test_ids][]", test.id, section.tests.include?(test) %> <%= test.name  %>
+			 	</td></tr>
 				<% end %>	
-			</fieldset>
-		</li> <!-- End of Tests -->
-	</ol> 
-	</fieldset> 	
+		</tbody>
+	</table>	
 	<%= f.submit "Update section" %>
 <% end %>
 
