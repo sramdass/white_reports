@@ -2,7 +2,7 @@
 	<div id="photo-box">
 		My photo will come here
 	</div>
-	<strong> STUDENT LINKS </strong>
+	<strong> BRANCH LINKS </strong>
 	<ul class='nav-list'>
 		<li><a id = 'branch_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
 		<li><a id = 'branch_teachers' <% if default_tab?('teachers') %> class = 'selected' <% end %> href="#">Teachers</a></li>
@@ -18,6 +18,7 @@
 			<li><a id = 'branch_update_tests' <% if default_tab?('testnew') %> class = 'selected' <% end %> href="#">Update Tests</a></li>
 			<li><a id = 'branch_update_classes' <% if default_tab?('clznew') %> class = 'selected' <% end %> href="#">Update Classes</a></li>
 		<% end %>
+		<li> <%= link_to 'Advanced Search', branch_searches_box_searches_path(:branch_id => @branch.id) %> </li>									
 	</ul>
 </div>		
 <div id="main-column">		

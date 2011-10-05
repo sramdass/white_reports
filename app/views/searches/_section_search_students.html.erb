@@ -1,0 +1,70 @@
+<% students_search = Student.search(nil) %>
+<%= form_for students_search, :url => section_students_searches_path, :html => {:method => 'get'} do |f| %>
+	<%= hidden_field (:students_search, :section_id_eq, :value => section.id) %>
+	<%= hidden_field_tag :section_id,  section.id %>	
+		<table class="form-table"  summary="Section Marks advanced search">
+			<tbody>			
+				<tr>
+					<td> <strong> Name </strong> </td> 	
+					<td>  <%= f.text_field :name_contains %> </td>
+				 </tr>
+				<tr>
+					<td> <strong> ID </strong> </td> 	
+					<td> <%= f.text_field :id_no_contains %> </td>
+				</tr>
+				<tr>
+					<td> <strong> DOB </strong> </td> 	
+					<td> 
+						after: &nbsp;&nbsp;&nbsp;&nbsp;<%=f.date_select :dob_gt, {:prompt => true, :start_year => Time.now.year - 30, :end_year => Time.now.year, :order => [:day, :month, :year]} %> <br><br>
+						before: &nbsp;&nbsp;<%=f.date_select :dob_lt, {:prompt => true, :start_year => Time.now.year - 30, :end_year => Time.now.year, :order => [:day, :month, :year]} %>
+					</td>
+				</tr>
+				<tr>
+					<td> <strong> Address </strong> </td> 	
+					<td> <%= f.text_field :student_contact_address_contains %> </td>
+				</tr>						
+				<tr>
+					<td> <strong> Mobile / Telephone </strong> </td> 	
+					<td> <%= f.text_field :student_contact_mobile_or_student_contact_telephone_contains %> </td>
+				</tr>		
+			</tbody>
+		</table>										
+	<%= f.submit "Search" %>
+<% end %>
+
+
+<% if !@students %>
+<% elsif  @students.empty? %>
+	<p>
+		<strong> <%= no_search_matches() %> </strong>
+	</p>
+<% else %>
+	<table class='index_table_z' id='datatable' summary=<% "Section Students search results" %>>
+	    <thead>		    	
+		    	<tr>
+		    		<th scope="col">Name</th>
+		    		<th scope="col"> ID </th>	    		
+		    		<th scope="col"> DOB </th>	    		
+					<th scope="col"> Email </th>	    		
+		          <th scope="col"> Address </th>
+		          <th scope="col"> Telephone </th>		          
+		        </tr>	    	
+		</thead>
+	    <tbody>
+			<%@students.each do |student| %>
+				<tr>
+					<td> <%= student.name %></td>
+					<td> <%= student.id_no %></td>
+					<td> <%= student.dob.to_s(:long) %> </td>
+					<% if student.student_contact %>
+						<td> <strong> <%= student.student_contact.primary_email %></strong> , <%= student.student_contact.email %></td>
+						<td> <%= student.student_contact.address %> </td>
+						<td> <%= student.student_contact.mobile %> | <%= student.student_contact.telephone %> </td>
+					<% else %>				
+						<td>-</td><td>-</td><td>-</td>
+					<% end %>
+		        </tr>
+			<% end %>
+	    </tbody>	
+	</table>
+<% end %>

@@ -86,6 +86,14 @@ WhiteReports::Application.routes.draw do
 		get "student_master_graphs", :on => :collection			
 	end
 	
+	resources :searches do
+		get "section_searches_box"	, :on => :collection
+		get "section_students"	, :on => :collection
+		get "section_marks"	, :on => :collection
+		get "branch_searches_box"	, :on => :collection
+		get "branch_students"	, :on => :collection
+		get "branch_marks"	, :on => :collection		
+	end
 	resources :subjects
 	resources :tests
 	resources :profiles

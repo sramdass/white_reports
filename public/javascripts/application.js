@@ -48,7 +48,7 @@ $(function() {
 		div2show = "#main-column" + " " + hashed_id
 		$("#main-column div.cantoggle").hide();
 		$(div2show).show();	
-		return false;
+		//return false;
 	});
 
 	

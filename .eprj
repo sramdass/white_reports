@@ -76,10 +76,14 @@
             <string>app\views\schools\_section_fields.html.erb</string>
             <key>_section_fields</key>
             <string>app\views\clazzs\_section_fields.html.erb</string>
+            <key>_section_mark</key>
+            <string>app\views\searches\_section_search_marks.html.erb</string>
+            <key>_section_se</key>
+            <string>app\views\searches\_section_search_students.html.erb</string>
             <key>_sections</key>
             <string>app\views\clazzs\_sections.html.erb</string>
             <key>_show</key>
-            <string>app\views\institutions\_show.html.erb</string>
+            <string>app\views\students\_show.html.erb</string>
             <key>_show.htm</key>
             <string>app\views\branches\_show.html.erb</string>
             <key>_sms</key>
@@ -95,7 +99,7 @@
             <key>_student_f</key>
             <string>app\views\sections\_student_fields.html.erb</string>
             <key>_student_fi</key>
-            <string>app\views\students\_student_fields.html.erb</string>
+            <string>app\views\sections\_student_fields.html.erb</string>
             <key>_student_fie</key>
             <string>app\views\students\_student_fields.html.erb</string>
             <key>_student_fields</key>
@@ -163,7 +167,7 @@
             <key>actions_bo</key>
             <string>app\views\clazzs\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\clazzs\actions_box.html.erb</string>
+            <string>app\views\branches\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -458,6 +462,10 @@
             <string>app\controllers\schools_controller.rb</string>
             <key>schools_cont</key>
             <string>app\controllers\schools_controller.rb</string>
+            <key>searches</key>
+            <string>app\controllers\searches_controller.rb</string>
+            <key>searches_box</key>
+            <string>app\views\searches\branch_searches_box.html.erb</string>
             <key>searches_cont</key>
             <string>app\controllers\searches_controller.rb</string>
             <key>sec_su</key>

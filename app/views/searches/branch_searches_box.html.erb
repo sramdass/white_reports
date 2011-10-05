@@ -1,0 +1,20 @@
+<div id="nav-column">
+	<strong> BRANCH SEARCH</strong>
+	<ul class='nav-list'>
+		<li><a id = 'search_students' <% if default_tab?('students') %> class = 'selected' <% end %> href="#">Students</a></li>				
+		<li><a id = 'search_marks' <% if default_tab?('marks') %> class = 'selected' <% end %> href="#">Marks</a></li>
+		<li><a id = 'search_others'  <% if default_tab?('tests') %> class = 'selected' <% end %>  href="#">Others</a></li>
+	</ul>
+</div>	
+
+<div id="main-column">	
+	<div id='search_students' class='cantoggle'>	
+		<%= render 'branch_search_students', :branch => @branch %>
+	</div> 	
+	<div id='search_marks' class='cantoggle'>
+		<%= render 'branch_search_marks', :branch => @branch %>
+	</div> 			
+	<div id='search_others' class='cantoggle'>
+		<strong> A clever search will go here. As soon as I think of one! <strong>
+	</div> 				
+</div>

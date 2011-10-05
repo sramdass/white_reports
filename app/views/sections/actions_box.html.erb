@@ -16,6 +16,7 @@
 			<li><a id = 'section_update_marks' <% if default_tab?('marknew') %> class = 'selected' <% end %> href="#">Update Marks</a></li>					
 		<% end %>
 		<li><a id = 'section_reports' href="#">Reports</a></li>					
+		<li> <%= link_to 'Advanced Search', section_searches_box_searches_path(:section_id => @section.id) %> </li>							
 	</ul>
 </div>		
 <div id="main-column">		
