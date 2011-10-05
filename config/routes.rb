@@ -91,6 +91,7 @@ WhiteReports::Application.routes.draw do
 	resources :profiles
 	resources :sessions
 	resources :password_resets
+	resources :searches	
 		
 	root :to => "profiles#index"	
 	

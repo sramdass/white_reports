@@ -22,6 +22,8 @@ class Student < ActiveRecord::Base
 	has_one :student_contact, :dependent => :destroy
 	accepts_nested_attributes_for :student_contact
 	
+	has_many :marks, :dependent => :destroy
+	
 	scope :by_section, lambda { |section_id| 
 		where('section_id = ?', section_id)
 	}	
@@ -40,7 +42,7 @@ class Student < ActiveRecord::Base
 	 validates 	:female, :inclusion => { :in => [true, false] }
 	 
 #-------- INSTANCE MODULES --------#		
-	
+=begin	
 	def self.search(search)
 	  if search
 	    where('name LIKE ?', "%#{search}%")
@@ -48,7 +50,8 @@ class Student < ActiveRecord::Base
 	    scoped
 	  end
 	end
-	
+=end
+
 	def class_teacher?(teacher)
 		if self.section.class_teacher_id == teacher.id		
 			return true

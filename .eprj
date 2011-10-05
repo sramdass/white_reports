@@ -51,7 +51,7 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\institutions\_edit.html.erb</string>
+            <string>app\views\students\_edit.html.erb</string>
             <key>_email</key>
             <string>app\views\teachers\_emailnew.html.erb</string>
             <key>_email_f</key>
@@ -325,7 +325,7 @@
             <key>index.html.er</key>
             <string>app\views\sections\index.html.erb</string>
             <key>index.html.erb</key>
-            <string>app\views\schools\index.html.erb</string>
+            <string>app\views\searches\index.html.erb</string>
             <key>index.js</key>
             <string>app\views\teachers\index.js.erb</string>
             <key>insit</key>
@@ -363,6 +363,8 @@
             <key>marknew</key>
             <string>app\views\sections\_marknew.html.erb</string>
             <key>marks_con</key>
+            <string>app\controllers\marks_controller.rb</string>
+            <key>marks_conr</key>
             <string>app\controllers\marks_controller.rb</string>
             <key>marks_cont</key>
             <string>app\controllers\marks_controller.rb</string>
@@ -456,6 +458,8 @@
             <string>app\controllers\schools_controller.rb</string>
             <key>schools_cont</key>
             <string>app\controllers\schools_controller.rb</string>
+            <key>searches_cont</key>
+            <string>app\controllers\searches_controller.rb</string>
             <key>sec_su</key>
             <string>app\models\sec_sub_map.rb</string>
             <key>sec_sub</key>
