@@ -9,7 +9,7 @@
 		<% clazz.sections.each do |s| %>
 		<tr>
 			<td> 
-				<%= s.name %> </td>
+				<%= link_to s.name, section_path(s) %> </td>
 			<td> 
 				<% if  s.class_teacher_id? %> 
 					<%= Teacher.find(s.class_teacher_id).name %>

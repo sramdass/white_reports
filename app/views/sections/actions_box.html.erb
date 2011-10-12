@@ -21,7 +21,7 @@
 </div>		
 <div id="main-column">		
 	<p class="heading1">
-		Section A, III std
+		<%= @section.name %>, <%= @section.clazz.name %>
 	</p>	
 	<div id='section_show' class='cantoggle'>	
 		<%= render 'show', :section => @section %>
@@ -42,7 +42,11 @@
 		<%= render 'stunew', :section => @section %>
 	</div> 		
 	<div id='section_update_marks' class='cantoggle'>	
-		<%= render 'marknew', :section => @section, :test => @test %>
+		<% if @test %>
+			<%= render 'marknew', :section => @section, :test => @test %>
+		<% else %>
+			<strong> Update the tests before accessing this page </strong>
+		<% end %>
 	</div> 	
 	<div id='section_reports' class='cantoggle'>	
 		<%= render 'report_options', :section => @section%>

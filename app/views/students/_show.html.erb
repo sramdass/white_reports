@@ -43,3 +43,32 @@
         </tr>            
     </tbody>
 </table>
+
+
+<p class="heading2">
+	<%= student.name %>'s marks
+</p>	
+<table class='index_table_z' >
+    <thead>		    	
+	    	<tr>
+	    		<th scope="col">Test</th>
+	        	<% for map in student.section.sec_sub_maps %>
+	        			<th scope="col"> <%= Subject.find(map.subject_id).name.humanize %> </th>
+	            <% end %>
+				<th scope="col"> Total </th> 
+	        </tr>	    	
+	</thead>
+    <tbody>
+    	<tr>
+			<% for mark in student.marks %>
+				<tr>
+					<td> <%= mark.test.name %> </td>
+					<% for map in student.section.sec_sub_maps %>
+						<% m_col = "sub#{map.mark_column}" %>
+	        			<td> <%= mark.send(m_col) %> </td>
+		            <% end %>
+		    		<td> <%= mark.total %>
+		        </tr>
+			<% end %>			
+    </tbody>	
+</table>	

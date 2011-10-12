@@ -7,7 +7,7 @@
     <tbody>
 	<% branch.clazzs.each do |c| %>
 		<tr>
-			<td> <%= c.name %> </td>
+			<td> <%= link_to c.name, clazz_path(c) %> </td>
 		</tr>
 	<% end %>
     </tbody>	

@@ -7,6 +7,7 @@
 		 * @param {Object} table The reference to the HTML table to visualize
 		 * @param {Object} options Highcharts options
 		 */
+		 /*
 		Highcharts.visualize = function(table, options) {
 			// the categories
 			options.xAxis.categories = [];
@@ -63,6 +64,7 @@
 	  					
 			Highcharts.visualize(table, options);
 		});
+		*/
 	</script>
 
 <table class='index_table_z'  summary="Section tests index">
@@ -70,14 +72,15 @@
 		<tr>
 			<th scope="col"> Test Name </th>
 			<th scope="col"> Date </th>
+			<th scope="col"> Action </th>			
 		</tr>
 	</thead>
     <tbody>
 	<% section.tests.each do |t| %>
 		<tr>
-			<td> <%= link_to t.name, marknew_section_path(section, :test_id => t.id) %> </td>
-			<td> <i> Date to be updated </i> </td>
-			<td> <%= link_to 'Edit', marknew_section_path(section, :test_id => t.id) %> </td>			
+			<td> <%= link_to t.name, marknew_section_path(section, :test_id => t.id), :class => 'marks_toggler', :id =>  "test_#{t.id}" %> </td>
+			<td> <i> To be updated </i> </td>
+			<td> <%= link_to 'Update Marks', marknew_section_path(section, :test_id => t.id) %> </td>			
 		</tr>
 	<% end %>
     </tbody>	
@@ -85,33 +88,36 @@
 
 
 <% for t in section.tests %>
-<h2> <%= t.name %> </h2>
-	<table class='index_table_z' id='datatable' summary=<% "#{t.name} index" %>>
-	    <thead>		    	
-		    	<tr>
-		    		<th scope="col">Student Name</th>
-		        	<% for map in section.sec_sub_maps %>
-		        			<th scope="col"> <%= Subject.find(map.subject_id).name.humanize %> </th>
-		            <% end %>
-		         <!--   <th scope="col"> Total </th> -->
-		            <!-- <th scope="col">Action</th> -->
-		        </tr>	    	
-		</thead>
-	    <tbody>
-	    	<tr>
-				<% marks = Mark.find(:all,:conditions => {:section_id.eq => section.id, :test_id.eq => t.id }) %>
-				<% marks.each do |mark| %>
-					<tr>
-						<td> <%= mark.student.name %> </td>
-						<% for map in section.sec_sub_maps %>
-							<% m_col = "sub#{map.mark_column}" %>
-		        			<td> <%= mark.send(m_col) %> </td>
+	<div id='<%="marks_test_#{t.id}" %>'  class='marks_cantoggle'>
+		<p class="heading2">
+			<%= t.name %>
+		</p>	
+		<table class='index_table_z' id='datatable' summary=<% "#{t.name} index" %>>
+		    <thead>		    	
+			    	<tr>
+			    		<th scope="col">Name</th>
+			        	<% for map in section.sec_sub_maps %>
+			        			<th scope="col"> <%= Subject.find(map.subject_id).name.humanize %> </th>
 			            <% end %>
-			    <!--         <td> <%= mark.total %> </td> -->
-			        </tr>
-				<% end %>			
-	    </tbody>	
-	</table>
+						<th scope="col"> Total </th> 
+			        </tr>	    	
+			</thead>
+		    <tbody>
+		    	<tr>
+					<% marks = Mark.find(:all,:conditions => {:section_id.eq => section.id, :test_id.eq => t.id }) %>
+					<% marks.each do |mark| %>
+						<tr>
+							<td> <%= mark.student.name %> </td>
+							<% for map in section.sec_sub_maps %>
+								<% m_col = "sub#{map.mark_column}" %>
+			        			<td> <%= mark.send(m_col) %> </td>
+				            <% end %>
+				    		<td> <%= mark.total %>
+				        </tr>
+					<% end %>			
+		    </tbody>	
+		</table>	
+	</div>	
 <% end %>
 
 

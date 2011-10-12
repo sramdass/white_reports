@@ -167,15 +167,18 @@ end
 	def initialize_test_and_marks_table
 		@section ||= Section.find(params[:id])
 		if params[:test_id]
-			@test = Test.find(params[:test_id]) || Test.first	
+			@test = Test.find(params[:test_id])
 		else		
 			@test = @section.tests.first
-		end		
-		build_marks_table(@section.id, @test.id)
+		end
+		if @test
+			build_marks_table(@section.id, @test.id)
+		end
 	end	
 #-----------------------------------------------------------#
 
 	def build_marks_table(section_id, test_id)
+		@section = Section.find(section_id)
 		marks = Mark.find(:all,:conditions => {:section_id.eq => section_id, :test_id.eq => test_id })
 	 	if (marks.empty?)
 	 		for student in @section.students 
@@ -183,6 +186,15 @@ end
 	 			m.save!
 	 		end
 		end 				
+		if marks.count < @section.students.count
+			@section.students.each do |student|
+				mark = Mark.find(:all,:conditions => {:section_id.eq => section_id, :test_id.eq => test_id, :student_id => student.id })
+				if (mark.empty?)
+					m = Mark.new( {:section_id => @section.id, :test_id => test_id, :student_id => student.id })
+					m.save!
+				end
+			end
+		end
 	end		
 #-----------------------------------------------------------#	
 			

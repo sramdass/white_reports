@@ -10,14 +10,48 @@
     <tbody>
 	<% section.students.each do |s| %>
 		<tr>
-			<td> <%= s.name %> </td>
+			<td> <%= link_to s.name, student_path(s) %> </td>
 			<td>	<%= s.id_no%>	</td>
 			<td>	<%= s.female? ? "Female" : "Male" %>	</td>
-			<td>	<%= s.dob %>	</td>						
+			<td>	<%= s.dob.to_s(:long)%>	</td>						
 		</tr>
 	<% end %>
-    </tbody>	
-</table>		
+    </tbody>	    
+</table>		    
+    
+<% for t in section.tests %>
+	<div id='<%="marks_test_#{t.id}" %>'  class='marks_cantoggle'>
+		<p class="heading2">
+			<%= t.name %>
+		</p>	
+		<table class='index_table_z' id='datatable' summary=<% "#{t.name} index" %>>
+		    <thead>		    	
+			    	<tr>
+			    		<th scope="col">Name</th>
+			        	<% for map in section.sec_sub_maps %>
+			        			<th scope="col"> <%= Subject.find(map.subject_id).name.humanize %> </th>
+			            <% end %>
+						<th scope="col"> Total </th> 
+			        </tr>	    	
+			</thead>
+		    <tbody>
+		    	<tr>
+					<% marks = Mark.find(:all,:conditions => {:section_id.eq => section.id, :test_id.eq => t.id }) %>
+					<% marks.each do |mark| %>
+						<tr>
+							<td> <%= mark.student.name %> </td>
+							<% for map in section.sec_sub_maps %>
+								<% m_col = "sub#{map.mark_column}" %>
+			        			<td> <%= mark.send(m_col) %> </td>
+				            <% end %>
+				    		<td> <%= mark.total %>
+				        </tr>
+					<% end %>			
+		    </tbody>	
+		</table>	
+	</div>	
+<% end %>
+
 
 
 

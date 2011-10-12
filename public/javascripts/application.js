@@ -51,6 +51,17 @@ $(function() {
 		//return false;
 	});
 
+	//For the marks of different tests. The marks of the test that is last clicked shd only be displayed.
+	
+	//Initially hide all the marks div
+	$("div.marks_cantoggle").hide();	
+	
+	$("a.marks_toggler").live('click', function() {
+		$("div.marks_cantoggle").hide();
+		div2show =  '#marks_' + $(this).attr('id')
+		$(div2show).show();	
+		return false;
+	});
 	
 	//Currently the code is repeated for all the models. This should be made generic in future
 	//INSTITUTIONS

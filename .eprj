@@ -82,6 +82,8 @@
             <string>app\views\searches\_section_search_students.html.erb</string>
             <key>_sections</key>
             <string>app\views\clazzs\_sections.html.erb</string>
+            <key>_sections.html.erb</key>
+            <string>app\views\sections\_sections.html.erb</string>
             <key>_show</key>
             <string>app\views\students\_show.html.erb</string>
             <key>_show.htm</key>
@@ -165,9 +167,9 @@
             <key>actions_b</key>
             <string>app\views\teachers\actions_box.html.erb</string>
             <key>actions_bo</key>
-            <string>app\views\clazzs\actions_box.html.erb</string>
+            <string>app\views\students\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\branches\actions_box.html.erb</string>
+            <string>app\views\teachers\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -214,6 +216,8 @@
             <string>app\helpers\application_helper.rb</string>
             <key>application_helper</key>
             <string>app\helpers\application_helper.rb</string>
+            <key>applicationcss</key>
+            <string>public\stylesheets\backup\application.css</string>
             <key>authenti</key>
             <string>C:\Users\sramdass.PSFT\Desktop\ruby\source\stffn-decl_auth_demo_app-b1c29dc\stffn-decl_auth_demo_app-b1c29dc\lib\authenticated_system.rb</string>
             <key>autho</key>
@@ -327,10 +331,12 @@
             <key>index.html.e</key>
             <string>app\views\profiles\index.html.erb</string>
             <key>index.html.er</key>
-            <string>app\views\sections\index.html.erb</string>
+            <string>app\views\teachers\index.html.erb</string>
             <key>index.html.erb</key>
             <string>app\views\searches\index.html.erb</string>
             <key>index.js</key>
+            <string>app\views\teachers\index.js.erb</string>
+            <key>index.js.er</key>
             <string>app\views\teachers\index.js.erb</string>
             <key>insit</key>
             <string>app\controllers\institutions_controller.rb</string>
@@ -520,6 +526,8 @@
             <string>app\controllers\sections_controller.rb</string>
             <key>sections_cont</key>
             <string>app\controllers\sections_controller.rb</string>
+            <key>sections_contro</key>
+            <string>app\controllers\sections_controller.rb</string>
             <key>sections_controller</key>
             <string>app\controllers\sections_controller.rb</string>
             <key>sections_cp</key>
@@ -608,6 +616,8 @@
             <string>app\views\branches\subnew.html.erb</string>
             <key>subnew.html</key>
             <string>app\views\schools\subnew.html.erb</string>
+            <key>table_St</key>
+            <string>public\stylesheets\fb_table_styles.css</string>
             <key>table_Sty</key>
             <string>public\stylesheets\fb_table_styles.css</string>
             <key>table_st</key>
@@ -638,6 +648,8 @@
             <string>app\views\teachers\_teacher_fields.html.erb</string>
             <key>teacherc</key>
             <string>app\models\teacher_contact.rb</string>
+            <key>teachers.htm</key>
+            <string>app\views\branches\_teachers.html.erb</string>
             <key>teachers_</key>
             <string>app\controllers\teachers_controller.rb</string>
             <key>teachers_C</key>

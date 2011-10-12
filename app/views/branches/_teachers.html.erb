@@ -9,7 +9,7 @@
     <tbody>
 	<% branch.teachers.each do |t| %>
 		<tr>
-			<td> <%= t.name %> </td>
+			<td> <%= link_to t.name, teacher_path(t) %> </td>
 			<td>	<%= t.id_no%>	</td>
 			<td>	<%= t.female? ? "Female" : "Male" %>	</td>
 		</tr>
