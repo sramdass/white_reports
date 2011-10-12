@@ -6,12 +6,14 @@ class SearchesController < ApplicationController
 	 	else
 	 		@section = Section.find(params[:section_id])
  		end
+		authorize! :read, @section	 		
  		@default_tab='students'
 	 end
 	 
 	 def section_students
 	 	@section=Section.find(params[:section_id])
 	 	@students = Student.search(params[:search]).all
+		authorize! :read, @section			 	
 		@default_tab = 'students'
 		render :section_searches_box
 	 end
@@ -19,6 +21,7 @@ class SearchesController < ApplicationController
 	 def section_marks
 	 	@section=Section.find(params[:section_id])	 	
 		 @marks = Mark.search(params[:search]).all
+		authorize! :read, @section				 
 		 @default_tab = 'marks'
 		 render :section_searches_box
 	 end
@@ -29,12 +32,14 @@ class SearchesController < ApplicationController
 	 	else
 	 		@branch = Branch.find(params[:branch_id])
  		end
+		authorize! :read, @branch		 		
  		@default_tab='students'
 	 end
 	 	 
 	 def branch_students
 	 	@branch=Branch.find(params[:branch_id])
 	 	@students = Student.search(params[:search]).all
+		authorize! :read, @branch	 	
 		@default_tab = 'students'
 		render :branch_searches_box
 	 end
@@ -42,6 +47,7 @@ class SearchesController < ApplicationController
 	 def branch_marks
 	 	@branch=Branch.find(params[:branch_id])	 	
 		 @marks = Mark.search(params[:search]).all
+		authorize! :read, @branch			 
 		 @default_tab = 'marks'
 		 render :branch_searches_box
 	 end	 

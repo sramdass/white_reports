@@ -5,25 +5,30 @@ class MarksController < ApplicationController
 	def section_any1_graphs
 		@section = Section.find(params[:section_id])
 		@type = params[:type]
+		authorize! :read, @section
 	end
   
 	def section_range_graphs
 		@section = Section.find(params[:section_id])
 		@type = params[:type]
+		authorize! :read, @section		
 	end
 	
 	def section_total_graphs
 		@section = Section.find(params[:section_id])
-		@type = params[:type]			
+		@type = params[:type]		
+		authorize! :read, @section			
 	end	
 	
 	def student_total_graphs
 		@student = Student.find(params[:student_id])
+		authorize! :read, @student
 	end	
 	
 	def student_master_graphs
 		@student = Student.find(params[:student_id])
 		@type = params[:type]
+		authorize! :read, @student		
 	end	
 
 #---------END OF Input view generator modules---------------------#

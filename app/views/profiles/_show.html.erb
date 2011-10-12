@@ -1,0 +1,39 @@
+<table class="one-column-emphasis" summary="Profile Details">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+    	<tr>
+        	<th scope="col">Name</th>
+            <th scope="col"> <%= profile.user_profile_name %> </th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td>Email </td>
+			<td> <%= profile.email %> </td>	
+    	</tr>
+    	<tr>
+        	<td>Type</td>
+			<td>  
+				<% if  profile.profile_type == Profile::PROFILE_TYPE_STUDENT  %>
+					<%= "Student" %>
+				<% elsif profile.profile_type == Profile::PROFILE_TYPE_TEACHER %>
+					<%= "Teacher" %>	
+				<% elsif profile.profile_type == Profile::PROFILE_TYPE_ADMIN %>
+					<%= "Administrator" %>													
+				<% end %>
+			</td>
+        </tr>  
+        <tr>
+        	<td> Roles </td>
+			<td>
+				<% for role in profile.roles %>
+					<%= "#{role.name.humanize} " %> <br>
+				<% end %>
+			</td>
+        </tr>
+    </tbody>
+</table>    
+
+

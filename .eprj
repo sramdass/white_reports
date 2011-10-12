@@ -51,7 +51,7 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\students\_edit.html.erb</string>
+            <string>app\views\sections\_edit.html.erb</string>
             <key>_email</key>
             <string>app\views\teachers\_emailnew.html.erb</string>
             <key>_email_f</key>
@@ -167,9 +167,9 @@
             <key>actions_b</key>
             <string>app\views\teachers\actions_box.html.erb</string>
             <key>actions_bo</key>
-            <string>app\views\students\actions_box.html.erb</string>
+            <string>app\views\branches\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\teachers\actions_box.html.erb</string>
+            <string>app\views\profiles\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -208,6 +208,8 @@
             <string>app\controllers\application_controller.rb</string>
             <key>application_con</key>
             <string>app\controllers\application_controller.rb</string>
+            <key>application_contr</key>
+            <string>app\controllers\application_controller.rb</string>
             <key>application_h</key>
             <string>app\helpers\application_helper.rb</string>
             <key>application_he</key>
@@ -239,6 +241,8 @@
             <key>branches_co</key>
             <string>app\controllers\branches_controller.rb</string>
             <key>branches_cont</key>
+            <string>app\controllers\branches_controller.rb</string>
+            <key>branches_contr</key>
             <string>app\controllers\branches_controller.rb</string>
             <key>branchne</key>
             <string>app\views\institutions\branchnew.html.erb</string>
@@ -300,6 +304,8 @@
             <string>app\views\students\_emailnew.html.erb</string>
             <key>environ</key>
             <string>config\environment.rb</string>
+            <key>fb_mai</key>
+            <string>public\stylesheets\fb_main.css</string>
             <key>fb_main</key>
             <string>public\stylesheets\fb_main.css</string>
             <key>form_St</key>
@@ -319,7 +325,7 @@
             <key>graphs.html</key>
             <string>app\views\marks\graphs.html.erb</string>
             <key>index</key>
-            <string>app\views\branches\index.html.erb</string>
+            <string>app\views\profiles\index.html.erb</string>
             <key>index.h</key>
             <string>app\views\branches\index.html.erb</string>
             <key>index.ht</key>
@@ -327,7 +333,7 @@
             <key>index.htm</key>
             <string>app\views\institutions\index.html.erb</string>
             <key>index.html</key>
-            <string>app\views\marks\index.html.erb</string>
+            <string>app\views\profiles\index.html.erb</string>
             <key>index.html.e</key>
             <string>app\views\profiles\index.html.erb</string>
             <key>index.html.er</key>
@@ -397,7 +403,7 @@
             <key>new.htm</key>
             <string>app\views\branches\new.html.erb</string>
             <key>new.html</key>
-            <string>app\views\institutions\new.html.erb</string>
+            <string>app\views\sessions\new.html.erb</string>
             <key>password_Reset</key>
             <string>app\controllers\password_resets_controller.rb</string>
             <key>password_Rest</key>
@@ -419,6 +425,10 @@
             <key>profiles_con</key>
             <string>app\controllers\profiles_controller.rb</string>
             <key>profiles_cont</key>
+            <string>app\controllers\profiles_controller.rb</string>
+            <key>profiles_contr</key>
+            <string>app\controllers\profiles_controller.rb</string>
+            <key>profiles_controll</key>
             <string>app\controllers\profiles_controller.rb</string>
             <key>remove_sch</key>
             <string>db\migrate\20110902035043_remove_school_ids.rb</string>
@@ -472,6 +482,8 @@
             <string>app\controllers\searches_controller.rb</string>
             <key>searches_box</key>
             <string>app\views\searches\branch_searches_box.html.erb</string>
+            <key>searches_c</key>
+            <string>app\controllers\searches_controller.rb</string>
             <key>searches_cont</key>
             <string>app\controllers\searches_controller.rb</string>
             <key>sec_su</key>
@@ -549,7 +561,7 @@
             <key>show.htm</key>
             <string>app\views\sections\show.html.erb</string>
             <key>show.html</key>
-            <string>app\views\students\_show.html.erb</string>
+            <string>app\views\profiles\show.html.erb</string>
             <key>show.html.</key>
             <string>app\views\schools\show.html.erb</string>
             <key>show.html.e</key>
@@ -593,6 +605,8 @@
             <key>students_co</key>
             <string>app\controllers\students_controller.rb</string>
             <key>students_cont</key>
+            <string>app\controllers\students_controller.rb</string>
+            <key>students_contr</key>
             <string>app\controllers\students_controller.rb</string>
             <key>stunew</key>
             <string>app\views\sections\_stunew.html.erb</string>

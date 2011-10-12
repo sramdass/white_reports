@@ -4,11 +4,14 @@
 	</div>
 	<strong> BRANCH LINKS </strong>
 	<ul class='nav-list'>
-		<li><a id = 'branch_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-		<li><a id = 'branch_teachers' <% if default_tab?('teachers') %> class = 'selected' <% end %> href="#">Teachers</a></li>
-		<li><a id = 'branch_classes' <% if default_tab?('classes') %> class = 'selected' <% end %> href="#">Classes</a></li>
-		<li><a id = 'branch_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
-		<li><a id = 'branch_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>																
+		<% if can? :read, @branch%>		
+			<li><a id = 'branch_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+			<li><a id = 'branch_teachers' <% if default_tab?('teachers') %> class = 'selected' <% end %> href="#">Teachers</a></li>
+			<li><a id = 'branch_classes' <% if default_tab?('classes') %> class = 'selected' <% end %> href="#">Classes</a></li>
+			<li><a id = 'branch_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
+			<li><a id = 'branch_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>																
+			<li> <%= link_to 'Advanced Search', branch_searches_box_searches_path(:branch_id => @branch.id) %> </li>												
+		<% end %>
 		<% if can? :update, @branch%>
 			<li><a id = 'branch_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
 		<% end %>
@@ -18,7 +21,6 @@
 			<li><a id = 'branch_update_tests' <% if default_tab?('testnew') %> class = 'selected' <% end %> href="#">Update Tests</a></li>
 			<li><a id = 'branch_update_classes' <% if default_tab?('clznew') %> class = 'selected' <% end %> href="#">Update Classes</a></li>
 		<% end %>
-		<li> <%= link_to 'Advanced Search', branch_searches_box_searches_path(:branch_id => @branch.id) %> </li>									
 	</ul>
 </div>		
 <div id="main-column">		

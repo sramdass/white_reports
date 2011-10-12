@@ -4,7 +4,10 @@
 	</div>
 	<strong> STUDENT LINKS </strong>
 	<ul class='nav-list'>
-		<li><a id = 'student_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+		<% if can? :read, @student%>		
+			<li><a id = 'student_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+			<li><a id = 'student_reports' <% if default_tab?('reports') %> class = 'selected' <% end %>  href="#">Reports</a></li>						
+		<% end %>
 		<% if can? :update, @student%>
 			<li><a id = 'student_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
 		<% end %>
@@ -12,7 +15,6 @@
 			<li><a id = 'student_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
 			<li><a id = 'student_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
 		<% end %>
-		<li><a id = 'student_reports' href="#">Reports</a></li>									
 	</ul>					
 </div>
 

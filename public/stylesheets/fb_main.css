@@ -50,6 +50,7 @@ body {
 }
 
 #nav-column {
+	margin-top: 20px;
 	width:15%;
 	float:left;
 	border: 1px solid #ddd;
@@ -239,4 +240,9 @@ ul.nav-list li a.selected {
 	padding-bottom: 3px;
 	border-bottom: 1px solid #eee;
 	font-size: 120%;
+}
+
+table a {
+	text-decoration: none;
+	color: inherit;
 }

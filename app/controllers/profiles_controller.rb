@@ -8,7 +8,7 @@ def create
 	@profile = Profile.new(params[:profile])
 	
 	#Make sure that this profile has a corresponding user in the database
-	obj =Profile:: user_type_and_ptr(@profile)
+	obj = Profile:: user_type_and_ptr(@profile)
 	if obj
 		@profile.profile_type =obj[:type]
 		@profile.profile_ptr = obj[:ptr]
@@ -33,13 +33,27 @@ def create
 	
 	def edit
 		@profile = Profile.find(params[:id])
-		@roles = Role.find(:all)
-		@roles  ||= []
-		@title = "Edit profile"
+		@roles = Role.find(:all) || []
+	  	@default_tab = 'edit'
+		render :actions_box		
 	end
 	
 	def update
 		@profile = Profile.find(params[:id])
+		
+		#cancan
+		# 1. To update a student profile, the current user should be able to update that particular student's section.
+		#For example, a class teacher can update all of her student's profile
+		# 2. To update a teacher's profile, the current user should be able to update that particular teacher's branch.
+		#For example, a moderator or admin of that school can update all the teachers in that particular school
+		
+		if @profile.profile_type == Profile::PROFILE_TYPE_STUDENT
+			authorize! :update, @profile.user_profile.section			
+		elsif @profile.profile_type == Profile::PROFILE_TYPE_TEACHER
+			authorize! :update, @profile.user_profile.branch
+		elsif @profile.profile_type == Profile::PROFILE_TYPE_ADMIN
+			# I don't know what the heck should go here at this point of time. Needs updation!
+		end 
 		
 		#If there are no roles during update, assign guest role
 		role = Array.new
@@ -57,24 +71,26 @@ def create
 		end		
 	end
 	
-  def index
- 	@profiles = Profile.find(:all)
+	def index
+		@profiles = Profile.find(:all)		
+		#TODO: cancan code should come here!
+	end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @profiles }
-      format.js
-    end
-  end
+	def show
+		@profile = Profile.find(params[:id])
+		#cancan
+		# if you can read a particular resource(teacher/student), you can see the resource's profile
+		authorize! :read, @profile.user_profile			
+      	@default_tab = 'show'
+		render :actions_box		
+	end
+	
+	def actions_box
+		@profile = Profile.find(params[:id])
+		authorize! :read, @profile.user_profile			
+		@default_tab = 'show'
+	end
 
-  def show
-    @profile = Profile.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @profile }
-    end
-  end
   
 	def default_roles(profile_type)
 		roles = Array.new
@@ -86,6 +102,20 @@ def create
 			roles << Role.find_by_name('guest').id
 		end
 		return roles  	
+	end
+	
+	def redirect
+		if current_profile
+			if current_profile.profile_type == Profile::PROFILE_TYPE_STUDENT
+				redirect_to student_path(current_profile.user_profile)
+			elsif current_profile.profile_type == Profile::PROFILE_TYPE_TEACHER
+				redirect_to teacher_path(current_profile.user_profile)
+			elsif current_profile.profile_type == Profile::PROFILE_TYPE_ADMIN
+				# I don't know what the heck should go here at this point of time. Needs updation!
+			end
+		else
+			redirect_to log_in_path
+		end
 	end
   
 end

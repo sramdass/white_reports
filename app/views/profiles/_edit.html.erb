@@ -1,0 +1,17 @@
+<%= form_for profile do |f| %> 	
+<table class="form-table"  style='width: 300px' summary="Profile Edit Information">
+    <tbody>
+    	<tr><th>Roles </th><th> Summary </th></tr>
+		<% for role in Role.all %>
+			<tr>
+			  	<td>
+				    <%= check_box_tag "profile[role_ids][]", role.id, profile.roles.include?(role) %>
+				    <%= role.name.humanize  %>    		
+				 </td>
+				 <td> Summary will go here </td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= f.submit "Update profile" %>					
+<% end %>

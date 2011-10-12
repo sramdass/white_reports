@@ -101,6 +101,6 @@ WhiteReports::Application.routes.draw do
 	resources :password_resets
 	resources :searches	
 		
-	root :to => "profiles#index"	
+	root :to => "profiles#redirect"	
 	
 end
