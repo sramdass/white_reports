@@ -406,6 +406,8 @@
             <string>app\views\branches\new.html.erb</string>
             <key>new.html</key>
             <string>app\views\sessions\new.html.erb</string>
+            <key>new.t</key>
+            <string>new.txt</string>
             <key>password_Reset</key>
             <string>app\controllers\password_resets_controller.rb</string>
             <key>password_Rest</key>
