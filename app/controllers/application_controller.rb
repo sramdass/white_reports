@@ -5,7 +5,12 @@ class ApplicationController < ActionController::Base
     before_filter { |c| Authorization.current_user = c.current_profile }
  
 	rescue_from CanCan::AccessDenied do |exception|
-		redirect_to :back, :alert => "You are not allowed to access that page"
+		if current_profile
+			redirect_to :back, :alert => "You are not allowed to access that page"
+			#Use this here: - request.env['HTTP_REFERER'] || products_url
+		else
+			redirect_to log_in_path, :alert => "Please log in/sign up before accessing the application"
+		end
 	end
     
     def mailer_set_url_options

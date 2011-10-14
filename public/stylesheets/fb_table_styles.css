@@ -11,7 +11,7 @@ table a {
 	/* width: 480px; */
 	text-align: left;
 	border-collapse: collapse;
-	border-top: 2px solid #F2F2F2;
+	border-top: 1px solid #F2F2F2;
 	border-bottom: 2px solid #F2F2F2;	
 }
 .index_table_z th, .one-column-emphasis th, .input_form_table th {
@@ -21,7 +21,7 @@ table a {
 	padding: 10px 8px;
 	border-right: 1px solid #F2F2F2;
 	border-left: 1px solid #F2F2F2;
-	border-bottom: 2px solid #F2F2F2;		
+	border-bottom: 1px solid #F2F2F2;		
 }
 .index_table_z td, .one-column-emphasis td {
 	padding: 8px;
@@ -99,7 +99,6 @@ table a {
 	font-size: 120%;
 	font-weight: bold;
 	text-align:left;
-	letter-spacing: 0.05em;
  	border-top: 2px solid #F2F2F2;
  }
 
