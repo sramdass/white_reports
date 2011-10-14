@@ -1,12 +1,17 @@
 /* 'z' stands for zebra table */
 
+table a {
+	text-decoration: none;
+	color: inherit;
+}
+
 .index_table_z, .one-column-emphasis, .input_form_table{
 	color: #333;
 	margin: 20px;
 	/* width: 480px; */
 	text-align: left;
 	border-collapse: collapse;
-	border-top: 2px solid #F2F2F2;
+	border-top: 1px solid #F2F2F2;
 	border-bottom: 2px solid #F2F2F2;	
 }
 .index_table_z th, .one-column-emphasis th, .input_form_table th {
@@ -16,7 +21,7 @@
 	padding: 10px 8px;
 	border-right: 1px solid #F2F2F2;
 	border-left: 1px solid #F2F2F2;
-	border-bottom: 2px solid #F2F2F2;		
+	border-bottom: 1px solid #F2F2F2;		
 }
 .index_table_z td, .one-column-emphasis td {
 	padding: 8px;
@@ -25,7 +30,11 @@
 }
 
 .index_table_z tbody tr:hover td, .one-column-emphasis tr:hover td {
-	color: #2E2EFE;
+	color: #43749A;
+}
+
+.index_table_z tbody tr:hover td a:hover, .one-column-emphasis tr:hover td a:hover{
+	text-decoration: underline;
 }
 
 .index_table_z tr:nth-child(even) {
@@ -43,7 +52,7 @@
 }
 .oce-first {
 	width: 125px;
-	background: #E5ECFC;
+	background: #E5ECFC;	
 }
 
 .input_form_table th {
@@ -66,6 +75,11 @@
 	border: 0px; /*  This is not working */
 }
 
+.input_form_table tbody tr:hover td a:hover {
+	text-decoration: underline;
+	color: #43749A;	
+}
+
 /*********** Form Table and posts table***********************/
 .form-table, .posts-table {
 	color: #333;
@@ -85,7 +99,6 @@
 	font-size: 120%;
 	font-weight: bold;
 	text-align:left;
-	letter-spacing: 0.05em;
  	border-top: 2px solid #F2F2F2;
  }
 

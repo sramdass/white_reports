@@ -19,8 +19,30 @@
         </tr>
         <tr>
         	<td>Branch</td>
-            <td> <%= teacher.branch.name %> </td>
-        </tr>        
+            <td> <%= link_to teacher.branch.name, branch_path(teacher.branch) %> </td>
+        </tr> 
+        <tr>
+        	<td>Classes owned</td>
+            <td> 
+            	<% sec = Section. where('class_teacher_id = ?', teacher.id).all %>
+            	<% if !sec.empty? %>
+            		<% sec.each do |s| %>
+            			<%= link_to s.name, section_path(s) %>, &nbsp; <%= link_to s.clazz.name, clazz_path(s.clazz) %>
+            		<% end %>
+            	<% else %>
+            		NA
+            	<% end %>
+            	
+        	</td>
+        </tr>    
+        <tr>
+        	<td>Classes Handled</td>
+            <td> 
+            		<% teacher.sec_sub_maps.each do |m| %>
+            			<%= link_to m.section.name, section_path(m.section) %>, &nbsp; <%= link_to m.section.clazz.name, clazz_path(m.section.clazz)%> <br>
+            		<% end %>
+            </td>
+        </tr>            
         <tr>
         	<td>Email</td>
             <td>	<%= teacher.teacher_contact.primary_email  %> , <i> <%= teacher.teacher_contact.email %></td>

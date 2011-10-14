@@ -9,15 +9,17 @@
 <body>	
 	<div id="header">
 		<div id="tab-bar">
+			<% if current_profile %>
 			<ul>
-				<li> <a id='header-drop-down-list' href='#'> one </a></li>
-				<li> <a href = '#'>Home </a> </li>
-				<li> <strong><a href = '#'>Satheesh Ramdass</a></strong></li>
+				<li>  <a href = '#'> Contact </a> </li>
+				<li> <a href = '#'>About us </a> </li>
+				<li> <strong> <a id='header-drop-down-list' href = '#'> <%= current_profile.user_profile.name.humanize %> </a></strong></li>
 			</ul>	
+			<% end %>
 		</div>
 		<div id="header-drop-down">
 			<ul>
-				<li><a href = '#'> Help </a> </li>
+				<li> <%= link_to "Home", root_url  %></li>
 				<li><a href = '#'> Change Password </a> </li>
 				<li><%= link_to "Sign out!", log_out_path %> </li>
 			</ul>

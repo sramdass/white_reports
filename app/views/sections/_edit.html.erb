@@ -8,9 +8,9 @@
 		Subjects and Teachers
 	</div>
 
-	<table class="form-table"  style='width: 300px' summary="Section Subjects">
+	<table class="form-table"  summary="Section Subjects">
 	    <tbody>
-	    	<tr><th>Subject</th><th>Teacher</th></tr>
+	    	<tr><th>Subject</th><th>Max Marks</th> <th> Pass Marks </th><th>Teacher</th></tr>
 			<% for subject in subjects %>
 				<tr>
 					<td>
@@ -18,9 +18,20 @@
 					</td>					
 					<% if section.subjects.include?(subject) %>
 				        <% t_id = subject.sec_sub_maps.find_by_section_id(section.id).teacher_id %>
+				        <% pass_marks = subject.sec_sub_maps.find_by_section_id(section.id).pass_marks %>
+				        <% max_marks = subject.sec_sub_maps.find_by_section_id(section.id).max_marks %>
 				    <% else %>
 				    	<% t_id = 0%>
-					<%  end %> 				  
+				    	<% pass_marks = nil %>
+				    	<% max_marks = nil %>
+					<%  end %> 		
+					<td>
+						<%= text_field_tag  "max_marks[#{subject.id}]",  max_marks, :size => 4 %> 
+					</td>										
+					<td>
+						<%= text_field_tag  "pass_marks[#{subject.id}]", pass_marks, :size => 4 %> 
+					</td>															
+
 					<td>
 						<%= select ( "teacher", "#{subject.id}", teachers.map {|p| [ p.name, p.id ] }, {:include_blank => 'None', :selected => t_id}) %> 
 					</td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924104302) do
+ActiveRecord::Schema.define(:version => 20111014063910) do
 
   create_table "branches", :force => true do |t|
     t.integer  "institution_id"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20110924104302) do
     t.string   "remarks"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "arrears"
   end
 
   create_table "memberships", :force => true do |t|
@@ -121,6 +122,8 @@ ActiveRecord::Schema.define(:version => 20110924104302) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "mark_column"
+    t.float    "max_marks"
+    t.float    "pass_marks"
   end
 
   create_table "sec_test_maps", :force => true do |t|
@@ -164,7 +167,6 @@ ActiveRecord::Schema.define(:version => 20110924104302) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "branch_id"
-    t.float    "max_marks"
   end
 
   create_table "teacher_contacts", :force => true do |t|

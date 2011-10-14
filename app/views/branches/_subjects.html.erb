@@ -2,14 +2,12 @@
     <thead>	
 		<tr>
 			<th scope="col"> Name </th>
-			<th scope="col"> Max Marks </th>			
 		</tr>
 	</thead>
     <tbody>
 	<% branch.subjects.each do |s| %>
 		<tr>
 			<td> <%= s.name %> </td>
-			<td> <%= s.max_marks %> </td>
 		</tr>
 	<% end %>
     </tbody>	

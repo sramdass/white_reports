@@ -21,6 +21,8 @@ class Teacher < ActiveRecord::Base
 	has_one :teacher_contact, :dependent => :destroy
 	accepts_nested_attributes_for :teacher_contact, :reject_if => :has_only_destroy?,  :allow_destroy => true
 	
+	has_many :sec_sub_maps, :dependent => :destroy
+	
 #-------VALIDATIONS------------#
 	
 	 validates 	:name, 	:presence => true, 
