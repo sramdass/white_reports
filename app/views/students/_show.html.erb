@@ -23,11 +23,11 @@
         </tr>
         <tr>
         	<td>Class</td>
-            <td><%= student.section.clazz.name %>,&nbsp;<%= student.section.name %> </td>
+            <td><%= link_to student.section.clazz.name, clazz_path(student.section.clazz) %>,&nbsp;<%= link_to student.section.name, section_path(student.section) %> </td>
         </tr>
         <tr>
         	<td>School</td>
-            <td> <%= student.section.clazz.branch.name %> </td>
+            <td> <%= link_to student.section.clazz.branch.name, branch_path(student.section.clazz.branch) %> </td>
         </tr>        
         <tr>
         	<td>Email</td>
@@ -56,6 +56,7 @@
 	        			<th scope="col"> <%= Subject.find(map.subject_id).name.humanize %> </th>
 	            <% end %>
 				<th scope="col"> Total </th> 
+				<th scope="col"> Arrears </th> 				
 	        </tr>	    	
 	</thead>
     <tbody>
@@ -68,6 +69,7 @@
 	        			<td> <%= mark.send(m_col) %> </td>
 		            <% end %>
 		    		<td> <%= mark.total %>
+		    		<td> <%= mark.arrears %>		    			
 		        </tr>
 			<% end %>			
     </tbody>	

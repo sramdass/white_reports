@@ -1,5 +1,10 @@
 /* 'z' stands for zebra table */
 
+table a {
+	text-decoration: none;
+	color: inherit;
+}
+
 .index_table_z, .one-column-emphasis, .input_form_table{
 	color: #333;
 	margin: 20px;
@@ -25,7 +30,11 @@
 }
 
 .index_table_z tbody tr:hover td, .one-column-emphasis tr:hover td {
-	color: #2E2EFE;
+	color: #43749A;
+}
+
+.index_table_z tbody tr:hover td a:hover, .one-column-emphasis tr:hover td a:hover{
+	text-decoration: underline;
 }
 
 .index_table_z tr:nth-child(even) {
@@ -43,7 +52,7 @@
 }
 .oce-first {
 	width: 125px;
-	background: #E5ECFC;
+	background: #E5ECFC;	
 }
 
 .input_form_table th {
@@ -64,6 +73,11 @@
 }
 .input_form_table input, .input_form_table textarea {
 	border: 0px; /*  This is not working */
+}
+
+.input_form_table tbody tr:hover td a:hover {
+	text-decoration: underline;
+	color: #43749A;	
 }
 
 /*********** Form Table and posts table***********************/

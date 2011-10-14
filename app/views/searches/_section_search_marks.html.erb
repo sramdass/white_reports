@@ -1,8 +1,8 @@
 <% marks_search = Mark.search(nil)%>
 <% hash = mark_columns(section) %>
 <%= form_for marks_search, :url => section_marks_searches_path, :html => {:method => 'get'} do |f| %>
-	<%= hidden_field_tag :section_id, section.id %>
-	<%= hidden_field (:students_search, :section_id_eq, :value => section.id) %>
+	<%= hidden_field (:marks_search, :section_id_eq, :value => section.id) %>
+	<%= hidden_field_tag :section_id, section.id %>	
 	
 	<table class="form-table"  summary="Section Marks advanced search">
 		<tbody>			
@@ -22,7 +22,7 @@
 				</td> 	
 				<td>
 					<% hash.each do |sub_name, mark_col| %>
-						<%= f.text_field "#{mark_col}_gt", :size => 4 %> - <%= f.text_field "#{mark_col}_lt", :size => 4 %>  <%= "#{sub_name}"%>	  <br><br>
+						<%= f.text_field "#{mark_col}_gteq", :size => 4 %> - <%= f.text_field "#{mark_col}_lteq", :size => 4 %>  <%= "#{sub_name}"%>	  <br><br>
 					<% end %>
 				</td>
 			</tr>		
@@ -31,9 +31,17 @@
 					<strong> Total Marks Range</strong>
 				</td> 	
 				<td>
-	    			<%= f.text_field :total_gt, :size => 5 %> - <%= f.text_field :total_lt, :size => 5 %> 
+	    			<%= f.text_field :total_gteq, :size => 5 %> - <%= f.text_field :total_lteq, :size => 5 %> 
 	    		</td>
 	    	</tr>
+			<tr>
+				<td> 
+					<strong> Arrears Range</strong>
+				</td> 	
+				<td>
+	    			<%= f.text_field :arrears_gteq, :size => 5 %> - <%= f.text_field :arrears_lteq, :size => 5 %> 
+	    		</td>
+	    	</tr>	    	
 			<tr>
 				<td> 
 					<strong> Students </strong>
@@ -64,6 +72,7 @@
 		        			<th scope="col"> <%= sub_name.humanize %></th>
 		            <% end %>
 		          <th scope="col"> Total </th>
+		          <th scope="col"> Arrears </th>		          
 		        </tr>	    	
 		</thead>
 	    <tbody>
@@ -75,6 +84,7 @@
 						<td> <%= m.send(mark_col) %> </td>
 					<% end %>					
 					<td> <%=m.total%></td>
+					<td> <%=m.arrears%></td>					
 		        </tr>
 			<% end %>			
 	    </tbody>	

@@ -120,6 +120,8 @@ class ApplicationController < ActionController::Base
 		#Destroying  a cookie using code just empties the cookie. So just checking for nil is not sufficient.
 		if cookies[:auth_token] && !(cookies[:auth_token].empty?)
 			@current_profile ||= Profile.find_by_auth_token!(cookies[:auth_token])
+		else
+			nil
 		end
 	end
 	

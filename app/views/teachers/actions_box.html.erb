@@ -5,6 +5,7 @@
 	<strong> TEACHER LINKS </strong>
 	<ul class='nav-list'>
 		<li><a id = 'teacher_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+		<li><a id = 'teacher_clazzs' <% if default_tab?('clazzs') %> class = 'selected' <% end %> href="#">Classes</a></li>
 		<% if can? :update, @teacher%>
 			<li><a id = 'teacher_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
 		<% end %>
@@ -12,6 +13,8 @@
 			<li><a id = 'teacher_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
 			<li><a id = 'teacher_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
 		<% end %>
+			<li><a id = 'teacher_calendar' <% if default_tab?('calendar') %> class = 'selected' <% end %> href="#">Calendar</a></li>
+			<li><a id = 'teacher_weekly_plan'  <% if default_tab?('weekly_plan') %> class = 'selected' <% end %> href="#">Weekly Plan</a></li>		
 	</ul>
 </div>		
 <div id="main-column">	
@@ -20,6 +23,9 @@
 	</p>		
 	<div id='teacher_show' class='cantoggle'>	
 		<%= render 'show', :teacher => @teacher %>
+	</div> 
+	<div id='teacher_clazzs' class='cantoggle'>	
+		<%= render 'clazzs', :teacher => @teacher %>
 	</div> 		
 	<div id='teacher_edit' class='cantoggle'>
 		<%= render 'edit', :teacher => @teacher %>
@@ -29,6 +35,12 @@
 	</div> 		
 	<div id='teacher_sms' class='cantoggle'>
 		<%= render 'smsnew', :teacher => @teacher %>
+	</div> 
+	<div id='teacher_calendar' class='cantoggle'>
+		<p> <strong> Coming soon... <br> A calendar capturing all the to-dos and tasks of this teacher </strong> </p>
+	</div> 	
+	<div id='teacher_weekly_plan' class='cantoggle'>
+		<p> <strong> Coming soon... <br> A workflow to submit the weekly plans (of a teacher) to hod or any higher authority </strong> </p>
 	</div> 			
 </div>		<!-- END of main-column-->
 

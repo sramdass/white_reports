@@ -58,7 +58,13 @@ end
 		    sid = d.subject_id
 		    mark_col = mark_column(sid)
 		    if mark_col != -1
-		    	d.attributes = {:subject_id => sid, :teacher_id => params["teacher"]["#{sid}"], :mark_column => mark_col}
+		    	d.attributes = 	{
+		    								:subject_id => sid, 
+		    								:teacher_id => params["teacher"]["#{sid}"], 
+		    								:max_marks => params["max_marks"]["#{sid}"],
+		    								:pass_marks => params["pass_marks"]["#{sid}"],
+		    								:mark_column => mark_col
+		    								}
 		    else
 			    @default_tab = 'edit'
 		        render :actions_box, :error => "Cannot update mark column in the section subject maps"

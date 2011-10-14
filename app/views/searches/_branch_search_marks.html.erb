@@ -1,7 +1,7 @@
 <% marks_search = Mark.search(nil)%>
 <%= form_for marks_search, :url => branch_marks_searches_path, :html => {:method => 'get'} do |f| %>
 	<%= hidden_field_tag :branch_id, branch.id %>
-	<%= hidden_field (:students_search, :section_clazz_branch_id_eq, :value => branch.id) %>
+	<%= hidden_field (:marks_search, :section_clazz_branch_id_eq, :value => branch.id) %>
 	
 	<table class="form-table"  summary="Branch Marks advanced search">
 		<tbody>		

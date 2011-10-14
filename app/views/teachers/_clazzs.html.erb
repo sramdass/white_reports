@@ -1,0 +1,23 @@
+<table class='index_table_z' summary="Teacher classes index">
+    <thead>	
+		<tr>
+			<th scope="col"> Section </th>
+			<th scope="col"> Class </th>
+			<th scope="col"> Subject </th>
+		</tr>
+	</thead>
+    <tbody>
+	<% teacher.sec_sub_maps.each do |m| %>
+		<tr>
+			<td> <%= link_to m.section.name, section_path(m.section) %> </td>
+			<td>	<%= link_to m.section.clazz.name, clazz_path(m.section.clazz)%>	</td>
+			<td>	<%= m.subject.name %>	</td>
+		</tr>
+	<% end %>
+    </tbody>	    
+</table>		    
+    
+
+
+
+

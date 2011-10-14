@@ -44,8 +44,8 @@ $(function() {
 	$("#nav-column ul.nav-list li a").live('click', function() {
 		$("#nav-column ul.nav-list li a").removeClass("selected");
 		$(this).addClass("selected");
-		hashed_id =  '#' + $(this).attr('id')
-		div2show = "#main-column" + " " + hashed_id
+		hashed_id =  '#' + $(this).attr('id');
+		div2show = "#main-column" + " " + hashed_id;
 		$("#main-column div.cantoggle").hide();
 		$(div2show).show();	
 		//return false;
@@ -58,7 +58,7 @@ $(function() {
 	
 	$("a.marks_toggler").live('click', function() {
 		$("div.marks_cantoggle").hide();
-		div2show =  '#marks_' + $(this).attr('id')
+		div2show =  '#marks_' + $(this).attr('id');
 		$(div2show).show();	
 		return false;
 	});
