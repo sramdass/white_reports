@@ -2,6 +2,8 @@ class SessionsController < ApplicationController
 	
 	def new
 		#Nothing's needed here. We are simply displaying a login form
+		@login_screen=true
+		redirect_to new_profile_path
 	end
 
 	def create

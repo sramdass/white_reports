@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
 	def new
 		@profile = Profile.new
+		#This needs to be set to get the header in the login page
+		@login_screen=true
 	end
 
 def create

@@ -1,27 +1,39 @@
-<h1>Sign Up</h1>
-
-<%= form_for @profile do |f| %>
-	<% if @profile.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @profile.errors.full_messages %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
+<div id="sign-up">
+	<%= form_for @profile do |f| %>
+		<% if @profile.errors.any? %>
+			<div class="error_messages">
+				<h2>Form is invalid</h2>
+				<ul>
+					<% for message in @profile.errors.full_messages %>
+						<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>		
+		<table>
+		    <tbody>	
+				<tr>
+					<td> 
+						<strong><%= f.label :email %> </strong><br>
+					 	<%= f.text_field :email %> 
+					 </td>
+				</tr>
+				<tr>
+					<td> 
+						<strong><%= f.label :password %></strong> <br>
+						<%= f.password_field :password %>
+					</td>			 	
+				</tr>
+				<tr>
+					<td> 
+						<strong><%= f.label :password_confirmation %></strong><br />
+						<%= f.password_field :password_confirmation %>
+					</td>
+				</tr>			
+				<tr>
+					<td colspan='2' class='button'> <%= submit_tag "Sign Up" %> </td>
+				</tr>
+			</tbody>
+		</table>
 	<% end %>
-	<p>
-		<%= f.label :email %><br />
-		<%= f.text_field :email %>
-	</p>
-	<p>
-		<%= f.label :password %><br />
-		<%= f.password_field :password %>
-	</p>
-	<p>
-		<%= f.label :password_confirmation %><br />
-		<%= f.password_field :password_confirmation %>
-	</p>
-	<p class="button"><%= f.submit %></p>
-<% end %>
+</div>

@@ -51,7 +51,7 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\sections\_edit.html.erb</string>
+            <string>app\views\students\_edit.html.erb</string>
             <key>_email</key>
             <string>app\views\teachers\_emailnew.html.erb</string>
             <key>_email_f</key>
@@ -318,6 +318,8 @@
             <string>config\environment.rb</string>
             <key>fb_</key>
             <string>public\stylesheets\fb_main.css</string>
+            <key>fb_m</key>
+            <string>public\stylesheets\fb_main.css</string>
             <key>fb_ma</key>
             <string>public\stylesheets\fb_main.css</string>
             <key>fb_mai</key>
@@ -390,6 +392,10 @@
             <string>app\controllers\institutions_controller.rb</string>
             <key>institutions_con</key>
             <string>app\controllers\institutions_controller.rb</string>
+            <key>logi</key>
+            <string>app\views\shared\_log_in.html.erb</string>
+            <key>login</key>
+            <string>app\views\shared\_log_in.html.erb</string>
             <key>mark.r</key>
             <string>app\models\mark.rb</string>
             <key>mark.rb</key>
@@ -419,13 +425,13 @@
             <key>negative_St</key>
             <string>app\views\marks\negative_stack.html.erb</string>
             <key>new</key>
-            <string>spec\views\branches\new.html.erb_spec.rb</string>
+            <string>app\views\sessions\new.html.erb</string>
             <key>new.ht</key>
             <string>app\views\profiles\new.html.erb</string>
             <key>new.htm</key>
             <string>app\views\branches\new.html.erb</string>
             <key>new.html</key>
-            <string>app\views\sessions\new.html.erb</string>
+            <string>app\views\profiles\new.html.erb</string>
             <key>new.t</key>
             <string>new.txt</string>
             <key>password_Reset</key>

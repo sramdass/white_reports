@@ -1,19 +1,26 @@
-<h1>Log in</h1>
-
-<%= form_tag sessions_path do %>
-	<p>
-		<%= label_tag :email %><br />
-		<%= text_field_tag :email, params[:email] %>
-	</p>
-	<p>
-		<%= label_tag :password %><br />
-		<%= password_field_tag :password %>
-	</p>
-	<p><%= link_to "forgotten password?", new_password_reset_path %></p>
-	<p><%= link_to "Sign Up", sign_up_path %>
-	<p class="field">
-		<%= check_box_tag :remember_me, 1, params[:remember_me] %>
-		<%= label_tag :remember_me %>
-	</p>
-	<p class="button"><%= submit_tag "Log in" %></p>
-<% end %>
+<div id="main-column">		
+	<div id="login">
+	<%= form_tag sessions_path do %>
+	<table class="form-table"  summary="Student edit information">
+	    <tbody>	
+			<tr>
+				<td> <%= label_tag :email %> </td>
+				<td> <%= text_field_tag :email, params[:email] %> </td>
+			</tr>
+			<tr>
+				<td> <%= label_tag :password %> </td>
+				<td> <%= password_field_tag :password %> </td>
+			</tr>
+			<tr><td colspan='2'><%= link_to "forgotten password?", new_password_reset_path %></td></tr>
+			<tr><td><%= link_to "Sign Up", sign_up_path %></td></tr>			
+		</tbody>
+	</table>				
+			<p class="field">
+				<%= check_box_tag :remember_me, 1, params[:remember_me] %>
+				<%= label_tag :remember_me %>
+			</p>
+	
+		<p><%= submit_tag "Log in", :style => "color:#FFFFFF; background: #317B9C; font-weight: bold; border:0;"  %></p>
+	<% end %>
+	</div>	
+</div>
