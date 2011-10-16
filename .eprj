@@ -328,6 +328,8 @@
             <string>public\stylesheets\fb_main.css</string>
             <key>fb_st</key>
             <string>public\stylesheets\fb_table_styles.css</string>
+            <key>fb_t</key>
+            <string>public\stylesheets\fb_table_styles.css</string>
             <key>fb_table</key>
             <string>public\stylesheets\fb_table_styles.css</string>
             <key>form_St</key>
