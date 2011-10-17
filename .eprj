@@ -51,7 +51,7 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\students\_edit.html.erb</string>
+            <string>app\views\sections\_edit.html.erb</string>
             <key>_email</key>
             <string>app\views\teachers\_emailnew.html.erb</string>
             <key>_email_f</key>
@@ -183,6 +183,8 @@
             <key>aplication</key>
             <string>public\stylesheets\application.css</string>
             <key>appl</key>
+            <string>app\views\layouts\application.html.erb</string>
+            <key>appliatio</key>
             <string>app\views\layouts\application.html.erb</string>
             <key>applica</key>
             <string>public\stylesheets\application.css</string>
@@ -427,7 +429,7 @@
             <key>negative_St</key>
             <string>app\views\marks\negative_stack.html.erb</string>
             <key>new</key>
-            <string>app\views\sessions\new.html.erb</string>
+            <string>app\views\profiles\new.html.erb</string>
             <key>new.ht</key>
             <string>app\views\profiles\new.html.erb</string>
             <key>new.htm</key>

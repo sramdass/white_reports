@@ -81,18 +81,30 @@ table a {
 }
 
 /*********** Form Table and posts table***********************/
+#form-table-div{
+	margin: auto;
+	background: #E5ECFC;
+	width: 640px;
+	border: 1px solid #E6E6E6;
+	padding-top: 3px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius:10px;		
+}
+
 .form-table, .posts-table {
+	margin: 10px 20px 10px 20px;
 	color: #333;
-	margin: 20px;	
 	border-collapse: collapse;
-	background: #E5ECFC;	
+	border: 3px solid #E6E6E6;
+	background: #E5ECFC;
 	width: 600px;
 }
 
 .form-table td, .form-table th{
 	padding: 10px;
 	border: 0px;
-	border-bottom: 1px solid #fff;
+	border-bottom: 1px solid #E6E6E6;
 }
 
  .form-table th {
@@ -132,4 +144,18 @@ color: #999;
 	padding: 1px;
 	font-size: 100%;
 	font-family: inherit;	
+}
+
+/*This comes at here because these styles should not be over ridden by table styles*/
+.button input{
+	font-family: Tahoma, "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;	
+	color:#FFFFFF; 
+	background:#323232 url('../images/button_green.png') repeat;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius:3px;	
+	font-size: 120%;
+	font-weight: bold; 
+	padding: 4px;	
+	border: 2px solid #aaa;
 }

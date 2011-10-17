@@ -18,7 +18,7 @@ html, body {
 }
 
 body {
-    font-family: Tahoma, Verdana, Tahoma,  "Lucida Sans Unicode", "Lucida Grande", Arial, Helvetica, sans-serif;
+	font-family: Verdana, Tahoma,  "Lucida Sans Unicode", "Lucida Grande", Arial, Helvetica, sans-serif; 	
 }
 
 h1, h2{
@@ -32,36 +32,37 @@ h3, h4, h5, h6, strong, em, b, i {
 
 body {
 	font-size: 11px;
-	color: #555;
-	background:#323232 url('../images/body.png') repeat;	
+	background:#323232 url('../images/body3.png') repeat;
 }
 
 #page-container {
 	width: 1250px;
+	height: 800px;
+	overflow:scroll;	
 	margin: auto;
-	background: #FAFAFA;
+	background: #fff;
+	margin-top: 20px;
+	margin-bottom: 20px;	
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
-	border-radius:10px;
-	padding: 5px;
+	border-radius:10px;		
+	border: 2px solid #999;	
 }
 
 #header, #header-login {
-	/*background:#323232 url('../images/new_header.png') repeat-x;*/
-	background:#323232 url('../images/body.png') repeat;		
 	width:100%;
-	height: 50px;
+	height: 100px;
+	background:#323232 url('../images/header3.png') repeat;
+	color: #fff;
+	border-bottom: 1px solid #999;
 }
 
-#header-login {
-	/*Increase the height for the login screen*/
-	height: 100px;
-	background:#323232 url('../images/new_header.png') repeat-x;	
+#header {
+	height: 50px;
 }
 
 #header-login .login {
 	margin-left: 60%;
-	color: #fff;
 	height: 100px;
 	/*This can be modified to adjust the height of the login controls (email and password fields) */
 	padding-top: 10px;		
@@ -80,15 +81,13 @@ body {
 #header-login .login table td input{
 	/*This is needed to have some space between the 'email' label and the text field*/
 	margin-top: 5px;
-	border: 1px solid #777;
 }
 
 #nav-column {
 	width:15%;
 	float:left;
-	/*border: 1px solid #ddd;*/
-	/*border-right: 1px solid #ddd;*/
-	background: #FAFAFA;
+	background: #fff;
+	margin: 5px;
 }
 
 /*IMPORTANT!!*/
@@ -96,20 +95,28 @@ body {
 #main-column {
 	padding: 20px;	
 	/*Since there is a padding of 20px in all the sides, the width has to be adjusted. I guess the width is calculated without the padding. So whenever the padding is changed, the width has to be changed*/
-	width:82%;
- /*	 border: 2px solid #000; */
+	width:80%;
 	margin-left: 15%;
 	background: #fff;
-	}
+/*
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius:10px;		
+	border-left: 2px solid #999;	
+	border-top: 2px solid #999;	
+	border-right: 2px solid #999;		
+*/
+}
 	
 #footer {
 	clear: both;
 	font-family: Tahoma, Arial, Helvetica, Sans-serif;
 	font-size: 10px;
 	color: #c9c9c9;
-	border-top: 1px solid #efefef;
+	border-top: 1px solid #999;
 	padding: 13px 25px;
 	line-height: 18px;
+	background:#323232 url('../images/header3.png') repeat;	
 }
 
 #footer #altnav {
@@ -128,12 +135,10 @@ body {
 }	
 
 #header-login .logo, #header .logo {
-    font-family: Verdana, Tahoma,  "Lucida Sans Unicode", "Lucida Grande", Arial, sans-serif;
+	font-family: 'Passero One', cursive;	
 	float: left;
-	font-size: 300%;
+	font-size: 48px;
 	font-weight: bold;
-	letter-spacing: -2px;
-	color: #fff;		
 	margin-left: 20%;	
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -141,18 +146,16 @@ body {
 	padding-top: 25px;
 }
 
-#header .logo {
-	font-size: 200%;
-	margin-left: 20%;	
-	padding-top: 10px;
-}
+ #header .logo {
+ 	font-size: 30px;	
+	padding-top: 12px; 
+ }
 
 #nav-column #photo-box {
 	border: 1px solid #ddd;
 	height: 200px;
 	margin: 0 0 10px 0;
-	background: #fff;
-	}
+}
 	
 #nav-column strong {
 	color: #777;
@@ -193,7 +196,7 @@ ul.nav-list li a:hover {
 
 ul.nav-list li a.selected {
 	/*background: #E5ECFC;*/
-	background:#323232 url('../images/new_header.png') repeat;
+	background:#323232 url('../images/body3.png') repeat;
 	color:#fff;
 	font-weight:bold;
 }
@@ -275,9 +278,16 @@ ul.nav-list li a.selected {
 }
 
 #sign-up {
-	width: 100%;
-	background: #fff;
-	padding: 50px 200px 50px 800px;
+	float: right;
+	margin: 50px 250px 50px 0px;
+	width: 300px;
+	padding: 25px 50px 25px 50px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius:10px;	
+	color: #fff;
+	border: 1px solid #999;
+	background:#323232 url('../images/header3.png') repeat;	
 }
 
 #sign-up table{
@@ -290,21 +300,28 @@ ul.nav-list li a.selected {
 }
 
 #sign-up table td input{
-	margin: 5px 5px 5px 0px;	
+	margin: 5px 5px 5px 0px;
+}
+
+#sign-up .heading {
+	font-family: Tahoma, "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 200%;
+	margin: 0px 0px 20px 0px;	
 }
 
 .heading1, .heading2, .heading3{
 	font-family: Tahoma, "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	color: #333;
 	font-weight: bold;
-	letter-spacing: 0.05em;
+	letter-spacing: -1px;
 	padding: 5px 5px 5px 10px;
 }
 
 .heading1{
 	/*background: #FAFAFA;	*/
-	background:#323232 url('../images/heading_bg.jpg') repeat-x;	
-	font-size: 200%;
+	/*background:#323232 url('../images/heading_bg.jpg') repeat-x;	*/
+	font-size: 36px;
 	margin-bottom: 10px;
 	margin-top: 10px;	
 }
@@ -317,11 +334,6 @@ ul.nav-list li a.selected {
 	font-size: 120%;
 }
 
-.button input{
-	font-family: Tahoma, "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;	
-	color:#FFFFFF; 
-	background:#323232 url('../images/new_header.png') repeat;
-	font-size: 120%;
-	font-weight: bold; 
-	padding: 4px;	
+.float-left {
+	float:left;
 }
