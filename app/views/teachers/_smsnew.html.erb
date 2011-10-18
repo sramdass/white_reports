@@ -1,8 +1,11 @@
 <%= form_tag (sms_teacher_path(teacher)) do |f| %>
-	<table class="form-table"  summary="Student sms fields">
-	    <tbody>	
-			<%= render 'sms_fields' %>
-		</tbody>
-	</table>			
-	<p> <%= submit_tag "Send Message" %> </p>
+	<div id="form-table-div">
+		<p class='heading2'> Send SMS </p>	
+		<table class="form-table"  summary="Student sms fields">
+		    <tbody>	
+				<%= render 'sms_fields' %>
+				<tr><td class='button' colspan='2'><%= submit_tag "Send SMS" %></td></tr>				
+			</tbody>
+		</table>
+	</div>			
 <% end %>

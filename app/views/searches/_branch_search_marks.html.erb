@@ -2,34 +2,40 @@
 <%= form_for marks_search, :url => branch_marks_searches_path, :html => {:method => 'get'} do |f| %>
 	<%= hidden_field_tag :branch_id, branch.id %>
 	<%= hidden_field (:marks_search, :section_clazz_branch_id_eq, :value => branch.id) %>
-	
-	<table class="form-table"  summary="Branch Marks advanced search">
-		<tbody>		
-			<tr>
-				<td> <strong> Classes </strong> </td> 	
-				<td>
-					<% f.collection_checks :section_clazz_id_in, @branch.clazzs.all, :id, :name do |check| %>
-					    <%= check.box %> <%= check.label %>
-					<% end %>
-			 	</td>
-			 </tr>				
-			<tr>
-				<td> <strong> Tests </strong> </td> 	
-				<td>
-					<% f.collection_checks :test_id_in, @branch.tests.all, :id, :name do |check| %>
-					    <%= check.box %> <%= check.label %>
-					<% end %>
-			 	</td>
-			 </tr>
-			<tr>
-				<td> <strong> Total Marks Range</strong> </td> 	
-				<td>
-	    			<%= f.text_field :total_gt, :size => 5 %> - <%= f.text_field :total_lt, :size => 5 %> 
-	    		</td>
-	    	</tr>
-		</tbody>
-	</table>
-	<%= f.submit "Search" %>
+	<div id="form-table-div">
+		<p class='heading2'> Search Students with Marks </p>	
+		<table class="form-table"  summary="Branch Marks advanced search">
+			<tbody>		
+				<tr>
+					<td> <strong> Classes </strong> </td> 	
+					<td>
+						<% f.collection_checks :section_clazz_id_in, @branch.clazzs.all, :id, :name do |check| %>
+							<div class="rows-of-three">						
+						    	<%= check.box %> <%= check.label %>
+						    </div>
+						<% end %>
+				 	</td>
+				 </tr>				
+				<tr>
+					<td> <strong> Tests </strong> </td> 	
+					<td>
+						<% f.collection_checks :test_id_in, @branch.tests.all, :id, :name do |check| %>
+							<div class="rows-of-three">						
+						    	<%= check.box %> <%= check.label %>
+						    </div>
+						<% end %>
+				 	</td>
+				 </tr>
+				<tr>
+					<td> <strong> Total Marks Range</strong> </td> 	
+					<td>
+		    			<%= f.text_field :total_gt, :size => 5 %> - <%= f.text_field :total_lt, :size => 5 %> 
+		    		</td>
+		    	</tr>
+				<tr><td class='button' colspan='2'><%= f.submit "Search" %></td></tr>			    	
+			</tbody>
+		</table>
+	</div>
 <% end %>			
 
 <% if !@marks %>

@@ -1,4 +1,5 @@
-<div id="sign-up">
+<div id="sign-up">	
+	<p class='heading'> Sign Up </p>
 	<%= form_for @profile do |f| %>
 		<% if @profile.errors.any? %>
 			<div class="error_messages">
@@ -31,9 +32,9 @@
 					</td>
 				</tr>			
 				<tr>
-					<td colspan='2' class='button'> <%= submit_tag "Sign Up" %> </td>
+					<td colspan='2' class='button'> <br><%= submit_tag "Sign Up" %> </td>
 				</tr>
 			</tbody>
 		</table>
 	<% end %>
-</div>
+</div>	

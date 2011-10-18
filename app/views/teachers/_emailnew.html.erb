@@ -1,8 +1,11 @@
 <%= form_tag (email_teacher_path(teacher)) do |f| %>		
-	<table class="form-table"  summary="Teacher email fields">
-	    <tbody>		
-			<%= render 'email_fields' %>
-		</tbody>
-	</table>				
-	<p> <%= submit_tag "Send Email" %> </p>
+	<div id="form-table-div">
+		<p class='heading2'> Send Email </p>
+		<table class="form-table"  summary="Teacher email fields">
+		    <tbody>		
+				<%= render 'email_fields' %>
+				<tr><td class='button' colspan='2'><%= submit_tag "Send Email" %></td></tr>				
+			</tbody>
+		</table>
+	</div>	
 <% end %>
