@@ -41,19 +41,24 @@ body {
 	overflow:scroll;	
 	margin: auto;
 	background: #fff;
-	margin-top: 1px;
 	margin-bottom: 20px;	
+	/*
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius:10px;		
+	*/
 }
 
 #header, #header-login {
 	width:100%;
-	height: 100px;
 	background:#323232 url('../images/header3.png') repeat;
 	color: #fff;
-	border-bottom: 1px solid #999;
+	
+}
+
+#header-login {
+	height: 100px;
+	border-bottom: 1px solid #999;	
 }
 
 #header {
@@ -83,10 +88,9 @@ body {
 }
 
 #nav-column {
-	width:15%;
+	width:225px;
 	float:left;
-	background: #fff;
-	margin: 5px;
+	border-right: 1px solid #092;
 }
 
 /*IMPORTANT!!*/
@@ -95,9 +99,10 @@ body {
 	padding: 20px;	
 	/*Since there is a padding of 20px in all the sides, the width has to be adjusted. I guess the width is calculated without the padding. So whenever the padding is changed, the width has to be changed*/
 	width:80%;
-	margin-left: 15%;
-	background: #fff;
-/*
+	margin-left: 228px;
+	/*background: #fff;*/
+	border-left: 1px solid #000;
+	/*
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius:10px;		
@@ -151,9 +156,13 @@ body {
  }
 
 #nav-column #photo-box {
-	border: 1px solid #ddd;
-	height: 200px;
-	margin: 0 0 10px 0;
+	border: 2px solid #C3D6F2;
+	height: 250px;
+	margin: 0 3px 0 3px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius:10px;		
+	
 }
 	
 #nav-column strong {
@@ -162,10 +171,9 @@ body {
 
 ul.nav-list {
 	list-style:none;
-/*	border:1px solid #092; */
-	padding: 0; /* Important! This will cause the list to align to the left of the div. By default this has a padding of 40px*/
-	margin-left:20%;
-
+	padding: 15px 0 10px 40px; /* Important! This will cause the list to align to the left of the div. By default this has a padding of 40px*/
+	margin-left: 8px;
+	margin-top: 20px;
 }
 ul.nav-list li {
 	list-style:none;
@@ -179,13 +187,10 @@ ul.nav-list li ul{
 
 ul.nav-list li a {
 	color:#000;
-/*	background: green; */
 	display:block;
-/* Padding makes the link to be in the centre*/
 	padding: 5px 0px 5px 10px;
 	text-decoration:none;	
-	margin:0px;
-	
+	margin:0px;	
 }
 
 ul.nav-list li a:hover {
@@ -336,3 +341,15 @@ ul.nav-list li a.selected {
 .float-left {
 	float:left;
 }
+
+/* This is generally used to display multiple elements inside a table row. Refer section's marks search page*/
+.rows-of-two{
+	float:left;
+	width: 200px;
+}
+
+.rows-of-three{
+	float:left;
+	width: 130px;
+}
+

@@ -2,7 +2,6 @@
 	<div id="photo-box">
 		My photo will come here
 	</div>
-	<strong> STUDENT LINKS </strong>
 	<ul class='nav-list'>
 		<% if can? :read, @student%>		
 			<li><a id = 'student_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>

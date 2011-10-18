@@ -11,11 +11,12 @@ table a {
 	/* width: 480px; */
 	text-align: left;
 	border-collapse: collapse;
-	border-top: 1px solid #F2F2F2;
-	border-bottom: 2px solid #F2F2F2;	
+	/*border-top: 1px solid #F2F2F2;
+	border-bottom: 2px solid #F2F2F2;	*/
+	border: 2px solid #C3D6F2;	
 }
 .index_table_z th, .one-column-emphasis th, .input_form_table th {
-	font-size: 120%;
+	font-size: 100%;
 	font-weight: bold;
 	/* letter-spacing: 0.05em; */
 	padding: 10px 8px;
@@ -48,6 +49,7 @@ table a {
 	width: 600px;
 }
 .one-column-emphasis td {
+	padding: 15px 8px 15px 8px;
 	border-bottom: 1px solid #F2F2F2;	
 }
 .oce-first {
@@ -85,7 +87,7 @@ table a {
 	margin: auto;
 	background: #E5ECFC;
 	width: 640px;
-	border: 1px solid #E6E6E6;
+	border: 1px solid #C3D6F2;
 	padding-top: 3px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -96,19 +98,19 @@ table a {
 	margin: 10px 20px 10px 20px;
 	color: #333;
 	border-collapse: collapse;
-	border: 3px solid #E6E6E6;
+	border: 3px solid #C3D6F2;
 	background: #E5ECFC;
 	width: 600px;
 }
 
 .form-table td, .form-table th{
-	padding: 10px;
+	padding: 15px;
 	border: 0px;
-	border-bottom: 1px solid #E6E6E6;
+	border-bottom: 1px solid #D9E8FC;
 }
 
  .form-table th {
-	font-size: 120%;
+	font-size: 100%;
 	font-weight: bold;
 	text-align:left;
  	border-top: 2px solid #F2F2F2;

@@ -175,7 +175,7 @@
             <key>actions_bo</key>
             <string>app\views\branches\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\branches\actions_box.html.erb</string>
+            <string>app\views\students\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -183,6 +183,8 @@
             <key>aplication</key>
             <string>public\stylesheets\application.css</string>
             <key>appl</key>
+            <string>app\views\layouts\application.html.erb</string>
+            <key>applcat</key>
             <string>app\views\layouts\application.html.erb</string>
             <key>appliatio</key>
             <string>app\views\layouts\application.html.erb</string>
@@ -564,6 +566,8 @@
             <string>app\controllers\sections_controller.rb</string>
             <key>section_f</key>
             <string>app\views\schools\_section_fields.html.erb</string>
+            <key>section_mar</key>
+            <string>app\views\searches\_section_search_marks.html.erb</string>
             <key>section_sear</key>
             <string>app\views\searches\_section_search_marks.html.erb</string>
             <key>section_search</key>

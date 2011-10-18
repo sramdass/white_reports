@@ -10,7 +10,9 @@
 					<td> <strong> Classes </strong> </td> 	
 					<td>
 						<% f.collection_checks :section_clazz_id_in, @branch.clazzs.all, :id, :name do |check| %>
-						    <%= check.box %> <%= check.label %>
+							<div class="rows-of-three">						
+						    	<%= check.box %> <%= check.label %>
+						    </div>
 						<% end %>
 				 	</td>
 				 </tr>				
@@ -18,7 +20,9 @@
 					<td> <strong> Tests </strong> </td> 	
 					<td>
 						<% f.collection_checks :test_id_in, @branch.tests.all, :id, :name do |check| %>
-						    <%= check.box %> <%= check.label %>
+							<div class="rows-of-three">						
+						    	<%= check.box %> <%= check.label %>
+						    </div>
 						<% end %>
 				 	</td>
 				 </tr>

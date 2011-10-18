@@ -13,7 +13,7 @@
 					</td> 	
 					<td>
 						<% f.collection_checks :test_id_in, @section.tests.all, :id, :name do |check| %>
-						<div style="float:left; width:200px;">					
+						<div class='rows-of-three'>					
 						    <%= check.box %> <%= check.label %>
 						</div>
 						<% end %>
@@ -51,7 +51,7 @@
 					</td> 	
 					<td>
 						<% f.collection_checks :student_id_in, @section.students.all, :id, :name do |check| %>
-						<div style="float:left; width:200px;">
+						<div class='rows-of-two'>
 						    <%= check.box %> <%= check.label %>
 						</div>					    
 						<% end %>
