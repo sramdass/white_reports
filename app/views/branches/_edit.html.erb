@@ -1,1 +1,12 @@
-<%= render 'form' %>
+<%= form_for @branch do |f| %>
+	<%= render 'shared/error_messages', :target => @branch %>	  
+	<div id="form-table-div">
+		<p class='heading2'> Edit Branch </p>	
+		<table class="form-table"  summary="Branch edit information">
+			<tbody>	
+				<%= render 'branch_fields', :f => f%>
+				<tr><td class='button' colspan='2'><%= f.submit  "Update Branch" %></td></tr>
+			</tbody>
+		</table>	
+	</div>
+<% end %>

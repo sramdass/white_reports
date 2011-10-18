@@ -3,62 +3,64 @@
 <%= form_for marks_search, :url => section_marks_searches_path, :html => {:method => 'get'} do |f| %>
 	<%= hidden_field (:marks_search, :section_id_eq, :value => section.id) %>
 	<%= hidden_field_tag :section_id, section.id %>	
-	
-	<table class="form-table"  summary="Section Marks advanced search">
-		<tbody>			
-			<tr>
-				<td> 
-					<strong> Tests </strong>
-				</td> 	
-				<td>
-					<% f.collection_checks :test_id_in, @section.tests.all, :id, :name do |check| %>
-					<div style="float:left; width:200px;">					
-					    <%= check.box %> <%= check.label %>
-					</div>
-					<% end %>
-			 	</td>
-			 </tr>
-			<tr>
-				<td> 
-					<strong> Marks Range </strong>
-				</td> 	
-				<td>
-					<% hash.each do |sub_name, mark_col| %>
-						<%= f.text_field "#{mark_col}_gteq", :size => 4 %> - <%= f.text_field "#{mark_col}_lteq", :size => 4 %>  <%= "#{sub_name}"%>	  <br><br>
-					<% end %>
-				</td>
-			</tr>		
-			<tr>
-				<td> 
-					<strong> Total Marks Range</strong>
-				</td> 	
-				<td>
-	    			<%= f.text_field :total_gteq, :size => 5 %> - <%= f.text_field :total_lteq, :size => 5 %> 
-	    		</td>
-	    	</tr>
-			<tr>
-				<td> 
-					<strong> Arrears Range</strong>
-				</td> 	
-				<td>
-	    			<%= f.text_field :arrears_gteq, :size => 5 %> - <%= f.text_field :arrears_lteq, :size => 5 %> 
-	    		</td>
-	    	</tr>	    	
-			<tr>
-				<td> 
-					<strong> Students </strong>
-				</td> 	
-				<td>
-					<% f.collection_checks :student_id_in, @section.students.all, :id, :name do |check| %>
-					<div style="float:left; width:200px;">
-					    <%= check.box %> <%= check.label %>
-					</div>					    
-					<% end %>
-				</td>
-			</tr>		
-		</tbody>
-	</table>
-	<%= f.submit "Search" %>
+	<div id="form-table-div">
+		<p class='heading2'> Search Students with Marks </p>
+		<table class="form-table"  summary="Section Marks advanced search">
+			<tbody>			
+				<tr>
+					<td> 
+						<strong> Tests </strong>
+					</td> 	
+					<td>
+						<% f.collection_checks :test_id_in, @section.tests.all, :id, :name do |check| %>
+						<div style="float:left; width:200px;">					
+						    <%= check.box %> <%= check.label %>
+						</div>
+						<% end %>
+				 	</td>
+				 </tr>
+				<tr>
+					<td> 
+						<strong> Marks Range </strong>
+					</td> 	
+					<td>
+						<% hash.each do |sub_name, mark_col| %>
+							<%= f.text_field "#{mark_col}_gteq", :size => 4 %> - <%= f.text_field "#{mark_col}_lteq", :size => 4 %>  <%= "#{sub_name}"%>	  <br><br>
+						<% end %>
+					</td>
+				</tr>		
+				<tr>
+					<td> 
+						<strong> Total Marks Range</strong>
+					</td> 	
+					<td>
+		    			<%= f.text_field :total_gteq, :size => 5 %> - <%= f.text_field :total_lteq, :size => 5 %> 
+		    		</td>
+		    	</tr>
+				<tr>
+					<td> 
+						<strong> Arrears Range</strong>
+					</td> 	
+					<td>
+		    			<%= f.text_field :arrears_gteq, :size => 5 %> - <%= f.text_field :arrears_lteq, :size => 5 %> 
+		    		</td>
+		    	</tr>	    	
+				<tr>
+					<td> 
+						<strong> Students </strong>
+					</td> 	
+					<td>
+						<% f.collection_checks :student_id_in, @section.students.all, :id, :name do |check| %>
+						<div style="float:left; width:200px;">
+						    <%= check.box %> <%= check.label %>
+						</div>					    
+						<% end %>
+					</td>
+				</tr>	
+				<tr><td class='button' colspan='2'><%= f.submit "Search" %></td></tr>				
+			</tbody>
+		</table>
+	</div>
 <% end %>			
 
 <% if !@marks %>

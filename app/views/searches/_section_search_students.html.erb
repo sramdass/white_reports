@@ -2,6 +2,8 @@
 <%= form_for students_search, :url => section_students_searches_path, :html => {:method => 'get'} do |f| %>
 	<%= hidden_field (:students_search, :section_id_eq, :value => section.id) %>
 	<%= hidden_field_tag :section_id,  section.id %>	
+	<div id="form-table-div">
+		<p class='heading2'> Search Students </p>	
 		<table class="form-table"  summary="Section Marks advanced search">
 			<tbody>			
 				<tr>
@@ -27,9 +29,10 @@
 					<td> <strong> Mobile / Telephone </strong> </td> 	
 					<td> <%= f.text_field :student_contact_mobile_or_student_contact_telephone_contains %> </td>
 				</tr>		
+				<tr><td class='button' colspan='2'><%= f.submit "Search" %></td></tr>								
 			</tbody>
 		</table>										
-	<%= f.submit "Search" %>
+	</div>
 <% end %>
 
 

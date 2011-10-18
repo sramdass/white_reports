@@ -1,8 +1,11 @@
-<%= form_tag (sms_student_path(student), :method => 'post',  :class => "zaform") do |f| %>		
-	<table class="form-table"  summary="Student edit information">
-	    <tbody>	
-			<%= render 'sms_fields' %>
-		</tbody>
-	</table>			
-	<%= submit_tag "Send Message" %>
+<%= form_tag (sms_student_path(student), :method => 'post',  :class => "zaform") do |f| %>	
+	<div id="form-table-div">
+		<p class='heading2'> SMS </p>		
+		<table class="form-table"  summary="Student SMS">
+		    <tbody>	
+				<%= render 'sms_fields' %>
+				<tr><td class='button' colspan='2'><%= submit_tag  "Send SMS" %></td></tr>								
+			</tbody>
+		</table>
+	</div>	
 <% end %>
