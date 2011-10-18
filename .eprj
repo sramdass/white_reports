@@ -180,6 +180,8 @@
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
             <string>db\migrate\20110902125155_add_max_marks_to_subjects.rb</string>
+            <key>any1</key>
+            <string>app\views\marks\section_any1_graphs.html.erb</string>
             <key>aplication</key>
             <string>public\stylesheets\application.css</string>
             <key>appl</key>
@@ -473,6 +475,8 @@
             <key>remove_sch</key>
             <string>db\migrate\20110902035043_remove_school_ids.rb</string>
             <key>report_op</key>
+            <string>app\views\sections\_report_options.html.erb</string>
+            <key>reports</key>
             <string>app\views\sections\_report_options.html.erb</string>
             <key>role</key>
             <string>app\models\role.rb</string>

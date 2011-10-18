@@ -1,46 +1,48 @@
-<%= form_tag cols_and_spline_marks_path, :method => 'get', :class => "sections_graph" do %>
-<%= hidden_field_tag :section_id, @section.id %>
-<%= hidden_field_tag :type, @type %>	
-	<div id="form-table-div">
-		<p class='heading2'> Section Graphs </p>		
-		<table class="form-table"  summary="Branch Marks advanced search">
-			<tbody>
-				<tr>
-					<% if @type.eql?('one_student')%>
-						<td>  <strong> Student </strong> </td> 						
-						 <td> <%= select_tag :student_id, options_from_collection_for_select(@section.students, 'id', 'name') %> </td>
-					<% else %>
-						<td> <strong> Students </strong> </td> 					
-						<td> <%= text_field_tag :student_ids %> </td>
-					<% end %>
-				</tr>
-				<tr>
-					<% if @type.eql?('one_subject')%>	
-						<td>  <strong> Subject </strong> </td> 						
-						<td><%= select_tag :subject_id, options_from_collection_for_select(@section.subjects, 'id', 'name') %>  </td>					
-					<% else %>
-						<td>  <strong> Subjects </strong> </td> 						
-						<td>
-							<% for subject in @section.subjects %>
-								<div class="rows-of-two"> <%= check_box_tag "subject_ids[]", subject.id %> <%= subject.name  %> </div>
-							<% end %>
-						</td>										
-					<% end %>
-
-				<tr>
-					<% if @type.eql?('one_test')%>
-						<td>  <strong> Test </strong> </td> 						
-						<td> <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> </td>							
-					<% else %>
-						<td>  <strong> Tests </strong> </td> 						
-						<td>
-							<% for test in @section.tests %>
-								<div class="rows-of-two"> <%= check_box_tag "test_ids[]", test.id %> <%= test.name  %> </div>
-							<% end %>
-						</td>						
-					<% end %>									
-				<tr><td class='button' colspan='2'><%= submit_tag "Generate Graph" %></td></tr>	
-			</tbody>
-		</table>										
-	</div>				
-<% end %>
+<div id="main-column">
+	<%= form_tag cols_and_spline_marks_path, :method => 'get', :class => "sections_graph" do %>
+	<%= hidden_field_tag :section_id, @section.id %>
+	<%= hidden_field_tag :type, @type %>	
+		<div id="form-table-div">
+			<p class='heading2'> Section Graphs </p>		
+			<table class="form-table"  summary="Section graphs">
+				<tbody>
+					<tr>
+						<% if @type.eql?('one_student')%>
+							<td>  <strong> Student </strong> </td> 						
+							 <td> <%= select_tag :student_id, options_from_collection_for_select(@section.students, 'id', 'name') %> </td>
+						<% else %>
+							<td> <strong> Students </strong> </td> 					
+							<td> <%= text_field_tag :student_ids %> </td>
+						<% end %>
+					</tr>
+					<tr>
+						<% if @type.eql?('one_subject')%>	
+							<td>  <strong> Subject </strong> </td> 						
+							<td><%= select_tag :subject_id, options_from_collection_for_select(@section.subjects, 'id', 'name') %>  </td>					
+						<% else %>
+							<td>  <strong> Subjects </strong> </td> 						
+							<td>
+								<% for subject in @section.subjects %>
+									<div class="rows-of-two"> <%= check_box_tag "subject_ids[]", subject.id %> <%= subject.name  %> </div>
+								<% end %>
+							</td>										
+						<% end %>
+	
+					<tr>
+						<% if @type.eql?('one_test')%>
+							<td>  <strong> Test </strong> </td> 						
+							<td> <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> </td>							
+						<% else %>
+							<td>  <strong> Tests </strong> </td> 						
+							<td>
+								<% for test in @section.tests %>
+									<div class="rows-of-two"> <%= check_box_tag "test_ids[]", test.id %> <%= test.name  %> </div>
+								<% end %>
+							</td>						
+						<% end %>									
+					<tr><td class='button' colspan='2'><%= submit_tag "Generate Graph" %></td></tr>	
+				</tbody>
+			</table>										
+		</div>				
+	<% end %>
+</div>

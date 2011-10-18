@@ -1,33 +1,52 @@
-<div id="content_box">	
-	<div id="main_content">
-		<%= form_tag negative_stack_marks_path, :method => 'get', :class => "sections_graph" do %>
-			<%= hidden_field_tag :section_id, @section.id %>
-			<%= hidden_field_tag :type, @type %>			
-			<p>
-				<% if @type.eql?('range_1test_2subjects')%>
-					<h3> Test:</h3>	 <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> 
-					<h3> Subjects:	</h3>
-					<% for subject in @section.subjects %>
-						<%= check_box_tag "subject_ids[]", subject.id %> <%= subject.name  %>
+<div id="main-column">
+	<%= form_tag negative_stack_marks_path, :method => 'get', :class => "sections_graph" do %>
+		<%= hidden_field_tag :section_id, @section.id %>
+		<%= hidden_field_tag :type, @type %>
+		<div id="form-table-div">
+			<p class='heading2'> Section Graphs </p>		
+			<table class="form-table"  summary="Section graphs">
+				<tbody>
+					<% if @type.eql?('range_1test_2subjects')%>
+						<tr>				
+								<td>  <strong> Test </strong> </td> 
+								<td> <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> </td>																		
+						</tr>
+						<tr>
+							<td>  <strong> Subjects </strong> </td> 						
+							<td>
+								<% for subject in @section.subjects %>
+									<div class="rows-of-two"> <%= check_box_tag "subject_ids[]", subject.id %> <%= subject.name  %> </div>
+								<% end %>
+							</td>						
+						</tr>					
 					<% end %>
-				<% end %>
-			</p>
-			<p>
-				<% if @type.eql?('range_1subject_2tests')%>	
-					<h3> Subject: </h3>	<%= select_tag :subject_id, options_from_collection_for_select(@section.subjects, 'id', 'name') %> 
-					<h3> Tests: </h3>	
-					<% for test in @section.tests %>
-						<%= check_box_tag "test_ids[]", test.id %> <%= test.name  %> 
-					<% end %>					
-				<% end %>
-			</p>
-			<p>
-				<% if @type.eql?('range_gender')%>
-					<h3> Test:</h3>	 <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> 
-					<h3> Subject: </h3>	<%= select_tag :subject_id, options_from_collection_for_select(@section.subjects, 'id', 'name') %> 						
-				<% end %>									
-			</p>
-			<p> <%= submit_tag "Graph this" %> </p>
-		<% end %>
-	</div>
+					<% if @type.eql?('range_1subject_2tests')%>	
+						<tr>				
+							<td>  <strong> Subject </strong> </td> 						
+							<td><%= select_tag :subject_id, options_from_collection_for_select(@section.subjects, 'id', 'name') %>  </td>							
+						</tr>
+						<tr>
+							<td>  <strong> Tests </strong> </td> 						
+							<td>
+								<% for test in @section.tests %>
+									<div class="rows-of-two"> <%= check_box_tag "test_ids[]", test.id %> <%= test.name  %> </div>
+								<% end %>
+							</td>								
+						</tr>
+					<% end %>
+					<% if @type.eql?('range_gender')%>
+						<tr>				
+								<td>  <strong> Test </strong> </td> 
+								<td> <%= select_tag :test_id, options_from_collection_for_select(@section.tests, 'id', 'name') %> </td>																		
+						</tr>
+						<tr>				
+							<td>  <strong> Subject </strong> </td> 						
+							<td><%= select_tag :subject_id, options_from_collection_for_select(@section.subjects, 'id', 'name') %>  </td>							
+						</tr>				
+					<% end %>									
+					<tr><td class='button' colspan='2'><%= submit_tag "Generate Graph" %></td></tr>	
+				</tbody>
+			</table>										
+		</div>				
+	<% end %>
 </div>	

@@ -1,23 +1,27 @@
-<ol>
-	<li>
-		<ul>
-			<li> <%= link_to 'One student', section_any1_graphs_marks_path(:type => 'one_student', :section_id => section.id)%> </li>
-			<li> <%= link_to 'One subject', section_any1_graphs_marks_path(:type => 'one_subject', :section_id => section.id)%> </li>
-			<li> <%= link_to 'One test', section_any1_graphs_marks_path(:type => 'one_test', :section_id => section.id)%>	</li>
-		</ul>
-	</li>
-	<br><br>
-	<li>
-		<ul>
-			<li> <%= link_to 'One test in two subjects for all students', section_range_graphs_marks_path(:type => 'range_1test_2subjects', :section_id => section.id)%>	</li>
-			<li> <%= link_to 'One subject in two tests for all students', section_range_graphs_marks_path(:type => 'range_1subject_2tests', :section_id => section.id)%>	</li>
-			<li> <%= link_to 'Boys vs Girls in one subject for a particular test', section_range_graphs_marks_path(:type => 'range_gender', :section_id => section.id)%>	</li>
-		</ul>
-	</li>
-	<br><br>
-	<li>
-		<ul>
-			<li> <%= link_to 'Compare total marks of multiple students', section_total_graphs_marks_path(:type => 'students_total', :section_id => section.id)%>	</li>
-		</ul>
-	</li>	
-</ol>
+<div id="form-table-div">
+	<p class='heading2'> Select Section Graphs </p>		
+	<table class="form-table"  summary="Section graphs">
+		<tbody>
+				<tr><td>					
+					<ol>
+						<li> <%= link_to 'One student', section_any1_graphs_marks_path(:type => 'one_student', :section_id => section.id)%> </li>
+						<li> <%= link_to 'One subject', section_any1_graphs_marks_path(:type => 'one_subject', :section_id => section.id)%> </li>
+						<li> <%= link_to 'One test', section_any1_graphs_marks_path(:type => 'one_test', :section_id => section.id)%>	</li>
+					</ol>
+				</td></tr>
+				<tr><td>				
+					<ol>
+						<li> <%= link_to 'One test in two subjects for all students', section_range_graphs_marks_path(:type => 'range_1test_2subjects', :section_id => section.id)%>	</li>
+						<li> <%= link_to 'One subject in two tests for all students', section_range_graphs_marks_path(:type => 'range_1subject_2tests', :section_id => section.id)%>	</li>
+						<li> <%= link_to 'Boys vs Girls in one subject for a particular test', section_range_graphs_marks_path(:type => 'range_gender', :section_id => section.id)%>	</li>
+					</ol>
+				</td></tr>
+				<tr><td>					
+					<ol>
+						<li> <%= link_to 'Compare total marks of multiple students', section_total_graphs_marks_path(:type => 'students_total', :section_id => section.id)%>	</li>
+					</ol>
+				</td></tr>
+		</tbody>
+	</table>										
+</div>				
+
