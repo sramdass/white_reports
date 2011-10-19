@@ -369,7 +369,20 @@ module CanCan
     #
     # This simply calls "can?" on the current_ability. See Ability#can?.
     def can?(*args)
-      current_ability.can?(*args)
+	# args[0] -> will have the action (:update)
+	#args[1] -> will have the object on which the action is applied (section object)
+	#args[2] -> The profile for which this permission is checked
+	
+	#In the original cancan args[2] is not supported. This has been tweaked a little bit, so the args[2] should be 
+	#deleted once the purpose is served
+	  if args[2]
+        profile = args[2]
+        args.delete_at(2)
+        other_ability(profile).can?(*args)
+      else
+      	args.delete_at(2)
+      	current_ability.can?(*args)
+      end
     end
 
     # Convenience method which works the same as "can?" but returns the opposite value.

@@ -26,14 +26,34 @@ helper_method :sort_column, :sort_direction
 
   def show
     #@teacher = Teacher.find(params[:id])
+    #Populate the resources on which this particular teacher has access
+    @readable_sections = []
+    @writable_sections = []
+    @readable_branches = []
+    @writable_branches = []
+    
+    if @teacher.teacher_contact
+		profile = Profile.find_by_email(@teacher.teacher_contact.primary_email)
+	end
+	if profile
+		Section.all.each do |s| 
+			if can? (:update, s, profile) || can? (:update_section_elements, s, profile) || can? (:communicate, s, profile)
+				@writable_sections << s 
+			elsif can? (:read, s, profile)
+				@readable_sections << s 
+			end 
+		end 
+		Branch.all.each do |br| 
+			if can? (:update, br, profile) || can? (:update_branch_elements, br, profile) || can? (:communicate, br, profile)
+				@writable_branches << br
+			elsif can? (:read, br, profile)
+				@readable_branches << br
+			end
+		end
+	end
+
   	@default_tab = 'show'
 	render :actions_box
-=begin	
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @teacher }
-    end
-=end    
   end
   
   #-----------------------------------------------------------#

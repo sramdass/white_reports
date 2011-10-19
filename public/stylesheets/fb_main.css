@@ -339,4 +339,10 @@ ul.nav-list li a.selected {
 	float:left;
 	width: 130px;
 }
-
+.readable, .readable a {
+	color: green;
+}
+.writable, .writable a {
+	color: green;
+	font-weight: bold;
+}

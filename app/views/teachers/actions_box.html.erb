@@ -20,10 +20,14 @@
 </div>
 <div id="main-column">	
 	<p class="heading1">
-		Ravi Shankar
+		<%= @teacher.name %>
 	</p>		
 	<div id='teacher_show' class='cantoggle'>	
-		<%= render 'show', :teacher => @teacher %>
+		<%= render 'show', :teacher => @teacher,
+											:writable_sections => @writable_sections,
+											:readable_sections => @readable_sections,
+											:writable_branches => @writable_branches,
+											:readable_branches => @readable_branches %>
 	</div> 
 	<div id='teacher_clazzs' class='cantoggle'>	
 		<%= render 'clazzs', :teacher => @teacher %>

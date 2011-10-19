@@ -1,3 +1,8 @@
+<!-- set the flag if the current teacher is a principal -->
+<% profile = teacher.profile %>
+<% if profile && profile.has_role?('principal') %>
+	<% is_principal = true %>
+<% end %>
 <table id='teacher_show' class="one-column-emphasis" summary="Teacher Details">
     <colgroup>
     	<col class="oce-first" />
@@ -5,7 +10,12 @@
     <thead>
     	<tr>
         	<th scope="col">Name</th>
-            <th scope="col"> <%= teacher.name %></th>
+            <th scope="col">
+            	 <%= teacher.name %> 
+            	<% if is_principal %>
+            		&nbsp;(Principal)
+            	<% end %>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -21,40 +31,85 @@
         	<td>Branch</td>
             <td> <%= link_to teacher.branch.name, branch_path(teacher.branch) %> </td>
         </tr> 
+                
         <tr>
-        	<td>Classes owned</td>
+        	<td>Classes owned (class teacher)</td>
             <td> 
             	<% sec = Section. where('class_teacher_id = ?', teacher.id).all %>
             	<% if !sec.empty? %>
             		<% sec.each do |s| %>
-            			<%= link_to s.name, section_path(s) %>, &nbsp; <%= link_to s.clazz.name, clazz_path(s.clazz) %>
+            			<%= link_to s.name, section_path(s) %>, &nbsp; <%= link_to s.clazz.name, clazz_path(s.clazz) %> <br>
             		<% end %>
             	<% else %>
             		NA
-            	<% end %>
-            	
+            	<% end %>            	
         	</td>
         </tr>    
         <tr>
-        	<td>Classes Handled</td>
+        	
+        <tr>
+        	<td>Classes Handled (taking subs)</td>
             <td> 
             		<% teacher.sec_sub_maps.each do |m| %>
             			<%= link_to m.section.name, section_path(m.section) %>, &nbsp; <%= link_to m.section.clazz.name, clazz_path(m.section.clazz)%> <br>
             		<% end %>
             </td>
+        </tr> 
+        
+        <% if !readable_branches.empty? || !writable_branches.empty? %>
+	        <tr>
+	        	<td>Branches Managed (Accessible)</td>
+	            <td> 
+            		<% readable_branches.each do |rbr| %>
+            			<div class='readable'>
+            				<%= link_to rbr.name, branch_path(rsec)%>, &nbsp; <%= link_to rbr.institution.name, institution_path(rbr.institution)%> <br>
+            			</div>
+            		<% end%>
+            		<br>
+            		<% writable_branches.each do |wbr| %>
+            			<div class='writable'>
+            				<%= link_to wbr.name, branch_path(wbr)%>, &nbsp; <%= link_to wbr.institution.name, institution_path(wbr.institution)%> <br>
+            			</div>
+            		<% end%>      		
+	        	</td>
+	        </tr>            
+        <% end %>
+        
+        <tr>
+        	<td>Classes Managed (Accessible)</td>
+            <td> 
+            	<% if readable_sections.empty? && writable_sections.empty? %>
+            		NA
+            	<% else %>
+            		<% readable_sections.each do |rsec| %>
+            			<div class='readable'>
+            				<%= link_to rsec.name, section_path(rsec)%>, &nbsp; <%= link_to rsec.clazz.name, clazz_path(rsec.clazz)%>
+            			</div>
+            		<% end%>
+            		<br>
+            		<% writable_sections.each do |wsec| %>
+            			<div class='writable'>
+            				<%= link_to wsec.name, section_path(wsec)%>, &nbsp; <%= link_to wsec.clazz.name, clazz_path(wsec.clazz)%>
+            			</div>
+            		<% end%>            		
+            	<% end %>            	
+        	</td>
         </tr>            
-        <tr>
-        	<td>Email</td>
-            <td>	<%= teacher.teacher_contact.primary_email  %> , <i> <%= teacher.teacher_contact.email %></td>
-        </tr>
-        <tr>
-        	<td>Address</td>
-            <td><%= teacher.teacher_contact.address %></td>
-        </tr>
-        <tr>
-        	<td>Phone</td>
-            <td><%= teacher.teacher_contact.mobile%> | <%= teacher.teacher_contact.telephone%> </td>
-        </tr>            
+        
+        <% if teacher.teacher_contact %>       
+	        <tr>
+	        	<td>Email</td>
+	            <td>	<%= teacher.teacher_contact.primary_email  %> , <i> <%= teacher.teacher_contact.email %></td>
+	        </tr>
+	        <tr>
+	        	<td>Address</td>
+	            <td><%= teacher.teacher_contact.address %></td>
+	        </tr>
+	        <tr>
+	        	<td>Phone</td>
+	            <td><%= teacher.teacher_contact.mobile%> | <%= teacher.teacher_contact.telephone%> </td>
+	        </tr>
+	    <% end %>        
     </tbody>
 </table>
 

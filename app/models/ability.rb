@@ -36,8 +36,7 @@ class Ability
 		
 	def super_user
   		can :manage, :all
-  	end
-  	
+  	end  	
 
 	# Role - admin
 	def admin
@@ -61,7 +60,12 @@ class Ability
 		end
 		can :index, Institution
 	end
-  		
+  	
+	#Role - principal
+	def principal
+		moderator
+	end
+	
 	#Role - moderator
 	def moderator
 		teacher
@@ -94,8 +98,12 @@ class Ability
 			@profile.user_profile == teacher
 		end
 		can [:update, :update_section_elements], Section do |section|
-			section.class_teacher_id == @profile.id
+			section.class_teacher_id == @profile.user_profile.id
 		end
+		can :read, Section do |section|
+			results = SecSubMap.where('section_id = ? and teacher_id = ?', section.id, @profile.user_profile.id).all
+			!results.empty?
+		end		
 		can :index, Section
 	end
 

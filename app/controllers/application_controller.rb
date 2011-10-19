@@ -162,8 +162,16 @@ class ApplicationController < ActionController::Base
 		return values
 	end
 	
+	#This will return the ability of the current_profile
 	def current_ability
 		@current_ability ||= Ability.new(current_profile)
 	end	
+	
+	#Returns the ability of the 'profile'. 
+	#Refer 'D:\myapps\white_reports\annotate\ruby\1.8\gems\cancan-1.6.5\lib\cancan\controller_additions.rb:381'
+	def other_ability(profile)
+		#This has to be re-initialized every time, as the profile can change
+		@other_ability = Ability.new(profile)
+	end		
 
 end  # end of ApplicationController

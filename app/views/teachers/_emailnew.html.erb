@@ -3,7 +3,7 @@
 		<p class='heading2'> Send Email </p>
 		<table class="form-table"  summary="Teacher email fields">
 		    <tbody>		
-				<%= render 'email_fields' %>
+				<%= render 'email_fields', :teacher => teacher%>
 				<tr><td class='button' colspan='2'><%= submit_tag "Send Email" %></td></tr>				
 			</tbody>
 		</table>

@@ -47,6 +47,14 @@ class Teacher < ActiveRecord::Base
 		end
 	end
 	
+	def profile
+		if self.teacher_contact
+			profile = Profile.find_by_email(self.teacher_contact.primary_email)
+		else
+			nil
+		end		
+	end
+	
 	#Returns true if there is only "_destroy" attribute available for nested models.
 	def has_only_destroy?(attrs)
 	    attrs.each do |k,v|
