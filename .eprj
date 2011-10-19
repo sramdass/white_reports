@@ -36,6 +36,8 @@
             <string>app\views\schools\_teacher_fields.html.erb</string>
             <key>_Tests</key>
             <string>app\views\sections\_tests.html.erb</string>
+            <key>_any1</key>
+            <string>app\views\marks\section_any1_graphs.html.erb</string>
             <key>_bra</key>
             <string>app\views\institutions\_branch_fields.html.erb</string>
             <key>_branc</key>
@@ -64,6 +66,8 @@
             <string>app\views\institutions\_institutions.html.erb</string>
             <key>_institutio</key>
             <string>app\views\institutions\_institutions.html.erb</string>
+            <key>_log_i</key>
+            <string>app\views\shared\_log_in.html.erb</string>
             <key>_marknew</key>
             <string>app\views\sections\_marknew.html.erb</string>
             <key>_marks</key>
@@ -175,7 +179,7 @@
             <key>actions_bo</key>
             <string>app\views\branches\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\students\actions_box.html.erb</string>
+            <string>app\views\teachers\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -238,6 +242,8 @@
             <string>public\stylesheets\backup\application.css</string>
             <key>arrers</key>
             <string>db\migrate\20111014052836_add_arrears_to_marks.rb</string>
+            <key>attenda</key>
+            <string>app\models\attendance.rb</string>
             <key>authenti</key>
             <string>C:\Users\sramdass.PSFT\Desktop\ruby\source\stffn-decl_auth_demo_app-b1c29dc\stffn-decl_auth_demo_app-b1c29dc\lib\authenticated_system.rb</string>
             <key>autho</key>
@@ -522,6 +528,8 @@
             <string>app\controllers\schools_controller.rb</string>
             <key>schools_cont</key>
             <string>app\controllers\schools_controller.rb</string>
+            <key>search</key>
+            <string>app\views\searches\_section_search_marks.html.erb</string>
             <key>searches</key>
             <string>app\controllers\searches_controller.rb</string>
             <key>searches_box</key>
@@ -687,6 +695,8 @@
             <key>table_St</key>
             <string>public\stylesheets\fb_table_styles.css</string>
             <key>table_Sty</key>
+            <string>public\stylesheets\fb_table_styles.css</string>
+            <key>table_s</key>
             <string>public\stylesheets\fb_table_styles.css</string>
             <key>table_st</key>
             <string>public\stylesheets\table_styles.css</string>

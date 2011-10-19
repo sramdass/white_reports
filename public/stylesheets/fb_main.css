@@ -32,21 +32,17 @@ h3, h4, h5, h6, strong, em, b, i {
 
 body {
 	font-size: 11px;
-	background:#323232 url('../images/body3.png') repeat;
+	background:#323232 url('../images/chrome_blue.png') repeat;
 }
 
 #page-container {
-	width: 1250px;
-	height: 800px;
-	overflow:scroll;	
+/*'overflow' is very important. Without this overflow, this container will shrink down to the size of the main column.
+	In that case, if the nav-column in longer than the main-column, the layout will collapse*/
+	overflow:auto;	
+	width: 1300px;	
 	margin: auto;
 	background: #fff;
-	margin-bottom: 20px;	
-	/*
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius:10px;		
-	*/
+	margin-bottom: 20px;
 }
 
 #header, #header-login {
@@ -90,26 +86,18 @@ body {
 #nav-column {
 	width:225px;
 	float:left;
-	border-right: 1px solid #092;
+	margin-left: 50px;
+	padding-top: 20px;
 }
 
 /*IMPORTANT!!*/
 /*Even if 'nav-column' div is floated, the margin of this div has to be set and the width has to be adjusted properly.*/
 #main-column {
-	padding: 20px;	
-	/*Since there is a padding of 20px in all the sides, the width has to be adjusted. I guess the width is calculated without the padding. So whenever the padding is changed, the width has to be changed*/
-	width:80%;
-	margin-left: 228px;
-	/*background: #fff;*/
-	border-left: 1px solid #000;
-	/*
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius:10px;		
-	border-left: 2px solid #999;	
-	border-top: 2px solid #999;	
-	border-right: 2px solid #999;		
-*/
+	float:left;
+	padding: 20px 10px 20px 20px;	
+	/*Since there is a padding, the width has to be adjusted. I guess the width is calculated without the padding. So whenever the padding is changed, the width has to be changed*/
+	width: 975px;
+	border: 1px solid #000;
 }
 	
 #footer {
@@ -118,9 +106,9 @@ body {
 	font-size: 10px;
 	color: #c9c9c9;
 	border-top: 1px solid #999;
-	padding: 13px 25px;
-	line-height: 18px;
-	background:#323232 url('../images/header3.png') repeat;	
+	height: 100px;
+	width: 100%;	
+	background:#323232 url('../images/header3.png') repeat;
 }
 
 #footer #altnav {
@@ -162,26 +150,27 @@ body {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius:10px;		
-	
+	background: #C3D6F2;;
 }
-	
-#nav-column strong {
-	color: #777;
-}	
 
-ul.nav-list {
-	list-style:none;
-	padding: 15px 0 10px 40px; /* Important! This will cause the list to align to the left of the div. By default this has a padding of 40px*/
-	margin-left: 8px;
+#nav-column .nav-links{
 	margin-top: 20px;
 }
+
+#nav-column .nav-links strong{
+	color: #777;	
+}
+	
+ul.nav-list {
+	list-style:none;
+	padding: 0 0 0 40px; /* Important! This will cause the list to align to the left of the div. By default this has a padding of 40px*/
+}
+
 ul.nav-list li {
 	list-style:none;
-	/* border:1px solid #ddd;  */
-/*	background: #def; */
 }
+
 ul.nav-list li ul{
-/*	border:1px solid #092;  */
 	padding-left: 20px; /* Important!*/
 }
 
@@ -205,39 +194,32 @@ ul.nav-list li a.selected {
 	font-weight:bold;
 }
 #tab-bar{
-	/* background: #092; */
-	height: 50px;
 	/* The width should be same as the page-container*/
 	width: 1250px;
+	height: 50px;	
 	margin: auto;
-/*	border:2px solid #000; */
 }
 #tab-bar ul {
 	float:right;
 	height:50px;
 	list-style:none;
 	width:400px;
-	/* background: #000; */
 	margin: 0px;
-/*	border:1px solid #092; */
 }
 #tab-bar ul li {
 	float:right;
 	height:50px;
 	list-style:none;
-/*	border:1px solid #000; */
 }
 
 #tab-bar ul li a {
 	color:#fff;
-/*	background: green; */
 	display:block;
 	height:20px;
 	padding: 0;
 	text-align:center;
 	text-decoration:none;	
 	margin:18px 0px 0px 0px;
-/*	border:1px solid #000; */
 	padding: 10px 10px 0 10px;	
 }
 
@@ -281,17 +263,22 @@ ul.nav-list li a.selected {
 	background: #E5ECFC;
 }
 
+#sign-up-layer {
+	background:#323232 url('../images/body3.png') repeat;
+	height: 150px;
+}
+
 #sign-up {
-	float: right;
-	margin: 50px 250px 50px 0px;
-	width: 300px;
-	padding: 25px 50px 25px 50px;
+	/* This should be converted into a right float */ 
+	float:right;
+	margin: 75px 50px 75px 0;
+	width: 250px;
+	padding: 10px 25px 10px 25px;	
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius:10px;	
-	color: #fff;
-	border: 1px solid #999;
-	background:#323232 url('../images/header3.png') repeat;	
+	color: #999;
+	border: 2px solid #C3D6F2;
 }
 
 #sign-up table{
@@ -304,14 +291,14 @@ ul.nav-list li a.selected {
 }
 
 #sign-up table td input{
-	margin: 5px 5px 5px 0px;
+	margin: 3px 3px 3px 0px;
 }
 
 #sign-up .heading {
 	font-family: Tahoma, "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	font-size: 200%;
-	margin: 0px 0px 20px 0px;	
+	font-size: 150%;
+	margin: 0px 0px 15px 0px;	
 }
 
 .heading1, .heading2, .heading3{

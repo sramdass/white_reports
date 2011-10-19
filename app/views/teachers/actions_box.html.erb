@@ -1,22 +1,23 @@
 <div id="nav-column">
 	<div id="photo-box">
-		My photo will come here
 	</div>
-	<strong> TEACHER LINKS </strong>
-	<ul class='nav-list'>
-		<li><a id = 'teacher_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-		<li><a id = 'teacher_clazzs' <% if default_tab?('clazzs') %> class = 'selected' <% end %> href="#">Classes</a></li>
-		<% if can? :update, @teacher%>
-			<li><a id = 'teacher_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-		<% end %>
-		<% if can? :communicate, @teacher%>				
-			<li><a id = 'teacher_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
-			<li><a id = 'teacher_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
-		<% end %>
-			<li><a id = 'teacher_calendar' <% if default_tab?('calendar') %> class = 'selected' <% end %> href="#">Calendar</a></li>
-			<li><a id = 'teacher_weekly_plan'  <% if default_tab?('weekly_plan') %> class = 'selected' <% end %> href="#">Weekly Plan</a></li>		
-	</ul>
-</div>		
+	<div class="nav-links">
+		<strong> TEACHER LINKS </strong>
+		<ul class='nav-list'>
+			<li><a id = 'teacher_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+			<li><a id = 'teacher_clazzs' <% if default_tab?('clazzs') %> class = 'selected' <% end %> href="#">Classes</a></li>
+			<% if can? :update, @teacher%>
+				<li><a id = 'teacher_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+			<% end %>
+			<% if can? :communicate, @teacher%>				
+				<li><a id = 'teacher_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
+				<li><a id = 'teacher_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
+			<% end %>
+				<li><a id = 'teacher_calendar' <% if default_tab?('calendar') %> class = 'selected' <% end %> href="#">Calendar</a></li>
+				<li><a id = 'teacher_weekly_plan'  <% if default_tab?('weekly_plan') %> class = 'selected' <% end %> href="#">Weekly Plan</a></li>		
+		</ul>
+	</div>
+</div>
 <div id="main-column">	
 	<p class="heading1">
 		Ravi Shankar
