@@ -1,27 +1,29 @@
 <div id="nav-column">
 	<div id="photo-box">
-		My photo will come here
 	</div>
-	<strong> STUDENT LINKS </strong>
-	<ul class='nav-list'>
-		<% if can? :read, @section%>		
-			<li><a id = 'section_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-			<li><a id = 'section_students' <% if default_tab?('students') %> class = 'selected' <% end %> href="#">Students</a></li>
-			<li><a id = 'section_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
-			<li><a id = 'section_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>												
-			<li><a id = 'section_reports'  <% if default_tab?('reports') %> class = 'selected' <% end %> href="#">Reports</a></li>					
-			<li> <%= link_to 'Advanced Search', section_searches_box_searches_path(:section_id => @section.id) %> </li>										
-		<% end %>			
-		<% if can? :update, @section%>
-			<li><a id = 'section_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-		<% end %>
-		<% if can? :update_section_elements, @section%>				
-			<li><a id = 'section_update_students' <% if default_tab?('stunew') %> class = 'selected' <% end %> href="#">Update Students</a></li>
-			<li><a id = 'section_update_marks' <% if default_tab?('marknew') %> class = 'selected' <% end %> href="#">Update Marks</a></li>					
-		<% end %>
-	</ul>
+	<div class="nav-links">
+		<strong> SECTION LINKS </strong>
+		<ul class='nav-list'>
+			<% if can? :read, @section%>		
+				<li><a id = 'section_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+				<li><a id = 'section_students' <% if default_tab?('students') %> class = 'selected' <% end %> href="#">Students</a></li>
+				<li><a id = 'section_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
+				<li><a id = 'section_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>												
+				<li><a id = 'section_reports'  <% if default_tab?('reports') %> class = 'selected' <% end %> href="#">Reports</a></li>					
+				<li> <%= link_to 'Advanced Search', section_searches_box_searches_path(:section_id => @section.id) %> </li>										
+			<% end %>			
+			<% if can? :update, @section%>
+				<li><a id = 'section_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+			<% end %>
+			<% if can? :update_section_elements, @section%>				
+				<li><a id = 'section_update_students' <% if default_tab?('stunew') %> class = 'selected' <% end %> href="#">Update Students</a></li>
+				<li><a id = 'section_update_marks' <% if default_tab?('marknew') %> class = 'selected' <% end %> href="#">Update Marks</a></li>					
+			<% end %>
+		</ul>
+	</div>
 </div>		
 <div id="main-column">		
+	<%= render 'shared/breadcrumbs', :target => @section %>	
 	<p class="heading1">
 		<%= @section.name %>, <%= @section.clazz.name %>
 	</p>	
@@ -53,6 +55,14 @@
 	<div id='section_reports' class='cantoggle'>	
 		<%= render 'report_options', :section => @section%>
 	</div> 			
+	<div id="fav-bar">
+		<ul>
+			<li class='first'>  <%= link_to "My Home", root_url  %> </li>
+			<li> <%= link_to "Back to " + @section.clazz.name, clazz_path(@section.clazz) %> </li>			
+			<li> <%= link_to @section.clazz.branch.name, branch_path(@section.clazz.branch) %> </li>
+			<li> <%= link_to 'Advanced Search', section_searches_box_searches_path(:section_id => @section.id) %> </li>			
+		</ul>	
+	</div>		
 </div>		<!-- END of main-column -->
 
 

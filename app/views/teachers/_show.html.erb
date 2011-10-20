@@ -1,8 +1,5 @@
 <!-- set the flag if the current teacher is a principal -->
 <% profile = teacher.profile %>
-<% if profile && profile.has_role?('principal') %>
-	<% is_principal = true %>
-<% end %>
 <table id='teacher_show' class="one-column-emphasis" summary="Teacher Details">
     <colgroup>
     	<col class="oce-first" />
@@ -12,7 +9,7 @@
         	<th scope="col">Name</th>
             <th scope="col">
             	 <%= teacher.name %> 
-            	<% if is_principal %>
+            	<% if teacher.principal? %>
             		&nbsp;(Principal)
             	<% end %>
             </th>
@@ -45,13 +42,12 @@
             	<% end %>            	
         	</td>
         </tr>    
-        <tr>
         	
         <tr>
         	<td>Classes Handled (taking subs)</td>
             <td> 
             		<% teacher.sec_sub_maps.each do |m| %>
-            			<%= link_to m.section.name, section_path(m.section) %>, &nbsp; <%= link_to m.section.clazz.name, clazz_path(m.section.clazz)%> <br>
+            			<%= link_to m.section.name, section_path(m.section) %>, &nbsp; <%= link_to m.section.clazz.name, clazz_path(m.section.clazz)%> &nbsp; (<%= m.subject.name %>)<br>
             		<% end %>
             </td>
         </tr> 
@@ -112,4 +108,6 @@
 	    <% end %>        
     </tbody>
 </table>
+
+
 

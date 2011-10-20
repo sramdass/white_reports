@@ -1,18 +1,21 @@
 <div id="nav-column">
-	<strong> PROFILE LINKS </strong>
-	<ul class='nav-list'>
-		<% if can? :read, @profile.user_profile%>
-			<li><a id = 'profile_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-		<% end %>
-		<% pt = @profile.profile_type %>
-		<% if ((pt == Profile::PROFILE_TYPE_STUDENT) && (can? :update, @profile.user_profile.section)) || 
-				 ((pt == Profile::PROFILE_TYPE_TEACHER) && (can? :update, @profile.user_profile.branch))   ||
-				 ((pt == Profile::PROFILE_TYPE_ADMIN) && (can? :update, @profile.user_profile.section))   %>
-			<li><a id = 'profile_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-		<% end %>
-	</ul>
+	<div class="nav-links">		
+		<strong> PROFILE LINKS </strong>
+		<ul class='nav-list'>
+			<% if can? :read, @profile.user_profile%>
+				<li><a id = 'profile_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+			<% end %>
+			<% pt = @profile.profile_type %>
+			<% if ((pt == Profile::PROFILE_TYPE_STUDENT) && (can? :update, @profile.user_profile.section)) || 
+					 ((pt == Profile::PROFILE_TYPE_TEACHER) && (can? :update, @profile.user_profile.branch))   ||
+					 ((pt == Profile::PROFILE_TYPE_ADMIN) && (can? :update, @profile.user_profile.section))   %>
+				<li><a id = 'profile_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+			<% end %>
+		</ul>
+	</div>
 </div>		
 <div id="main-column">		
+	<%= render 'shared/breadcrumbs', :target => @profile %>	
 	<p class="heading1">
 		<%= @profile.user_profile_name %>
 	</p>	
@@ -22,4 +25,9 @@
 	<div id='profile_edit' class='cantoggle'>	
 		<%= render 'edit', :profile => @profile %>
 	</div>
+	<div id="fav-bar">
+		<ul>
+			<li class='first'>  <%= link_to "My Home", root_url  %> </li>
+		</ul>	
+	</div>			
 </div>	 		

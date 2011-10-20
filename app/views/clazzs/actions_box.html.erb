@@ -1,22 +1,24 @@
 <div id="nav-column">
 	<div id="photo-box">
-		My photo will come here
 	</div>
-	<strong> CLASS LINKS </strong>
-	<ul class='nav-list'>
-		<li><a id = 'clazz_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-		<li><a id = 'clazz_sections' <% if default_tab?('sections') %> class = 'selected' <% end %> href="#">Sections</a></li>				
-		<% if can? :update, @clazz%>
-			<li><a id = 'clazz_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-		<% end %>
-		<% if can? :update_clazz_elements, @clazz%>				
-			<li><a id = 'clazz_update_sections' <% if default_tab?('secnew') %> class = 'selected' <% end %> href="#">Update Sections</a></li>
-		<% end %>
-	</ul>
+	<div class="nav-links">
+		<strong> CLASS LINKS </strong>
+		<ul class='nav-list'>
+			<li><a id = 'clazz_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+			<li><a id = 'clazz_sections' <% if default_tab?('sections') %> class = 'selected' <% end %> href="#">Sections</a></li>				
+			<% if can? :update, @clazz%>
+				<li><a id = 'clazz_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+			<% end %>
+			<% if can? :update_clazz_elements, @clazz%>				
+				<li><a id = 'clazz_update_sections' <% if default_tab?('secnew') %> class = 'selected' <% end %> href="#">Update Sections</a></li>
+			<% end %>
+		</ul>
+	</div>
 </div>		
 <div id="main-column">		
+	<%= render 'shared/breadcrumbs', :target => @clazz %>	
 	<p class="heading1">
-		I std, ES Middle School
+		<%= @clazz.name%>, &nbsp; <%= @clazz.branch.name %>
 	</p>
 	<div id='clazz_show' class='cantoggle'>	
 		<%= render 'show', :clazz => @clazz %>
@@ -30,6 +32,12 @@
 	<div id='clazz_update_sections' class='cantoggle'>	
 		<%= render 'secnew', :clazz => @clazz %>
 	</div> 		
+	<div id="fav-bar">
+		<ul>
+			<li class='first'>  <%= link_to "My Home", root_url  %> </li>
+			<li> <%= link_to "Back to " + @clazz.branch.name, branch_path(@clazz.branch) %> </li>
+		</ul>	
+	</div>		
 </div>		<!-- END of main-column -->
 
 

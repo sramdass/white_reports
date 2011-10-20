@@ -1,23 +1,26 @@
 <div id="nav-column">
 	<div id="photo-box">
-		My photo will come here
 	</div>
-	<ul class='nav-list'>
-		<% if can? :read, @student%>		
-			<li><a id = 'student_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-			<li><a id = 'student_reports' <% if default_tab?('reports') %> class = 'selected' <% end %>  href="#">Reports</a></li>						
-		<% end %>
-		<% if can? :update, @student%>
-			<li><a id = 'student_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-		<% end %>
-		<% if can? :communicate, @student%>				
-			<li><a id = 'student_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
-			<li><a id = 'student_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
-		<% end %>
-	</ul>					
+	<div class="nav-links">
+		<strong> STUDENT LINKS </strong>	
+		<ul class='nav-list'>
+			<% if can? :read, @student%>		
+				<li><a id = 'student_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+				<li><a id = 'student_reports' <% if default_tab?('reports') %> class = 'selected' <% end %>  href="#">Reports</a></li>						
+			<% end %>
+			<% if can? :update, @student%>
+				<li><a id = 'student_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+			<% end %>
+			<% if can? :communicate, @student%>				
+				<li><a id = 'student_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>
+				<li><a id = 'student_sms'  <% if default_tab?('smsnew') %> class = 'selected' <% end %> href="#">SMS</a></li>
+			<% end %>
+		</ul>
+	</div>				
 </div>
 
-<div id="main-column">		
+<div id="main-column">	
+	<%= render 'shared/breadcrumbs', :target => @student %>
 	<p class="heading1">
 		<%= @student.name %>
 	</p>	
@@ -35,7 +38,15 @@
 	</div> 			
 	<div id='student_reports' class='cantoggle'>	
 		<%= render 'report_options', :student => @student %>
-	</div> 				
+	</div> 	
+	<div id="fav-bar">
+		<ul>
+			<li class='first'>  <%= link_to "My Home", root_url  %> </li>
+			<li> <%= link_to "Back to " + @student.section.name, section_path(@student.section) %> </li>			
+			<li> <%= link_to @student.section.clazz.name, clazz_path(@student.section.clazz) %> </li>			
+			<li> <%= link_to @student. section.clazz.branch.name, branch_path(@student.section.clazz.branch) %> </li>
+		</ul>	
+	</div>					
 </div>		<!-- END of main_column -->
 
 

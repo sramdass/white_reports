@@ -2,21 +2,24 @@
 	<div id="photo-box">
 		My photo will come here
 	</div>
-	<strong> CLASS LINKS </strong>
-	<ul class='nav-list'>
-		<li><a id = 'institution_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-		<li><a id = 'institution_branches' <% if default_tab?('branches') %> class = 'selected' <% end %> href="#">Branches</a></li>				
-		<% if can? :update, @institution%>
-			<li><a id = 'institution_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-		<% end %>
-		<% if can? :update_institution_elements, @institution%>				
-			<li><a id = 'institution_update_branches' <% if default_tab?('branchnew') %> class = 'selected' <% end %> href="#">Update Branches</a></li>
-		<% end %>
-	</ul>
+	<div class="nav-links">	
+		<strong> CLASS LINKS </strong>
+		<ul class='nav-list'>
+			<li><a id = 'institution_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+			<li><a id = 'institution_branches' <% if default_tab?('branches') %> class = 'selected' <% end %> href="#">Branches</a></li>				
+			<% if can? :update, @institution%>
+				<li><a id = 'institution_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+			<% end %>
+			<% if can? :update_institution_elements, @institution%>				
+				<li><a id = 'institution_update_branches' <% if default_tab?('branchnew') %> class = 'selected' <% end %> href="#">Update Branches</a></li>
+			<% end %>
+		</ul>
+	</div>
 </div>		
 <div id="main-column">		
+	<%= render 'shared/breadcrumbs', :target => @institution %>	
 	<p class="heading1">
-		ES Educational Institutions
+		<%= @institution.name%>
 	</p>	
 	<div id='institution_show' class='cantoggle'>	
 		<%= render 'show', :institution => @institution %>
@@ -30,6 +33,11 @@
 	<div id='institution_update_branches' class='cantoggle'>	
 		<%= render 'branchnew', :institution => @institution %>
 	</div> 		
+	<div id="fav-bar">
+		<ul>
+			<li class='first'>  <%= link_to "My Home", root_url  %> </li>
+		</ul>	
+	</div>			
 </div>		<!-- END of main_content -->
 
 

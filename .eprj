@@ -72,6 +72,8 @@
             <string>app\views\sections\_marknew.html.erb</string>
             <key>_marks</key>
             <string>app\views\sections\_mark_fields.html.erb</string>
+            <key>_my_page</key>
+            <string>app\views\teachers\_my_page.html.erb</string>
             <key>_repor</key>
             <string>app\views\sections\_report_options.html.erb</string>
             <key>_searc</key>
@@ -175,9 +177,9 @@
             <key>actions</key>
             <string>app\views\sections\actions_box.html.erb</string>
             <key>actions_b</key>
-            <string>app\views\teachers\actions_box.html.erb</string>
-            <key>actions_bo</key>
             <string>app\views\branches\actions_box.html.erb</string>
+            <key>actions_bo</key>
+            <string>app\views\sections\actions_box.html.erb</string>
             <key>actions_box</key>
             <string>app\views\teachers\actions_box.html.erb</string>
             <key>add_bran</key>
@@ -298,8 +300,6 @@
             <string>C:\Users\sramdass.PSFT\Desktop\ruby\source\stffn-decl_auth_demo_app-b1c29dc\stffn-decl_auth_demo_app-b1c29dc\app\models\conference.rb</string>
             <key>constat</key>
             <string>config\initializers\global_constants.rb</string>
-            <key>controller_Add</key>
-            <string>annotate\ruby\1.8\gems\cancan-1.6.5\lib\cancan\controller_additions.rb</string>
             <key>create_marks.r</key>
             <string>db\migrate\20110924104013_create_marks.rb</string>
             <key>create_su</key>
@@ -330,6 +330,8 @@
             <string>app\views\students\_emailnew.html.erb</string>
             <key>environ</key>
             <string>config\environment.rb</string>
+            <key>error_me</key>
+            <string>app\views\shared\_error_messages.html.erb</string>
             <key>fb_</key>
             <string>public\stylesheets\fb_main.css</string>
             <key>fb_m</key>
@@ -412,6 +414,8 @@
             <string>app\views\shared\_log_in.html.erb</string>
             <key>login</key>
             <string>app\views\shared\_log_in.html.erb</string>
+            <key>main.css</key>
+            <string>public\stylesheets\fb_main.css</string>
             <key>mark.r</key>
             <string>app\models\mark.rb</string>
             <key>mark.rb</key>
@@ -476,8 +480,6 @@
             <string>app\controllers\profiles_controller.rb</string>
             <key>profiles_contr</key>
             <string>app\controllers\profiles_controller.rb</string>
-            <key>profiles_contro</key>
-            <string>app\controllers\profiles_controller.rb</string>
             <key>profiles_controll</key>
             <string>app\controllers\profiles_controller.rb</string>
             <key>remove_max</key>
@@ -536,8 +538,10 @@
             <string>app\views\searches\_section_search_marks.html.erb</string>
             <key>searches</key>
             <string>app\controllers\searches_controller.rb</string>
+            <key>searches_b</key>
+            <string>app\views\searches\section_searches_box.html.erb</string>
             <key>searches_box</key>
-            <string>app\views\searches\branch_searches_box.html.erb</string>
+            <string>app\views\searches\section_searches_box.html.erb</string>
             <key>searches_c</key>
             <string>app\controllers\searches_controller.rb</string>
             <key>searches_cont</key>

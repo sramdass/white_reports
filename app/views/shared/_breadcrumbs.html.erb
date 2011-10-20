@@ -1,0 +1,44 @@
+<div class="breadcrumbs">
+	<ul>
+		<% if type.eql?("search") %>
+			<% if target.class.to_s == "Section" && target %>
+				<li> <%= link_to target.clazz.branch.institution.name + " >  ", institution_path(target.clazz.branch.institution) %> </li>	
+				<li> <%= link_to target.clazz.branch.name + " >  ", branch_path(target.clazz.branch) %> </li>	
+				<li> <%= link_to target.clazz.name + " >  ", clazz_path(target.clazz) %> </li>	
+				<li> <%= link_to target.name + " >  ", section_path(target) %> </li>
+				<li> <%= link_to 'Advanced Search', section_searches_box_searches_path(:section_id => target.id) %> </li>														
+			<% end %>
+		<% elsif type.eql?("graphs") %>
+		
+		<% else %>
+			<% if target.class.to_s == "Student" %>
+				<li> <%= link_to target.section.clazz.branch.institution.name + " >  ", institution_path(target.section.clazz.branch.institution) %> </li>	
+				<li> <%= link_to target.section.clazz.branch.name + " >  ", branch_path(target.section.clazz.branch) %> </li>	
+				<li> <%= link_to target.section.clazz.name + " >  ", clazz_path(target.section.clazz) %> </li>	
+				<li> <%= link_to target.section.name + " >  ", section_path(target.section) %> </li>	
+				<li> <%= link_to target.name, student_path(target) %> </li>
+			<% elsif target.class.to_s == "Section" %>
+				<li> <%= link_to target.clazz.branch.institution.name + " >  ", institution_path(target.clazz.branch.institution) %> </li>	
+				<li> <%= link_to target.clazz.branch.name + " >  ", branch_path(target.clazz.branch) %> </li>	
+				<li> <%= link_to target.clazz.name + " >  ", clazz_path(target.clazz) %> </li>	
+				<li> <%= link_to target.name, section_path(target) %> </li>	
+			<% elsif target.class.to_s == "Clazz" %>
+				<li> <%= link_to target.branch.institution.name + " >  ", institution_path(target.branch.institution) %> </li>	
+				<li> <%= link_to target.branch.name + " >  ", branch_path(target.branch) %> </li>	
+				<li> <%= link_to target.name, clazz_path(target) %> </li>	
+			<% elsif target.class.to_s == "Teacher" %>
+				<li> <%= link_to target.branch.institution.name + " >  ", institution_path(target.branch.institution) %> </li>	
+				<li> <%= link_to target.branch.name + " >  ", branch_path(target.branch) %> </li>	
+				<li> <%= link_to target.name, teacher_path(target) %> </li>				
+			<% elsif target.class.to_s == "Branch" %>
+				<li> <%= link_to target.institution.name + " >  ", institution_path(target.institution) %> </li>	
+				<li> <%= link_to target.name, branch_path(target) %> </li>				
+			<% elsif target.class.to_s == "Institution" %>
+				<li> <%= link_to target.name, institution_path(target) %> </li>	
+			<% elsif target.class.to_s == "Profile" %>
+				<li> <%= link_to "Home >  ", root_url %> </li>				
+				<li> <%= link_to target.email, profile_path(target) %> </li>				
+ 			<% end%>
+		<% end %>
+	</ul>
+</div>

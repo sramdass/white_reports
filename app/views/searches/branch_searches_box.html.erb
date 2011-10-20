@@ -16,5 +16,11 @@
 	</div> 			
 	<div id='search_others' class='cantoggle'>
 		<strong> A clever search will go here. As soon as I think of one! <strong>
-	</div> 				
+	</div> 
+	<div id="fav-bar">
+		<ul>
+			<li class='first'>  <%= link_to "My Home", root_url  %> </li>
+			<li> <%= link_to "Back to " + @branch.name, branch_path(@branch) %> </li>						
+		</ul>	
+	</div>				
 </div>

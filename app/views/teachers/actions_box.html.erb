@@ -4,6 +4,7 @@
 	<div class="nav-links">
 		<strong> TEACHER LINKS </strong>
 		<ul class='nav-list'>
+			<li><a id = 'teacher_my_page' <% if default_tab?('my_page') %> class = 'selected' <% end %> href="#">My Page</a></li>
 			<li><a id = 'teacher_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
 			<li><a id = 'teacher_clazzs' <% if default_tab?('clazzs') %> class = 'selected' <% end %> href="#">Classes</a></li>
 			<% if can? :update, @teacher%>
@@ -19,9 +20,17 @@
 	</div>
 </div>
 <div id="main-column">	
+	<%= render 'shared/breadcrumbs', :target => @teacher %>	
 	<p class="heading1">
 		<%= @teacher.name %>
 	</p>		
+	<div id='teacher_my_page' class='cantoggle'>	
+		<%= render 'my_page', :teacher => @teacher,
+											:writable_sections => @writable_sections,
+											:readable_sections => @readable_sections,
+											:writable_branches => @writable_branches,
+											:readable_branches => @readable_branches %>
+	</div> 	
 	<div id='teacher_show' class='cantoggle'>	
 		<%= render 'show', :teacher => @teacher,
 											:writable_sections => @writable_sections,
@@ -46,7 +55,13 @@
 	</div> 	
 	<div id='teacher_weekly_plan' class='cantoggle'>
 		<p> <strong> Coming soon... <br> A workflow to submit the weekly plans (of a teacher) to hod or any higher authority </strong> </p>
-	</div> 			
+	</div> 	
+	<div id="fav-bar">
+		<ul>
+			<li class='first'>  <%= link_to "My Home", root_url  %> </li>
+			<li> <%= link_to @teacher.branch.name, branch_path(@teacher.branch) %> </li>
+		</ul>	
+	</div>			
 </div>		<!-- END of main-column-->
 
 

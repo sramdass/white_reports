@@ -227,6 +227,64 @@ ul.nav-list li a.selected {
 	background: #476096;
 }
 
+/****************Links at the bottom and breadcrumbs at the top of the page **************/
+
+#fav-bar, .breadcrumbs {
+	height: 20px;	
+	padding: 10px;
+}
+
+#fav-bar{
+	margin: 30px 10px 10px 10px;
+}
+
+.breadcrumbs {
+	margin: 10px 10px 20px 0px;
+}
+
+#fav-bar ul, .breadcrumbs ul {
+	/*the ul is not floated here unlike the tab bar*/
+	/*height:20px;*/
+	list-style:none;
+	margin: 0; /*This also has some default top value. Needs to be set to 0*/
+	padding: 0px; /* By default this is 40px */
+	overflow:auto; /*This is required. Otherwise the layout will collapse when the child elements are floated inside*/
+}
+
+#fav-bar ul li, .breadcrumbs ul li {
+	float:left;
+	margin: 0;
+	list-style:none;
+}
+
+#fav-bar ul li{
+	border-right: 1px solid #43749A;	
+}
+
+#fav-bar ul li.first {
+	border-left: 1px solid #43749A;
+}
+
+#fav-bar ul li a, .breadcrumbs ul li a {
+	color: #43749A; /*This is the same color used in the hover in table styles*/
+	display:block;
+	text-align:center;
+	text-decoration:none;	
+	font-weight:bold;
+	padding: 4px 10px 4px 10px;
+	margin: 0;
+}
+
+.breadcrumbs ul li a {
+	/*overwrite the padding so that the adjacent breadcrumbs are not too scattered*/ 
+	padding: 4px;	
+}
+
+#fav-bar ul li a:hover, .breadcrumbs ul li a:hover {
+	text-decoration:underline;		
+}
+
+/****************Link in the bottom and top of the page **************/
 
 #header-drop-down {
 	position:relative;
@@ -328,6 +386,48 @@ ul.nav-list li a.selected {
 .float-left {
 	float:left;
 }
+
+.float-right{
+	float:right;
+}
+
+.clear {
+	clear:both;
+}
+
+div.medium, div.small {
+	width: 400px;
+	float: left;
+	border: 1px solid #C3D6F2;
+	background: #E5ECFC;
+	padding: 4px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius:3px;
+	overflow:auto;
+}
+
+div.medium {
+	width: 40%;
+	margin: 3%;
+	height: 300px;	
+}
+
+div.small {
+	width: 28%;
+	margin: 2%;
+	height: 250px;		
+}
+
+ul.no-list-style {
+	list-style:none;
+	padding: 0px; /* for the list alignment*/
+}	
+
+ul.no-list-style li {
+	list-style:none;
+	padding: 5px 0 5px 0;
+}	
 
 /* This is generally used to display multiple elements inside a table row. Refer section's marks search page*/
 .rows-of-two{

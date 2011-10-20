@@ -55,6 +55,15 @@ class Teacher < ActiveRecord::Base
 		end		
 	end
 	
+	def principal?
+		profile = self.profile
+		if profile && profile.has_role?('principal')
+			return true
+		ese
+			return false
+		end
+	end	
+	
 	#Returns true if there is only "_destroy" attribute available for nested models.
 	def has_only_destroy?(attrs)
 	    attrs.each do |k,v|

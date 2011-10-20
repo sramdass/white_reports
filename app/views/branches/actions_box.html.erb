@@ -1,29 +1,31 @@
 <div id="nav-column">
 	<div id="photo-box">
-		My photo will come here
 	</div>
-	<strong> BRANCH LINKS </strong>
-	<ul class='nav-list'>
-		<% if can? :read, @branch%>		
-			<li><a id = 'branch_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-			<li><a id = 'branch_teachers' <% if default_tab?('teachers') %> class = 'selected' <% end %> href="#">Teachers</a></li>
-			<li><a id = 'branch_classes' <% if default_tab?('classes') %> class = 'selected' <% end %> href="#">Classes</a></li>
-			<li><a id = 'branch_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
-			<li><a id = 'branch_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>																
-			<li> <%= link_to 'Advanced Search', branch_searches_box_searches_path(:branch_id => @branch.id) %> </li>												
-		<% end %>
-		<% if can? :update, @branch%>
-			<li><a id = 'branch_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-		<% end %>
-		<% if can? :update_branch_elements, @branch%>				
-			<li><a id = 'branch_update_teachers' <% if default_tab?('tchrnew') %> class = 'selected' <% end %> href="#">Update Teachers</a></li>
-			<li><a id = 'branch_update_subjects' <% if default_tab?('subnew') %> class = 'selected' <% end %> href="#">Update Subjects</a></li>
-			<li><a id = 'branch_update_tests' <% if default_tab?('testnew') %> class = 'selected' <% end %> href="#">Update Tests</a></li>
-			<li><a id = 'branch_update_classes' <% if default_tab?('clznew') %> class = 'selected' <% end %> href="#">Update Classes</a></li>
-		<% end %>
-	</ul>
+	<div class="nav-links">
+		<strong> BRANCH LINKS </strong>
+		<ul class='nav-list'>
+			<% if can? :read, @branch%>		
+				<li><a id = 'branch_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+				<li><a id = 'branch_teachers' <% if default_tab?('teachers') %> class = 'selected' <% end %> href="#">Teachers</a></li>
+				<li><a id = 'branch_classes' <% if default_tab?('classes') %> class = 'selected' <% end %> href="#">Classes</a></li>
+				<li><a id = 'branch_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
+				<li><a id = 'branch_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>																
+				<li> <%= link_to 'Advanced Search', branch_searches_box_searches_path(:branch_id => @branch.id) %> </li>												
+			<% end %>
+			<% if can? :update, @branch%>
+				<li><a id = 'branch_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
+			<% end %>
+			<% if can? :update_branch_elements, @branch%>				
+				<li><a id = 'branch_update_teachers' <% if default_tab?('tchrnew') %> class = 'selected' <% end %> href="#">Update Teachers</a></li>
+				<li><a id = 'branch_update_subjects' <% if default_tab?('subnew') %> class = 'selected' <% end %> href="#">Update Subjects</a></li>
+				<li><a id = 'branch_update_tests' <% if default_tab?('testnew') %> class = 'selected' <% end %> href="#">Update Tests</a></li>
+				<li><a id = 'branch_update_classes' <% if default_tab?('clznew') %> class = 'selected' <% end %> href="#">Update Classes</a></li>
+			<% end %>
+		</ul>
+	</div>
 </div>		
 <div id="main-column">		
+	<%= render 'shared/breadcrumbs', :target => @branch %>	
 	<p class="heading1">
 		<%= @branch.name %>
 	</p>	
@@ -56,7 +58,14 @@
 	</div> 	
 	<div id='branch_update_classes' class='cantoggle'>	
 		<%= render 'clznew', :branch => @branch %>
-	</div> 			
+	</div> 
+	<div id="fav-bar">
+		<ul>
+			<li class='first'>  <%= link_to "My Home", root_url  %> </li>
+			<li> <%= link_to "Back to " + @branch.institution.name, institution_path(@branch.institution) %> </li>
+			<li> <%= link_to 'Advanced Search', branch_searches_box_searches_path(:branch_id => @branch.id) %> </li>												
+		</ul>	
+	</div>		
 </div>		<!-- END of main-column -->
 
 
