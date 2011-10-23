@@ -121,6 +121,9 @@ class Ability
 			can :read, Student do |student|
 				@profile.user_profile.section.clazz == student.section.clazz
 			end
+			can :read, Section do |section|
+				@profile.user_profile.section == section
+			end			
 		end
 		
 		if @profile.profile_type == Profile::PROFILE_TYPE_TEACHER
@@ -130,6 +133,9 @@ class Ability
 			can :read, Teacher do |teacher|
 				@profile.user_profile.branch == teacher.branch	
 			end
+			can :read, Section do |section|
+				@profile.user_profile.branch == section.branch
+			end			
 		end
 	end			
 	

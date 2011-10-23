@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	rescue_from CanCan::AccessDenied do |exception|
 		if current_profile
 			redirect_to :back, :alert => "You are not allowed to access that page"
-			#Use this here: - request.env['HTTP_REFERER'] || products_url
+			#Use this here: - request.env['HTTP_REFERER'] || root_url
 		else
 			redirect_to log_in_path, :alert => "Please log in/sign up before accessing the application"
 		end

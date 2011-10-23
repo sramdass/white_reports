@@ -4,8 +4,10 @@
 	<div class="nav-links">
 		<strong> CLASS LINKS </strong>
 		<ul class='nav-list'>
-			<li><a id = 'clazz_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-			<li><a id = 'clazz_sections' <% if default_tab?('sections') %> class = 'selected' <% end %> href="#">Sections</a></li>				
+			<% if can? :read, @clazz%>			
+				<li><a id = 'clazz_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+				<li><a id = 'clazz_sections' <% if default_tab?('sections') %> class = 'selected' <% end %> href="#">Sections</a></li>
+			<% end %>
 			<% if can? :update, @clazz%>
 				<li><a id = 'clazz_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
 			<% end %>
@@ -20,18 +22,24 @@
 	<p class="heading1">
 		<%= @clazz.name%>, &nbsp; <%= @clazz.branch.name %>
 	</p>
-	<div id='clazz_show' class='cantoggle'>	
-		<%= render 'show', :clazz => @clazz %>
-	</div> 	
-	<div id='clazz_sections' class='cantoggle'>
-		<%= render 'sections', :clazz => @clazz %>
-	</div> 			
-	<div id='clazz_edit' class='cantoggle'>
-		<%= render 'edit', :clazz => @clazz %>
-	</div> 	
-	<div id='clazz_update_sections' class='cantoggle'>	
-		<%= render 'secnew', :clazz => @clazz %>
-	</div> 		
+	<% if can? :read, @clazz%>				
+		<div id='clazz_show' class='cantoggle'>	
+			<%= render 'show', :clazz => @clazz %>
+		</div> 	
+		<div id='clazz_sections' class='cantoggle'>
+			<%= render 'sections', :clazz => @clazz %>
+		</div> 
+	<%end%>
+	<% if can? :update, @clazz%>					
+		<div id='clazz_edit' class='cantoggle'>
+			<%= render 'edit', :clazz => @clazz %>
+		</div> 	
+	<%end%>		
+	<% if can? :update_clazz_elements, @clazz%>					
+		<div id='clazz_update_sections' class='cantoggle'>	
+			<%= render 'secnew', :clazz => @clazz %>
+		</div> 		
+	<%end%>		
 	<div id="fav-bar">
 		<ul>
 			<li class='first'>  <%= link_to "My Home", root_url  %> </li>

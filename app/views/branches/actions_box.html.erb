@@ -29,36 +29,42 @@
 	<p class="heading1">
 		<%= @branch.name %>
 	</p>	
-	<div id='branch_show' class='cantoggle'>	
-		<%= render 'show', :branch => @branch %>
-	</div> 	
-	<div id='branch_teachers' class='cantoggle'>	
-		<%= render 'teachers', :branch => @branch %>
-	</div> 		
-	<div id='branch_classes' class='cantoggle'>	
-		<%= render 'classes', :branch => @branch %>
-	</div> 		
-	<div id='branch_subjects' class='cantoggle'>	
-		<%= render 'subjects', :branch => @branch %>
-	</div> 		
-	<div id='branch_tests' class='cantoggle'>	
-		<%= render 'tests', :branch => @branch %>
-	</div> 		
-	<div id='branch_edit' class='cantoggle'>
-		<%= render 'edit', :branch => @branch %>
-	</div> 	
-	<div id='branch_update_teachers' class='cantoggle'>	
-		<%= render 'tchrnew', :branch => @branch %>
-	</div> 		
-	<div id='branch_update_subjects' class='cantoggle'>	
-		<%= render 'subnew', :branch => @branch %>
-	</div> 		
-	<div id='branch_update_tests' class='cantoggle'>
-		<%= render 'testnew', :branch => @branch %>
-	</div> 	
-	<div id='branch_update_classes' class='cantoggle'>	
-		<%= render 'clznew', :branch => @branch %>
-	</div> 
+	<% if can? :read, @branch%>			
+		<div id='branch_show' class='cantoggle'>	
+			<%= render 'show', :branch => @branch %>
+		</div> 	
+		<div id='branch_teachers' class='cantoggle'>	
+			<%= render 'teachers', :branch => @branch %>
+		</div> 		
+		<div id='branch_classes' class='cantoggle'>	
+			<%= render 'classes', :branch => @branch %>
+		</div> 		
+		<div id='branch_subjects' class='cantoggle'>	
+			<%= render 'subjects', :branch => @branch %>
+		</div> 		
+		<div id='branch_tests' class='cantoggle'>	
+			<%= render 'tests', :branch => @branch %>
+		</div> 		
+	<%end%>
+	<% if can? :update, @branch%>	
+		<div id='branch_edit' class='cantoggle'>
+			<%= render 'edit', :branch => @branch %>
+		</div> 	
+	<% end %>
+	<% if can? :update_branch_elements, @branch%>			
+		<div id='branch_update_teachers' class='cantoggle'>	
+			<%= render 'tchrnew', :branch => @branch %>
+		</div> 		
+		<div id='branch_update_subjects' class='cantoggle'>	
+			<%= render 'subnew', :branch => @branch %>
+		</div> 		
+		<div id='branch_update_tests' class='cantoggle'>
+			<%= render 'testnew', :branch => @branch %>
+		</div> 	
+		<div id='branch_update_classes' class='cantoggle'>	
+			<%= render 'clznew', :branch => @branch %>
+		</div> 
+	<% end %>
 	<div id="fav-bar">
 		<ul>
 			<li class='first'>  <%= link_to "My Home", root_url  %> </li>

@@ -15,15 +15,16 @@
 			<% for profile in @profiles %>
 				<tr>
 					<td> <%= link_to profile.email, profile_path(profile) %>  </td>
-					<td><%= profile.user_profile.name %>					
-					<td>  
-						<% if  profile.profile_type == Profile::PROFILE_TYPE_STUDENT  %>
-							<%= "Student" %>
-						<% elsif profile.profile_type == Profile::PROFILE_TYPE_TEACHER %>
-							<%= "Teacher" %>	
-						<% elsif profile.profile_type == Profile::PROFILE_TYPE_ADMIN %>
-							<%= "Administrator" %>													
-						<% end %>
+					<% if  profile.profile_type == Profile::PROFILE_TYPE_STUDENT  %>
+						<td><%= link_to profile.user_profile.name, student_path(profile.user_profile) %> </td>									
+						<td>	<%= "Student" %> </td>
+					<% elsif profile.profile_type == Profile::PROFILE_TYPE_TEACHER %>
+						<td><%= link_to profile.user_profile.name, teacher_path(profile.user_profile) %></td>										
+						<td><%= "Teacher" %>	</td>							
+					<% elsif profile.profile_type == Profile::PROFILE_TYPE_ADMIN %>
+						<td><%=profile.user_profile.name%>
+						<td><%= "Administrator" %></td>
+					<% end %>
 					<td>
 						<% for role in profile.roles %>
 							<%= "#{role.name.humanize} " %> <br>

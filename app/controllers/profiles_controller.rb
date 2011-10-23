@@ -1,4 +1,19 @@
 class ProfilesController < ApplicationController
+	
+	
+# ---------------WHAT IS @default_tab?--------------------------#
+	
+# '@default_tab' determines what the user should view when - 1. there is a update
+# action (action that needs to render other action's view to redirect), 2. when the 
+# actions_box view is rendered. According to the '@default_tab' value, a particular
+# tab will be selected in the actions_box's view	
+# --------------------------------------------------------------#
+
+
+# for cancan authorization
+load_and_authorize_resource
+
+	
 	def new
 		@profile = Profile.new
 		#This needs to be set to get the header in the login page

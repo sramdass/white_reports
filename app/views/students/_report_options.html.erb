@@ -1,4 +1,13 @@
-<ol>
-	<li> <%= link_to 'Compare my total with others in a particular test', student_total_graphs_marks_path( :student_id => student.id)%> </li>
-	<li> <%= link_to 'Compare my subject marks in different tests', student_master_graphs_marks_path( :type => 'one_test', :student_id => student.id)%> </li>
-</ol>
+<div id="form-table-div">
+	<p class='heading2'> Select Student Graphs </p>		
+	<table class="form-table"  summary="Section graphs">
+		<tbody>
+				<tr><td>					
+					<ol>
+						<li> <%= link_to 'Compare my total with others in a particular test', student_total_graphs_marks_path( :student_id => student.id)%> </li>
+						<li> <%= link_to 'Compare my subject marks in different tests', student_master_graphs_marks_path( :type => 'one_test', :student_id => student.id)%> </li>
+					</ol>
+				</td></tr>
+		</tbody>
+	</table>										
+</div>		

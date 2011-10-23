@@ -54,7 +54,7 @@ body {
 
 #header-login {
 	height: 100px;
-	border-bottom: 1px solid #999;	
+	border-bottom: 1px solid #999;
 }
 
 #header {
@@ -97,7 +97,7 @@ body {
 	padding: 20px 10px 20px 20px;	
 	/*Since there is a padding, the width has to be adjusted. I guess the width is calculated without the padding. So whenever the padding is changed, the width has to be changed*/
 	width: 975px;
-	border: 1px solid #000;
+	/* border: 1px solid #000; */
 }
 	
 #footer {

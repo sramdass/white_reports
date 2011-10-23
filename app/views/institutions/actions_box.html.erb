@@ -5,8 +5,10 @@
 	<div class="nav-links">	
 		<strong> CLASS LINKS </strong>
 		<ul class='nav-list'>
-			<li><a id = 'institution_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
-			<li><a id = 'institution_branches' <% if default_tab?('branches') %> class = 'selected' <% end %> href="#">Branches</a></li>				
+			<% if can? :read, @institution%>			
+				<li><a id = 'institution_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
+				<li><a id = 'institution_branches' <% if default_tab?('branches') %> class = 'selected' <% end %> href="#">Branches</a></li>
+			<% end %>
 			<% if can? :update, @institution%>
 				<li><a id = 'institution_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
 			<% end %>
@@ -21,18 +23,24 @@
 	<p class="heading1">
 		<%= @institution.name%>
 	</p>	
-	<div id='institution_show' class='cantoggle'>	
-		<%= render 'show', :institution => @institution %>
-	</div> 		
-	<div id='institution_branches' class='cantoggle'>	
-		<%= render 'branches', :institution => @institution %>
-	</div> 			
-	<div id='institution_edit' class='cantoggle'>
-		<%= render 'edit', :institution => @institution %>
-	</div> 	
-	<div id='institution_update_branches' class='cantoggle'>	
-		<%= render 'branchnew', :institution => @institution %>
-	</div> 		
+	<% if can? :read, @institution%>				
+		<div id='institution_show' class='cantoggle'>	
+			<%= render 'show', :institution => @institution %>
+		</div> 		
+	<% end %>
+	<% if can? :update, @institution%>				
+		<div id='institution_edit' class='cantoggle'>
+			<%= render 'edit', :institution => @institution %>
+		</div> 		
+	<%end%>	
+	<% if can? :update_institution_elements, @institution%>				
+		<div id='institution_branches' class='cantoggle'>	
+			<%= render 'branches', :institution => @institution %>
+		</div> 			
+		<div id='institution_update_branches' class='cantoggle'>	
+			<%= render 'branchnew', :institution => @institution %>
+		</div> 			
+	<%end%>	
 	<div id="fav-bar">
 		<ul>
 			<li class='first'>  <%= link_to "My Home", root_url  %> </li>

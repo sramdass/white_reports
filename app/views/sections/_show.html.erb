@@ -14,8 +14,9 @@
             <td>	 <%= link_to section.clazz.name, clazz_path(section.clazz) %> </td>
         </tr>    	
     	<tr>
+    		<% t= Teacher.find(section.class_teacher_id) %>
         	<td> Class Teacher </td>
-            <td>	  <%= Teacher.find(section.class_teacher_id).name %> </td>
+            <td>	  <%= link_to t.name, teacher_path(t) %> </td>
         </tr>           
     	<tr>
         	<td>Branch</td>

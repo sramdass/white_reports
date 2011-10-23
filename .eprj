@@ -76,6 +76,8 @@
             <string>app\views\teachers\_my_page.html.erb</string>
             <key>_repor</key>
             <string>app\views\sections\_report_options.html.erb</string>
+            <key>_report</key>
+            <string>app\views\students\_report_options.html.erb</string>
             <key>_searc</key>
             <string>app\views\searches\branch_searches_box.html.erb</string>
             <key>_secnew</key>
@@ -98,6 +100,8 @@
             <string>app\views\students\_show.html.erb</string>
             <key>_show.htm</key>
             <string>app\views\branches\_show.html.erb</string>
+            <key>_show.html</key>
+            <string>app\views\sections\_show.html.erb</string>
             <key>_sms</key>
             <string>app\views\students\_sms.html.erb</string>
             <key>_sms_fie</key>
@@ -179,9 +183,9 @@
             <key>actions_b</key>
             <string>app\views\branches\actions_box.html.erb</string>
             <key>actions_bo</key>
-            <string>app\views\sections\actions_box.html.erb</string>
+            <string>app\views\clazzs\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\teachers\actions_box.html.erb</string>
+            <string>app\views\institutions\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -358,6 +362,8 @@
             <string>Gemfile</string>
             <key>gemfile</key>
             <string>Gemfile</string>
+            <key>graph</key>
+            <string>app\views\marks\graphs.html.erb</string>
             <key>graph_in</key>
             <string>public\javascripts\graph_input.js</string>
             <key>graphs.</key>
@@ -436,6 +442,8 @@
             <string>app\controllers\marks_controller.rb</string>
             <key>marks_controller</key>
             <string>app\controllers\marks_controller.rb</string>
+            <key>master_g</key>
+            <string>app\views\marks\student_master_graphs.html.erb</string>
             <key>member</key>
             <string>app\models\membership.rb</string>
             <key>membership.rb</key>
@@ -507,6 +515,8 @@
             <key>routes.rb</key>
             <string>config\routes.rb</string>
             <key>ryan</key>
+            <string>public\stylesheets\ryan.css</string>
+            <key>ryan.c</key>
             <string>public\stylesheets\ryan.css</string>
             <key>ryan.css</key>
             <string>public\stylesheets\ryan.css</string>
@@ -608,6 +618,8 @@
             <string>app\controllers\sections_controller.rb</string>
             <key>sections_contro</key>
             <string>app\controllers\sections_controller.rb</string>
+            <key>sections_controll</key>
+            <string>app\controllers\sections_controller.rb</string>
             <key>sections_controller</key>
             <string>app\controllers\sections_controller.rb</string>
             <key>sections_cp</key>
@@ -617,6 +629,8 @@
             <key>session.rb</key>
             <string>annotate\ruby\1.8\gems\rack-test-0.5.7\lib\rack\mock_session.rb</string>
             <key>sessions</key>
+            <string>app\controllers\sessions_controller.rb</string>
+            <key>sessions_</key>
             <string>app\controllers\sessions_controller.rb</string>
             <key>sessions_c</key>
             <string>app\controllers\sessions_controller.rb</string>
@@ -670,6 +684,8 @@
             <string>app\views\students\_student_fields.html.erb</string>
             <key>student_fields</key>
             <string>app\views\students\_student_fields.html.erb</string>
+            <key>student_tota</key>
+            <string>app\views\marks\student_total_graphs.html.erb</string>
             <key>students_c</key>
             <string>app\controllers\students_controller.rb</string>
             <key>students_co</key>
@@ -679,6 +695,8 @@
             <key>students_contr</key>
             <string>app\controllers\students_controller.rb</string>
             <key>stunew</key>
+            <string>app\views\sections\_stunew.html.erb</string>
+            <key>stunew.html</key>
             <string>app\views\sections\_stunew.html.erb</string>
             <key>subject</key>
             <string>app\models\subject.rb</string>

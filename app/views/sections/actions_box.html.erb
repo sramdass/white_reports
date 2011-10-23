@@ -27,34 +27,40 @@
 	<p class="heading1">
 		<%= @section.name %>, <%= @section.clazz.name %>
 	</p>	
-	<div id='section_show' class='cantoggle'>	
-		<%= render 'show', :section => @section %>
-	</div> 		
-	<div id='section_students' class='cantoggle'>	
-		<%= render 'students', :section => @section %>
-	</div> 		
-	<div id='section_subjects' class='cantoggle'>	
-		<%= render 'subjects', :section => @section %>
-	</div> 		
-	<div id='section_tests' class='cantoggle'>	
-		<%= render 'tests', :section => @section %>
-	</div> 								
-	<div id='section_edit' class='cantoggle'>
-		<%= render 'edit', :section => @section %>
-	</div> 	
-	<div id='section_update_students' class='cantoggle'>	
-		<%= render 'stunew', :section => @section %>
-	</div> 		
-	<div id='section_update_marks' class='cantoggle'>	
-		<% if @test %>
-			<%= render 'marknew', :section => @section, :test => @test %>
-		<% else %>
-			<strong> Update the tests before accessing this page </strong>
-		<% end %>
-	</div> 	
-	<div id='section_reports' class='cantoggle'>	
-		<%= render 'report_options', :section => @section%>
-	</div> 			
+	<% if can? :read, @section%>			
+		<div id='section_show' class='cantoggle'>	
+			<%= render 'show', :section => @section %>
+		</div> 		
+		<div id='section_students' class='cantoggle'>	
+			<%= render 'students', :section => @section %>
+		</div> 		
+		<div id='section_subjects' class='cantoggle'>	
+			<%= render 'subjects', :section => @section %>
+		</div> 		
+		<div id='section_tests' class='cantoggle'>	
+			<%= render 'tests', :section => @section %>
+		</div> 								
+		<div id='section_reports' class='cantoggle'>	
+			<%= render 'report_options', :section => @section%>
+		</div> 			
+	<% end %>		
+	<% if can? :update, @section%>	
+		<div id='section_edit' class='cantoggle'>
+			<%= render 'edit', :section => @section %>
+		</div> 	
+	<% end %>
+	<% if can? :update_section_elements, @section%>	
+		<div id='section_update_students' class='cantoggle'>	
+			<%= render 'stunew', :section => @section %>
+		</div> 		
+		<div id='section_update_marks' class='cantoggle'>	
+			<% if @test %>
+				<%= render 'marknew', :section => @section, :test => @test %>
+			<% else %>
+				<strong> Update the tests before accessing this page </strong>
+			<% end %>
+		</div> 	
+	<% end %>
 	<div id="fav-bar">
 		<ul>
 			<li class='first'>  <%= link_to "My Home", root_url  %> </li>

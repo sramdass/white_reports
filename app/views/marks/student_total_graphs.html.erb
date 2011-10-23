@@ -1,16 +1,21 @@
-<div id="content_box">	
-	<div id="main_content">
-		<%= form_tag stacked_cols_marks_path, :method => 'get', :class => "sections_graph" do %>
-		<!-- This section hidden field is required to dynamically populate the student names-->
-			<%= hidden_field_tag :section_id, @student.section.id %>
-			<%= hidden_field_tag :student_id, @student.id %>
-				<p>
-					 <h3> Students:</h3>	  <%= text_field_tag :student_ids %>
-				</p>
-				<p>
-					<h3> Test:</h3>	 <%= select_tag :test_id, options_from_collection_for_select(@student.section.tests, 'id', 'name') %> 
-				</p>
-				<p> <%= submit_tag "Graph this" %> </p>
-		<% end %>
-	</div>
-</div>	
+<%= form_tag stacked_cols_marks_path, :method => 'get', :class => "sections_graph" do %>
+<!-- This section hidden field is required to dynamically populate the student names-->
+	<%= hidden_field_tag :section_id, @student.section.id %>
+	<%= hidden_field_tag :student_id, @student.id %>		
+	<div id="form-table-div">
+		<p class='heading2'> Student Graphs </p>		
+		<table class="form-table"  summary="Section graphs">
+			<tbody>
+				<tr>			
+					<td> <strong> Students </strong> </td> 
+					<td> <%= text_field_tag :student_ids %> </td>					
+				</tr>
+				<tr>	
+					<td> <strong> Test </strong> </td> 
+					<td>  <%= select_tag :test_id, options_from_collection_for_select(@student.section.tests, 'id', 'name') %>   </td>					
+				</tr>				
+				<tr><td class='button' colspan='2'><%= submit_tag "Generate Graph" %></td></tr>	
+			</tbody>					
+		</table>										
+	</div>						
+<% end %>

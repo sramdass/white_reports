@@ -1,22 +1,31 @@
-<div id="content_box">	
-	<div id="main_content">
-		<%= form_tag cols_and_spline_marks_path, :method => 'get', :class => "students_graph" do %>
-			<%= hidden_field_tag :section_id, @student.section.id %>
-			<%= hidden_field_tag :student_id, @student.id %>  <!-- To reuse the controller module used for sections, we have to pass the student id-->
-			<%= hidden_field_tag :type, 'one_student' %>			<!-- If the type is made as 'one student', we can reuse the controller module used for sections -->
-				<p>
-					<h3> Subjects:	</h3>
-					<% for subject in @student.section.subjects %>
-						<%= check_box_tag "subject_ids[]", subject.id %> <%= subject.name  %>  </label>
-					<% end %>
-				</p>
-				<p>
-					<h3> Tests: </h3>	
-					<% for test in @student.section.tests %>
-						<%= check_box_tag "test_ids[]", test.id %> <%= test.name  %> 
-					<% end %>						
-				</p>
-				<p> <%= submit_tag "Graph this" %> </p>
-		<% end %>
-	</div>
+<div id="main-column">
+	<%= form_tag cols_and_spline_marks_path, :method => 'get', :class => "students_graph" do %>
+		<%= hidden_field_tag :section_id, @student.section.id %>
+		<%= hidden_field_tag :student_id, @student.id %>  <!-- To reuse the controller module used for sections, we have to pass the student id-->
+		<%= hidden_field_tag :type, 'one_student' %>			<!-- If the type is made as 'one student', we can reuse the controller module used for sections -->
+		<div id="form-table-div">
+			<p class='heading2'> Student Graphs </p>		
+			<table class="form-table"  summary="Section graphs">
+				<tbody>
+					<tr>
+						<td>  <strong> Subjects </strong> </td> 						
+						<td>
+							<% for subject in @student.section.subjects %>
+								<div class="rows-of-two"> <%= check_box_tag "subject_ids[]", subject.id %> <%= subject.name  %> </div>
+							<% end %>
+						</td>						
+					</tr>					
+					<tr>
+						<td>  <strong> Tests </strong> </td> 						
+						<td>
+							<% for test in @student.section.tests %>
+								<div class="rows-of-two"> <%= check_box_tag "test_ids[]", test.id %> <%= test.name  %> </div>
+							<% end %>
+						</td>								
+					</tr>							
+					<tr><td class='button' colspan='2'><%= submit_tag "Generate Graph" %></td></tr>	
+				</tbody>
+			</table>										
+		</div>				
+	<% end %>
 </div>	

@@ -24,21 +24,27 @@
 	<p class="heading1">
 		<%= @student.name %>
 	</p>	
-	<div id='student_show' class='cantoggle'>	
-		<%= render 'show', :student => @student %>
-	</div> 		
-	<div id='student_edit' class='cantoggle'>
-		<%= render 'edit', :student => @student %>
-	</div> 	
-	<div id='student_email' class='cantoggle'>	
-		<%= render 'emailnew', :student => @student %>
-	</div> 		
-	<div id='student_sms' class='cantoggle'>
-		<%= render 'smsnew', :student => @student %>
-	</div> 			
-	<div id='student_reports' class='cantoggle'>	
-		<%= render 'report_options', :student => @student %>
-	</div> 	
+	<% if can? :read, @student%>			
+		<div id='student_show' class='cantoggle'>	
+			<%= render 'show', :student => @student %>
+		</div> 		
+		<div id='student_reports' class='cantoggle'>	
+			<%= render 'report_options', :student => @student %>
+		</div> 			
+	<% end %>
+	<% if can? :update, @student%>	
+		<div id='student_edit' class='cantoggle'>
+			<%= render 'edit', :student => @student %>
+		</div> 	
+	<% end %>		
+	<% if can? :communicate, @student%>					
+		<div id='student_email' class='cantoggle'>	
+			<%= render 'emailnew', :student => @student %>
+		</div> 		
+		<div id='student_sms' class='cantoggle'>
+			<%= render 'smsnew', :student => @student %>
+		</div> 			
+	<% end %>
 	<div id="fav-bar">
 		<ul>
 			<li class='first'>  <%= link_to "My Home", root_url  %> </li>
