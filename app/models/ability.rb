@@ -47,7 +47,7 @@ class Ability
 			@profile.user_profile.branch.institution == teacher.branch.institution
 		end
 		can :manage, Section do |section|
-			@profile.user_profile.branch.institution == section.clazzbranch.institution
+			@profile.user_profile.branch.institution == section.clazz.branch.institution
 		end
 		can :manage, Clazz do |clazz|
 			@profile.user_profile.branch.institution == clazz.branch.institution
@@ -134,7 +134,7 @@ class Ability
 				@profile.user_profile.branch == teacher.branch	
 			end
 			can :read, Section do |section|
-				@profile.user_profile.branch == section.branch
+				@profile.user_profile.branch == section.clazz.branch
 			end			
 		end
 	end			

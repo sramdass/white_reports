@@ -12,7 +12,7 @@
 	            <th scope="col">City</th>
 	            <th scope="col">State</th>
 	            <th scope="col">Pin</th>      	     
-	            <th scope="col">Action</th>      	                          
+	            <th scope="col">Delete</th>      	                          
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -21,7 +21,7 @@
 		<% end %>		
 	    </tbody>		
 	</table>			
- 	<p> <%= link_to_add_fields "Add Branch", f, :branches %> </p>		 	
-	<p> <%= f.submit  "Update Branches" %> </p>
+ 	<p class='add-button'> <%= link_to_add_fields "Add Branch", f, :branches %> </p>		 	
+	<p class='button'> <%= f.submit  "Update Branches" %> </p>
 <% end %>
 

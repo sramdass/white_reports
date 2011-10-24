@@ -8,7 +8,7 @@
 			<%= f.select :female, options_for_select([  ["Female", true], ["Male", false] ], f.object.female? ) , {:include_blank => 'None'}  %>
 		<% end %>		
 	</td> 
-	<td>	<%= link_to_remove_fields "Remove", f %></td>	
+	<td class='remove-button'><%= link_to_remove_fields "X", f %></td>	
 </tr>
  
  

@@ -161,3 +161,24 @@ color: #999;
 	padding: 4px;	
 	border: 2px solid #aaa;
 }
+
+.add-button a, .remove-button a{
+	display: block;
+	text-align: center;
+	width: 80px;
+	color: #fff;
+	background: #43749A;
+	font-size: 100%;
+	font-weight: bold;
+	padding: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius:3px;	  
+	border: 2px solid #aaa;	
+	text-decoration:none;	
+}
+.remove-button a{
+	width: 15px;
+	border: 2px solid #aaa;		
+	padding: 5px;	
+}

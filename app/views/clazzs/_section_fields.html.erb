@@ -6,7 +6,7 @@
 	-->	
 	<% teachers = @clazz.branch.teachers %> 
 	<td><%= f.select :class_teacher_id, options_for_select(teachers.collect {|t| [ t.name, t.id ] } , f.object.class_teacher_id) , {:prompt => "Class teacher"}  %></td>
- 	<td><%= link_to_remove_fields "remove", f %></td>
+ 	<td class='remove-button'><%= link_to_remove_fields "X", f %></td>
 </tr>
  
  

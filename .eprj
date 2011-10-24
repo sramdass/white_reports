@@ -97,7 +97,9 @@
             <key>_sections.html.erb</key>
             <string>app\views\sections\_sections.html.erb</string>
             <key>_show</key>
-            <string>app\views\students\_show.html.erb</string>
+            <string>app\views\branches\_show.html.erb</string>
+            <key>_show.ht</key>
+            <string>app\views\teachers\_show.html.erb</string>
             <key>_show.htm</key>
             <string>app\views\branches\_show.html.erb</string>
             <key>_show.html</key>
@@ -276,6 +278,8 @@
             <string>app\controllers\branches_controller.rb</string>
             <key>branchne</key>
             <string>app\views\institutions\branchnew.html.erb</string>
+            <key>branchnew</key>
+            <string>app\views\institutions\_branchnew.html.erb</string>
             <key>clazz.r</key>
             <string>app\models\clazz.rb</string>
             <key>clazz.rb</key>
@@ -442,12 +446,16 @@
             <string>app\controllers\marks_controller.rb</string>
             <key>marks_controller</key>
             <string>app\controllers\marks_controller.rb</string>
+            <key>master</key>
+            <string>app\views\marks\student_master_graphs.html.erb</string>
             <key>master_g</key>
             <string>app\views\marks\student_master_graphs.html.erb</string>
             <key>member</key>
             <string>app\models\membership.rb</string>
             <key>membership.rb</key>
             <string>app\models\membership.rb</string>
+            <key>my_page</key>
+            <string>app\views\teachers\_my_page.html.erb</string>
             <key>nega</key>
             <string>app\views\marks\negative_stack.html.erb</string>
             <key>negative_St</key>
@@ -459,6 +467,8 @@
             <key>new.htm</key>
             <string>app\views\branches\new.html.erb</string>
             <key>new.html</key>
+            <string>app\views\profiles\new.html.erb</string>
+            <key>new.html.e</key>
             <string>app\views\profiles\new.html.erb</string>
             <key>new.t</key>
             <string>new.txt</string>
@@ -472,6 +482,8 @@
             <string>app\controllers\password_resets_controller.rb</string>
             <key>pie_anc</key>
             <string>app\views\marks\pie_and_col.erb</string>
+            <key>prof</key>
+            <string>app\controllers\profiles_controller.rb</string>
             <key>profile.r</key>
             <string>app\models\profile.rb</string>
             <key>profile.rb</key>
@@ -573,7 +585,7 @@
             <key>secfil</key>
             <string>app\views\clazzs\_section_fields.html.erb</string>
             <key>secnew</key>
-            <string>app\views\schools\secnew.html.erb</string>
+            <string>app\views\clazzs\_secnew.html.erb</string>
             <key>secnew.</key>
             <string>app\views\schools\secnew.html.erb</string>
             <key>secnew.h</key>
@@ -729,7 +741,7 @@
             <key>table_style</key>
             <string>public\stylesheets\fb_table_styles.css</string>
             <key>tchrnew</key>
-            <string>app\views\branches\tchrnew.html.erb</string>
+            <string>app\views\branches\_tchrnew.erb</string>
             <key>teac</key>
             <string>app\views\schools\_teacher_fields.html.erb</string>
             <key>teacher.r</key>

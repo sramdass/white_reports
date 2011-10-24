@@ -20,7 +20,9 @@ class Mark < ActiveRecord::Base
 		total = 0
 		hsh = mark_columns_with_subject_ids(self.section) 
 		hsh.each do |sub_id, col_name|
-			total = total + self.send(col_name)
+			if self.send(col_name)
+				total = total + self.send(col_name)
+			end
 		end
 		self.total=total	
 	end

@@ -9,7 +9,7 @@
     <tbody>
 		<% institution.branches.each do |b| %>
 		<tr>
-			<td> <%= b.name %> </td>
+			<td> <%= link_to b.name, branch_path(b) %> </td>
 			<td>	<%= b.id_no %>	</td>
 			<td>	<%= b.principal %> </td>
 		</tr>

@@ -30,7 +30,7 @@
         </tr> 
                 
         <tr>
-        	<td>Classes owned (class teacher)</td>
+        	<td>Incharge of (Class teacher for)</td>
             <td> 
             	<% sec = Section. where('class_teacher_id = ?', teacher.id).all %>
             	<% if !sec.empty? %>
@@ -44,7 +44,7 @@
         </tr>    
         	
         <tr>
-        	<td>Classes Handled (taking subs)</td>
+        	<td>Classes Handled (teaches subject)</td>
             <td> 
             		<% teacher.sec_sub_maps.each do |m| %>
             			<%= link_to m.section.name, section_path(m.section) %>, &nbsp; <%= link_to m.section.clazz.name, clazz_path(m.section.clazz)%> &nbsp; (<%= m.subject.name %>)<br>
@@ -57,13 +57,13 @@
 	        	<td>Branches Managed (Accessible)</td>
 	            <td> 
             		<% readable_branches.each do |rbr| %>
-            			<div class='readable'>
+            			<div class="readable" style="padding: 3px 0 3px 0;">
             				<%= link_to rbr.name, branch_path(rsec)%>, &nbsp; <%= link_to rbr.institution.name, institution_path(rbr.institution)%> <br>
             			</div>
             		<% end%>
             		<br>
             		<% writable_branches.each do |wbr| %>
-            			<div class='writable'>
+            			<div class="writable" style="padding: 3px 0 3px 0;">
             				<%= link_to wbr.name, branch_path(wbr)%>, &nbsp; <%= link_to wbr.institution.name, institution_path(wbr.institution)%> <br>
             			</div>
             		<% end%>      		
@@ -78,13 +78,13 @@
             		NA
             	<% else %>
             		<% readable_sections.each do |rsec| %>
-            			<div class='readable'>
+            			<div class='readable rows-of-two' >
             				<%= link_to rsec.name, section_path(rsec)%>, &nbsp; <%= link_to rsec.clazz.name, clazz_path(rsec.clazz)%>
             			</div>
             		<% end%>
             		<br>
             		<% writable_sections.each do |wsec| %>
-            			<div class='writable'>
+            			<div class='writable rows-of-two'>
             				<%= link_to wsec.name, section_path(wsec)%>, &nbsp; <%= link_to wsec.clazz.name, clazz_path(wsec.clazz)%>
             			</div>
             		<% end%>            		

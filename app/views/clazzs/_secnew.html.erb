@@ -6,7 +6,7 @@
     	<tr>
         	<th scope="col">Name</th>
             <th scope="col">Class Teacher</th>
-            <th scope="col">Action</th>            
+            <th scope="col">Delete</th>            
         </tr>
     </thead>
     <tbody>	
@@ -14,8 +14,6 @@
 	 		<%= render "section_fields", :f => builder %>	 	  
 		<% end %>
 	</table>   
- 	<p> <%= link_to_add_fields "Add Section", f, :sections %> </p>	 	
-	<div class="actions">
-     	<%= f.submit  "Update Sections" %>
-     </div>       
+ 	<p class='add-button'> <%= link_to_add_fields "Add Section", f, :sections %> </p>	 	
+    <p class='button'> 	<%= f.submit  "Update Sections" %>
 <% end %>

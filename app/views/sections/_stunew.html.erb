@@ -8,7 +8,7 @@
 	            <th scope="col"> ID Number </th>
 	            <th scope="col">Gender</th>
 	            <th scope="col">Date of Birth</th>
-	            <th scope="col">Action</th>            
+	            <th scope="col">Delete</th>            
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -17,7 +17,7 @@
 			<% end %>
 	    </tbody>		
 	</table>			
- 	<p> <%= link_to_add_fields "Add Student", f, :students %> </p>	 	
+ 	<p class='add-button'> <%= link_to_add_fields "Add Student", f, :students %> </p>	 	
 	<p class='button'> <%= f.submit  "Update Students" %>  </p>	  
 <% end %>
 

@@ -5,7 +5,7 @@
 		<thead>
 	    	<tr>
 	        	<th scope="col">Class Name</th>
-	            <th scope="col"> Action </th>
+	            <th scope="col"> Delete </th>
 	        </tr>
 	    </thead>
 	    <tbody>		
@@ -14,8 +14,8 @@
 		<% end %>		
 	    </tbody>		
 	</table>	
- 	<p> <%= link_to_add_fields "Add Class", f, :clazzs %> </p>     		  
-	<p> <%= f.submit  "Update Classes" %> </p>
+ 	<p class='add-button'> <%= link_to_add_fields "Add Class", f, :clazzs %> </p>     		  
+	<p class='button'> <%= f.submit  "Update Classes" %> </p>
      </div>     	
 <% end %>
 

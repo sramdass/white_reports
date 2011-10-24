@@ -236,10 +236,14 @@ ul.nav-list li a.selected {
 
 #fav-bar{
 	margin: 30px 10px 10px 10px;
+	/*No matter what the previous alignment it should appear to the left*/
+	clear:both;
 }
 
 .breadcrumbs {
 	margin: 10px 10px 20px 0px;
+	/*No matter what the previous alignment it should appear to the left*/	
+	clear:both;
 }
 
 #fav-bar ul, .breadcrumbs ul {
@@ -433,16 +437,18 @@ ul.no-list-style li {
 .rows-of-two{
 	float:left;
 	width: 200px;
+	padding: 3px 0 3px 0;
 }
 
 .rows-of-three{
 	float:left;
 	width: 130px;
+	padding: 3px 0 3px 0;	
 }
 .readable, .readable a {
-	color: green;
+	color: red;
+	text-style:italic;
 }
 .writable, .writable a {
-	color: green;
-	font-weight: bold;
+	color:green;
 }
