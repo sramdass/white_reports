@@ -220,6 +220,8 @@
             <string>app\views\layouts\application.html.erb</string>
             <key>application.html</key>
             <string>app\views\layouts\application.html.erb</string>
+            <key>application.html.erb</key>
+            <string>app\views\layouts\application.html.erb</string>
             <key>application.j</key>
             <string>public\javascripts\application.js</string>
             <key>application.js</key>
@@ -709,6 +711,8 @@
             <key>stunew</key>
             <string>app\views\sections\_stunew.html.erb</string>
             <key>stunew.html</key>
+            <string>app\views\sections\_stunew.html.erb</string>
+            <key>stunew.html.</key>
             <string>app\views\sections\_stunew.html.erb</string>
             <key>subject</key>
             <string>app\models\subject.rb</string>
