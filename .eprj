@@ -187,7 +187,7 @@
             <key>actions_bo</key>
             <string>app\views\clazzs\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\institutions\actions_box.html.erb</string>
+            <string>app\views\profiles\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -385,7 +385,7 @@
             <key>index.htm</key>
             <string>app\views\institutions\index.html.erb</string>
             <key>index.html</key>
-            <string>app\views\profiles\index.html.erb</string>
+            <string>app\views\institutions\index.html.erb</string>
             <key>index.html.e</key>
             <string>app\views\profiles\index.html.erb</string>
             <key>index.html.er</key>
