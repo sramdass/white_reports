@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014063910) do
+ActiveRecord::Schema.define(:version => 20111109155539) do
 
   create_table "branches", :force => true do |t|
     t.integer  "institution_id"
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(:version => 20111014063910) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "elements", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "startime"
+    t.datetime "endtime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "recurring"
+    t.string   "description"
   end
 
   create_table "institutions", :force => true do |t|
@@ -104,6 +120,15 @@ ActiveRecord::Schema.define(:version => 20111014063910) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schedulers", :force => true do |t|
+    t.string   "resource_id"
+    t.integer  "resource_type"
+    t.integer  "event_id"
+    t.integer  "response"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

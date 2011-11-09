@@ -148,6 +148,62 @@ color: #999;
 	font-family: inherit;	
 }
 
+/***************for the calendar*******************/
+
+table.calendar {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.calendar td,
+table.calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+table.calendar th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%;
+}
+
+table.calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+table.calendar .notmonth {
+  color: #CCC;
+}
+
+table.calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+table.calendar #month a, table.calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+
+
+
+
+
+
+
+
+/***************End calendar*******************/
 /*This comes at here because these styles should not be over ridden by table styles*/
 .button input{
 	font-family: Tahoma, "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;	

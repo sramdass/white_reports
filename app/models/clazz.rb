@@ -2,12 +2,11 @@
 #
 # Table name: clazzs
 #
-#  id               :integer         not null, primary key
-#  branch_id        :integer
-#  name             :string(255)
-#  class_teacher_id :integer
-#  created_at       :datetime
-#  updated_at       :datetime
+#  id         :integer         not null, primary key
+#  branch_id  :integer
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class Clazz < ActiveRecord::Base

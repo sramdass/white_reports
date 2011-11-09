@@ -2,12 +2,15 @@
 #
 # Table name: sec_sub_maps
 #
-#  id         :integer         not null, primary key
-#  section_id :integer
-#  subject_id :integer
-#  teacher_id :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer         not null, primary key
+#  section_id  :integer
+#  subject_id  :integer
+#  teacher_id  :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  mark_column :integer
+#  max_marks   :float
+#  pass_marks  :float
 #
 
 class SecSubMap < ActiveRecord::Base

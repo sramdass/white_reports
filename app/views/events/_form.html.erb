@@ -1,0 +1,69 @@
+<% @event = Event.first %>
+<%= form_for @event do |f| %>
+	<%= render 'shared/error_messages', :target => @event %>	  
+	<table class="form-table"  summary="Branch edit information">
+	    <tbody>	
+			<tr>
+				<td> 
+					<strong><%= f.label :name %> </strong> 
+				</td>
+				<td> 	 
+			    	<%= f.text_field :name %>
+				</td>
+			</tr>					
+			<tr>
+				<td> 
+					<strong><%= f.label :description %> </strong> 
+				</td>
+				<td> 	 
+			    	<%= f.text_field :description %>
+				</td>
+			</tr>					
+			<tr>
+				<td> 
+					<strong><%= f.label :startime, "Start Time" %>  </strong> 
+				</td>
+				<td> 	 
+			    	<%= f.datetime_select :startime %>
+				</td>
+			</tr>
+			<tr>
+				<td> 
+					<strong><%= f.label :endtime, "End Time" %>  </strong> 
+				</td>
+				<td> 	 
+			    	<%= f.datetime_select :endtime %>
+				</td>
+			</tr>
+			
+			<tr>
+				<td> 
+					<strong><%= f.label :recurring, "Recurs every" %>  </strong> 
+				</td>
+				<td>
+					<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_YEAR, @event.recurring_every_year? %>Year
+					<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_MONTH, @event.recurring_every_month?  %> Month
+					<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_WEEK, @event.recurring_every_week?  %> Week
+					<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_DAY, @event.recurring_every_day?  %> Day
+					<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_WEEK_DAY, @event.recurring_every_week_day?  %> Week Day
+					<br><%= radio_button_tag 'event[recurring]', Event::NOT_RECURRING, !@event.recurring?  %> Does not recur 
+				</td>
+			</tr>
+			<tr>
+				<td> 
+					<strong> Attendees  </strong> 
+				</td>
+				<td> 	 
+					<div id='event_attendees'>
+						<% Element.all.each do |e|%>
+				    		<%= check_box_tag e.name, e.id %> &nbsp; <%= e.name %> <br>
+				    	<% end %>
+					Attendees: &nbsp; <%= text_field_tag :attendees %>
+			    	</div>
+				</td>
+			</tr>			
+			
+		</tbody>
+	</table>				 
+    <p class='button'> <%= f.submit  "Create Event" %> </p>
+<% end %>

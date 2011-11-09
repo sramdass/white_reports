@@ -13,6 +13,7 @@ gem "hirb", "~> 0.5.0"
 gem "meta_where"
 gem "meta_search"
 gem "lazy_high_charts"
+gem "later_dude", ">= 0.3.1"
 
 group :development do
   gem 'rspec-rails', '2.6.1'

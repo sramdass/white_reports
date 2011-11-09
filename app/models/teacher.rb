@@ -23,6 +23,11 @@ class Teacher < ActiveRecord::Base
 	
 	has_many :sec_sub_maps, :dependent => :destroy
 	
+	#refer event.rb to see how the relationship between teacher and event works
+	
+	has_many :schedulers, :as => :resource  #polymorphic assocation. 'resource' can be teacher, section or school etc..
+	has_many :events, :through => :schedulers   #for many to many relationship. 
+	
 #-------VALIDATIONS------------#
 	
 	 validates 	:name, 	:presence => true, 

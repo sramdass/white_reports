@@ -1,6 +1,6 @@
 WhiteReports::Application.routes.draw do
    
-  	get "log_out" => "sessions#destroy", :as => "log_out"
+ 	get "log_out" => "sessions#destroy", :as => "log_out"
 	get "log_in" => "sessions#new", :as => "log_in"
 	get "sign_up" => "profiles#new", :as => "sign_up"
 	
@@ -99,7 +99,10 @@ WhiteReports::Application.routes.draw do
 	resources :profiles
 	resources :sessions
 	resources :password_resets
-	resources :searches	
+	resources :searches
+	resources :events do
+		get "attendees_dyn_vals", :on => :collection
+	end
 		
 	root :to => "profiles#redirect"	
 	

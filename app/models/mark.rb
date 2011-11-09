@@ -1,3 +1,35 @@
+# == Schema Information
+#
+# Table name: marks
+#
+#  id         :integer         not null, primary key
+#  section_id :integer
+#  test_id    :integer
+#  student_id :integer
+#  sub1       :float
+#  sub2       :float
+#  sub3       :float
+#  sub4       :float
+#  sub5       :float
+#  sub6       :float
+#  sub7       :float
+#  sub8       :float
+#  sub9       :float
+#  sub10      :float
+#  sub11      :float
+#  sub12      :float
+#  sub13      :float
+#  sub14      :float
+#  sub15      :float
+#  total      :float
+#  rank       :integer
+#  grade      :string(255)
+#  remarks    :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  arrears    :integer
+#
+
 class Mark < ActiveRecord::Base
 	belongs_to :section
 	belongs_to :student
