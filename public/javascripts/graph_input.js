@@ -9,13 +9,13 @@ $("form.sections_graph #student_ids").tokenInput(function() {
     theme: "facebook"
   });	
   
-$("#event_attendees input:text").tokenInput(function() {  
+$("#event_attendees #teachers").tokenInput(function() {  
 	//When the text is being typed, add all the elements that are checked and send them as a part of url
-		var elements = [];
+	/*	var elements = [];
 		$('#event_attendees :checked').each(function() {
 		   elements.push($(this).val());
-		 });
-		return '/events/attendees_dyn_vals.json?elements=' + elements;
+		 }); */
+		return '/events/attendees_dyn_vals.json';
 	}, 	{
     crossDomain: false,
     theme: "facebook"

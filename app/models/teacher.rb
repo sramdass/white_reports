@@ -25,8 +25,9 @@ class Teacher < ActiveRecord::Base
 	
 	#refer event.rb to see how the relationship between teacher and event works
 	
-	has_many :schedulers, :as => :resource  #polymorphic assocation. 'resource' can be teacher, section or school etc..
-	has_many :events, :through => :schedulers   #for many to many relationship. 
+	has_many :schedules, :as => :attendee, :dependent => :destroy  #polymorphic assocation. 'resource' can be teacher, section or school etc..
+	has_many :events, :through => :schedules   #for many to many relationship.
+
 	
 #-------VALIDATIONS------------#
 	

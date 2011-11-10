@@ -29,8 +29,8 @@ class Section < ActiveRecord::Base
 	has_many :marks, :dependent => :destroy
 	accepts_nested_attributes_for :marks, :reject_if => :has_only_destroy?, :allow_destroy => true	
 	
-	has_many :schedulers, :as => :resource #polymorphic assocation. 'resource' can be teacher, section or school etc..
-	has_many :events, :through => :schedulers	#for many to many relationship. 
+	has_many :schedules, :as => :attendee, :dependent => :destroy #polymorphic assocation. 'resource' can be teacher, section or school etc..
+	has_many :events, :through => :schedules	#for many to many relationship. 
 
 #-------VALIDATIONS------------#
 	

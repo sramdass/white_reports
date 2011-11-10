@@ -1,16 +1,17 @@
+@events=Event.all
 <div id="main-column">	
 	<p class='heading2'> Events Index </p>
 	<% @events.each do |event| %>
 		<p> <%= event.name %> &nbsp; -  &nbsp; <%= event.startime %> &nbsp;  -  &nbsp; <%= event.endtime%> </p>
 	<% end %>
 	
- <%= calendar_for(@d.year,@d.month, :next_month => "%b") %> 	
- 
-   <%= calendar_for(@d.year,@d.month) do |day|
-    if @events.first.is_on?(day)
-      @events.first.name
-    else
-      day.day
-    end
-  end %>
+   <%= calendar_for(@d.year,@d.month) do |day| %>
+   		<% @events.each do |event| %>
+	    	<% if event.is_on?(day) %>
+	      		<%= event.name %>
+	    	<% else %>
+	      		Hello <%= day.day %>
+	    	<% end %>
+    	<% end %>
+    <% end %>
 </div>

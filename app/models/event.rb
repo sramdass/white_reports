@@ -14,7 +14,8 @@
 =begin
 
 This is relationship between the events and various resources.
-Refer: http://blog.hasmanythrough.com/2006/4/3/polymorphic-through
+Refer: http://blog.hasmanythrough.com/2006/4/3/polymorphic-through 
+			http://stackoverflow.com/questions/5886738/setting-up-a-polymorphic-has-many-through-relationship
 class Scheduler < ActiveRecord::Base
   belongs_to :event
   belongs_to :resource, :polymorphic => true
@@ -40,9 +41,10 @@ end
 class Event < ActiveRecord::Base
 	
 	#many to many with resources (teacher or section or school)
-	has_many :schedulers 
-	has_many :resources, :through => :schedulers
-  	
+	has_many :schedules, :dependent => :destroy
+	has_many :teachers, :through => :schedules, :source => :attendee, :source_type => 'Teacher'
+	has_many :sections, :through => :schedules, :source => :attendee, :source_type => 'Section'	
+	  	
 	RECURRING_EVERY_YEAR=0
 	RECURRING_EVERY_MONTH=1
 	RECURRING_EVERY_WEEK=2	
@@ -77,5 +79,9 @@ class Event < ActiveRecord::Base
 	def recurring?
 		recurring != NOT_RECURRING
 	end
+	
+def attendees
+  self.schedulers.collect { |a| a.attendees }
+end	
 	
 end

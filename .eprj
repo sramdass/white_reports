@@ -53,7 +53,7 @@
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
             <key>_edit</key>
-            <string>app\views\teachers\_edit.html.erb</string>
+            <string>app\views\sections\_edit.html.erb</string>
             <key>_email</key>
             <string>app\views\teachers\_emailnew.html.erb</string>
             <key>_email_f</key>
@@ -530,6 +530,8 @@
             <string>app\views\sections\_report_options.html.erb</string>
             <key>reports</key>
             <string>app\views\sections\_report_options.html.erb</string>
+            <key>resource_on_schedulers.rb</key>
+            <string>db\migrate\20111110130508_rename_resource_on_schedulers.rb</string>
             <key>role</key>
             <string>app\models\role.rb</string>
             <key>role.r</key>
@@ -552,6 +554,8 @@
             <string>public\stylesheets\ryan.css</string>
             <key>ryan.css</key>
             <string>public\stylesheets\ryan.css</string>
+            <key>scheduler.r</key>
+            <string>app\models\scheduler.rb</string>
             <key>schoo.r</key>
             <string>app\models\school.rb</string>
             <key>school.r</key>
@@ -633,7 +637,7 @@
             <key>section_sear</key>
             <string>app\views\searches\_section_search_marks.html.erb</string>
             <key>section_search</key>
-            <string>app\views\searches\_section_search_marks.html.erb</string>
+            <string>app\views\searches\section_searches_box.html.erb</string>
             <key>section_searches</key>
             <string>app\views\searches\section_searches_box.html.erb</string>
             <key>sections.htm</key>

@@ -32,6 +32,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
    @event = Event.new
+   @branch = Branch.find(5) #The branch has to be assigned an appropriate value
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }
@@ -49,19 +50,49 @@ class EventsController < ApplicationController
 
   # POST /events
   # POST /events.xml
-  def create
-     @event = Event.new(params[:event])
+	def create
+		validity=true
+		@event = Event.new(params[:event])
+		if @event.valid?
+			t_ids = params[:teachers].split(",")
+			sec_ids = params[:section_ids]
+			sch_list=[]
+			t_ids.each do |tid|
+				teacher = Teacher.find(tid)
+				sch = Schedule.new
+				sch.event=@event
+				sch.attendee = teacher
+				if sch.valid?
+					sch_list<<sch
+				else
+					validity=false;
+				end
+			end
+			sec_ids.each do |sec_id|
+				section = Section.find(sec_id)
+				sch = Schedule.new
+				sch.event=@event
+				sch.attendee = section
+				if sch.valid?
+					sch_list<<sch
+				else
+					validity=false;
+				end				
+			end
+		else
+			validity=false; #When the event itself is invalid, this will be assigned
+		end
+		if validity
+			@event.save!
+			sch_list.each do |sch|
+				sch.save!
+			end
+			redirect_to(@event, :notice => 'Event was successfully created.')
+		else
+			render :action => "new"
+		end
+	end
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
 
 #-----------------------------------------------------------#
 
@@ -95,18 +126,16 @@ class EventsController < ApplicationController
   end
   
 	def attendees_dyn_vals
-		name_like = params[:q]
-		elements_array = params[:elements].split(",") #params[:type] is an string of comma separated element ids
+		#elements_array = params[:elements].split(",") #params[:type] is an string of comma separated element ids
 		name_like = "%#{params[:q]}%"
-
-		@objects = []
-		elements_array.each do |e|
-			@objects = @objects + Element.find(e).name.constantize.where('name like ?', name_like).find(:all, :select => "name, id").map(&:attributes)
-		end
+		@teachers = []
+		@teachers = Teacher.where('name like ?', name_like).find(:all, :select => "name, id").map(&:attributes)
+		#Add an option so that the user can select all the teachers in a single option. Make the id as zero.
+		@teachers = @teachers + [{"name"=>"All Teachers", "id"=>0}]
 
 		respond_to do |format|
 			format.html
-			format.json { render :json => @objects }
+			format.json { render :json => @teachers }
 		end	
 	end
   
