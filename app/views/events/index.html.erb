@@ -1,17 +1,11 @@
-@events=Event.all
 <div id="main-column">	
-	<p class='heading2'> Events Index </p>
+	<p class='heading2'> Calendar for <%= @object.name %> </p>
 	<% @events.each do |event| %>
 		<p> <%= event.name %> &nbsp; -  &nbsp; <%= event.startime %> &nbsp;  -  &nbsp; <%= event.endtime%> </p>
 	<% end %>
 	
-   <%= calendar_for(@d.year,@d.month) do |day| %>
-   		<% @events.each do |event| %>
-	    	<% if event.is_on?(day) %>
-	      		<%= event.name %>
-	    	<% else %>
-	      		Hello <%= day.day %>
-	    	<% end %>
-    	<% end %>
-    <% end %>
+<%= calendar_for(@d.year,@d.month) do |day|
+	day.day.to_s + "  " + printable(Event.on_date(day, @object))
+end %>	
+
 </div>

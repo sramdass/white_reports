@@ -3,15 +3,15 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-  	
- 	@events = Event.all
+	if params[:teacher_id]
+		@object = Teacher.find(params[:teacher_id])
+	elsif params[:section_id]
+		@object = Section.find(params[:section_id])
+	elsif params[:branch_id]
+		@object = Teacher.find(params[:branch_id])
+	end  	
+ 	@events = @object.events
  	@d = Date.today
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @events }
-      format.js
-    end
   end
 
 #-----------------------------------------------------------#
@@ -19,7 +19,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.xml
   def show
-	 @event = Event.find(params[:id])
+	@event = Event.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }
@@ -32,11 +32,8 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
    @event = Event.new
-   @branch = Branch.find(5) #The branch has to be assigned an appropriate value
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @event }
-    end
+   branch_id = current_profile.user_profile.branch.id  #Assuming only teachers are able to create events now.
+   @branch = Branch.find(branch_id)
   end
 
 #-----------------------------------------------------------#
@@ -44,6 +41,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
    @event = Event.find(params[:id])
+	@branch = Branch.find(5) #The branch has to be assigned an appropriate value   
   end
 
 #-----------------------------------------------------------#
@@ -51,47 +49,41 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
 	def create
-		validity=true
 		@event = Event.new(params[:event])
-		if @event.valid?
-			t_ids = params[:teachers].split(",")
-			sec_ids = params[:section_ids]
-			sch_list=[]
-			t_ids.each do |tid|
-				teacher = Teacher.find(tid)
-				sch = Schedule.new
-				sch.event=@event
-				sch.attendee = teacher
-				if sch.valid?
-					sch_list<<sch
-				else
-					validity=false;
-				end
-			end
-			sec_ids.each do |sec_id|
-				section = Section.find(sec_id)
-				sch = Schedule.new
-				sch.event=@event
-				sch.attendee = section
-				if sch.valid?
-					sch_list<<sch
-				else
-					validity=false;
-				end				
-			end
+		@branch = Branch.find(params[:branch_id])
+		t_ids = params[:teachers].split(",") || []
+		sec_ids = params[:section_ids] || []
+		teachers = []
+		sections = []
+		branches = []
+		if t_ids.include?("0")
+			teachers = Branch.find(params[:branch_id]).teachers
 		else
-			validity=false; #When the event itself is invalid, this will be assigned
-		end
-		if validity
-			@event.save!
-			sch_list.each do |sch|
-				sch.save!
+			t_ids.each do |tid|
+				teachers << Teacher.find(tid)
 			end
+		end
+		sec_ids.each do |sid|
+			sections << Section.find(sid)
+		end
+		if params[:branch_event]
+			branches << Branch.find(params[:branch_id])
+		end
+		@event.teachers = teachers
+		@event.sections = sections
+		@event.branches = branches
+
+		if @event.valid? && @event.schedules.all?(&:valid?)
+			@event.save!
+			@event.schedules.each(&:save!)	
 			redirect_to(@event, :notice => 'Event was successfully created.')
 		else
+			flash[:notice] = 'Cannot create Event'			
 			render :action => "new"
 		end
-	end
+	end		
+		
+
 
 
 #-----------------------------------------------------------#
@@ -100,16 +92,38 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
-
-    respond_to do |format|
-      if @event.update_attributes(params[:event])
-        format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html {render :actions_box }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
-    end
+	@event.attributes = params[:event]
+	
+		t_ids = params[:teachers].split(",") || []
+		sec_ids = params[:section_ids] || []
+		teachers = []
+		sections = []
+		branches = []
+		if t_ids.include?("0")
+			teachers = Branch.find(params[:branch_id]).teachers
+		else
+			t_ids.each do |tid|
+				teachers << Teacher.find(tid)
+			end
+		end
+		sec_ids.each do |sid|
+			sections << Section.find(sid)
+		end
+		if params[:branch_event]
+			branches << Branch.find(params[:branch_id])
+		end
+		@event.teachers = teachers
+		@event.sections = sections
+		@event.branches = branches
+		
+		if @event.valid? && @event.schedules.all?(&:valid?)
+			@event.save!
+			@event.schedules.each(&:save!)	
+			redirect_to(@event, :notice => 'Event was successfully updated.')
+		else
+			flash[:notice] = 'Cannot create Event'	
+			render :action => 'edit'
+		end	
   end
 
 #-----------------------------------------------------------#
@@ -138,6 +152,21 @@ class EventsController < ApplicationController
 			format.json { render :json => @teachers }
 		end	
 	end
+	
+#-----------------------------------------------------------#
+
+def actions_box
+	@default_tab = 'calendar'
+end	
+
+#-----------------------------------------------------------#
+
+  def calendar
+
+
+  end
+
+
   
 
 end  

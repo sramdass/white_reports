@@ -1,2 +1,8 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<h1>editing </h1>
+<div id="main-column">				
+	<%= form_for @event do |f| %>
+		<%= render 'shared/error_messages', :target => @event %>
+		<%= render 'event_fields', :event => @event, :branch => @branch, :f => f %>	
+    	<p class='button'> <%= f.submit  "Update event Event" %> </p>
+	<% end %>
+</div>

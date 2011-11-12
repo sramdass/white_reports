@@ -8,11 +8,11 @@
 				<li><a id = 'teacher_my_page' <% if default_tab?('my_page') %> class = 'selected' <% end %> href="#">My Page</a></li>
 				<li><a id = 'teacher_show' <% if default_tab?('show') %> class = 'selected' <% end %> href="#">Show</a></li>
 				<li><a id = 'teacher_clazzs' <% if default_tab?('clazzs') %> class = 'selected' <% end %> href="#">Classes</a></li>
-				<li><a id = 'teacher_calendar' <% if default_tab?('calendar') %> class = 'selected' <% end %> href="#">Calendar</a></li>				
+				<li> <%= link_to 'Calendar', events_path(:teacher_id => @teacher.id) %> </li>																			
 			<% end %>
 			<% if can? :update, @teacher%>
 				<li><a id = 'teacher_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>
-				<li><a id = 'teacher_weekly_plan'  <% if default_tab?('weekly_plan') %> class = 'selected' <% end %> href="#">Weekly Plan</a></li>						
+				<li><a id = 'teacher_weekly_plan'  <% if default_tab?('weekly_plan') %> class = 'selected' <% end %> href="#">Weekly Plan</a></li>	
 			<% end %>
 			<% if can? :communicate, @teacher%>				
 				<li><a id = 'teacher_email' <% if default_tab?('emailnew') %> class = 'selected' <% end %> href="#">Email</a></li>

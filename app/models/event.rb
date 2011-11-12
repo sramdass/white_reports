@@ -40,11 +40,16 @@ end
 
 class Event < ActiveRecord::Base
 	
+	scope :for_object, lambda { |object| joins(:schedules).where('schedules.attendee_type = ? and schedules.attendee_id = ?', object.class.to_s, object.id)}	
+	scope :on_day, lambda { |day| where("startime between ? and ?", day, day+1)}	
+	
 	#many to many with resources (teacher or section or school)
 	has_many :schedules, :dependent => :destroy
 	has_many :teachers, :through => :schedules, :source => :attendee, :source_type => 'Teacher'
 	has_many :sections, :through => :schedules, :source => :attendee, :source_type => 'Section'	
-	  	
+	has_many :branches, :through => :schedules, :source => :attendee, :source_type => 'Branch'
+ 		
+	
 	RECURRING_EVERY_YEAR=0
 	RECURRING_EVERY_MONTH=1
 	RECURRING_EVERY_WEEK=2	
@@ -79,9 +84,10 @@ class Event < ActiveRecord::Base
 	def recurring?
 		recurring != NOT_RECURRING
 	end
-	
-def attendees
-  self.schedulers.collect { |a| a.attendees }
-end	
+
+
+def self.on_date(day, object)
+	@events = Event.for_object(object).on_day(day).all
+end
 	
 end

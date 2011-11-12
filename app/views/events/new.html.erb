@@ -1,5 +1,7 @@
 <div id="main-column">				
-	<h1>New Event</h1>	
-	<%= render 'form' %>	
-	<%= link_to 'Back', events_path %>
+	<%= form_for @event do |f| %>
+		<%= render 'shared/error_messages', :target => @event %>
+		<%= render 'event_fields', :event => @event, :branch => @branch, :f => f %>	
+    	<p class='button'> <%= f.submit  "Create Event" %> </p>
+	<% end %>
 </div>

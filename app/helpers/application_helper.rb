@@ -44,6 +44,14 @@ module ApplicationHelper
  	def no_search_matches()	
  		return 'Oops!..There are no items matching your search criteria'
  	end
+ 	
+ 	def printable(events)
+ 		str = ""
+ 		events.each do |e|
+ 			str = str + link_to (e.name, event_path(e)) + " | "
+ 		end
+ 		return str
+ 	end
 	
 end
 	

@@ -1,0 +1,22 @@
+<% 
+   branch_id = current_profile.user_profile.branch.id  #Assuming only teachers are able to create events now.
+   @branch = Branch.find(branch_id)
+   @event ||= Event.new #@event has to be initialized if it is nil
+%>
+<div id="nav-column">
+	<strong> SECTION SEARCH</strong>
+	<ul class='nav-list'>
+		<li><a id = 'event_new' <% if default_tab?('new') %> class = 'selected' <% end %> href="#">Create an Event</a></li>				
+		<li><a id = 'event_calendar'  <% if default_tab?('calendar') %> class = 'selected' <% end %>  href="#">Calendar</a></li>
+	</ul>
+</div>	
+
+<div id="main-column">	
+	<%= render 'shared/breadcrumbs', :type => "event", :target => @object %>		
+	<div id='event_new' class='cantoggle'>	
+		<%= render 'new', :object => @object, :event => @event, :branch => @branch %>
+	</div> 	
+	<div id='event_calendar' class='cantoggle'>
+		<%= render 'calendar', :object => @object %>
+	</div> 			
+</div>
