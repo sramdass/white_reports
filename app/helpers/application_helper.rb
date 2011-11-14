@@ -46,11 +46,19 @@ module ApplicationHelper
  	end
  	
  	def printable(events)
- 		str = ""
+ 		str = "<ol>"
  		events.each do |e|
- 			str = str + link_to (e.name, event_path(e)) + " | "
+ 			str = str + "<li>" + link_to (e.name, event_path(e)) + "</li>"
  		end
- 		return str
+ 		return str + "</ol>"
+ 	end
+ 	
+ 	def round_up_minutes_to_30(time)
+ 		if (time.min > 30)
+ 			return time-((time.min - 30).minutes)
+ 		else
+ 			return time - (time.min).minutes
+ 		end
  	end
 	
 end

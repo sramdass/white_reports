@@ -99,7 +99,7 @@
             <key>_sections.html.erb</key>
             <string>app\views\sections\_sections.html.erb</string>
             <key>_show</key>
-            <string>app\views\branches\_show.html.erb</string>
+            <string>app\views\students\_show.html.erb</string>
             <key>_show.ht</key>
             <string>app\views\teachers\_show.html.erb</string>
             <key>_show.htm</key>
@@ -128,6 +128,8 @@
             <string>app\views\sections\_students.html.erb</string>
             <key>_students.ht</key>
             <string>app\views\students\_students.html.erb</string>
+            <key>_stune</key>
+            <string>app\views\sections\_stunew.html.erb</string>
             <key>_stunew</key>
             <string>app\views\sections\_stunew.html.erb</string>
             <key>_subject</key>
@@ -383,7 +385,7 @@
             <key>gemfile</key>
             <string>Gemfile</string>
             <key>graph</key>
-            <string>app\views\marks\graphs.html.erb</string>
+            <string>public\javascripts\graph_input.js</string>
             <key>graph_in</key>
             <string>public\javascripts\graph_input.js</string>
             <key>graphs.</key>
@@ -421,6 +423,8 @@
             <key>institu</key>
             <string>app\models\institution.rb</string>
             <key>institui</key>
+            <string>app\controllers\institutions_controller.rb</string>
+            <key>institution</key>
             <string>app\controllers\institutions_controller.rb</string>
             <key>institution.r</key>
             <string>app\models\institution.rb</string>
@@ -524,6 +528,8 @@
             <string>app\controllers\profiles_controller.rb</string>
             <key>reate_events</key>
             <string>db\migrate\20111106071215_create_events.rb</string>
+            <key>recurring_window_to_events.rb</key>
+            <string>db\migrate\20111114113023_add_recurring_window_to_events.rb</string>
             <key>remove_max</key>
             <string>db\migrate\20111014063910_remove_max_marks_from_subjects.rb</string>
             <key>remove_sch</key>
@@ -689,7 +695,7 @@
             <key>show.htm</key>
             <string>app\views\sections\show.html.erb</string>
             <key>show.html</key>
-            <string>app\views\profiles\show.html.erb</string>
+            <string>app\views\events\show.html.erb</string>
             <key>show.html.</key>
             <string>app\views\schools\show.html.erb</string>
             <key>show.html.e</key>

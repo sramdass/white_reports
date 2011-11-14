@@ -10,7 +10,8 @@
 				<li><a id = 'section_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
 				<li><a id = 'section_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>												
 				<li><a id = 'section_reports'  <% if default_tab?('reports') %> class = 'selected' <% end %> href="#">Reports</a></li>					
-				<li> <%= link_to 'Advanced Search', section_searches_box_searches_path(:section_id => @section.id) %> </li>										
+				<li> <%= link_to 'Advanced Search', section_searches_box_searches_path(:section_id => @section.id) %> </li>
+				<li> <%= link_to 'Calendar', events_path(:object_id => @section.id, :object_type => "Section") %> </li>		<!-- :day will be current day-->
 			<% end %>			
 			<% if can? :update, @section%>
 				<li><a id = 'section_edit'  <% if default_tab?('edit') %> class = 'selected' <% end %>  href="#">Edit</a></li>

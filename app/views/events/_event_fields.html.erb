@@ -39,12 +39,13 @@
 				<strong><%= f.label :recurring, "Recurs every" %>  </strong> 
 			</td>
 			<td>
-				<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_YEAR, event.recurring_every_year? %>Year
 				<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_MONTH, event.recurring_every_month?  %> Month
 				<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_WEEK, event.recurring_every_week?  %> Week
 				<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_DAY, event.recurring_every_day?  %> Day
-				<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_WEEK_DAY, event.recurring_every_week_day?  %> Week Day
-				<br><%= radio_button_tag 'event[recurring]', Event::NOT_RECURRING, !event.recurring?  %> Does not recur 
+				<!-- Make it a non-recurring event for the new objects--> 
+				<br><%= radio_button_tag 'event[recurring]', Event::NOT_RECURRING,  event.new_record? || !event.recurring? %> Does not recur <br><br>
+				
+				<strong> Recur till: &nbsp;</strong>  <%= f.date_select :recurring_end %>  
 			</td>
 		</tr>
 		<tr>
@@ -53,7 +54,7 @@
 			</td>
 			<td> 	 
 				<div id='event_attendees'>
-					Teachers: &nbsp; <%= text_field_tag :teachers %>
+					Teachers: &nbsp; <%= text_field_tag :teachers, nil, "data-pre" => event.teachers.map(&:attributes).to_json %>
 		    	</div>
 			</td>
 		</tr>			

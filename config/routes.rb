@@ -96,6 +96,7 @@ WhiteReports::Application.routes.draw do
 	end
 	resources :events do
 		get "attendees_dyn_vals", :on => :collection
+		get "show_day", :on => :collection
 	end	
 	resources :subjects
 	resources :tests

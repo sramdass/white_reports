@@ -3,15 +3,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-	if params[:teacher_id]
-		@object = Teacher.find(params[:teacher_id])
-	elsif params[:section_id]
-		@object = Section.find(params[:section_id])
-	elsif params[:branch_id]
-		@object = Teacher.find(params[:branch_id])
-	end  	
+  	initialize_object_and_day
  	@events = @object.events
- 	@d = Date.today
   end
 
 #-----------------------------------------------------------#
@@ -19,11 +12,13 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.xml
   def show
-	@event = Event.find(params[:id])
+  	@event = Event.find(params[:id])
+	initialize_object_and_day  	
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @event }
-    end
+      format.xml  { render :xml => @institutions }
+      format.js
+    end	
  end
 
 #-----------------------------------------------------------#
@@ -32,8 +27,8 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
    @event = Event.new
-   branch_id = current_profile.user_profile.branch.id  #Assuming only teachers are able to create events now.
-   @branch = Branch.find(branch_id)
+	initialize_object_and_day   
+	initialize_branch
   end
 
 #-----------------------------------------------------------#
@@ -41,7 +36,8 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
    @event = Event.find(params[:id])
-	@branch = Branch.find(5) #The branch has to be assigned an appropriate value   
+	initialize_object_and_day
+	initialize_branch	
   end
 
 #-----------------------------------------------------------#
@@ -50,6 +46,10 @@ class EventsController < ApplicationController
   # POST /events.xml
 	def create
 		@event = Event.new(params[:event])
+		#set the recurring fields to "not recurring" when the recurrance is not selected
+		if !params[:event][:recurring]
+			@event.recurring = Event::NOT_RECURRING
+		end		
 		@branch = Branch.find(params[:branch_id])
 		t_ids = params[:teachers].split(",") || []
 		sec_ids = params[:section_ids] || []
@@ -69,6 +69,7 @@ class EventsController < ApplicationController
 		if params[:branch_event]
 			branches << Branch.find(params[:branch_id])
 		end
+
 		@event.teachers = teachers
 		@event.sections = sections
 		@event.branches = branches
@@ -93,6 +94,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 	@event.attributes = params[:event]
+	@branch = Branch.find(params[:branch_id])	 #This is needed in case the edit action has to rendered again
 	
 		t_ids = params[:teachers].split(",") || []
 		sec_ids = params[:section_ids] || []
@@ -132,11 +134,9 @@ class EventsController < ApplicationController
   # DELETE /events/1.xml
   def destroy
     @event = Event.find(params[:id])
+	initialize_object_and_day    
     @event.destroy
-    respond_to do |format|
-      format.html { redirect_to(events_url) }
-      format.xml  { head :ok }
-    end
+	render :index
   end
   
 	def attendees_dyn_vals
@@ -154,20 +154,44 @@ class EventsController < ApplicationController
 	end
 	
 #-----------------------------------------------------------#
-
-def actions_box
-	@default_tab = 'calendar'
-end	
-
-#-----------------------------------------------------------#
-
-  def calendar
-
-
+  def show_day
+	initialize_object_and_day
+	@events_on_day = Event.on_date(@d, @object).sort_by &:startime
   end
-
-
   
+  #These initializations have to be made for most of the actions (show, edit, index & show_day)
+  #to know the object whose calendar we are viewing.
+  #In the edit and show actions, this is used to redirect back to the index page.
+  	def initialize_object_and_day
+	  	@object_type = params[:object_type]
+		if @object_type.eql?("Teacher")
+			@object = Teacher.find(params[:object_id])
+		elsif @object_type.eql?("Section")
+			@object = Section.find(params[:object_id])
+		elsif @object_type.eql?("Branch")
+			@object = Branch.find(params[:object_id])
+		else
+			@object = current_profile.user_profile
+		end  	
+		if params[:day]
+			@d = params[:day].to_date
+		else
+			@d = Date.today
+		end
+	end
+	
+	#The branch has to initialized for the new and the edit actions. The branch_id value has to be passed as a 
+	#hidden field from the new and edit to create and update respectively.
+	def initialize_branch	
+		if params[:branch_id]
+			branch_id = params[:branch_id]
+		else
+			branch_id = current_profile.user_profile.branch.id  #Assuming only teachers are able to create events now.
+		end
+   		@branch = Branch.find(branch_id)
+	end
+	
+end
+	
 
-end  
   

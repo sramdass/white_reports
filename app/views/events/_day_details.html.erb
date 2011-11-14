@@ -1,0 +1,59 @@
+<table class="one-column-emphasis" summary="Event Details">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+    	<tr>
+        	<th scope="col">Events on <%= @d %> </th>
+        </tr>
+    </thead>
+    <tbody>
+    	<% if @events_on_day.empty? %>
+    		<tr> <td> There are no events on this day </td></tr>
+    	<% else %>
+	    	<% @events_on_day.each do |e|%>
+		    	<tr>
+		            <td> 
+		            	<strong> <%= e.name %> </strong> <br>
+		            	From: &nbsp; <%= e.startime %> <br>
+		            	To: &nbsp; <%= e.endtime %>            	
+		            </td>
+		        </tr>    	    	
+	        <% end %>
+	    <% end %>
+      </tbody>
+</table>
+
+
+<table class="one-column-emphasis" summary="Day Calendar">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+    	<tr>
+        	<th scope="col">Time </th>
+        	<th >Event Name </th>        	
+        </tr>
+    </thead>
+    <% first_time_slot = round_up_minutes_to_30(@events_on_day.first.startime) - 60.minutes %>
+    <% last_time_slot = round_up_minutes_to_30(@events_on_day.first.startime) + 60.minutes %>
+    <% time_slot = first_time_slot %>
+    <tbody>
+		<% loop do %>
+			<tr>
+		  		<td> <%= time_slot.to_time %></td>
+		  		<% @events_on_day.each do |eod| %>
+		  			<% if (eod.startime > time_slot && eod.startime < time_slot + 30.minutes) || %>
+		  					<% (eod.endtime > time_slot && eod.endtime < time_slot + 30.minutes) || %>
+		  					<% (eod.startime < time_slot - 30.minutes && eod.endtime > time_slot + 30.minutes) %>
+			  		<td>
+			  			<%= eod.name %>
+			  		</td>
+		  		<% end %>
+		  	<% end %>
+		  	</tr>
+		  	<% time_slot = time_slot + 30.minutes %>
+		 	 <% break if time_slot >= last_time_slot %>
+		<% end %>
+    </tbody>
+</table>
