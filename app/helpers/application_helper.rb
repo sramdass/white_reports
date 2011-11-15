@@ -44,6 +44,22 @@ module ApplicationHelper
  	def no_search_matches()	
  		return 'Oops!..There are no items matching your search criteria'
  	end
+ 	
+ 	def printable(events)
+ 		str = "<ol>"
+ 		events.each do |e|
+ 			str = str + "<li>" + link_to (e.name, event_path(e)) + "</li>"
+ 		end
+ 		return str + "</ol>"
+ 	end
+ 	
+ 	def round_up_minutes_to_30(time)
+ 		if (time.min > 30)
+ 			return time-((time.min - 30).minutes)
+ 		else
+ 			return time - (time.min).minutes
+ 		end
+ 	end
 	
 end
 	

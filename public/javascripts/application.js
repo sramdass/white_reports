@@ -174,5 +174,12 @@ $(function() {
 		$('#header-drop-down').show();
 		return false;
 	});
+	
+	//*******************Calendar events ********************************//
+	//Do not pick all the links inside the table. The header contains different information
+  	$("#events-calendar td a").live("click", function() {
+    	$.getScript(this.href);
+    	return false;
+  	});
   	
 });

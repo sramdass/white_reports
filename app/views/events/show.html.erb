@@ -1,0 +1,56 @@
+<div id="main-column">
+	<table class="one-column-emphasis" summary="Event Details">
+	    <colgroup>
+	    	<col class="oce-first" />
+	    </colgroup>
+	    <thead>
+	    	<tr>
+	        	<th scope="col">Name</th>
+	            <th scope="col"> <%= @event.name %></th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    	<tr>
+	        	<td>Date</td>
+	            <td><%= @event.startime.to_date %> to <%= @event.endtime.to_date %></td>
+	        </tr>    	    	
+	    	<tr>
+	        	<td>Time</td>
+	            <td><%= @event.startime.to_time %> to <%= @event.endtime.to_time %></td>
+	        </tr>    	
+	    	<tr>
+	        	<td>Teachers</td>
+	            <td>
+	            	<ol>
+	            	<% @event.teachers.each do |t| %>
+	            		<li><%= t.name %></li>
+	            	<% end %>
+	            	</ol>
+	            </td>
+	        </tr>
+	    	<tr>
+	        	<td>Sections</td>
+	            <td>
+	            	<ol>
+	            	<% @event.sections.each do |s| %>
+	            		<li><%= s.name %> - <%= s.clazz.name %></li>
+	            	<% end %>
+	            	</ol>
+	            </td>
+	        </tr>
+	    	<tr>
+	        	<td>Branches</td>
+	            <td>
+	            	<ol>
+	            	<% @event.branches.each do |b| %>
+	            		<li><%= b.name %> </li>
+	            	<% end %>
+	            	</ol>
+	            </td>
+	        </tr>            
+	    </tbody>
+	</table>
+	<p> <%= link_to "Edit this Event", edit_event_path(@event, :day => @d, :object_id => @object.id, :object_type => @object_type) %> </p>
+	<p> <%= link_to "Back to the calendar", events_path(:day => @d, :object_id => @object.id, :object_type => @object_type) %> </p>	
+    <p> <%= link_to 'Delete this event',  {:id => @event.id, :day => @d, :object_id => @object.id, :object_type => @object_type}, :confirm => 'Are you sure?', :method => :delete %> </td>	
+</div>	

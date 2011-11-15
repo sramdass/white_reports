@@ -7,7 +7,6 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  branch_id  :integer
-#  max_marks  :float
 #
 
 class Subject < ActiveRecord::Base

@@ -1,6 +1,6 @@
 WhiteReports::Application.routes.draw do
    
-  	get "log_out" => "sessions#destroy", :as => "log_out"
+ 	get "log_out" => "sessions#destroy", :as => "log_out"
 	get "log_in" => "sessions#new", :as => "log_in"
 	get "sign_up" => "profiles#new", :as => "sign_up"
 	
@@ -70,7 +70,7 @@ WhiteReports::Application.routes.draw do
 		post 'email', :on => :member	
 		get 'smsnew', :on => :member
 		post 'sms', :on => :member	
-		get 'actions_box', :on => :member					
+		get 'actions_box', :on => :member	
 	end
 	
 	resources :marks do
@@ -94,12 +94,17 @@ WhiteReports::Application.routes.draw do
 		get "branch_students"	, :on => :collection
 		get "branch_marks"	, :on => :collection		
 	end
+	resources :events do
+		get "attendees_dyn_vals", :on => :collection
+		get "show_day", :on => :collection
+	end	
 	resources :subjects
 	resources :tests
 	resources :profiles
 	resources :sessions
 	resources :password_resets
-	resources :searches	
+	resources :searches
+
 		
 	root :to => "profiles#redirect"	
 	

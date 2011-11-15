@@ -9,4 +9,12 @@ $("form.sections_graph #student_ids").tokenInput(function() {
     theme: "facebook"
   });	
   
+$("#event_attendees #teachers").tokenInput(function() {  
+		return '/events/attendees_dyn_vals.json';
+	}, 	{
+    crossDomain: false,
+    prePopulate: $("#teachers").data("pre"), 
+    theme: "facebook"
+  });	  
+  
 });

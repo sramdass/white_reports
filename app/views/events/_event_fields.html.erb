@@ -1,0 +1,84 @@
+<%= hidden_field_tag :branch_id, branch.id %>
+<table class="form-table"  summary="Branch edit information">
+    <tbody>	
+		<tr>
+			<td> 
+				<strong><%= f.label :name %> </strong> 
+			</td>
+			<td> 	 
+		    	<%= f.text_field :name %>
+			</td>
+		</tr>					
+		<tr>
+			<td> 
+				<strong><%= f.label :description %> </strong> 
+			</td>
+			<td> 	 
+		    	<%= f.text_field :description %>
+			</td>
+		</tr>					
+		<tr>
+			<td> 
+				<strong><%= f.label :startime, "Start Time" %>  </strong> 
+			</td>
+			<td> 	 
+		    	<%= f.datetime_select :startime %>
+			</td>
+		</tr>
+		<tr>
+			<td> 
+				<strong><%= f.label :endtime, "End Time" %>  </strong> 
+			</td>
+			<td> 	 
+		    	<%= f.datetime_select :endtime %>
+			</td>
+		</tr>
+		
+		<tr>
+			<td> 
+				<strong><%= f.label :recurring, "Recurs every" %>  </strong> 
+			</td>
+			<td>
+				<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_MONTH, event.recurring_every_month?  %> Month
+				<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_WEEK, event.recurring_every_week?  %> Week
+				<br><%= radio_button_tag 'event[recurring]', Event::RECURRING_EVERY_DAY, event.recurring_every_day?  %> Day
+				<!-- Make it a non-recurring event for the new objects--> 
+				<br><%= radio_button_tag 'event[recurring]', Event::NOT_RECURRING,  event.new_record? || !event.recurring? %> Does not recur <br><br>
+				
+				<strong> Recur till: &nbsp;</strong>  <%= f.date_select :recurring_end %>  
+			</td>
+		</tr>
+		<tr>
+			<td> 
+				<strong> Teachers  </strong> 
+			</td>
+			<td> 	 
+				<div id='event_attendees'>
+					Teachers: &nbsp; <%= text_field_tag :teachers, nil, "data-pre" => event.teachers.map(&:attributes).to_json %>
+		    	</div>
+			</td>
+		</tr>			
+		<tr>
+			<td> 
+				<strong> Sections  </strong> 
+			</td>
+			<td>
+				<% @branch.clazzs.each do |clz| %>
+					<br><strong> <%= clz.name %> </strong> <br>
+					<% clz.sections.each do |sec|%>
+						<%= check_box_tag "section_ids[]", sec.id, event.sections.include?(sec) %> <%= sec.name  %> <br>
+					<% end %>
+				<% end%>
+			</td>
+		</tr>	
+		<tr>
+			<td> 
+				<strong> Branch  </strong> 
+			</td>
+			<td>
+				<%= check_box_tag 'branch_event', true, !event.branches.empty?  %>  &nbsp; Entire branch event
+			</td>
+		</tr>								
+	</tbody>
+</table>				 
+

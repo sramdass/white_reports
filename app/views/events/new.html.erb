@@ -1,0 +1,7 @@
+<div id="main-column">				
+	<%= form_for @event do |f| %>
+		<%= render 'shared/error_messages', :target => @event %>
+		<%= render 'event_fields', :event => @event, :branch => @branch, :f => f %>	
+    	<p class='button'> <%= f.submit  "Create Event" %> </p>
+	<% end %>
+</div>

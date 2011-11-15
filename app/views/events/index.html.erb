@@ -1,0 +1,18 @@
+<div id="main-column">	
+	<p class='heading2'> Calendar for <%= @object.name %> (<%= @d.year %>) </p>
+	<div id="events-calendar">
+			<%= calendar_for(@d.year,
+										@d.month, 	
+										:next_month => lambda { |date| link_to ">>", events_path(:day => date, :object_id => @object.id, :object_type => @object_type) },
+										:previous_month => lambda { |date| link_to "<<", events_path(:day => date, :object_id => @object.id, :object_type => @object_type) } ) do |day|
+				"#{link_to (day.day.to_s, show_day_events_path(:day => day, :object_id => @object.id, :object_type => @object_type ))}  #{printable(Event.on_date(day, @object))}"
+			end %>	
+	</div>
+	
+<!-- These two divs will be populated using ajax when a event is clicked or a date is clicked -->
+  	<div id="event_or_day_details">
+	</div>
+	
+	<p> <%= link_to "Create an event", new_event_path(:day => @d, :object_id => @object.id, :object_type => @object_type) %> </p>
+			
+</div>

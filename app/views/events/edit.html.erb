@@ -1,0 +1,9 @@
+<div id="main-column">				
+	<%= form_for @event do |f| %>
+		<%= render 'shared/error_messages', :target => @event %>
+		<%= render 'event_fields', :event => @event, :branch => @branch, :f => f %>	
+    	<p class='button'> <%= f.submit  "Update Event" %> </p>
+	<% end %>
+	<p> <%= link_to "Back to this Event", event_path(@event, :day => @d, :object_id => @object.id, :object_type => @object_type) %> </p>	
+	<p> <%= link_to "Back to the calendar", events_path(:day => @d, :object_id => @object.id, :object_type => @object_type) %> </p>			
+</div>

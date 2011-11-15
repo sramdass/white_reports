@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery
 	helper_method :current_profile
     before_filter :mailer_set_url_options
+	helper LaterDude::CalendarHelper    
     before_filter { |c| Authorization.current_user = c.current_profile }
  
 	rescue_from CanCan::AccessDenied do |exception|

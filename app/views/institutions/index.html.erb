@@ -10,6 +10,9 @@
 			<%= render 'institutions' %>
 		</div>
 	<% end %>
+	
+<%d = Date.today%>
+ <%= calendar_for(d.year,d.month, :next_month => "%b") %> 
 		
 	<%= link_to 'New Institution', new_institution_path %>
 </div>
