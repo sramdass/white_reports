@@ -324,6 +324,8 @@
             <string>db\migrate\20110815163153_create_subjects.rb</string>
             <key>css</key>
             <string>public\stylesheets\form_styles.css</string>
+            <key>dd_dates_to_sec_tes</key>
+            <string>db\migrate\20111115161935_add_dates_to_sec_test_maps.rb</string>
             <key>description_to_ev</key>
             <string>db\migrate\20111108120137_add_recurring_description_to_events.rb</string>
             <key>dev</key>
