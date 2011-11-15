@@ -31,16 +31,6 @@ module ApplicationHelper
 		link_to_function(name, "add_fields(this, '#{association}', '#{escape_javascript(fields)}')")
 	end	
 	
-	def mark_columns(section)
-		h = Hash.new
-		section.sec_sub_maps.each do |map|
-			name =Subject.find(map.subject_id).name
-			mark_col = "sub#{map.mark_column}"
-			h[name] = mark_col
-		end
-		return h
-	end
-	
  	def no_search_matches()	
  		return 'Oops!..There are no items matching your search criteria'
  	end

@@ -182,4 +182,15 @@ $(function() {
     	return false;
   	});
   	
+  	//*************For advance search forms ************************//
+  	
+    $(".ajaxified_search_form input").keyup(function() {
+    	$.get($(this).closest('form').attr("action"), $(this).closest('form').serialize(), null, "script");
+    	return false;
+  	});  	
+  	
+  	$('.ajaxified_search_form :checkbox').click(function () {
+    	$.get($(this).closest('form').attr("action"), $(this).closest('form').serialize(), null, "script");
+    });
+  	
 });

@@ -1,0 +1,33 @@
+<% if !@marks %>
+<% elsif  @marks.empty? %>
+	<p>
+		<strong> <%= no_search_matches() %> </strong>
+	</p>
+<% else %>
+	<table class='index_table_z' id='datatable' summary=<% "Section Marks search results" %>>
+	    <thead>		    	
+		    	<tr>
+		    		<th scope="col">Student Name</th>
+		    		<th scope="col"> Test Name </th>	    		
+					<%  mark_columns(@section).each do |sub_name, mark_col| %>
+		        			<th scope="col"> <%= sub_name.humanize %></th>
+		            <% end %>
+		          <th scope="col"> Total </th>
+		          <th scope="col"> Arrears </th>		          
+		        </tr>	    	
+		</thead>
+	    <tbody>
+			<% for m in @marks %>
+				<tr>
+					<td> <%=m.student.name%></td>
+					<td> <%=m.test.name%></td>
+					<%  mark_columns(@section).each do |sub_name, mark_col| %>
+						<td> <%= m.send(mark_col) %> </td>
+					<% end %>					
+					<td> <%=m.total%></td>
+					<td> <%=m.arrears%></td>					
+		        </tr>
+			<% end %>			
+	    </tbody>	
+	</table>
+<% end %>

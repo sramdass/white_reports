@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+ 	helper_method :mark_columns	 #Making this as a helper method because this method will be invoked from the view also.
 	
 	 def section_searches_box
 	 	if !params[:section_id]
@@ -15,15 +16,23 @@ class SearchesController < ApplicationController
 	 	@students = Student.search(params[:search]).all
 		authorize! :read, @section			 	
 		@default_tab = 'students'
-		render :section_searches_box
-	 end
+	    respond_to do |format|
+			format.html {render :section_searches_box}
+			format.xml  { render :xml => @students }
+			format.js
+    	end
+    end		
 	 
 	 def section_marks
 	 	@section=Section.find(params[:section_id])	 	
-		 @marks = Mark.search(params[:search]).all
+		@marks = Mark.search(params[:search]).all
 		authorize! :read, @section				 
 		 @default_tab = 'marks'
-		 render :section_searches_box
+	    respond_to do |format|
+			format.html {render :section_searches_box}
+			format.xml  { render :xml => @marks }
+			format.js
+    	end		 
 	 end
 	 
 	 def branch_searches_box
@@ -41,7 +50,12 @@ class SearchesController < ApplicationController
 	 	@students = Student.search(params[:search]).all
 		authorize! :read, @branch	 	
 		@default_tab = 'students'
-		render :branch_searches_box
+	    respond_to do |format|
+			format.html {render :branch_searches_box}
+			format.xml  { render :xml => @students }
+			format.js
+    	end				
+
 	 end
 	 
 	 def branch_marks
@@ -49,7 +63,21 @@ class SearchesController < ApplicationController
 		 @marks = Mark.search(params[:search]).all
 		authorize! :read, @branch			 
 		 @default_tab = 'marks'
-		 render :branch_searches_box
+	    respond_to do |format|
+			format.html {render :branch_searches_box}
+			format.xml  { render :xml => @marks }
+			format.js
+    	end				 
 	 end	 
 
+	def mark_columns(section)
+		h = Hash.new
+		section.sec_sub_maps.each do |map|
+			name =Subject.find(map.subject_id).name
+			mark_col = "sub#{map.mark_column}"
+			h[name] = mark_col
+		end
+		return h
+	end	
+	
 end

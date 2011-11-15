@@ -1,6 +1,5 @@
 <% marks_search = Mark.search(nil)%>
-<% hash = mark_columns(section) %>
-<%= form_for marks_search, :url => section_marks_searches_path, :html => {:method => 'get'} do |f| %>
+<%= form_for marks_search, :url => section_marks_searches_path, :html => {:method => 'get',  :class => 'ajaxified_search_form'} do |f| %>
 	<%= hidden_field (:marks_search, :section_id_eq, :value => section.id) %>
 	<%= hidden_field_tag :section_id, section.id %>	
 	<div id="form-table-div">
@@ -24,7 +23,7 @@
 						<strong> Marks Range </strong>
 					</td> 	
 					<td>
-						<% hash.each do |sub_name, mark_col| %>
+						<% mark_columns(@section).each do |sub_name, mark_col| %>
 							<%= f.text_field "#{mark_col}_gteq", :size => 4 %> - <%= f.text_field "#{mark_col}_lteq", :size => 4 %>  <%= "#{sub_name}"%>	  <br><br>
 						<% end %>
 					</td>
@@ -61,38 +60,7 @@
 			</tbody>
 		</table>
 	</div>
-<% end %>			
+<% end %>		
 
-<% if !@marks %>
-<% elsif  @marks.empty? %>
-	<p>
-		<strong> <%= no_search_matches() %> </strong>
-	</p>
-<% else %>
-	<table class='index_table_z' id='datatable' summary=<% "Section Marks search results" %>>
-	    <thead>		    	
-		    	<tr>
-		    		<th scope="col">Student Name</th>
-		    		<th scope="col"> Test Name </th>	    		
-					<% hash.each do |sub_name, mark_col| %>
-		        			<th scope="col"> <%= sub_name.humanize %></th>
-		            <% end %>
-		          <th scope="col"> Total </th>
-		          <th scope="col"> Arrears </th>		          
-		        </tr>	    	
-		</thead>
-	    <tbody>
-			<% for m in @marks %>
-				<tr>
-					<td> <%=m.student.name%></td>
-					<td> <%=m.test.name%></td>
-					<% hash.each do |sub_name, mark_col| %>
-						<td> <%= m.send(mark_col) %> </td>
-					<% end %>					
-					<td> <%=m.total%></td>
-					<td> <%=m.arrears%></td>					
-		        </tr>
-			<% end %>			
-	    </tbody>	
-	</table>
-<% end %>
+<div id="section_mark_search_results">
+</div>	

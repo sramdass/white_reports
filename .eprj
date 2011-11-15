@@ -409,7 +409,7 @@
             <key>index.html.er</key>
             <string>app\views\teachers\index.html.erb</string>
             <key>index.html.erb</key>
-            <string>app\views\events\index.html.erb</string>
+            <string>app\views\institutions\index.html.erb</string>
             <key>index.js</key>
             <string>app\views\teachers\index.js.erb</string>
             <key>index.js.er</key>
@@ -433,6 +433,8 @@
             <key>institutions</key>
             <string>app\controllers\institutions_controller.rb</string>
             <key>institutions_</key>
+            <string>app\controllers\institutions_controller.rb</string>
+            <key>institutions_C</key>
             <string>app\controllers\institutions_controller.rb</string>
             <key>institutions_c</key>
             <string>app\controllers\institutions_controller.rb</string>

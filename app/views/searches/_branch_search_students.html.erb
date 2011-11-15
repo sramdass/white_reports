@@ -1,5 +1,5 @@
 <% students_search = Student.search(nil) %>
-<%= form_for students_search, :url => branch_students_searches_path, :html => {:method => 'get'} do |f| %>
+<%= form_for students_search, :url => branch_students_searches_path, :html => {:method => 'get',  :class => 'ajaxified_search_form'} do |f| %>
 	<%= hidden_field (:students_search, :section_clazz_branch_id_eq, :value => branch.id) %>
 	<%= hidden_field_tag :branch_id,  branch.id %>	
 	<div id="form-table-div">
@@ -41,41 +41,7 @@
 	</div>
 <% end %>
 
+<div id="branch_student_search_results">
 
-<% if !@students %>
-<% elsif  @students.empty? %>
-	<p>
-		<strong> <%= no_search_matches() %> </strong>
-	</p>
-<% else %>
-	<table class='index_table_z' id='datatable' summary=<% "Branch Students search results" %>>
-	    <thead>		    	
-		    	<tr>
-		    		<th scope="col">Name</th>
-		    		<th scope="col"> ID </th>	    		
-		    		<th scope="col"> Class </th>	    		
-		    		<th scope="col"> Section </th>	    		
-					<th scope="col"> Email </th>	    		
-		          <th scope="col"> Address </th>
-		          <th scope="col"> Telephone </th>		          
-		        </tr>	    	
-		</thead>
-	    <tbody>
-			<%@students.each do |student| %>
-				<tr>
-					<td> <%= student.name %></td>
-					<td> <%= student.id_no %></td>
-					<td> <%= student.section.clazz.name %></td>
-					<td> <%= student.section.name %></td>					
-					<% if student.student_contact %>
-						<td> <strong> <%= student.student_contact.primary_email %></strong> , <%= student.student_contact.email %></td>
-						<td> <%= student.student_contact.address %> </td>
-						<td> <%= student.student_contact.mobile %> | <%= student.student_contact.telephone %> </td>
-					<% else %>				
-						<td>-</td><td>-</td><td>-</td>
-					<% end %>
-		        </tr>
-			<% end %>
-	    </tbody>	
-	</table>
-<% end %>
+</div>
+

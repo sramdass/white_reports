@@ -1,0 +1,29 @@
+<% if !@marks %>
+<% elsif  @marks.empty? %>
+	<p>
+		<strong> <%= no_search_matches() %> </strong>
+	</p>
+<% else %>
+	<table class='index_table_z' id='datatable' summary=<% "Branch Marks search results" %>>
+	    <thead>		    	
+		    	<tr>
+		    		<th scope="col">Student Name</th>
+		    		<th scope="col">Section</th>
+		    		<th scope="col">Class</th>
+		    		<th scope="col"> Test Name </th>	    		
+			        <th scope="col"> Total </th>
+		        </tr>	    	
+		</thead>
+	    <tbody>
+			<% for m in @marks %>
+				<tr>
+					<td> <%=m.student.name%></td>
+					<td> <%=m.section.name%></td>
+					<td> <%=m.section.clazz.name%></td>										
+					<td> <%=m.test.name%></td>
+					<td> <%=m.total%></td>
+		        </tr>
+			<% end %>			
+	    </tbody>	
+	</table>
+<% end %>
