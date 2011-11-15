@@ -27,7 +27,7 @@
 
 <table class="one-column-emphasis" summary="Day Calendar">
     <colgroup>
-    	<col class="oce-first" />
+    	<col class="oce-first" style='width:175px;'/>
     </colgroup>
     <thead>
     	<tr>
@@ -35,17 +35,27 @@
         	<th >Event Name </th>        	
         </tr>
     </thead>
+    <!-- Change the date of all the events to the current date. 
+    	    Otherwise it will render the calendar for the entire window for the recurring events -->
+    <% @events_on_day.each do |eom| %>
+    	<% eom.startime = Time.gm(@d.year, @d.month, @d.day, eom.startime.hour, eom.startime.min) %>
+    	<% eom.endtime = Time.gm(@d.year, @d.month, @d.day, eom.endtime.hour, eom.endtime.min) %>
+    <% end %>
+    <!-- Give a window of 1 hour before the first and after the last event -->
     <% first_time_slot = round_up_minutes_to_30(@events_on_day.first.startime) - 60.minutes %>
-    <% last_time_slot = round_up_minutes_to_30(@events_on_day.first.startime) + 60.minutes %>
+    <% last_time_slot = round_up_minutes_to_30(@events_on_day.last.endtime) + 60.minutes %>
     <% time_slot = first_time_slot %>
     <tbody>
 		<% loop do %>
 			<tr>
-		  		<td> <%= time_slot.to_time %></td>
+		  		<td> <%= time_slot.strftime("%I:%M")  %> to <%= (time_slot  + 30.minutes). strftime("%I:%M  %p")  %></td>
+		  		<!-- If an event falls into a particular slot, print the name. 
+		  				This needs to be optmized. -->
 		  		<% @events_on_day.each do |eod| %>
-		  			<% if (eod.startime > time_slot && eod.startime < time_slot + 30.minutes) || %>
-		  					<% (eod.endtime > time_slot && eod.endtime < time_slot + 30.minutes) || %>
-		  					<% (eod.startime < time_slot - 30.minutes && eod.endtime > time_slot + 30.minutes) %>
+		  		<!-- This if condition needs to be verified with various use cases -->
+		  			<% if (eod.startime >= time_slot && eod.startime < time_slot + 30.minutes) || %>
+		  					<% (eod.endtime >= time_slot && eod.endtime < time_slot + 30.minutes) || %>
+		  					<% (eod.startime <= time_slot  && eod.endtime >= time_slot + 30.minutes) %>
 			  		<td>
 			  			<%= eod.name %>
 			  		</td>
