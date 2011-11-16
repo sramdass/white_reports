@@ -208,6 +208,8 @@
             <string>app\views\layouts\application.html.erb</string>
             <key>appliatio</key>
             <string>app\views\layouts\application.html.erb</string>
+            <key>appliation.h</key>
+            <string>app\views\layouts\application.html.erb</string>
             <key>applica</key>
             <string>public\stylesheets\application.css</string>
             <key>applicati</key>

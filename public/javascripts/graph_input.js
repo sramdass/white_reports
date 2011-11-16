@@ -17,4 +17,10 @@ $("#event_attendees #teachers").tokenInput(function() {
     theme: "facebook"
   });	  
   
+$( ".datepicker" ).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		showOtherMonths: true			
+	});    
+  
 });
