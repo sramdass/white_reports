@@ -71,10 +71,44 @@ end
 		        return
 			end
 		end			
+		i = 0
+		#Update the startdate and enddate for each of the tests of this particular section
+		@section.sec_test_maps.each do |stmap|
+		    
+			tid = stmap.test.id
+			debugger
+			i = i +1
+			event_attributes = Hash.new
+			event_attributes[:name] = "dummy event"
+			event_attributes[:startime] = DateTime.now
+			event_attributes[:endtime] =  DateTime.now + 30.minutes
+			event_attributes[:recurring] = Event::RECURRING_EVERY_DAY
+			event_attributes[:description] = "dummy"
+			event_attributes[:recurring_end] = (DateTime.now + 3.days).to_date	
+			
+			if stmap.event_id != 0
+				debugger
+				event = Event.new(event_attributes)
+				event.sections = [Section.find(33)]
+				event.save!
+			else
+				event = Event.find(stmap.event_id)
+				event.attributes = event_attributes
+				event.save!
+			end
+			
+	    	stmap.attributes = 	{
+	    								:test_id => tid, 
+	    								:startdate => params["startdate"]["#{tid}"], 
+	    								:enddate => params["enddate"]["#{tid}"],
+	    								:event_id => event.id
+	    								}
+		end				
 
-		if @section.valid? && @section.sec_sub_maps.all?(&:valid?)
+		if @section.valid? && @section.sec_sub_maps.all?(&:valid?) && @section.sec_test_maps.all?(&:valid?)
 			@section.save!
 			@section.sec_sub_maps.each(&:save!)
+			@section.sec_test_maps.each(&:save!)			
 			@default_tab='show'
 			
 			# Whenever the list of tests for a section changes. update the marks table with rows for that test

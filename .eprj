@@ -326,6 +326,8 @@
             <string>db\migrate\20110815163153_create_subjects.rb</string>
             <key>css</key>
             <string>public\stylesheets\form_styles.css</string>
+            <key>day</key>
+            <string>app\views\events\_day_details.html.erb</string>
             <key>dd_dates_to_sec_tes</key>
             <string>db\migrate\20111115161935_add_dates_to_sec_test_maps.rb</string>
             <key>description_to_ev</key>
@@ -836,6 +838,8 @@
             <string>app\views\branches\testnew.html.erb</string>
             <key>tests_c</key>
             <string>app\controllers\tests_controller.rb</string>
+            <key>time_to</key>
+            <string>db\migrate\20111116124955_add_time_to_sec_test_maps.rb</string>
             <key>tnew</key>
             <string>app\views\schools\tnew.html.erb</string>
             <key>user.r</key>

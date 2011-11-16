@@ -7,19 +7,36 @@
 
 <%= form_for section do |f| %> 
 	<div id='form-table-div' style="width:860px;">
-		<p class='heading2'> Subjects, Teachers and Tests </p>
-		<span class='float-left'>	
-			<table class="form-table"  style='width: 200px' summary="Section Tests">
+		<p class='heading2'> Test Schedule </p>
+		<span >	
+			<table class="form-table" summary="Section Tests">
 			    <tbody>	
-			    		<tr><th>Tests</th></tr>	    	
+			    		<tr><th>Tests</th><th>Start Date</th><th>End Date</th></tr>	    	
 						<% for test in tests %>
-						<tr> <td>
-						 	<label> <%= check_box_tag "section[test_ids][]", test.id, section.tests.include?(test) %> <%= test.name  %>
-					 	</td></tr>
+						<% if section.tests.include?(test) %>
+					        <% startdate = test.sec_test_maps.find_by_section_id(section.id).startdate %>							 							
+					        <% enddate = test.sec_test_maps.find_by_section_id(section.id).enddate %>
+					        <% startdate = startdate.strftime("%d %B, %Y").to_s if startdate%>
+					        <% enddate = enddate.strftime("%d %B, %Y").to_s if enddate%>
+						<% else %>						        
+							<% startdate = enddate = nil %>
+						<% end %>
+						<tr> 
+							<td>
+								 <%= check_box_tag "section[test_ids][]", test.id, section.tests.include?(test) %> <%= test.name  %> 
+							 </td>
+							 <td>
+								<%= text_field_tag  "startdate[#{test.id}]",  startdate, :class => 'datepicker' %> 							
+							</td>
+							 <td>
+								<%= text_field_tag  "enddate[#{test.id}]",  enddate, :class => 'datepicker' %> 							
+							</td>							
+						</tr>
 						<% end %>	
 				</tbody>
 			</table>	
 		</span>
+		<p class='heading2'> Subjects and Teachers </p>		
 		<span>
 			<table class="form-table"  summary="Section Subjects">
 			    <tbody>
@@ -50,10 +67,10 @@
 							</td>
 						</tr>
 					<% end %>					
-					<tr> <td class='button'> <%= f.submit "Update section" %> </td></tr>
 				</tbody>
 			</table>	
 		</span>		
+					<p class='button'> <%= f.submit "Update section" %> </p>
 
 	</div>	
 <% end %>

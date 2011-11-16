@@ -18,9 +18,10 @@ $("#event_attendees #teachers").tokenInput(function() {
   });	  
   
 $( ".datepicker" ).datepicker({
+		dateFormat: 'd MM, yy',
 		changeMonth: true,
 		changeYear: true,
 		showOtherMonths: true			
-	});    
-  
+	});
+	
 });
