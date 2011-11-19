@@ -22,6 +22,8 @@
             <string>db\migrate\20110907130147_remove_class_teacher_id_from_clazzs.rb</string>
             <key>ABILI</key>
             <string>app\models\ability.rb</string>
+            <key>BRANCH_CONT</key>
+            <string>app\controllers\branches_controller.rb</string>
             <key>SECNEW</key>
             <string>app\views\clazzs\_secnew.html.erb</string>
             <key>STUDENTS_C</key>
@@ -30,6 +32,8 @@
             <string>app\views\students\show.html.erb</string>
             <key>TEACHERS_con</key>
             <string>app\controllers\teachers_controller.rb</string>
+            <key>_Edit</key>
+            <string>app\views\sections\_edit.html.erb</string>
             <key>_Teacher_co</key>
             <string>app\views\teachers\_teacher_contact_fields.html.erb</string>
             <key>_Teacher_f</key>

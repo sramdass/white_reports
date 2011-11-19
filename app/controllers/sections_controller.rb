@@ -46,7 +46,6 @@ end
 
 
 	def update
-	begin #Start of the exception handling		
 	#This will have the list of events that are created for the test maps that do not have a event associated.
 	#Incase this edit fails during the validation of all the objects, we need to delete these events.
 	#Now, you are thinking - Why can we save these after validation?
@@ -75,8 +74,16 @@ end
 			old_sec_test_maps << s
 		end
 		
+		#TODO - 
+		#This has to be modified with collections.build() method. If assigned like this,it will do a auto-save.
+		#In case of any exception after this point, we would not be able to roll back
+		#Refer - http://guides.rubyonrails.org/association_basics.html
+		#It says:
+		#When you assign an object to a has_and_belongs_to_many association, that object is automatically saved 
+		#(in order to update the join table). If you assign multiple objects in one statement, then they are all saved.
+		#If you want to assign an object to a has_and_belongs_to_many association without saving the object, use the collection.build method.
 		@section.attributes = params[:section]
-		
+				
 		# This section is for updating the teacher for a particular section + subject.
 		#Note that the subjects and the tests will be updated automatically (without any parsing)
 		@section.sec_sub_maps.each do |d|
@@ -183,16 +190,11 @@ end
 			redirect_to(@section,  :notice => 'Section was successfully updated.')
 		else
 			delete_events(delete_events_at_validation_failure)
-	    	@default_tab = 'edit'
+			@default_tab = 'edit'
 	    	flash[:notice] = "Validation failed for the section"
 	        render :actions_box
 		end
-	rescue  Exception => e #rescue for exception handling
-		delete_events(delete_events_at_validation_failure)		
-	    @default_tab = 'edit'	   
-	    flash[:notice] = "Exception happened while editing the section   ->    " + e.message
-	    render :actions_box
-	end #end of exception handling
+
 	end
 
 #-----------------------------------------------------------#
