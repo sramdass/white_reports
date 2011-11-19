@@ -1,5 +1,5 @@
 <tr class = "tfields">	
-	 <!-- <td> <%= f.select ( 'student_id', section.students.map {|p| [ p.name, p.id ] }, {:include_blank => 'None', :selected => f.object.student_id}) %> </td> -->
+	 <!-- <td> <%= f.select( 'student_id', section.students.map {|p| [ p.name, p.id ] }, {:include_blank => 'None', :selected => f.object.student_id}) %> </td> -->
 	<td> <%= section.students.map {|p| p.name if p.id.eql?(f.object.student_id.to_i)}%> </td>
 	<%= f.hidden_field :test_id, :value => test.id %>
  	<% section.sec_sub_maps.each do |map| %>
