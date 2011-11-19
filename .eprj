@@ -70,6 +70,8 @@
             <string>app\views\institutions\_institutions.html.erb</string>
             <key>_log_i</key>
             <string>app\views\shared\_log_in.html.erb</string>
+            <key>_mark_fi</key>
+            <string>app\views\sections\_mark_fields.html.erb</string>
             <key>_marknew</key>
             <string>app\views\sections\_marknew.html.erb</string>
             <key>_marks</key>
@@ -623,6 +625,8 @@
             <key>sec_sub_map.r</key>
             <string>app\models\sec_sub_map.rb</string>
             <key>sec_test</key>
+            <string>app\models\sec_test_map.rb</string>
+            <key>sec_test_ma</key>
             <string>app\models\sec_test_map.rb</string>
             <key>sec_test_map</key>
             <string>app\models\sec_test_map.rb</string>

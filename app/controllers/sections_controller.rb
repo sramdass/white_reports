@@ -46,10 +46,35 @@ end
 
 
 	def update
+	begin #Start of the exception handling		
+	#This will have the list of events that are created for the test maps that do not have a event associated.
+	#Incase this edit fails during the validation of all the objects, we need to delete these events.
+	#Now, you are thinking - Why can we save these after validation?
+	# Beacause we need the event ids before the validation to put inside the test map attributes and we dont
+	#get an event_id until we save a particular event.....	
+	#In case an exception happens, the events in this array has to be deleted. This is to make sure that we 
+	#do not have orphan events in the scenario when an exception happens after a save is triggered.
+	delete_events_at_validation_failure = []
+	delete_events_at_successful_save = []	
+	old_sec_test_maps = []
+	
 		#@section = Section.find(params[:id])
 		@default_tab = 'show'   		
 		params[:section][:subject_ids] ||= []
 		params[:section][:test_ids] ||= []
+				
+		#We need to have the difference between the old test maps and the new test maps.
+		#The events corresponding to each of the difference have to be deleted. The difference
+		#has all the tests that were in this section previously and will be deleted now because
+		#those tests have been unchecked in the edit seciton page.
+		
+		#Note: I cannot simply write -> old_sec_test_maps = @section.sec_test_maps
+		#If I do that old_sec_test_maps behaves like a pointer. Whenever @section.sec_test_maps
+		# is updated, this old_sec_test_maps also gets changed. Baffling behaviour!!! Whatever you say, Rails!
+		@section.sec_test_maps.each do |s|
+			old_sec_test_maps << s
+		end
+		
 		@section.attributes = params[:section]
 		
 		# This section is for updating the teacher for a particular section + subject.
@@ -71,44 +96,82 @@ end
 		        return
 			end
 		end			
-		i = 0
+		
+		#This array will have the list of events that have to be validated along with the section and sectest maps.
+		#Technically, this array will have a list of events that are already mapped to a particular sec_test_map
+		#that  will again be updated in this action. Yes, I am confused, too!
+		events_to_be_validated = []	
 		#Update the startdate and enddate for each of the tests of this particular section
 		@section.sec_test_maps.each do |stmap|
-		    
 			tid = stmap.test.id
-			debugger
-			i = i +1
-			event_attributes = Hash.new
-			event_attributes[:name] = "dummy event"
-			event_attributes[:startime] = DateTime.now
-			event_attributes[:endtime] =  DateTime.now + 30.minutes
-			event_attributes[:recurring] = Event::RECURRING_EVERY_DAY
-			event_attributes[:description] = "dummy"
-			event_attributes[:recurring_end] = (DateTime.now + 3.days).to_date	
+			sdate = params["startdate"]["#{tid}"].to_date
+			edate = params["enddate"]["#{tid}"].to_date
 			
-			if stmap.event_id != 0
-				debugger
+			#The timings  have to be changed, depending on the period timings the branch is gonna have
+			stime = Time.gm(sdate.year, sdate.month, sdate.day, 9, 0) #start from 9 0 clock that day
+			etime = Time.gm(sdate.year, sdate.month, sdate.day, 11, 0) #end at 11 0 clock that day
+			test_name = Test.find(tid).name
+		    			
+			event_attributes = Hash.new
+			event_attributes = { 	
+												:name => test_name,
+												:startime => stime,
+												:endtime =>  etime,
+												:recurring => Event::RECURRING_EVERY_DAY,
+												:description => test_name,
+												:recurring_end => edate
+												}
+			
+			event = nil; #make sure that the scope of this variable is not narrowed only to the following if-else
+			#If the event is 0 or nil, it means that an event has not been created for this particular test
+			if stmap.event_id ==0 or !stmap.event_id
 				event = Event.new(event_attributes)
-				event.sections = [Section.find(33)]
-				event.save!
+				event.sections = [@section]
+				if event.save
+					#This array will be used to roll back all the save events in case this whole section edit goes to failure
+					delete_events_at_validation_failure << event
+				else
+					@default_tab = 'edit'
+					flash[:error] = "Cannot create associated event"
+	        		render :actions_box
+	        		return
+				end
 			else
 				event = Event.find(stmap.event_id)
 				event.attributes = event_attributes
-				event.save!
+				events_to_be_validated << event
 			end
 			
 	    	stmap.attributes = 	{
 	    								:test_id => tid, 
-	    								:startdate => params["startdate"]["#{tid}"], 
-	    								:enddate => params["enddate"]["#{tid}"],
-	    								:event_id => event.id
+	    								:startdate => sdate,
+	    								:enddate => edate,
+	    								:event_id => event.id  #This is why we have to save the new events, to get the event.id
 	    								}
-		end				
-
-		if @section.valid? && @section.sec_sub_maps.all?(&:valid?) && @section.sec_test_maps.all?(&:valid?)
+		end	# End of - @section.sec_test_maps.each do |stmap|
+		
+		if @section.valid? && @section.sec_sub_maps.all?(&:valid?) && @section.sec_test_maps.all?(&:valid?) && events_to_be_validated.all?(&:valid?)
+			#Save the events that have been edited
+			events_to_be_validated.each(&:save!)
 			@section.save!
 			@section.sec_sub_maps.each(&:save!)
-			@section.sec_test_maps.each(&:save!)			
+			@section.sec_test_maps.each(&:save!)
+
+			#This is the difference between the sec_test_maps the section already had and the sec_test_maps
+			# the section has now (as a result of this edit). The events corresponding to all the sec_test_maps
+			#in the difference have to be deleted.
+			#We have to delete it manually becuase, when a new set of sec_test_maps are assigned to the section,
+			#the old set of sec_test_maps will be deleted, NOT DESTROYED. The associated events will get deleted
+			#(coz of the sec_test_maps belongs_to) only if the sec_test_maps events are destroyed. Here only delete
+			#happens when the sec_test_maps are automatically assigned to the seciton.
+			
+			#Refer - http://guides.rubyonrails.org/association_basics.html.
+			#It says - ' Automatic deletion of join models is direct, no destroy callbacks are triggered. '
+			diff_sec_test_maps = old_sec_test_maps -  Section.find(@section.id).sec_test_maps #@section is not getting refreshed here
+			diff_sec_test_maps.each do |map|
+				delete_events_at_successful_save << Event.find(map.event_id)
+			end			
+			delete_events(delete_events_at_successful_save)		
 			@default_tab='show'
 			
 			# Whenever the list of tests for a section changes. update the marks table with rows for that test
@@ -117,11 +180,19 @@ end
 			for test_id in params[:section][:test_ids]
 				build_marks_table(@section.id, test_id)				
 			end			
-			redirect_to (@section,  :notice => 'Section was successfully updated.')
+			redirect_to(@section,  :notice => 'Section was successfully updated.')
 		else
+			delete_events(delete_events_at_validation_failure)
 	    	@default_tab = 'edit'
-	        format.html { render :actions_box }
+	    	flash[:notice] = "Validation failed for the section"
+	        render :actions_box
 		end
+	rescue  Exception => e #rescue for exception handling
+		delete_events(delete_events_at_validation_failure)		
+	    @default_tab = 'edit'	   
+	    flash[:notice] = "Exception happened while editing the section   ->    " + e.message
+	    render :actions_box
+	end #end of exception handling
 	end
 
 #-----------------------------------------------------------#
@@ -138,15 +209,12 @@ end
   	 #@section = Section.find(params[:id])
     if @section.update_attributes(params[:section])
 		@default_tab='show'
-			redirect_to (@section,  :notice => 'Students were successfully updated.')
+			redirect_to(@section,  :notice => 'Students were successfully updated.')
     else
     	@default_tab = 'stunew'
         render :actions_box
     end
   end
-
-#-----------------------------------------------------------#
-
 
 #-----------------------------------------------------------#
   
@@ -163,7 +231,7 @@ end
   	 #@section = Section.find(params[:id])
     if @section.update_attributes(params[:section])
 		@default_tab='show'			
-		redirect_to (@section,  :notice => 'Marks were successfully updated.')    	
+		redirect_to(@section,  :notice => 'Marks were successfully updated.')    	
     else
     	@default_tab = 'stunew'
         render :actions_box
@@ -237,5 +305,13 @@ end
 		end
 	end		
 #-----------------------------------------------------------#	
+
+	def delete_events(events)
+		if !events.empty?
+			events.each do |e|
+				e.destroy
+			end
+		end
+	end
 			
 end
