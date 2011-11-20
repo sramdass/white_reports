@@ -22,6 +22,9 @@ WhiteReports::Application.routes.draw do
 		
 		get 'testnew', :on => :member
 		put 'testcreate', :on => :member	 
+		
+		get 'periodnew', :on => :member
+		put 'periodcreate', :on => :member	 		
 		get 'actions_box', :on => :member		
 	end
 	
@@ -45,7 +48,9 @@ WhiteReports::Application.routes.draw do
 		get 'emailnew', :on => :member
 		post 'email', :on => :member			
 		get 'marknew', :on => :member
-		post 'markcreate', :on => :member		
+		post 'markcreate', :on => :member
+		get 'timetablenew', :on => :member
+		put 'timetablecreate', :on => :member				
 		get 'actions_box', :on => :member			
 	end
 	

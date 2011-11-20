@@ -1,0 +1,21 @@
+<table class='index_table_z' >
+    <thead>	
+		<tr>
+			<th scope="col"> Period Number </th>
+			<th scope="col"> Start Time Number </th>
+			<th scope="col"> End Time </th>
+		</tr>
+	</thead>
+    <tbody>
+	<% branch.periods.each do |p| %>
+		<tr>
+			<td> <%= p.period_no %> </td>
+			<td> <%= p.starttime.strftime("%I:%M %p") %> </td>
+			<td> <%= p.endtime.strftime("%I:%M %p") %> </td>			
+		</tr>
+	<% end %>
+    </tbody>	
+</table>		
+
+
+

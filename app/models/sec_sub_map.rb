@@ -16,7 +16,9 @@
 class SecSubMap < ActiveRecord::Base
 	belongs_to :section
 	belongs_to :subject
+	belongs_to :teacher
 	
 	scope :by_section_id, lambda { |id| where(:section_id => id)}
 	scope :by_subject_id, lambda { |id| where(:subject_id => id)}
+	scope :by_teacher_id, lambda { |id| where(:teacher_id => id)}
 end

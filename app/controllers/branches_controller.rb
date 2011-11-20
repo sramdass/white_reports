@@ -236,6 +236,31 @@ end
   end
 
 #-----------------------------------------------------------#
+
+	def periodnew
+  		#@branch = Branch.find(params[:id])
+		@default_tab = 'periodnew'
+		render :actions_box  		
+  	end
+  	
+#-----------------------------------------------------------#
+  	
+  	 def periodcreate
+	  	 #@branch = Branch.find(params[:id])
+	  	 respond_to do |format|
+	      if @branch.update_attributes(params[:branch])
+			@default_tab='periods'
+			format.html { redirect_to(@branch	, :notice => ' Periods were successfully updated.') }      	   	
+	        format.xml  { head :ok }
+	      else
+		    @default_tab = 'periodnew'
+	    	format.html { render  :actions_box }
+	        format.xml  { render :xml => @branch.errors, :status => :unprocessable_entity }
+	      end
+    end
+  end
+
+#-----------------------------------------------------------#
   
  def sort_column
     Branch.column_names.include?(params[:sort]) ? params[:sort] : "name"

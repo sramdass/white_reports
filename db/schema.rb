@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111116124955) do
+ActiveRecord::Schema.define(:version => 20111120044100) do
 
   create_table "branches", :force => true do |t|
     t.integer  "institution_id"
@@ -103,6 +103,15 @@ ActiveRecord::Schema.define(:version => 20111116124955) do
     t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "periods", :force => true do |t|
+    t.integer  "period_no"
+    t.time     "starttime"
+    t.time     "endtime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "branch_id"
   end
 
   create_table "profiles", :force => true do |t|
@@ -223,6 +232,20 @@ ActiveRecord::Schema.define(:version => 20111116124955) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "branch_id"
+  end
+
+  create_table "time_tables", :force => true do |t|
+    t.integer  "section_id"
+    t.integer  "period_no"
+    t.integer  "monday"
+    t.integer  "tuesday"
+    t.integer  "wednesday"
+    t.integer  "thursday"
+    t.integer  "friday"
+    t.integer  "saturday"
+    t.integer  "sunday"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

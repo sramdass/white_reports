@@ -10,6 +10,7 @@
 				<li><a id = 'section_subjects' <% if default_tab?('subjects') %> class = 'selected' <% end %> href="#">Subjects</a></li>
 				<li><a id = 'section_tests' <% if default_tab?('tests') %> class = 'selected' <% end %> href="#">Tests</a></li>												
 				<li><a id = 'section_reports'  <% if default_tab?('reports') %> class = 'selected' <% end %> href="#">Reports</a></li>					
+				<li><a id = 'section_timetable'  <% if default_tab?('timetable') %> class = 'selected' <% end %> href="#">Time Table</a></li>					
 				<li> <%= link_to 'Advanced Search', section_searches_box_searches_path(:section_id => @section.id) %> </li>
 				<li> <%= link_to 'Calendar', events_path(:object_id => @section.id, :object_type => "Section") %> </li>		<!-- :day will be current day-->
 			<% end %>			
@@ -19,6 +20,7 @@
 			<% if can? :update_section_elements, @section%>				
 				<li><a id = 'section_update_students' <% if default_tab?('stunew') %> class = 'selected' <% end %> href="#">Update Students</a></li>
 				<li><a id = 'section_update_marks' <% if default_tab?('marknew') %> class = 'selected' <% end %> href="#">Update Marks</a></li>					
+				<li><a id = 'section_update_timetable' <% if default_tab?('marknew') %> class = 'selected' <% end %> href="#">Update TimeTable</a></li>					
 			<% end %>
 		</ul>
 	</div>
@@ -44,6 +46,9 @@
 		<div id='section_reports' class='cantoggle'>	
 			<%= render 'report_options', :section => @section%>
 		</div> 			
+		<div id='section_timetable' class='cantoggle'>	
+			<%= render 'timetable', :section => @section%>
+		</div> 					
 	<% end %>		
 	<% if can? :update, @section%>	
 		<div id='section_edit' class='cantoggle'>
@@ -61,6 +66,9 @@
 				<strong> Update the tests before accessing this page </strong>
 			<% end %>
 		</div> 	
+		<div id='section_update_timetable' class='cantoggle'>	
+			<%= render 'timetablenew', :section => @section %>
+		</div> 			
 	<% end %>
 	<div id="fav-bar">
 		<ul>

@@ -156,7 +156,7 @@ class EventsController < ApplicationController
 #-----------------------------------------------------------#
   def show_day
 	initialize_object_and_day
-	@events_on_day = Event.on_date(@d, @object).sort_by &:startime
+	@events_on_day = Event.on_date(@d, @object).sort_by &:startime || []
   end
   
   #These initializations have to be made for most of the actions (show, edit, index & show_day)

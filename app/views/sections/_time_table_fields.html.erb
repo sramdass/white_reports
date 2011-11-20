@@ -1,0 +1,13 @@
+<tr class = "tfields">	
+	<% subs = @section.subjects %>
+	<td> <%= f.select (:period_no, @section.clazz.branch.periods.map {|p| [ p.period_no, p.id ] }, {:include_blank => 'None'}) %>  </td>
+	<td> <%= f.select (:monday, subs.map {|s| [ s.name, s.id ] }, {:include_blank => 'None'}) %>  </td>
+	<td> <%= f.select (:tuesday, subs.map {|s| [ s.name, s.id ] }, {:include_blank => 'None'}) %>  </td>
+	<td> <%= f.select (:wednesday, subs.map {|s| [ s.name, s.id ] }, {:include_blank => 'None'}) %>  </td>
+	<td> <%= f.select (:thursday, subs.map {|s| [ s.name, s.id ] }, {:include_blank => 'None'}) %>  </td>
+	<td> <%= f.select (:friday, subs.map {|s| [ s.name, s.id ] }, {:include_blank => 'None'}) %>  </td>
+	<td> <%= f.select (:saturday, subs.map {|s| [ s.name, s.id ] }, {:include_blank => 'None'}) %>  </td>
+	<td> <%= f.select (:sunday, subs.map {|s| [ s.name, s.id ] }, {:include_blank => 'None'}) %>  </td>
+	<td class='remove-button'> <%= link_to_remove_fields "X", f %> </td>
+ </tr>
+	

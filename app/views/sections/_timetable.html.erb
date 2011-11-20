@@ -1,0 +1,62 @@
+<% tt = TimeTable.where(:section_id => section.id).order("period_no").all %>
+<table class='index_table_z' summary="Section students index">
+    <thead>	
+		<tr>
+	        	<th scope="col">Period Number</th>
+	            <th scope="col"> Monday </th>
+	            <th scope="col">Tuesday</th>
+	            <th scope="col">Wednesday</th>
+	            <th scope="col">Thursday</th>            
+	            <th scope="col">Friday</th> 
+	            <th scope="col">Saturday</th>
+	            <th scope="col">Sunday</th> 
+		</tr>
+	</thead>
+    <tbody>
+	<% tt.each do |t| %>
+		<% period_details = section.clazz.branch.periods.find_by_period_no(t.period_no)%>
+		<tr>
+			<td> 
+				<%= t.period_no %> <br>
+				(<%= period_details.starttime.strftime("%I:%M")%> - <%=period_details.endtime.strftime("%I:%M  %p")%>)
+			</td>
+			<td> <% if !t.monday.nil? %> <%= Subject.find(t.monday).name %> <% else %> NA <% end %> </td>
+			<td> <% if !t.tuesday.nil? %> <%= Subject.find(t.tuesday).name %> <% else %> NA <% end %></td>
+			<td> <% if !t.wednesday.nil? %> <%= Subject.find(t.wednesday).name %> <% else %> NA <% end %> </td>
+			<td> <% if !t.thursday.nil? %> <%= Subject.find(t.thursday).name %> <% else %> NA <% end %></td>
+			<td> <% if !t.friday.nil? %> <%= Subject.find(t.friday).name %> <% else %> NA <% end %></td>
+			<td> <% if !t.saturday.nil? %> <%= Subject.find(t.saturday).name %> <% else %> NA <% end %></td>
+			<td> <% if !t.sunday.nil? %> <%= Subject.find(t.sunday).name %> <% else %> NA <% end %></td>
+		</tr>
+	<% end %>
+    </tbody>	    
+</table>		    
+
+<table class='index_table_z' summary="Section students index">
+    <thead>	
+		<tr>
+	        	<th scope="col">Day</th>
+	        	<% tt.each do |t|%>
+	            	<th scope="col"> 
+	            		<%= t.period_no %> 
+            		</th>
+	            <% end %>
+		</tr>
+	</thead>
+    <tbody>
+		<% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day| %>
+			<% hash = TimeTable.section_day_periods(section, day) %>
+			<tr>
+				<td><%= day.humanize %></td>
+				<% tt.each do |t|%>
+					<% if hash[t.period_no]%>
+						<td> <%=Subject.find(hash[t.period_no]).name %> </td>
+					<%else%>
+						<td>NA</td>
+					<%end%>
+				<% end %>
+			</tr>
+		<% end %>    	
+    </tbody>	    
+</table>		    
+ 

@@ -1,0 +1,28 @@
+<p id="input_table_row_count"> </p>			
+<%= form_for (section, :url => timetablecreate_section_path(section)) do |f| %>
+	<%= render 'shared/error_messages', :target => section %>
+	<table class="input_form_table">
+		<thead>
+	    	<tr>
+	        	<th scope="col">Period Number</th>
+	            <th scope="col"> Monday </th>
+	            <th scope="col">Tuesday</th>
+	            <th scope="col">Wednesday</th>
+	            <th scope="col">Thursday</th>            
+	            <th scope="col">Friday</th> 
+	            <th scope="col">Saturday</th>
+	            <th scope="col">Sunday</th> 
+				<th scope="col">Delete</th> 	            
+	        </tr>
+	    </thead>
+	    <tbody>
+			<%= f.fields_for :time_tables do |builder| %>	
+		 	  <%= render "time_table_fields", :f => builder %>	 	  
+			<% end %>
+	    </tbody>		
+	</table>			
+ 	<p class='add-button'> <%= link_to_add_fields "Add Period", f, :time_tables %> </p>	 	
+	<p class='button'> <%= f.submit  "Update TimeTable" %>  </p>	  
+<% end %>
+
+

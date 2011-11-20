@@ -1,0 +1,21 @@
+ <%= form_for (branch, :url => periodcreate_branch_path(branch)) do |f| %>		
+	<%= render 'shared/error_messages', :target => branch %>
+	<table class="input_form_table">
+		<thead>
+	    	<tr>
+	        	<th scope="col">Period Number</th>
+	        	<th scope="col">Start Time</th>
+	        	<th scope="col">End Time </th>	        		        	
+	            <th scope="col"> Delete </th>
+	        </tr>
+	    </thead>
+	    <tbody>		
+		<%= f.fields_for :periods do |builder| %>	
+	 		<%= render "period_fields", :f => builder %>	 	  
+		<% end %>		
+	    </tbody>		
+	</table>	
+ 	<p class='add-button'> <%= link_to_add_fields "Add Period", f, :periods %> </p>     		  
+	<p class='button'> <%= f.submit  "Update Periods" %> </p>
+<% end %>
+

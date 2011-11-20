@@ -1,7 +1,7 @@
  <p id="input_table_row_count"> </p>	
 <%= form_for (branch, :url => clzcreate_branch_path(branch)) do |f| %>		
 	<%= render 'shared/error_messages', :target => branch %>
-	<table class="input_form_table"  summary="Branch Teachers index">
+	<table class="input_form_table">
 		<thead>
 	    	<tr>
 	        	<th scope="col">Class Name</th>
@@ -16,6 +16,5 @@
 	</table>	
  	<p class='add-button'> <%= link_to_add_fields "Add Class", f, :clazzs %> </p>     		  
 	<p class='button'> <%= f.submit  "Update Classes" %> </p>
-     </div>     	
 <% end %>
 

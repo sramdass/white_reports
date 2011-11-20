@@ -26,6 +26,9 @@ class Section < ActiveRecord::Base
 	has_many :students, :dependent => :destroy
 	accepts_nested_attributes_for :students, :reject_if => :has_only_destroy?, :allow_destroy => true
 	
+	has_many :time_tables, :dependent => :destroy
+	accepts_nested_attributes_for :time_tables, :reject_if => :has_only_destroy?, :allow_destroy => true	
+	
 	has_many :marks, :dependent => :destroy
 	accepts_nested_attributes_for :marks, :reject_if => :has_only_destroy?, :allow_destroy => true	
 	

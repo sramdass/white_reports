@@ -4,6 +4,8 @@
     <dict>
         <key>fileTriggers</key>
         <dict>
+            <key>19145918_crea</key>
+            <string>db\migrate\20111119145918_create_periods.rb</string>
             <key>20110817055045_add_school</key>
             <string>db\migrate\20110817055045_add_school_id_to_subjects.rb</string>
             <key>20110818090434_</key>
@@ -20,6 +22,8 @@
             <string>db\migrate\20110907130146_rename_class_teacher_id_in_clazzs.rb</string>
             <key>20110907130147</key>
             <string>db\migrate\20110907130147_remove_class_teacher_id_from_clazzs.rb</string>
+            <key>20111119145918_create_periods.rb</key>
+            <string>db\migrate\20111119145918_create_periods.rb</string>
             <key>ABILI</key>
             <string>app\models\ability.rb</string>
             <key>BRANCH_CONT</key>
@@ -52,10 +56,14 @@
             <string>app\views\institutions\_branchnew.html.erb</string>
             <key>_branchnew</key>
             <string>app\views\institutions\_branchnew.html.erb</string>
+            <key>_classes</key>
+            <string>app\views\branches\_classes.html.erb</string>
             <key>_clazz_fi</key>
             <string>app\views\branches\_clazz_fields.html.erb</string>
             <key>_clznew</key>
             <string>app\views\branches\_clznew.html.erb</string>
+            <key>_day</key>
+            <string>app\views\events\_day_details.html.erb</string>
             <key>_edit</key>
             <string>app\views\sections\_edit.html.erb</string>
             <key>_eidt</key>
@@ -82,6 +90,8 @@
             <string>app\views\sections\_mark_fields.html.erb</string>
             <key>_my_page</key>
             <string>app\views\teachers\_my_page.html.erb</string>
+            <key>_periodne</key>
+            <string>app\views\branches\_periodnew.html.erb</string>
             <key>_repor</key>
             <string>app\views\sections\_report_options.html.erb</string>
             <key>_report</key>
@@ -178,8 +188,14 @@
             <string>app\views\sections\_tests.html.erb</string>
             <key>_tests.htm</key>
             <string>app\views\sections\_tests.html.erb</string>
+            <key>_timetab</key>
+            <string>app\views\sections\_timetable.html.erb</string>
+            <key>_timetable</key>
+            <string>app\views\sections\_timetable.html.erb</string>
             <key>_to_events</key>
             <string>db\migrate\20111105112035_add_startdate_to_events.rb</string>
+            <key>_to_periods</key>
+            <string>db\migrate\20111119151338_add_branch_id_to_periods.rb</string>
             <key>_to_sec_sub</key>
             <string>db\migrate\20111014063742_add_pass_marks_to_sec_sub_maps.rb</string>
             <key>_to_sectio</key>
@@ -199,7 +215,7 @@
             <key>actions_bo</key>
             <string>app\views\clazzs\actions_box.html.erb</string>
             <key>actions_box</key>
-            <string>app\views\teachers\actions_box.html.erb</string>
+            <string>app\views\sections\actions_box.html.erb</string>
             <key>add_bran</key>
             <string>db\migrate\20110902035458_add_branch_ids.rb</string>
             <key>add_max</key>
@@ -366,9 +382,13 @@
             <string>app\views\shared\_error_messages.html.erb</string>
             <key>event.rb</key>
             <string>app\models\event.rb</string>
+            <key>events</key>
+            <string>app\controllers\events_controller.rb</string>
             <key>events_c</key>
             <string>app\controllers\events_controller.rb</string>
             <key>events_con</key>
+            <string>app\controllers\events_controller.rb</string>
+            <key>events_cont</key>
             <string>app\controllers\events_controller.rb</string>
             <key>fb_</key>
             <string>public\stylesheets\fb_main.css</string>
@@ -518,6 +538,12 @@
             <string>app\controllers\password_resets_controller.rb</string>
             <key>password_reset_C</key>
             <string>app\controllers\password_resets_controller.rb</string>
+            <key>period.r</key>
+            <string>app\models\period.rb</string>
+            <key>period.rb</key>
+            <string>app\models\period.rb</string>
+            <key>period_f</key>
+            <string>app\views\branches\_period_fields.html.erb</string>
             <key>pie_anc</key>
             <string>app\views\marks\pie_and_col.erb</string>
             <key>prof</key>
@@ -628,6 +654,8 @@
             <string>app\models\sec_sub_map.rb</string>
             <key>sec_sub_map.r</key>
             <string>app\models\sec_sub_map.rb</string>
+            <key>sec_sub_map.rb</key>
+            <string>app\models\sec_sub_map.rb</string>
             <key>sec_test</key>
             <string>app\models\sec_test_map.rb</string>
             <key>sec_test_ma</key>
@@ -681,6 +709,8 @@
             <key>sections_con</key>
             <string>app\controllers\sections_controller.rb</string>
             <key>sections_cont</key>
+            <string>app\controllers\sections_controller.rb</string>
+            <key>sections_contr</key>
             <string>app\controllers\sections_controller.rb</string>
             <key>sections_contro</key>
             <string>app\controllers\sections_controller.rb</string>
@@ -745,7 +775,7 @@
             <key>student_f</key>
             <string>app\views\students\_student_fields.html.erb</string>
             <key>student_fie</key>
-            <string>app\views\students\_student_fields.html.erb</string>
+            <string>app\views\sections\_student_fields.html.erb</string>
             <key>student_fiel</key>
             <string>app\views\students\_student_fields.html.erb</string>
             <key>student_fields</key>
@@ -796,6 +826,8 @@
             <string>public\stylesheets\fb_table_styles.css</string>
             <key>tchrnew</key>
             <string>app\views\branches\_tchrnew.erb</string>
+            <key>te_time_table</key>
+            <string>db\migrate\20111120044100_create_time_tables.rb</string>
             <key>teac</key>
             <string>app\views\schools\_teacher_fields.html.erb</string>
             <key>teacher.r</key>
@@ -846,8 +878,12 @@
             <string>app\views\branches\testnew.html.erb</string>
             <key>tests_c</key>
             <string>app\controllers\tests_controller.rb</string>
+            <key>time_table</key>
+            <string>app\models\time_table.rb</string>
             <key>time_to</key>
             <string>db\migrate\20111116124955_add_time_to_sec_test_maps.rb</string>
+            <key>timetable</key>
+            <string>app\models\time_table.rb</string>
             <key>tnew</key>
             <string>app\views\schools\tnew.html.erb</string>
             <key>user.r</key>

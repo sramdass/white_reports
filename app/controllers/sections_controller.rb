@@ -241,6 +241,27 @@ end
   end
 
 #-----------------------------------------------------------#
+ 
+  def timetablenew
+  	#@section = Section.find(params[:id])
+	@default_tab = 'timetablenew'
+	render :actions_box
+  end
+  
+#-----------------------------------------------------------#
+
+  def timetablecreate
+  	 #@section = Section.find(params[:id])
+    if @section.update_attributes(params[:section])
+		@default_tab='show'
+		redirect_to(@section,  :notice => 'Timetable was successfully updated.')
+    else
+    	@default_tab = 'timetablenew'
+        render :actions_box
+    end
+  end
+
+#-----------------------------------------------------------#
 
 def actions_box
 	 #@section = Section.find(params[:id])
@@ -315,5 +336,8 @@ end
 			end
 		end
 	end
-			
+	
+#-----------------------------------------------------------#	
+
+		
 end

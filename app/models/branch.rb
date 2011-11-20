@@ -35,6 +35,9 @@ class Branch < ActiveRecord::Base
 	has_many :tests, :dependent => :destroy
 	accepts_nested_attributes_for :tests, :reject_if => :has_only_destroy?,  :allow_destroy => true
 	
+	has_many :periods, :dependent => :destroy
+	accepts_nested_attributes_for :periods, :reject_if => :has_only_destroy?,  :allow_destroy => true	
+	
 	has_many :schedules, :as => :attendee, :dependent => :destroy #polymorphic assocation. 'resource' can be teacher, section or school etc..
 	has_many :events, :through => :schedules	#for many to many relationship. 	
 	
