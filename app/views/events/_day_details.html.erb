@@ -69,37 +69,14 @@
 </table>
 
 
-<!-- Teacher table -->
+<!-- Time table for the teacher -->
 <% if @object.class.to_s.downcase.eql?("teacher")%>
-	<% periods = @object.branch.periods %>
-	<table class="one-column-emphasis">
-	    <colgroup>
-	    	<col class="oce-first" />
-	    </colgroup>
-	    <thead>
-	    	<tr>
-	        	<th scope="col"> Period Number </th>
-	        	<th scope="col"> Section Details </th>
-	        </tr>
-	    </thead>
-	    <tbody>
-	    	<% periods.each do |p| %>
-	    		<tr>
-		    		<td> <%= p.period_no %> </td>
-		    		<td>
-		    			<% @object.sec_sub_maps.each do |map| %>
-		    				<% rows = TimeTable.for_section_id(map.section_id).for_period_no(p.period_no).find(:all, :select => @d.strftime("%A").downcase) %>
-			    			<% rows.each do |row| %>
-				    			<% if row.send(@d.strftime("%A").downcase) == map.subject_id %>
-				    				<%= map.section.name %> - <%=map.subject.name%>
-			    				<% else %>
-			    					NA
-			    				<% end %>
-			    			<% end %>
-		    			<% end %>
-		    		</td>
-				</tr>
-		    <%end %>
-	    </tbody>
-	</table>
+	<%= render 'teacher_periods' %>
 <%end%>
+
+<!-- Time table for the section -->
+<% if @object.class.to_s.downcase.eql?("section")%>
+	<%= render 'section_periods' %>
+<%end%>
+
+

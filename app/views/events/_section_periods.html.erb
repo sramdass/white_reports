@@ -1,0 +1,45 @@
+<% tt = TimeTable.where(:section_id => @object.id).order("period_no").all %>
+<!-- tt will contain the entire time table of a section. Rows as the periods and cols as the days-->
+<table class="one-column-emphasis">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+		<tr>
+	        	<th scope="col">Period Number</th>
+	            <th scope="col"> Subject </th>
+	            <th scope="col">Teacher</th>
+		</tr>
+	</thead>
+    <tbody>
+	<% tt.each do |t| %>
+		<!--t will have the subject_ids for a  particular period for all the days. Refer the TimeTable table-->
+		<!--Get the detais (timings) of this particular period from the periods table that is common for a branch -->
+		<% period_details = @object.clazz.branch.periods.find_by_period_no(t.period_no)%>
+		<!--colname is the day name. it will determine which day of the 't' is required for this iteration-->
+		<% colname = @d.strftime("%A").downcase %> 
+		<tr>
+			<td> 
+				<%= t.period_no %> <br>
+				(<%= period_details.starttime.strftime("%I:%M")%> - <%=period_details.endtime.strftime("%I:%M  %p")%>)
+			</td>
+			<td> 
+				<!--This will return a day name. This portion of code has been copied and modified from _timetable.html.erb in section views-->
+				<% if t.send(colname) %> 
+					<%= Subject.find(t.send(colname)).name %> 
+				<% else %> 
+					NA 
+				<% end %> 
+			</td>
+			<td>
+				<% tid = @object.sec_sub_maps.find_by_subject_id(t.send(colname)).teacher_id %>
+				<% if tid %> 
+					<%= Teacher.find(tid).name %> 
+				<%else%>
+					NA
+				<%end%>
+			</td>
+		</tr>
+	<% end %>
+    </tbody>	    
+</table>

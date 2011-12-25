@@ -1,0 +1,38 @@
+<% periods = @object.branch.periods %>
+<table class="one-column-emphasis">
+    <colgroup>
+    	<col class="oce-first" />
+    </colgroup>
+    <thead>
+    	<tr>
+        	<th scope="col"> Period Number </th>
+        	<th scope="col"> Section Details </th>
+        </tr>
+    </thead>
+    <tbody>
+    	<% periods.each do |p| %>
+    		<tr>
+	    		<td> <%= p.period_no %> </td>
+	    		<!-- For each of the section + subject combination for this particular teacher - 
+	    				check whether that particular 'section' has that particular 'subject' on that particular day.
+	    				If yes, print the details.
+	    		-->
+	    		<td>
+	    			<% @object.sec_sub_maps.each do |map| %>
+	    				<% rows = TimeTable.for_section_id(map.section_id).for_period_no(p.period_no).find(:all, :select => @d.strftime("%A").downcase) %>
+	    				<!-- 'rows' will always be a single row. There will be only one row for  a section + period_no combination. But it returns an array of one object -->
+		    			<% rows.each do |row| %>
+			    			<% if row.send(@d.strftime("%A").downcase) == map.subject_id %>
+			    				<%= map.section.name %> - <%=map.subject.name%>
+		    				<% else %>
+		    					NA
+		    				<% end %>
+		    			<% end %>
+		    			<!--It is possible that none of the sections taken by this particular teacher have a particular period at all. In that case, just fill NA -->
+		    			<% if rows.empty? %> NA <%end%>
+	    			<% end %>
+	    		</td>
+			</tr>
+	    <%end %>
+    </tbody>
+</table>

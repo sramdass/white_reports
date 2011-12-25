@@ -412,10 +412,14 @@
             <string>db\migrate\20110902042737_remove_branch_id_from_sections.rb</string>
             <key>gem</key>
             <string>Gemfile</string>
+            <key>gemfi</key>
+            <string>..\campusapp\Gemfile</string>
             <key>gemfil</key>
             <string>Gemfile</string>
             <key>gemfile</key>
             <string>Gemfile</string>
+            <key>git</key>
+            <string>..\campusapp\.gitignore</string>
             <key>graph</key>
             <string>public\javascripts\graph_input.js</string>
             <key>graph_in</key>
@@ -424,6 +428,8 @@
             <string>app\views\marks\graphs.html.erb</string>
             <key>graphs.html</key>
             <string>app\views\marks\graphs.html.erb</string>
+            <key>homes_contr</key>
+            <string>..\campusapp\app\controllers\homes_controller.rb</string>
             <key>ignore</key>
             <string>.gitignore</string>
             <key>index</key>
@@ -578,6 +584,8 @@
             <string>app\views\sections\_report_options.html.erb</string>
             <key>reports</key>
             <string>app\views\sections\_report_options.html.erb</string>
+            <key>reso</key>
+            <string>..\campusapp\app\models\resource.rb</string>
             <key>resource_on_schedulers.rb</key>
             <string>db\migrate\20111110130508_rename_resource_on_schedulers.rb</string>
             <key>role</key>
@@ -756,6 +764,8 @@
             <string>app\views\teachers\_sms_fields.html.erb</string>
             <key>smsnew</key>
             <string>app\views\teachers\_smsnew.html.erb</string>
+            <key>spec_hel</key>
+            <string>..\campusapp\spec\spec_helper.rb</string>
             <key>stack</key>
             <string>app\views\marks\stacked_cols.html.erb</string>
             <key>stacked_</key>
